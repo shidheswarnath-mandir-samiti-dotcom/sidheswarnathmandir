@@ -1,13 +1,223 @@
-.hero {
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("images/maha.jpg");
-    background-size: cover;
-    background-position: center;
-    height: 400px;
+/* ============================= */
+/* ===== GLOBAL SETTINGS ===== */
+/* ============================= */
+
+body {
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth; /* smooth scroll */
 }
-img {
+
+/* ============================= */
+/* ===== NAVBAR ===== */
+/* ============================= */
+
+.navbar {
+    position: sticky; /* navbar upar fix rahega */
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px); /* glass effect */
+}
+
+/* ===== NAVBAR HOVER ANIMATION ===== */
+.nav-link {
+    position: relative;
+    transition: 0.1s;
+}
+
+/* underline animation */
+.nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    left: 0;
+    bottom: -5px;
+    background: yellow;
     transition: 0.3s;
 }
 
+/* active link glow */
+.nav-link.active {
+    color: yellow !important;
+   
+}
+
+/* ============================= */
+/* ===== LOGO STYLE ===== */
+/* ============================= */
+
+.logo-img {
+    width: 40px;         /* size chhota rakha */
+    height: 40px;
+    border-radius: 50%;  /* circle bana dega */
+    object-fit: cover;   /* image stretch nahi hogi */
+    border: 2px solid white; /* border for premium look */
+}
+/* LOGO HOVER EFFECT */
+.logo-img:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+/* logo text */
+.navbar-brand span {
+    font-size: 20px;
+    color: white;
+}
+
+
+.nav-link.active {
+    color: yellow !important;
+    border-bottom: 2px solid yellow;
+}
+
+.nav-link:hover {
+    color: orange !important;
+}
+
+/* ============================= */
+/* ===== HERO SECTION ===== */
+/* ============================= */
+
+.hero {
+    height: 90vh;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                url("images/maha.jpg");
+    background-size: cover;
+    background-position: center;
+}
+/* HERO TEXT CENTER FIX */
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* ============================= */
+/* ===== TEXT ===== */
+/* ============================= */
+
+h2 {
+    font-weight: bold;
+    text-align: center;
+}
+
+p {
+    font-size: 18px;
+}
+
+/* ============================= */
+/* ===== CARD DESIGN ===== */
+/* ============================= */
+
+.card {
+    border-radius: 12px;
+    transition: 0.3s;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-8px); /* hover lift effect */
+}
+
+/* ============================= */
+/* ===== IMAGE EFFECT ===== */
+/* ============================= */
+
+img {
+    transition: 0.4s;
+}
+
 img:hover {
-    transform: scale(1.05);
+    transform: scale(1.08);
+}
+
+/* ============================= */
+/* ===== BUTTON EFFECT ===== */
+/* ============================= */
+
+.btn {
+    transition: 0.3s;
+    border-radius: 8px;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+/* ============================= */
+/* ===== ANIMATION ===== */
+/* ============================= */
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* HERO TEXT ENTRY */
+.hero h1 {
+    animation: slideDown 1s ease;
+}
+
+.hero p {
+    animation: fadeIn 2s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ============================= */
+/* ===== SECTION SPACING ===== */
+/* ============================= */
+
+section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+/* ===== SCROLL BUTTON ===== */
+#topBtn {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    display: none;
+    background: black;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* ===== CONTACT FORM ===== */
+form {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+form input, form textarea {
+    border-radius: 8px;
+}
+
+form button {
+    font-size: 18px;
 }

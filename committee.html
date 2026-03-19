@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Committee - Mandir</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -11,36 +12,84 @@
 
 <body>
 
-<!-- NAVBAR -->
+<!-- ===== NAVBAR START ===== -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="#">Sidheswar Nath Mandir</a>
 
-    <div>
-      <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-        <li class="nav-item"><a class="nav-link" href="donation.html">Donation</a></li>
-        <li class="nav-item"><a class="nav-link" href="committee.html">Committee</a></li>
+    <!-- Logo / Website Name -->
+    <!-- ===== LOGO + NAME ===== -->
+<a class="navbar-brand d-flex align-items-center" href="index.html">
+  
+  <!-- Logo Image -->
+  <img src="images/m7.jpg" alt="Mandir Logo" class="logo-img me-2">
+  
+  <!-- Website Name -->
+  <span>श्री सिद्धेश्वर नाथ मंदिर</span>
+
+</a>
+
+    <!-- Mobile Toggle Button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menu Items -->
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto">
+
+        <!-- HOME (Active Page) -->
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+
+        <!-- ABOUT -->
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About</a>
+        </li>
+
+        <!-- GALLERY -->
+        <li class="nav-item">
+          <a class="nav-link" href="gallery.html">Gallery</a>
+        </li>
+
+        <!-- DONATION -->
+        <li class="nav-item">
+          <a class="nav-link" href="donation.html">Donation</a>
+        </li>
+
+        <!-- COMMITTEE -->
+        <li class="nav-item">
+          <a class="nav-link active" href="committee.html">Committee</a>
+        </li>
+
+        <!-- CONTACT -->
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact</a>
+        </li>
+
       </ul>
     </div>
   </div>
 </nav>
+<!-- ===== NAVBAR END ===== -->
 
 <!-- TITLE -->
 <div class="container text-center mt-5">
     <h2>Our Committee Members</h2>
 </div>
 
-<!-- MEMBERS -->
-<div class="container mt-4">
+<!-- ===== COMMITTEE MEMBERS SECTION START ===== -->
+<div class="container mt-5">
+
     <div class="row text-center">
 
-        <!-- MEMBER 1 -->
-        <div class="col-md-3 mb-4">
-            <div class="card">
-                <img src="images/presidentt.jpg" class="card-img-top">
+        <!-- ===== MEMBER CARD START ===== -->
+        <!-- NOTE: Isi block ko copy-paste karke naye members add karna hai -->
+
+        <!-- PRESIDENT -->
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card shadow h-100">
+                <img src="images/presidentt.jpg" class="card-img-top" alt="President">
                 <div class="card-body">
                     <h5>पवन झा</h5>
                     <p>(अध्यक्ष)</p>
@@ -48,10 +97,10 @@
             </div>
         </div>
 
-        <!-- MEMBER 2 -->
-        <div class="col-md-3 mb-4">
-            <div class="card">
-                <img src="images/vpp.jpg" class="card-img-top">
+        <!-- VICE PRESIDENT -->
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card shadow h-100">
+                <img src="images/vpp.jpg" class="card-img-top" alt="Vice President">
                 <div class="card-body">
                     <h5>Dilip Rai</h5>
                     <p>(उपाध्यक्ष)</p>
@@ -59,10 +108,10 @@
             </div>
         </div>
 
-        <!-- MEMBER 3 -->
-        <div class="col-md-3 mb-4">
-            <div class="card">
-                <img src="images/sec.jpg" class="card-img-top">
+        <!-- SECRETARY -->
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card shadow h-100">
+                <img src="images/sec.jpg" class="card-img-top" alt="Secretary">
                 <div class="card-body">
                     <h5>प्रकाश कुमार</h5>
                     <p>(सचिव)</p>
@@ -70,10 +119,10 @@
             </div>
         </div>
 
-        <!-- MEMBER 4 -->
-        <div class="col-md-3 mb-4">
-            <div class="card">
-                <img src="images/cashi.jpg" class="card-img-top">
+        <!-- TREASURER -->
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card shadow h-100">
+                <img src="images/cashi.jpg" class="card-img-top" alt="Treasurer">
                 <div class="card-body">
                     <h5>अभिषेक कुमार</h5>
                     <p>(कोषाध्यक्ष)</p>
@@ -81,13 +130,61 @@
             </div>
         </div>
 
+        <!-- ===== NEW MEMBERS ADD BELOW ===== -->
+
+        <!-- EXAMPLE MEMBER (copy this block) -->
+        <!--
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card shadow h-100">
+                <img src="images/member.jpg" class="card-img-top" alt="Member">
+                <div class="card-body">
+                    <h5>Member Name</h5>
+                    <p>(Role)</p>
+                </div>
+            </div>
+        </div>
+        -->
+
+        <!-- ===== MEMBER CARD END ===== -->
+
     </div>
 </div>
+<!-- ===== COMMITTEE MEMBERS SECTION END ===== -->
 <!-- FOOTER -->
-<footer class="bg-dark text-white text-center p-3 mt-5">
+<footer class="bg-dark text-white pt-4 pb-3 mt-5">
+  <div class="container text-center">
+    <h5>Sidheswar Nath Mandir</h5>
     <p>📍 Bishoul Tatuar, Darbhanga, Bihar</p>
-    <p>📞 +91 9876543210</p>
-    <p>🙏 Sidheswar Nath Mandir</p>
+    <p>📞 +91 9876543210 | 📧 mandir@gmail.com</p>
+    <a href="https://wa.me/919876543210" class="btn btn-success">WhatsApp</a>
+  </div>
 </footer>
+
+<!-- ===== ANIMATION FIX SCRIPT ===== -->
+<script>
+window.addEventListener("load", () => {
+  const elements = document.querySelectorAll(".fade-in");
+
+  elements.forEach(el => {
+    el.classList.add("show");
+  });
+});
+</script>
+
+<!-- ===== SCROLL TO TOP BUTTON ===== -->
+<button onclick="scrollToTop()" id="topBtn">⬆️</button>
+
+<script>
+let btn = document.getElementById("topBtn");
+
+window.onscroll = function() {
+  btn.style.display = window.scrollY > 200 ? "block" : "none";
+};
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
 </body>
 </html>
