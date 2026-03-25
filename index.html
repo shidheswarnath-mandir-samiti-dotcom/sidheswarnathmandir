@@ -17,86 +17,96 @@
 <body>
 
 <!-- ===== NAVBAR ===== -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+<nav class="navbar navbar-expand-lg premium-navbar">
   <div class="container">
-    <!-- ===== LOGO + NAME ===== -->
-<a class="navbar-brand d-flex align-items-center" href="index.html">
-  
-  <!-- Logo Image -->
-  <img src="images/m7.jpg" alt="Mandir Logo" class="logo-img me-2">
-  
-  <!-- Website Name -->
-  <span>श्री सिद्धेश्वर नाथ मंदिर</span>
 
-</a>
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="images/m7.jpg" class="logo-img me-2">
+      <span>श्री सिद्धेश्वर नाथ मंदिर</span>
+    </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="menu">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-        <li class="nav-item"><a class="nav-link" href="donation.html">Donation</a></li>
-        <li class="nav-item"><a class="nav-link" href="committee.html">Committee</a></li>
-        <!-- CONTACT -->
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact</a>
-        </li>
+        <li><a class="nav-link active" href="index.html">Home</a></li>
+        <li><a class="nav-link" href="about.html">About</a></li>
+        <li><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li><a class="nav-link" href="donation.html">Donation</a></li>
+        <li><a class="nav-link" href="committee.html">Committee</a></li>
+        <li><a class="nav-link" href="contact.html">Contact</a></li>
       </ul>
     </div>
+
   </div>
+  <div class="language-toggle ms-3">
+  <button onclick="switchLang('en')" class="btn btn-sm btn-light">EN</button>
+  <button onclick="switchLang('hi')" class="btn btn-sm btn-dark">हिंदी</button>
+</div>
 </nav>
-
 <!-- ===== HERO SECTION ===== -->
-<section class="hero d-flex align-items-center text-center text-white">
+<section class="hero-section text-center text-white">
   <div class="container">
-    <h1 class="display-4 fw-bold fade-in">सिद्धेश्वर नाथ मंदिर</h1>
-<p class="lead fade-in">बिशौल टटुआर, दरभंगा, बिहार</p>
-    
-    <a href="donation.html" class="btn btn-warning btn-lg mt-3">🙏 Donate Now</a>
+    <h1>
+  <span class="lang-en">Siddheshwar Nath Temple</span>
+  <span class="lang-hi" style="display:none;">सिद्धेश्वर नाथ मंदिर</span>
+</h1>
+    <p>
+  <span class="lang-en">Bishoul Tatuar, Darbhanga, Bihar</span>
+  <span class="lang-hi" style="display:none;">बिशौल टटुआर, दरभंगा, बिहार</span>
+</p>
+    <a href="donation.html" class="btn btn-warning mt-3">Explore</a>
   </div>
 </section>
 
-<!-- ===== ABOUT SECTION ===== -->
-<section class="container mt-5 text-center">
-  <h2>About Our Mandir</h2>
-  <p class="mt-3">
-    Sidheswar Nath Mandir is a sacred place dedicated to Lord Shiva.
-    It is a center of faith, devotion, and spirituality for the people of the village.
+<!-- ===== ABOUT PREVIEW (HOME PAGE) ===== -->
+<section class="container mt-5 text-center fade-in">
+
+  <h2>About Our Temple</h2>
+
+  <!-- Short Description -->
+  <p>
+    Baba Siddheshwar Nath Temple is a sacred Hindu temple dedicated to Lord Shiva, located in Bishaul village in the Mithila region of Darbhanga.
   </p>
+  <p>बाबा सिद्धेश्वर नाथ मंदिर, विशौल गांव में स्थित एक पवित्र शिव मंदिर है, जो दरभंगा के मिथिला क्षेत्र में आता है।</p>
+
+  <!-- READ MORE BUTTON -->
+  <a href="about.html" class="btn btn-warning mt-3">
+    Read More
+  </a>
+
 </section>
-
 <!-- ===== FEATURES ===== -->
-<section class="container mt-5">
-  <div class="row text-center">
+<section class="container mt-5 text-center">
+  <h2 class="section-title-main">Temple Highlights</h2>
+
+  <div class="row">
 
     <div class="col-md-4">
-      <div class="card p-3 shadow">
+      <div class="card premium-card p-3">
         <h4>🛕 Daily Puja</h4>
-        <p>Regular पूजा and rituals performed every day.</p>
+        <p>Daily rituals and पूजा performed</p>
       </div>
     </div>
 
     <div class="col-md-4">
-      <div class="card p-3 shadow">
+      <div class="card premium-card p-3">
         <h4>🎉 Mahashivratri</h4>
-        <p>Grand celebration with bhajans and पूजा.</p>
+        <p>Grand celebration every year</p>
       </div>
     </div>
 
     <div class="col-md-4">
-      <div class="card p-3 shadow">
-        <h4>🙏 Donations</h4>
-        <p>Your support helps temple development.</p>
+      <div class="card premium-card p-3">
+        <h4>🙏 Donation</h4>
+        <p>Support temple development</p>
       </div>
     </div>
 
   </div>
 </section>
-
 <!-- ===== GALLERY PREVIEW ===== -->
 <section class="container mt-5 text-center">
   <h2>Gallery</h2>
@@ -115,11 +125,10 @@
 </section>
 
 <!-- ===== FOOTER ===== -->
-<footer class="bg-dark text-white text-center p-4 mt-5">
+<footer class="premium-footer text-center">
   <h5>Sidheswar Nath Mandir</h5>
-  <p>📍 Bishoul Tatuar, Darbhanga, Bihar</p>
-  <p>📞 +91 9876543210</p>
-  <a href="https://wa.me/919876543210" class="btn btn-success">WhatsApp</a>
+  <p>📍 Darbhanga, Bihar</p>
+  <a href="#" class="btn btn-success">WhatsApp</a>
 </footer>
 
 <!-- Bootstrap JS -->
@@ -153,4 +162,20 @@ function scrollToTop() {
 </script>
 
 </body>
+
+<script>
+function switchLang(lang) {
+  const en = document.querySelectorAll(".lang-en");
+  const hi = document.querySelectorAll(".lang-hi");
+
+  if (lang === "en") {
+    en.forEach(el => el.style.display = "block");
+    hi.forEach(el => el.style.display = "none");
+  } else {
+    en.forEach(el => el.style.display = "none");
+    hi.forEach(el => el.style.display = "block");
+  }
+}
+</script>
 </html>
+
