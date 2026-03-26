@@ -57,17 +57,17 @@
 <div class="language-buttons text-center mb-4">
 
   <!-- Button 1 -->
-  <button class="lang-btn active" onclick="showLang('english')">
+  <button class="lang-btn active" onclick="showLang('english', this)">
     English
   </button>
 
   <!-- Button 2 -->
-  <button class="lang-btn" onclick="showLang('hindi')">
+ <button class="lang-btn active" onclick="showLang('hindi', this)">
     हिंदी
   </button>
 
   <!-- Button 3 -->
-  <button class="lang-btn" onclick="showLang('maithili')">
+  <button class="lang-btn active" onclick="showLang('maithili', this)">
     मैथिली
   </button>
 
@@ -218,7 +218,32 @@ function showLang(lang) {
     btn.classList.remove('active');
   });
 
-  event.target.classList.add('active');
+  // ===== LANGUAGE SWITCH FUNCTION (FINAL FIX) =====
+function showLang(lang, el = null) {
+
+  // ===== CONTENT SWITCH =====
+  document.querySelectorAll('.lang-content').forEach(elm => {
+    elm.classList.remove('active');
+  });
+
+  document.getElementById(lang).classList.add('active');
+
+  // ===== BUTTON ACTIVE =====
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+
+  if (el) {
+    el.classList.add('active');
+  }
+
+  // ===== TITLE SWITCH =====
+  document.querySelectorAll('.lang-title').forEach(elm => {
+    elm.classList.remove('active');
+  });
+
+  document.getElementById("title-" + lang).classList.add('active');
+}
 
   // ===== TITLE SWITCH (NEW) =====
   document.querySelectorAll('.lang-title').forEach(el => {
@@ -236,11 +261,11 @@ window.onload = function() {
   const params = new URLSearchParams(window.location.search);
   const lang = params.get("lang");
 
-  if (lang) {
-    showLang(lang);
-  } else {
-    showLang("english"); // default language
-  }
+ if (lang) {
+  showLang(lang); // URL se language aayega
+} else {
+  showLang("english"); // default
+}
 
 };
 </script>
