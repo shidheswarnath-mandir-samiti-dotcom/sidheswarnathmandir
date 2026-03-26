@@ -507,22 +507,18 @@ color: #222;
 /* ===== PREMIUM LANGUAGE TITLE ===== */
 
 .history-main-title {
-    font-size: 28px;
-    font-weight: bold;
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 600; 
     text-align: center;
-
-    /* WHITE TEXT */
     color: #fff;
 
-    /* BLACK BACKGROUND SHADOW EFFECT */
     background: rgba(0,0,0,0.7);
+    display: inline-block;
 
-    padding: 15px;
-    border-radius: 10px;
+    padding: 10px 12px; /* 👈 TOP/BOTTOM 10px, LEFT/RIGHT 12px */
+    border-radius: 90px;
+    margin-bottom: 10px;
 
-    margin-bottom: 20px;
-
-    /* GLOW EFFECT */
     box-shadow: 0 5px 20px rgba(0,0,0,0.5);
 }
 
@@ -560,16 +556,3 @@ color: #222;
     border-radius: 10px;
 }
 
-/* ===== MOBILE RESPONSIVE ===== */
-@media (max-width: 768px) {
-
-    .history-box {
-        max-height: 300px; /* mobile me chhota */
-    }
-
-    .top-title-box {
-        font-size: 12px;
-        padding: 5px 10px;
-    }
-
-}
