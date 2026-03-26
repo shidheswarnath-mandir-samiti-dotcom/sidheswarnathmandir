@@ -35,27 +35,23 @@
         <li><a class="nav-link" href="about.html">About</a></li>
         <li><a class="nav-link" href="gallery.html">Gallery</a></li>
         <li><a class="nav-link" href="donation.html">Donation</a></li>
-        <li><a class="nav-link" href="committee.html">Committee</a></li>
         <li><a class="nav-link" href="contact.html">Contact</a></li>
       </ul>
     </div>
 
   </div>
-  <div class="language-toggle ms-3">
-  <button onclick="switchLang('en')" class="btn btn-sm btn-light">EN</button>
-  <button onclick="switchLang('hi')" class="btn btn-sm btn-dark">हिंदी</button>
-</div>
+  
 </nav>
 <!-- ===== HERO SECTION ===== -->
 <section class="hero-section text-center text-white">
   <div class="container">
     <h1>
-  <span class="lang-en">Siddheshwar Nath Temple</span>
-  <span class="lang-hi" style="display:none;">सिद्धेश्वर नाथ मंदिर</span>
+  <span class="lang-en">सिद्धेश्वर नाथ मंदिर</span>
+  
 </h1>
     <p>
-  <span class="lang-en">Bishoul Tatuar, Darbhanga, Bihar</span>
-  <span class="lang-hi" style="display:none;">बिशौल टटुआर, दरभंगा, बिहार</span>
+  <span class="lang-en">बिशौल टटुआर, दरभंगा, बिहार</span>
+
 </p>
     <a href="donation.html" class="btn btn-warning mt-3">Explore</a>
   </div>
@@ -73,10 +69,33 @@
   <p>बाबा सिद्धेश्वर नाथ मंदिर, विशौल गांव में स्थित एक पवित्र शिव मंदिर है, जो दरभंगा के मिथिला क्षेत्र में आता है।</p>
 
   <!-- READ MORE BUTTON -->
-  <a href="about.html" class="btn btn-warning mt-3">
+<!-- BUTTON + LANGUAGE SELECT -->
+<div class="d-flex justify-content-center align-items-center gap-2 mt-3 flex-wrap">
+
+  <!-- Read More -->
+ <div class="d-flex justify-content-center align-items-center gap-2 mt-3">
+
+  <!-- Read More -->
+  <a href="about.html" class="btn btn-warning">
     Read More
   </a>
 
+  <!-- SMALL LANGUAGE BUTTON -->
+  <div class="lang-dropdown">
+
+    <button class="lang-toggle">
+      🌍▼
+    </button>
+
+    <div class="lang-menu">
+      <div onclick="goToAbout('english')">English</div>
+      <div onclick="goToAbout('hindi')">हिंदी</div>
+      <div onclick="goToAbout('maithili')">मैथिली</div>
+    </div>
+
+  </div>
+
+</div>
 </section>
 <!-- ===== FEATURES ===== -->
 <section class="container mt-5 text-center">
@@ -161,8 +180,6 @@ function scrollToTop() {
 }
 </script>
 
-</body>
-
 <script>
 function switchLang(lang) {
   const en = document.querySelectorAll(".lang-en");
@@ -177,5 +194,32 @@ function switchLang(lang) {
   }
 }
 </script>
+<script>
+// ===== GO TO ABOUT WITH LANGUAGE =====
+function goToAbout(lang) {
+  if (lang !== "") {
+    window.location.href = "about.html?lang=" + lang;
+  }
+}
+</script>
+
+<script>
+// dropdown open/close
+const toggle = document.querySelector(".lang-toggle");
+const dropdown = document.querySelector(".lang-dropdown");
+
+toggle.addEventListener("click", () => {
+  dropdown.classList.toggle("active");
+});
+
+// click outside close
+window.addEventListener("click", (e) => {
+  if (!dropdown.contains(e.target)) {
+    dropdown.classList.remove("active");
+  }
+});
+</script>
+
+</body>
 </html>
 
