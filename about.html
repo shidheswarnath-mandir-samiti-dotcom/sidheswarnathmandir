@@ -1,246 +1,922 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — श्री सिद्धेश्वर नाथ मंदिर</title>
 
+<meta name="description" content="History and story of Baba Sidheswar Nath Mandir, Bishoul Tatuar, Darbhanga, Bihar — Ancient Shiv Siddha Peeth of Mithila.">
 
-<title>About - Mandir</title>
-
+<!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- Custom CSS -->
 <link rel="stylesheet" href="style.css">
+
+<style>
+/* ============================
+   ABOUT PAGE — STYLES
+   ============================ */
+
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background: #fffaf4;
+}
+
+h1, h2, h3, .devanagari {
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+}
+
+/* ===== HERO BANNER ===== */
+.about-hero {
+  height: 55vh;
+  background: linear-gradient(rgba(0,0,0,0.62), rgba(0,0,0,0.62)),
+              url("images/maha.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.about-hero h1 {
+  font-size: clamp(28px, 5vw, 54px);
+  font-weight: bold;
+  text-shadow: 0 3px 20px rgba(0,0,0,0.7);
+  animation: slideDown 0.9s ease both;
+}
+
+.about-hero p {
+  font-size: 17px;
+  opacity: 0.85;
+  margin-top: 8px;
+  animation: fadeUp 1.3s ease both;
+  color: white;
+}
+
+.hero-badge-about {
+  display: inline-block;
+  background: rgba(255,153,51,0.3);
+  border: 1px solid rgba(255,153,51,0.7);
+  color: #ffcc88;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 18px;
+  border-radius: 30px;
+  margin-bottom: 14px;
+  animation: fadeUp 0.7s ease both;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .about-hero { background-attachment: scroll; height: 45vh; }
+}
+
+/* ===== BREADCRUMB ===== */
+.breadcrumb-strip {
+  background: white;
+  border-bottom: 1px solid #f0e8dc;
+  padding: 10px 0;
+}
+.breadcrumb-strip a {
+  color: #ff6600;
+  text-decoration: none;
+  font-size: 13px;
+}
+.breadcrumb-strip span {
+  color: #999;
+  font-size: 13px;
+}
+
+/* ===== SECTION SHARED ===== */
+.section-eyebrow {
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #ff6600;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.section-heading {
+  font-size: clamp(22px, 3.5vw, 34px);
+  font-weight: bold;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.section-heading span { color: #ff6600; }
+
+.orange-rule {
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  border-radius: 10px;
+  margin: 0 auto 36px;
+}
+
+/* ===== LANGUAGE BUTTONS ===== */
+.lang-buttons-wrap {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.lang-btn {
+  padding: 10px 28px;
+  border: 2px solid #ff9933;
+  border-radius: 30px;
+  background: white;
+  color: #ff6600;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.25s;
+  font-family: 'Poppins', sans-serif;
+}
+.lang-btn:hover, .lang-btn.active {
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  color: white;
+  border-color: transparent;
+}
+
+/* ===== HISTORY TITLE ===== */
+.history-main-title {
+  display: none;
+  text-align: center;
+  font-size: clamp(16px, 2.5vw, 22px);
+  font-weight: 600;
+  color: white;
+  background: rgba(0,0,0,0.72);
+  padding: 10px 22px;
+  border-radius: 50px;
+  margin: 0 auto 24px;
+  max-width: 90%;
+}
+.history-main-title.active { display: block; }
+
+/* ===== CONTENT SECTION ===== */
+.history-section {
+  padding: 60px 0;
+}
+
+.history-content-wrap {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 36px rgba(0,0,0,0.09);
+  overflow: hidden;
+}
+
+/* sidebar timeline nav */
+.history-nav {
+  background: linear-gradient(180deg, #ff9933, #ff6600);
+  padding: 30px 20px;
+  min-height: 100%;
+}
+
+.history-nav-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 28px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 0.2s;
+}
+.history-nav-item.active { opacity: 1; }
+.history-nav-item:hover  { opacity: 1; }
+
+.nav-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: white;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.nav-label {
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* content box */
+.history-body {
+  padding: 36px 32px;
+  max-height: 540px;
+  overflow-y: auto;
+}
+
+.history-body::-webkit-scrollbar { width: 5px; }
+.history-body::-webkit-scrollbar-thumb {
+  background: #ff9933; border-radius: 10px;
+}
+.history-body::-webkit-scrollbar-track { background: transparent; }
+
+/* language content */
+.lang-content { display: none; }
+.lang-content.active { display: block; animation: fadeUp 0.5s ease; }
+
+.lang-content p {
+  font-size: 16px;
+  line-height: 1.9;
+  color: #333;
+  margin-bottom: 18px;
+}
+
+@media (max-width: 768px) {
+  .history-nav { display: none; }
+  .history-body { max-height: none; padding: 24px 18px; }
+  .history-content-wrap { border-radius: 14px; }
+}
+
+/* ===== KEY FACTS ===== */
+.facts-section {
+  padding: 60px 0;
+  background: linear-gradient(135deg, #fff5e6, #ffe0b3);
+}
+
+.fact-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  height: 100%;
+}
+
+.fact-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(255,102,0,0.15);
+}
+
+.fact-icon { font-size: 36px; margin-bottom: 10px; }
+
+.fact-card h5 {
+  font-weight: 700;
+  color: #ff6600;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.fact-card p {
+  font-size: 13px;
+  color: #666;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ===== FOUNDERS ===== */
+.founders-section {
+  padding: 60px 0;
+  background: white;
+}
+
+.founder-card {
+  border: none;
+  border-radius: 18px;
+  padding: 28px 20px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  height: 100%;
+  background: #fffaf4;
+}
+
+.founder-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(255,102,0,0.13);
+}
+
+.founder-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff9933, #ff6600);
+  color: white;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+}
+
+.founder-card h5 {
+  font-weight: 700;
+  color: #1a1a1a;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.founder-card .role {
+  font-size: 12px;
+  color: #ff6600;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.founder-card p {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ===== TIMELINE ===== */
+.timeline-section {
+  padding: 60px 0;
+  background: #fffaf4;
+}
+
+.timeline {
+  position: relative;
+  padding: 0;
+  list-style: none;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #ff9933, #ff6600);
+  transform: translateX(-50%);
+  border-radius: 10px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+  width: 45%;
+}
+
+.timeline-item.left  { left: 0; text-align: right; padding-right: 30px; }
+.timeline-item.right { left: 55%; text-align: left; padding-left: 30px; }
+
+.timeline-dot {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #ff6600;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 0 0 3px #ff9933;
+  top: 6px;
+}
+.timeline-item.left  .timeline-dot { right: -37px; }
+.timeline-item.right .timeline-dot { left: -37px; }
+
+.timeline-year {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ff6600;
+  margin-bottom: 4px;
+}
+
+.timeline-card {
+  background: white;
+  border-radius: 12px;
+  padding: 14px 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  font-size: 14px;
+  color: #333;
+  line-height: 1.6;
+}
+
+.timeline-card strong {
+  display: block;
+  color: #1a1a1a;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+@media (max-width: 640px) {
+  .timeline::before { left: 16px; }
+  .timeline-item { width: 100%; left: 0 !important; text-align: left !important; padding-left: 44px !important; padding-right: 0 !important; }
+  .timeline-dot  { left: 9px !important; right: auto !important; }
+}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== WHATSAPP FLOAT ===== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 22px; right: 22px;
+  background: #25d366;
+  color: white;
+  width: 54px; height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(37,211,102,0.5);
+  z-index: 999;
+  transition: 0.3s;
+}
+.whatsapp-float:hover { transform: scale(1.12); color: white; }
+
+/* ===== SCROLL TOP ===== */
+#topBtn {
+  position: fixed;
+  bottom: 84px; right: 22px;
+  display: none;
+  background: linear-gradient(135deg, #ff9933, #ff6600);
+  color: white;
+  border: none;
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(255,102,0,0.4);
+  z-index: 998;
+  transition: 0.3s;
+}
+#topBtn:hover { transform: scale(1.1); }
+
+/* ===== FOOTER ===== */
+.site-footer {
+  background: #111;
+  color: #ccc;
+  padding: 50px 0 20px;
+}
+.footer-brand {
+  font-size: 20px; font-weight: bold; color: #ff9933; margin-bottom: 8px;
+}
+.footer-tagline { font-size: 13px; color: #888; line-height: 1.6; }
+.footer-heading {
+  font-size: 13px; font-weight: 700; color: #ff9933;
+  letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px;
+}
+.footer-links { list-style: none; padding: 0; margin: 0; }
+.footer-links li { margin-bottom: 7px; }
+.footer-links a { color: #aaa; text-decoration: none; font-size: 13px; transition: 0.2s; }
+.footer-links a:hover { color: #ff9933; }
+.footer-info p { font-size: 13px; color: #aaa; margin-bottom: 5px; }
+.footer-bottom {
+  border-top: 1px solid #2a2a2a; margin-top: 36px;
+  padding-top: 16px; text-align: center; font-size: 12px; color: #555;
+}
+</style>
 </head>
 
 <body>
 
 <!-- ===== NAVBAR ===== -->
-<nav class="navbar navbar-expand-lg premium-navbar">
+<nav class="navbar navbar-expand-lg premium-navbar sticky-top">
   <div class="container">
-
     <a class="navbar-brand d-flex align-items-center" href="index.html">
-      <img src="images/m7.jpg" class="logo-img me-2">
+      <img src="images/m7.jpg" class="logo-img me-2" alt="Mandir Logo">
       <span>श्री सिद्धेश्वर नाथ मंदिर</span>
     </a>
-
-    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+    <button class="navbar-toggler" type="button"
+      data-bs-toggle="collapse" data-bs-target="#menu"
+      aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="menu">
       <ul class="navbar-nav ms-auto">
-        <li><a class="nav-link" href="index.html">Home</a></li>
-        <li><a class="nav-link active" href="about.html">About</a></li>
-        <li><a class="nav-link" href="gallery.html">Gallery</a></li>
-        <li><a class="nav-link" href="donation.html">Donation</a></li>
-        <li><a class="nav-link" href="committee.html">Committee</a></li>
-        <li><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="donation.html">Donation</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
       </ul>
     </div>
-
   </div>
 </nav>
 
-<!-- ===== LANGUAGE SWITCH ABOUT SECTION ===== -->
-
-<section class="about-section">
-
-  <!-- TOP BANNER -->
-
-  <div class="about-banner-glass">
-    <h1 class="banner-text">Mandir History</h1>
+<!-- ===== BREADCRUMB ===== -->
+<div class="breadcrumb-strip">
+  <div class="container">
+    <a href="index.html">Home</a>
+    <span> &rsaquo; About</span>
   </div>
+</div>
 
+<!-- ===== HERO ===== -->
+<section class="about-hero">
+  <div>
+    <div class="hero-badge-about">॥ मंदिर का इतिहास ॥</div>
+    <h1>Mandir History</h1>
+    <p>Ancient Siddha Peeth of Mithila — Est. Shaka 1763</p>
+  </div>
+</section>
+
+<!-- ===== KEY FACTS ===== -->
+<section class="facts-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Quick Facts</div>
+      <h2 class="section-heading">मंदिर के <span>मुख्य तथ्य</span></h2>
+      <div class="orange-rule"></div>
+    </div>
+
+    <div class="row g-3 justify-content-center reveal">
+      <div class="col-6 col-md-2">
+        <div class="fact-card">
+          <div class="fact-icon">📅</div>
+          <h5>Established</h5>
+          <p>Shaka 1763, Chaitra Shukla Paksha</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-2">
+        <div class="fact-card">
+          <div class="fact-icon">📍</div>
+          <h5>Location</h5>
+          <p>Bishoul Tatuar, Darbhanga, Bihar</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-2">
+        <div class="fact-card">
+          <div class="fact-icon">🕉️</div>
+          <h5>Deity</h5>
+          <p>Shiva, Parvati & Ganesha</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-2">
+        <div class="fact-card">
+          <div class="fact-icon">🌊</div>
+          <h5>Sacred Idols</h5>
+          <p>Brought from Narmada Kund</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-2">
+        <div class="fact-card">
+          <div class="fact-icon">🎉</div>
+          <h5>Revival</h5>
+          <p>Restored & celebrated from 1992</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-2">
+        <div class="fact-card">
+          <div class="fact-icon">🙏</div>
+          <h5>Type</h5>
+          <p>Ancient Shiva Siddha Peeth</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HISTORY SECTION ===== -->
+<section class="history-section">
   <div class="container">
 
-```
-<!-- ===== LANGUAGE BUTTONS ===== -->
-<div class="language-buttons text-center mb-4">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Temple History</div>
+      <h2 class="section-heading">मंदिर का <span>विस्तृत इतिहास</span></h2>
+      <div class="orange-rule"></div>
+    </div>
 
-  <!-- Button 1 -->
-  <button class="lang-btn active" onclick="showLang('english', this)">
-  English
-</button>
+    <!-- LANGUAGE BUTTONS -->
+    <div class="lang-buttons-wrap reveal">
+      <button class="lang-btn active" onclick="showLang('english', this)">English</button>
+      <button class="lang-btn" onclick="showLang('hindi', this)">हिंदी</button>
+      <button class="lang-btn" onclick="showLang('maithili', this)">मैथिली</button>
+    </div>
 
-  <!-- Button 2 -->
- <button class="lang-btn" onclick="showLang('hindi', this)">
-  हिंदी
-</button>
+    <!-- TITLE per language -->
+    <div id="title-english" class="history-main-title active">
+      Baba Siddheshwar Nath Temple, Bishaul — A Detailed Presentation
+    </div>
+    <div id="title-hindi" class="history-main-title">
+      बाबा सिद्धेश्वर नाथ मंदिर, विशौल — एक विस्तृत एवं विद्वत्पूर्ण प्रस्तुति
+    </div>
+    <div id="title-maithili" class="history-main-title">
+      बाबा सिद्धेश्वर नाथ मंदिर, बिशौल — एक विस्तृत प्रस्तुति
+    </div>
 
-  <!-- Button 3 -->
- <button class="lang-btn" onclick="showLang('maithili', this)">
-  मैथिली
-</button>
+    <!-- CONTENT BOX with sidebar -->
+    <div class="history-content-wrap reveal">
+      <div class="row g-0">
 
-</div>
+        <!-- SIDEBAR NAV -->
+        <div class="col-md-3 d-none d-md-block">
+          <div class="history-nav">
+            <div class="history-nav-item active">
+              <div class="nav-dot"></div>
+              <div class="nav-label">Establishment & Foundation</div>
+            </div>
+            <div class="history-nav-item">
+              <div class="nav-dot"></div>
+              <div class="nav-label">Sacred Idols from Narmada</div>
+            </div>
+            <div class="history-nav-item">
+              <div class="nav-dot"></div>
+              <div class="nav-label">Decline & Devotion</div>
+            </div>
+            <div class="history-nav-item">
+              <div class="nav-dot"></div>
+              <div class="nav-label">Revival (1990–92)</div>
+            </div>
+            <div class="history-nav-item">
+              <div class="nav-dot"></div>
+              <div class="nav-label">First Mahashivratri 1992</div>
+            </div>
+            <div class="history-nav-item">
+              <div class="nav-dot"></div>
+              <div class="nav-label">Growth & Legacy</div>
+            </div>
+          </div>
+        </div>
 
-<!-- ===== CONTENT BOX ===== -->
+        <!-- CONTENT -->
+        <div class="col-md-9">
+          <div class="history-body">
 
-<!-- ===== PREMIUM TITLE ===== -->
-<!-- ===== MULTI LANGUAGE TITLE ===== -->
+            <!-- ENGLISH -->
+            <div id="english" class="lang-content active">
+              <p>Situated in the sacred land of Mithila, in Bishaul (Bishoul Tatuaur) village of Darbhanga district, the Baba Siddheshwar Nath Temple is not merely a place of worship, but a living symbol of the region's cultural consciousness, spiritual heritage, and deep-rooted public faith. This revered Siddha Peeth is renowned for its divine influence, where devotees with utmost faith and devotion experience the fulfillment of their heartfelt wishes.</p>
+              <p>This holy temple was established by the great scholar, an eminent authority in Dharmashastra, and a devoted worshipper of Lord Shiva — Shri Siddheshwar Nath Mishra. According to traditional and epigraphic evidence, the consecration (Pran-Pratishtha) of the deities was performed in Shaka 1763, on an auspicious day of the bright fortnight of Chaitra, following proper scriptural ritual procedures. The temple enshrines the divine and rare idols of Lord Shiva and Goddess Parvati (in the form of the divine couple), along with Lord Ganesha. These sacred idols are believed to have been brought from Narmada Kund, the origin point of the Narmada River, thus elevating the spiritual significance of this site.</p>
+              <p>A deeply compelling account of the temple's origin is found in the work of Pandit Shri Savanand Jha. According to him, Siddheshwar Mishra was born in the illustrious Raghuvanshi Mishra lineage of Mithila's scholarly tradition. He was an unparalleled scholar of Nyaya (logic), Dharmashastra, and the Vedas and Vedangas. Comparable to Brihaspati in wisdom, he was a devoted worshipper of Goddess Janaki and Lord Shiva. Inspired by his deep devotion and spiritual discipline, he constructed this temple in his native village with the noble intent of public welfare, and ceremonially installed three sacred idols.</p>
+              <p>With the passage of time, this divine temple fell into a severely dilapidated condition. The premises turned into ruins, overgrown with trees and vegetation, and an atmosphere of fear discouraged people from even entering the site. Despite such adverse circumstances, the flame of devotion continued to burn through the unwavering faith of Shrimati Siddheshwari Devi, her sister Kameshwari Devi, and their father Bhairav Mishra, who continued daily worship of Lord Mahadev with steadfast dedication.</p>
+              <p>The revival of this sacred tradition was undertaken by Shri Vidyanand Jha, who also served as the President of the Mahashivratri festival. Around 1990–91, his attention was drawn to the neglected state of the temple, and he resolved to restore it. For this noble mission, he sought guidance from his Guru, Pandit Tilaknath Mishra, and began the restoration work under his direction.</p>
+              <p>The reconstruction was formally initiated by Dr. Shaliknath Mishra, the brother of Pandit Tilaknath Mishra. His deep spiritual conviction and inspiring assurance — that Lord Mahadev would surely bring this difficult resolution to success — became a source of strength for all involved. Despite limited initial resources, Shri Vidyanand Jha personally invested funds, later sustained through community contributions. People of Bishaul Tatuaur and nearby areas extended their full support — body, mind, and wealth. Villagers from Delhi, Kolkata and other cities also contributed generously.</p>
+              <p>The fruits of these tireless efforts were realized in 1992, when the Mahashivratri festival was celebrated for the first time with grand splendor. On this historic occasion, 108 young unmarried girls performed ritual worship, and 151 devotees brought holy Ganga water from Simaria to offer Jalabhishek to Lord Mahadev. Since then, this tradition has continued uninterrupted, and today the festival has become a major religious attraction in the Mithila region.</p>
+              <p>For over four decades, the temple has remained a vibrant center of Mahashivratri celebrations, featuring grand festivities, traditional Shiv Baraat, devotional bhajan-kirtan, and various religious rituals. Public representatives such as MLAs and MPs have contributed to additional buildings, while the village Mukhiya Shri Jivakant Mishra facilitated solar lighting and financial assistance from time to time. Baba Siddheshwar Nath Temple stands as a remarkable example of social unity, collective effort, and cultural renaissance.</p>
+            </div>
 
-<!-- ENGLISH TITLE -->
-<div id="title-english" class="history-main-title lang-title active">
-  Baba Siddheshwar Nath Temple, Bishaul — A Detailed Presentation
-</div>
+            <!-- HINDI -->
+            <div id="hindi" class="lang-content">
+              <p>मिथिला की पुण्यभूमि, दरभंगा जनपद के विशौल (बिशौल टटुआर) ग्राम में अवस्थित बाबा सिद्धेश्वर नाथ मंदिर केवल एक धार्मिक स्थल नहीं, बल्कि यह क्षेत्र की सांस्कृतिक चेतना, आध्यात्मिक परंपरा और लोकआस्था का जीवंत प्रतीक है। यह सिद्धपीठ अपने अलौकिक प्रभाव के लिए प्रसिद्ध है, जहाँ श्रद्धालु पूर्ण श्रद्धा एवं समर्पण के साथ उपस्थित होकर अपनी मनोकामनाओं की सिद्धि का अनुभव करते हैं।</p>
+              <p>इस पावन मंदिर की स्थापना महान विद्वान, धर्मशास्त्र के प्रकाण्ड पंडित एवं परम शिवभक्त श्री सिद्धेश्वर नाथ मिश्र द्वारा की गई थी। पौराणिक एवं शिलालेखीय प्रमाणों के अनुसार, शाके 1763, चैत्र शुक्ल पक्ष की पावन तिथि को धर्मशास्त्रीय विधि से यहाँ मूर्तियों की प्राण-प्रतिष्ठा सम्पन्न हुई। मंदिर में स्थापित भगवान शिव एवं माता पार्वती (शिव-दंपति) तथा भगवान गणेश की दिव्य एवं दुर्लभ मूर्तियाँ नर्मदा कुंड से लाई गई मानी जाती हैं।</p>
+              <p>पंडित श्री सदानंद झा द्वारा कृत ग्रंथ में इस मंदिर की स्थापना का अत्यंत प्रभावशाली वर्णन प्राप्त होता है। मिथिला की विद्वत् परंपरा में उत्पन्न रघुवंशी मिश्र कुल में जन्मे सिद्धेश्वर मिश्र न्याय, धर्मशास्त्र एवं वेद-वेदांगों के अद्वितीय ज्ञाता थे। वे बृहस्पति के समान विद्वान तथा भगवती जानकी और भगवान शिव के अनन्य उपासक थे। उनकी भक्ति और साधना से प्रेरित होकर उन्होंने लोककल्याण की भावना से अपने गृह ग्राम में मंदिर निर्माण कर, विधिवत् तीन दिव्य मूर्तियों की स्थापना की।</p>
+              <p>कालचक्र के प्रभाव से यह दिव्य मंदिर एक समय अत्यंत जर्जर अवस्था को प्राप्त हो गया। मंदिर परिसर खंडहर में परिवर्तित हो चुका था, वृक्ष-लताओं ने उसे आच्छादित कर लिया था, और भयवश सामान्य जन वहाँ जाने से भी कतराते थे। किंतु ऐसी विकट परिस्थिति में भी अटूट श्रद्धा की ज्योति जलाए रखने वालों में श्रीमती सिद्धेश्वरी देवी, उनकी बहन कामेश्वरी देवी तथा उनके पिता भैरव मिश्र का नाम अत्यंत श्रद्धा के साथ लिया जाता है।</p>
+              <p>इसी पावन परंपरा को पुनर्जीवित करने का संकल्प लिया श्री विद्यानंद झा ने। 1990-91 के आसपास उनकी दृष्टि इस जर्जर मंदिर पर पड़ी और उन्होंने इसके जीर्णोद्धार का दृढ़ निश्चय किया। अपने गुरु पंडित तिलकनाथ मिश्र से परामर्श प्राप्त कर उनके मार्गदर्शन में कार्यारंभ किया। मंदिर पुनर्निर्माण का शुभारंभ डॉ. शालिकनाथ मिश्र के करकमलों द्वारा हुआ।</p>
+              <p>प्रारंभ में सीमित संसाधनों के बावजूद, श्री विद्यानंद झा ने व्यक्तिगत रूप से धन लगाकर कार्य प्रारंभ किया, जिसे बाद में जनसहयोग द्वारा आगे बढ़ाया गया। बिशौल टटुआर ग्राम तथा आसपास के क्षेत्रों के लोगों ने तन-मन-धन से सहयोग किया। यहाँ तक कि दिल्ली, कोलकाता एवं अन्य नगरों में निवास कर रहे ग्रामवासियों ने भी इस पुण्य कार्य में अपना योगदान दिया।</p>
+              <p>अंततः इस अथक प्रयास का फल 1992 में प्राप्त हुआ, जब पहली बार महाशिवरात्रि महोत्सव अत्यंत भव्यता के साथ आयोजित किया गया। इस ऐतिहासिक अवसर पर 108 कुमारी कन्याओं द्वारा पूजन एवं 151 श्रद्धालुओं द्वारा सिमरिया से गंगाजल लाकर भगवान महादेव का अभिषेक किया गया। तभी से यह परंपरा निरंतर जारी है और आज यह महोत्सव मिथिला क्षेत्र का एक प्रमुख धार्मिक आकर्षण बन चुका है।</p>
+              <p>विगत चार दशकों से अधिक समय से यह मंदिर महाशिवरात्रि के भव्य आयोजन, पारंपरिक शिव बारात, भजन-कीर्तन तथा विविध धार्मिक अनुष्ठानों का केंद्र बना हुआ है। बाबा सिद्धेश्वर नाथ मंदिर न केवल आध्यात्मिक उन्नति का केंद्र है, बल्कि यह सामाजिक एकता, सामूहिक प्रयास और सांस्कृतिक पुनर्जागरण का भी अनुपम उदाहरण प्रस्तुत करता है।</p>
+            </div>
 
-<!-- HINDI TITLE -->
-<div id="title-hindi" class="history-main-title lang-title">
-  बाबा सिद्धेश्वर नाथ मंदिर, विशौल — एक विस्तृत एवं विद्वत्पूर्ण प्रस्तुति
-</div>
+            <!-- MAITHILI -->
+            <div id="maithili" class="lang-content">
+              <p>मिथिलाक पुण्यभूमि, दरभंगा जिलाक बिशौल (बिशौल टटुआर) गाममे अवस्थित बाबा सिद्धेश्वर नाथ मंदिर केवल एकटा पूजास्थल नहि, बल्कि ई क्षेत्रक सांस्कृतिक चेतना, आध्यात्मिक परंपरा आ लोक-आस्थाक जीवंत प्रतीक अछि। ई सिद्धपीठ अपन दिव्य प्रभाव लेल विख्यात अछि, जतऽ श्रद्धालु पूर्ण श्रद्धा आ समर्पणक संग उपस्थित भ' क' अपन मनोकामनाक सिद्धि अनुभव करैत छथि।</p>
+              <p>ई पावन मंदिरक स्थापना महान विद्वान, धर्मशास्त्रक प्रकाण्ड पंडित आ परम शिवभक्त श्री सिद्धेश्वर नाथ मिश्र द्वारा कएल गेल छल। पौराणिक आ शिलालेखीय प्रमाण अनुसार, शाके 1763, चैत्र शुक्ल पक्षक पावन तिथिमे धर्मशास्त्रीय विधि अनुसार एतऽ मूर्तिसभक प्राण-प्रतिष्ठा सम्पन्न भेल। मंदिरमे स्थापित भगवान शिव आ माता पार्वती तथा भगवान गणेशक दिव्य आ दुर्लभ मूर्तिसभ नर्मदा कुंड सँ आनल गेल मानल जाइत अछि।</p>
+              <p>पंडित श्री सदानंद झा द्वारा कृत ग्रन्थमे एहि मंदिरक स्थापना संबंधी अत्यन्त प्रभावशाली वर्णन भेटैत अछि। मिथिलाक विद्वत् परंपरामे उत्पन्न रघुवंशी मिश्र कुलमे जन्मल सिद्धेश्वर मिश्र न्याय, धर्मशास्त्र आ वेद-वेदांगक अद्वितीय ज्ञाता छलाह। ओ बृहस्पति समान विद्वान तथा भगवती जानकी आ भगवान शिवक अनन्य उपासक छलाह।</p>
+              <p>कालक्रमक प्रभावसँ ई दिव्य मंदिर एक समय अत्यन्त जर्जर अवस्थामे पहुँचि गेल। मंदिर परिसर खंडहरमे परिवर्तित भ' गेल, वृक्ष-लतासभ सँ आच्छादित भ' गेल, आ भयक कारण सामान्य लोकनि ओतऽ जाए सँ कतराइत छलाह। मुदा एहन विकट परिस्थितिमे सेहो श्रीमती सिद्धेश्वरी देवी, हुनकर बहिन कामेश्वरी देवी तथा हुनकर पिता भैरव मिश्र निरंतर भगवान महादेवक पूजा-अर्चना करैत रहलाह।</p>
+              <p>एहि पावन परंपराक पुनर्जीवनक संकल्प लेल श्री विद्यानंद झा द्वारा कएल गेल। 1990–91 क आसपास हुनकर दृष्टि एहि जर्जर मंदिर दिस गेल आ ओ एकर जीर्णोद्धारक दृढ़ निश्चय कएलाह। अपन गुरु पंडित तिलकनाथ मिश्र सँ परामर्श लेलाह आ हुनकर मार्गदर्शनमे कार्य प्रारंभ कएल गेल।</p>
+              <p>प्रारंभिक अवस्थामे सीमित संसाधनक बावजूद, श्री विद्यानंद झा स्वयं अपन धन लगाक' कार्य प्रारंभ कएलाह, जकरा बादमे जनसहयोग सँ आगाँ बढ़ाओल गेल। बिशौल टटुआर गाम आ आसपासक क्षेत्रक लोकनि तन-मन-धन सँ सहयोग कएलाह। दिल्ली, कोलकाता आ अन्य स्थानमे बसैत गामक लोकनि सेहो एहि पुण्य कार्यमे योगदान देलाह।</p>
+              <p>अंततः एहि अथक प्रयासक फल 1992 मे प्राप्त भेल, जखन पहिल बेर महाशिवरात्रि महोत्सव अत्यन्त धूमधाम सँ आयोजित कएल गेल। 108 कुमारी कन्यासभ द्वारा पूजा-अर्चना कएल गेल आ 151 श्रद्धालुसभ द्वारा सिमरिया सँ गंगाजल आनिक भगवान महादेवक जलाभिषेक कएल गेल। तखन सँ ई परंपरा निरंतर जारी अछि।</p>
+              <p>विगत चार दशक सँ अधिक समय सँ ई मंदिर महाशिवरात्रिक भव्य आयोजन, पारंपरिक शिव बारात, भजन-कीर्तन आ विभिन्न धार्मिक अनुष्ठानक केंद्र बनल अछि। बाबा सिद्धेश्वर नाथ मंदिर केवल आध्यात्मिक उन्नतिक केंद्र नहि, बल्कि सामाजिक एकता, सामूहिक प्रयास आ सांस्कृतिक पुनर्जागरणक अनुपम उदाहरण प्रस्तुत करैत अछि।</p>
+            </div>
 
-<!-- MAITHILI TITLE -->
-<div id="title-maithili" class="history-main-title lang-title">
-  बाबा सिद्धेश्वर नाथ मंदिर, बिशौल — एक विस्तृत प्रस्तुति
-</div>
-<div class="history-box">
+          </div>
+        </div>
 
-  <!-- ENGLISH -->
-  <div id="english" class="lang-content active">
-    <p>
-      Situated in the sacred land of Mithila, in Bishaul (Bishoul Tatuaur) village of Darbhanga district, the Baba Siddheshwar Nath Temple is not merely a place of worship, but a living symbol of the region’s cultural consciousness, spiritual heritage, and deep-rooted public faith. This revered Siddha Peeth is renowned for its divine influence, where devotees, with utmost श्रद्धा (faith) and devotion, experience the fulfillment of their heartfelt wishes.
-    </p>
-    <p>
-      This holy temple was established by the great scholar, an eminent authority in Dharmashastra, and a devoted worshipper of Lord Shiva, Shri Siddheshwar Nath Mishra. According to traditional and epigraphic evidence, the consecration (Pran-Pratishtha) of the deities was performed in Shaka 1763, on an auspicious day of the bright fortnight of Chaitra, following proper scriptural विधि (ritual procedures). The temple enshrines the divine and rare idols of Lord Shiva and Goddess Parvati (in the form of the divine couple), along with Lord Ganesha. These sacred idols are believed to have been brought from Narmada Kund, the origin point of the Narmada River, thus elevating the spiritual significance of this site.
-    </p>
-    <p>A deeply compelling account of the temple’s origin is found in the work of Pandit Shri Savanand Jha. According to him, Siddheshwar Mishra was born in the illustrious Raghuvanshi Mishra lineage of Mithila’s scholarly tradition. He was an unparalleled scholar of Nyaya (logic), Dharmashastra, and the Vedas and Vedangas. Comparable to Brihaspati in wisdom, he was a devoted worshipper of Goddess Janaki and Lord Shiva. Inspired by his deep devotion and spiritual discipline, he constructed this temple in his native village with the noble intent of public welfare, and ceremonially installed three sacred idols. The purpose behind this स्थापना (installation) was not only worship, but also to create a spiritual center for the fulfillment of the aspirations of the wider community.</p>
-  <p>With the passage of time, however, this divine temple fell into a severely dilapidated condition. The premises turned into ruins, overgrown with trees and vegetation, and an atmosphere of भय (fear) discouraged people from even entering the site. Despite such adverse circumstances, the flame of devotion continued to burn through the unwavering faith of Shrimati Siddheshwari Devi, her sister Kameshwari Devi, and their father Bhairav Mishra, who continued daily worship of Lord Mahadev with steadfast dedication.</p>
-  <p>The revival of this sacred tradition was undertaken by Shri Vidyanand Jha, who also served as the President of the Mahashivratri festival. In his memoirs, he उल्लेख (mentions) that around 1990–91, his attention was drawn to the neglected state of the temple, and he resolved to restore it. For this noble mission, he sought guidance from his गुरु, Pandit Tilaknath Mishra, and began the restoration work under his direction.</p>
-  <p>The reconstruction of the temple was formally initiated by Dr. Shaliknath Mishra, the brother of Pandit Tilaknath Mishra. His deep spiritual conviction and inspiring assurance—that Lord Mahadev would surely bring this कठिन संकल्प (difficult resolution) to success—became a source of strength for all involved. He also contributed financially to the cause.</p>
-  <p>Despite limited initial resources, Shri Vidyanand Jha personally invested funds to begin the work, which was later sustained and expanded through community contributions. The people of Bishaul Tatuaur village and nearby areas extended their full support—तन, मन, धन (body, mind, and wealth). Even villagers residing in distant cities such as Delhi, Kolkata, and other places contributed generously to this sacred effort.</p>
-  <p>In this monumental reconstruction, the contributions of Shri Mohan Kumar, Late Shri Bhagirath Jha, and Shri Narayan Rai were especially noteworthy. While Shri Vidyanand Jha focused on collecting donations from outside regions, these dedicated individuals managed and supervised the construction work at the site. Despite financial challenges, and at times even taking loans, the work continued uninterrupted—demonstrating a powerful example of collective resolve and devotion.</p>
-  <p>The fruits of these tireless efforts were realized in 1992, when the Mahashivratri festival was celebrated for the first time with grand splendor. On this historic occasion, 108 young unmarried girls performed ritual worship, and 151 devotees brought holy Ganga water from Simaria to offer Jalabhishek to Lord Mahadev. Since then, this tradition has continued uninterrupted, and today, the festival has become a major religious attraction in the Mithila region.</p>
-
-<p>For over four decades, the temple has remained a vibrant center of Mahashivratri celebrations, featuring grand festivities, traditional Shiv Baraat, devotional singing (bhajan-kirtan), and various religious rituals. Over time, public representatives such as MLAs and MPs have contributed to the construction of additional buildings within the temple premises. Furthermore, the village head (Mukhiya) Shri Jivakant Mishra facilitated the installation of solar lighting and extended financial assistance from time to time, thereby contributing to the temple’s continuous development.</p>
- <p>It has been widely observed that with the restoration and growth of the temple, the village and its people have also experienced positive transformation and development. Thus, Baba Siddheshwar Nath Temple stands not only as a center of spiritual upliftment but also as a remarkable example of social unity, collective effort, and cultural renaissance.</p>
- <p>In conclusion, it would not be an exaggeration to say that this sacred shrine is a living embodiment of Mithila’s faith, scholarship, and cultural dignity—where devotion, tradition, and human endeavor come together in a truly extraordinary harmony.</p> 
-  
-  
+      </div>
+    </div>
   </div>
+</section>
 
-  <!-- HINDI -->
-  <div id="hindi" class="lang-content">
-    <p>
-      मिथिला की पुण्यभूमि, दरभंगा जनपद के विशौल (बिशौल टटुआर) ग्राम में अवस्थित बाबा सिद्धेश्वर नाथ मंदिर केवल एक धार्मिक स्थल नहीं, बल्कि यह क्षेत्र की सांस्कृतिक चेतना, आध्यात्मिक परंपरा और लोकआस्था का जीवंत प्रतीक है। यह सिद्धपीठ अपने अलौकिक प्रभाव के लिए प्रसिद्ध है, जहाँ श्रद्धालु पूर्ण श्रद्धा एवं समर्पण के साथ उपस्थित होकर अपनी मनोकामनाओं की सिद्धि का अनुभव करते हैं।
-    </p>
-    <p>
-      इस पावन मंदिर की स्थापना महान विद्वान, धर्मशास्त्र के प्रकाण्ड पंडित एवं परम शिवभक्त श्री सिद्धेश्वर नाथ मिश्र द्वारा की गई थी। पौराणिक एवं शिलालेखीय प्रमाणों के अनुसार, शाके 1763, चैत्र शुक्ल पक्ष की पावन तिथि को धर्मशास्त्रीय विधि से यहाँ मूर्तियों की प्राण-प्रतिष्ठा सम्पन्न हुई। मंदिर में स्थापित भगवान शिव एवं माता पार्वती (शिव-दंपति) तथा भगवान गणेश की दिव्य एवं दुर्लभ मूर्तियाँ नर्मदा कुंड से लाई गई मानी जाती हैं, जो इस स्थल को विशेष आध्यात्मिक ऊँचाई प्रदान करती हैं।
-    </p>
-    <p>पंडित श्री सदानंद झा द्वारा कृत ग्रंथ में इस मंदिर की स्थापना का अत्यंत प्रभावशाली वर्णन प्राप्त होता है। उनके अनुसार, मिथिला की विद्वत् परंपरा में उत्पन्न रघुवंशी मिश्र कुल में जन्मे सिद्धेश्वर मिश्र न्याय, धर्मशास्त्र एवं वेद-वेदांगों के अद्वितीय ज्ञाता थे। वे बृहस्पति के समान विद्वान तथा भगवती जानकी और भगवान शिव के अनन्य उपासक थे। उनकी भक्ति और साधना से प्रेरित होकर उन्होंने लोककल्याण की भावना से अपने गृह ग्राम में मंदिर निर्माण कर, विधिवत् तीन दिव्य मूर्तियों की स्थापना की—जिनका उद्देश्य केवल आराधना ही नहीं, बल्कि समस्त जनसमुदाय की अभिलाषाओं की पूर्ति का मार्ग प्रशस्त करना था।
-    </p>
-    <p>कालचक्र के प्रभाव से यह दिव्य मंदिर एक समय अत्यंत जर्जर अवस्था को प्राप्त हो गया। मंदिर परिसर खंडहर में परिवर्तित हो चुका था, वृक्ष-लताओं ने उसे आच्छादित कर लिया था, और भयवश सामान्य जन वहाँ जाने से भी कतराते थे। किंतु ऐसी विकट परिस्थिति में भी अटूट श्रद्धा की ज्योति जलाए रखने वालों में श्रीमती सिद्धेश्वरी देवी, उनकी बहन कामेश्वरी देवी तथा उनके पिता भैरव मिश्र का नाम अत्यंत श्रद्धा के साथ लिया जाता है, जो निरंतर भगवान महादेव की पूजा-अर्चना करते रहे।</p>
-    <p>इसी पावन परंपरा को पुनर्जीवित करने का संकल्प लिया श्री विद्यानंद झा ने, जो महाशिवरात्रि महोत्सव के अध्यक्ष भी रह चुके हैं। अपने संस्मरणों में वे उल्लेख करते हैं कि 1990-91 के आसपास उनकी दृष्टि इस जर्जर मंदिर पर पड़ी और उन्होंने इसके जीर्णोद्धार का दृढ़ निश्चय किया। इस महान कार्य के लिए उन्होंने अपने गुरु पंडित तिलकनाथ मिश्र से परामर्श प्राप्त किया और उनके मार्गदर्शन में कार्यारंभ किया।</p>
-  <p>मंदिर पुनर्निर्माण का शुभारंभ डॉ. शालिकनाथ मिश्र (पंडित तिलकनाथ मिश्र के भ्राता) के करकमलों द्वारा हुआ। उनका आध्यात्मिक विश्वास और प्रेरणादायी वचन—कि भगवान महादेव इस कठिन संकल्प को अवश्य पूर्ण करेंगे—सभी के लिए संबल बना। उन्होंने स्वयं भी इस कार्य में आर्थिक योगदान दिया।</p>
-  <p>प्रारंभ में सीमित संसाधनों के बावजूद, श्री विद्यानंद झा ने व्यक्तिगत रूप से धन लगाकर कार्य प्रारंभ किया, जिसे बाद में जनसहयोग द्वारा आगे बढ़ाया गया। बिशौल टटुआर ग्राम तथा आसपास के क्षेत्रों के लोगों ने तन-मन-धन से सहयोग किया। यहाँ तक कि दिल्ली, कोलकाता एवं अन्य नगरों में निवास कर रहे ग्रामवासियों ने भी इस पुण्य कार्य में अपना योगदान दिया।</p>
-  <p>इस महान पुनर्निर्माण कार्य में श्री मोहन कुमार,स्वर्गीय श्री भगिरथ झा तथा श्री नारायण राय का विशेष योगदान उल्लेखनीय रहा। जहाँ एक ओर श्री विद्यानंद झा बाह्य क्षेत्रों से चंदा एकत्र करते थे, वहीं ये सभी समर्पित व्यक्ति स्थल पर निर्माण कार्य को सुचारु रूप से संचालित करते थे। अनेक बार आर्थिक कठिनाइयों के बावजूद, यहाँ तक कि ऋण लेकर भी कार्य को निरंतर जारी रखा गया—जो इस सामूहिक संकल्प और श्रद्धा का प्रमाण है।</p>
-  <p>अंततः इस अथक प्रयास का फल 1992 में प्राप्त हुआ, जब पहली बार महाशिवरात्रि महोत्सव अत्यंत भव्यता के साथ आयोजित किया गया। इस ऐतिहासिक अवसर पर 108 कुमारी कन्याओं द्वारा पूजन एवं 151 श्रद्धालुओं द्वारा सिमरिया से गंगाजल लाकर भगवान महादेव का अभिषेक किया गया। तभी से यह परंपरा निरंतर जारी है और आज यह महोत्सव मिथिला क्षेत्र का एक प्रमुख धार्मिक आकर्षण बन चुका है।</p>
- <p>विगत चार दशकों से अधिक समय से यह मंदिर महाशिवरात्रि के भव्य आयोजन, पारंपरिक शिव बारात, भजन-कीर्तन तथा विविध धार्मिक अनुष्ठानों का केंद्र बना हुआ है। समय-समय पर जनप्रतिनिधियों—विधायक एवं सांसद—द्वारा मंदिर परिसर में भवन निर्माण कराया गया, तथा ग्राम के मुखिया श्री जीवकांत मिश्र द्वारा सोलर लाइट की व्यवस्था एवं आर्थिक सहयोग प्रदान किया गया, जिससे मंदिर के विकास को निरंतर गति मिली।</p>
-<p>यह अनुभव किया गया है कि मंदिर के पुनरुद्धार के साथ-साथ ग्राम एवं ग्रामवासियों के जीवन में भी सकारात्मक परिवर्तन आया है। इस प्रकार, बाबा सिद्धेश्वर नाथ मंदिर न केवल आध्यात्मिक उन्नति का केंद्र है, बल्कि यह सामाजिक एकता, सामूहिक प्रयास और सांस्कृतिक पुनर्जागरण का भी अनुपम उदाहरण प्रस्तुत करता है।</p>
-<p>अंत में, यह कहना अत्युक्ति नहीं होगी कि यह पावन धाम मिथिला की आस्था, विद्वत्ता और सांस्कृतिक गरिमा का जीवंत प्रतीक है—जहाँ भक्ति, परंपरा और मानव प्रयास का अद्भुत समन्वय दृष्टिगोचर होता है।</p>
-</div>
+<!-- ===== TIMELINE ===== -->
+<section class="timeline-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Journey Through Time</div>
+      <h2 class="section-heading">मंदिर की <span>Timeline</span></h2>
+      <div class="orange-rule"></div>
+    </div>
 
-  <!-- MAITHILI -->
-  <div id="maithili" class="lang-content">
-    <p>
-      मिथिलाक पुण्यभूमि, दरभंगा जिलाक बिशौल (बिशौल टटुआर) गाममे अवस्थित बाबा सिद्धेश्वर नाथ मंदिर केवल एकटा पूजास्थल नहि, बल्कि ई क्षेत्रक सांस्कृतिक चेतना, आध्यात्मिक परंपरा आ लोक-आस्थाक जीवंत प्रतीक अछि। ई सिद्धपीठ अपन दिव्य प्रभाव लेल विख्यात अछि, जतऽ श्रद्धालु पूर्ण श्रद्धा आ समर्पणक संग उपस्थित भ’ क’ अपन मनोकामनाक सिद्धि अनुभव करैत छथि।
-    </p>
-    <p>
-    ई पावन मंदिरक स्थापना महान विद्वान, धर्मशास्त्रक प्रकाण्ड पंडित आ परम शिवभक्त श्री सिद्धेश्वर नाथ मिश्र द्वारा कएल गेल छल। पौराणिक आ शिलालेखीय प्रमाण अनुसार, शाके 1763, चैत्र शुक्ल पक्षक पावन तिथिमे धर्मशास्त्रीय विधि अनुसार एतऽ मूर्तिसभक प्राण-प्रतिष्ठा सम्पन्न भेल। मंदिरमे स्थापित भगवान शिव आ माता पार्वती (शिव-दंपति रूपमे) तथा भगवान गणेशक दिव्य आ दुर्लभ मूर्तिसभ नर्मदा कुंड सँ आनल गेल मानल जाइत अछि, जाहिसँ एहि स्थानक आध्यात्मिक महत्ता आरो बढ़ि जाइत अछि।
-    </p>
-    <p>पंडित श्री सदानंद झा द्वारा कृत ग्रन्थमे एहि मंदिरक स्थापना संबंधी अत्यन्त प्रभावशाली वर्णन भेटैत अछि। हुनकर अनुसार, मिथिलाक विद्वत् परंपरामे उत्पन्न रघुवंशी मिश्र कुलमे जन्मल सिद्धेश्वर मिश्र न्याय, धर्मशास्त्र आ वेद-वेदांगक अद्वितीय ज्ञाता छलाह। ओ बृहस्पति समान विद्वान तथा भगवती जानकी आ भगवान शिवक अनन्य उपासक छलाह। अपन गहन भक्ति आ साधनाक प्रेरणासँ ओ लोककल्याणक भावनासँ अपन गाममे मंदिर निर्माण क’ विधिपूर्वक तीन दिव्य मूर्तिक स्थापना कएलाह। एहि स्थापना केर उद्देश्य केवल आराधना नहि, बल्कि समस्त जनसमुदायक अभिलाषाक पूर्तिक मार्ग प्रशस्त करब छल।</p>
-    <p>कालक्रमक प्रभावसँ ई दिव्य मंदिर एक समय अत्यन्त जर्जर अवस्थामे पहुँचि गेल। मंदिर परिसर खंडहरमे परिवर्तित भ’ गेल, वृक्ष-लतासभ सँ आच्छादित भ’ गेल, आ भयक कारण सामान्य लोकनि ओतऽ जाए सँ कतराइत छलाह। मुदा एहन विकट परिस्थितिमे सेहो अटूट श्रद्धाक दीप जगा क’ राखनिहार व्यक्तिसभमे श्रीमती सिद्धेश्वरी देवी, हुनकर बहिन कामेश्वरी देवी तथा हुनकर पिता भैरव मिश्र केर नाम अत्यन्त श्रद्धा सँ लेल जाइत अछि। ओ सभ निरंतर भगवान महादेवक पूजा-अर्चना करैत रहलाह।</p>
-    <p>एहि पावन परंपराक पुनर्जीवनक संकल्प लेल श्री विद्यानंद झा द्वारा कएल गेल, जे महाशिवरात्रि महोत्सवक अध्यक्ष सेहो रहल छथि। अपन संस्मरणमे ओ उल्लेख करैत छथि जे 1990–91 क आसपास हुनकर दृष्टि एहि जर्जर मंदिर दिस गेल आ ओ एकर जीर्णोद्धारक दृढ़ निश्चय कएलाह। एहि महान कार्य लेल ओ अपन गुरु पंडित तिलकनाथ मिश्र सँ परामर्श लेलाह आ हुनकर मार्गदर्शनमे कार्य प्रारंभ कएल गेल।</p>
-    <p>मंदिरक पुनर्निर्माणक शुभारंभ डॉ. शालिकनाथ मिश्र (पंडित तिलकनाथ मिश्रक भ्राता) केर करकमल सँ भेल। हुनकर आध्यात्मिक विश्वास आ प्रेरणादायक वचन—जे भगवान महादेव एहि कठिन संकल्पकेँ अवश्य सफल करथिन—सभक लेल संबल बनल। ओ स्वयं सेहो एहि कार्यमे आर्थिक सहयोग कएलाह।</p>
-    <p>प्रारंभिक अवस्थामे सीमित संसाधनक बावजूद, श्री विद्यानंद झा स्वयं अपन धन लगाक’ कार्य प्रारंभ कएलाह, जकरा बादमे जनसहयोग सँ आगाँ बढ़ाओल गेल। बिशौल टटुआर गाम आ आसपासक क्षेत्रक लोकनि तन-मन-धन सँ सहयोग कएलाह। एतबे नहि, दिल्ली, कोलकाता आ अन्य स्थानमे बसैत गामक लोकनि सेहो एहि पुण्य कार्यमे अपन योगदान देलाह।</p>
-    <p>एहि महान पुनर्निर्माण कार्यमे श्री मोहन कुमार, स्वर्गीय श्री भगिरथ झा तथा श्री नारायण राय केर विशेष योगदान अत्यन्त उल्लेखनीय रहल। जहिया एक दिस श्री विद्यानंद झा बाहरी क्षेत्र सँ चंदा संग्रह करैत छलाह, तहिया ई समर्पित व्यक्तिसभ स्थल पर निर्माण कार्यकेँ सुचारु रूपेँ संचालित करैत छलाह। अनेक बेर आर्थिक कठिनाइयोँक बावजूद, यहाँ तक कि ऋण ल’ क’ सेहो कार्य निरंतर जारी राखल गेल—जे सामूहिक संकल्प आ श्रद्धाक अद्भुत उदाहरण अछि।</p>
-    <p>अंततः एहि अथक प्रयासक फल 1992 मे प्राप्त भेल, जखन पहिल बेर महाशिवरात्रि महोत्सव अत्यन्त धूमधाम सँ आयोजित कएल गेल। एहि ऐतिहासिक अवसर पर 108 कुमारी कन्यासभ द्वारा पूजा-अर्चना कएल गेल आ 151 श्रद्धालुसभ द्वारा सिमरिया सँ गंगाजल आनिक भगवान महादेवक जलाभिषेक कएल गेल। तखन सँ ई परंपरा निरंतर जारी अछि आ आइ ई महोत्सव मिथिला क्षेत्रक प्रमुख धार्मिक आकर्षण बनि चुकल अछि।</p>
-    <p>विगत चार दशक सँ अधिक समय सँ ई मंदिर महाशिवरात्रिक भव्य आयोजन, पारंपरिक शिव बारात, भजन-कीर्तन आ विभिन्न धार्मिक अनुष्ठानक केंद्र बनल अछि। समय-समय पर जनप्रतिनिधि—विधायक आ सांसद—द्वारा मंदिर परिसरमे भवन निर्माण कराओल गेल, तथा गामक मुखिया श्री जीवकांत मिश्र द्वारा सोलर लाइटक व्यवस्था आ समय-समय पर आर्थिक सहयोग सेहो प्रदान कएल गेल, जाहिसँ मंदिरक विकास निरंतर होइत रहल।</p>
-    <p>ई अनुभव कएल गेल अछि जे मंदिरक पुनरुद्धार संगहि गाम आ गामक लोकनिक जीवनमे सेहो सकारात्मक परिवर्तन आयल अछि। एहि प्रकारेँ, बाबा सिद्धेश्वर नाथ मंदिर केवल आध्यात्मिक उन्नतिक केंद्र नहि, बल्कि सामाजिक एकता, सामूहिक प्रयास आ सांस्कृतिक पुनर्जागरणक अनुपम उदाहरण प्रस्तुत करैत अछि।</p>
-    <p>अंतमे, ई कहब कतहु सँ अतिशयोक्ति नहि होयत जे ई पावन धाम मिथिलाक आस्था, विद्वत्ता आ सांस्कृतिक गरिमाक जीवंत प्रतीक अछि—जतऽ भक्ति, परंपरा आ मानवीय प्रयासक अद्भुत समन्वय दृष्टिगोचर होइत अछि।</p>
+    <ul class="timeline reveal">
+      <li class="timeline-item left">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">शाके १७६३</div>
+        <div class="timeline-card">
+          <strong>Temple Founded</strong>
+          Pt. Sidheshwar Nath Mishra established the temple on Chaitra Shukla Paksha with sacred idols from Narmada Kund.
+        </div>
+      </li>
+      <li class="timeline-item right">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">Centuries Later</div>
+        <div class="timeline-card">
+          <strong>Decline & Devotion</strong>
+          Temple fell into ruins. Siddheshwari Devi & family kept the flame of daily worship alive despite hardship.
+        </div>
+      </li>
+      <li class="timeline-item left">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">1990–91</div>
+        <div class="timeline-card">
+          <strong>Revival Begins</strong>
+          Shri Vidyanand Jha, guided by Pt. Tilaknath Mishra, resolved to restore the temple with community support.
+        </div>
+      </li>
+      <li class="timeline-item right">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">1992</div>
+        <div class="timeline-card">
+          <strong>First Mahashivratri</strong>
+          Grand celebration with 108 Kumari Kanya puja and 151 devotees carrying Ganga water from Simaria.
+        </div>
+      </li>
+      <li class="timeline-item left">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">1992–Present</div>
+        <div class="timeline-card">
+          <strong>40+ Years of Celebration</strong>
+          Shiv Baraat, bhajan-kirtan, solar lighting added. MLAs, MPs and Mukhiya Jivakant Mishra contributed to growth.
+        </div>
+      </li>
+      <li class="timeline-item right">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">Today</div>
+        <div class="timeline-card">
+          <strong>Living Heritage</strong>
+          A thriving Siddha Peeth — spiritual center, community gathering, and cultural pride of Mithila.
+        </div>
+      </li>
+    </ul>
   </div>
+</section>
 
-</div>
-```
+<!-- ===== KEY CONTRIBUTORS ===== -->
+<section class="founders-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">The People Behind It</div>
+      <h2 class="section-heading">मंदिर के <span>प्रमुख योगदानकर्ता</span></h2>
+      <div class="orange-rule"></div>
+    </div>
 
+    <div class="row g-4 justify-content-center reveal">
+      <div class="col-md-4 col-sm-6">
+        <div class="founder-card">
+          <div class="founder-avatar">🕉️</div>
+          <h5>Pt. Sidheshwar Nath Mishra</h5>
+          <div class="role">Founder</div>
+          <p>Great Shiva devotee & Dharmashastra scholar who established the temple in Shaka 1763 for the welfare of all.</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="founder-card">
+          <div class="founder-avatar">🙏</div>
+          <h5>Smt. Siddheshwari Devi</h5>
+          <div class="role">Devotee — Keeper of Faith</div>
+          <p>Kept daily worship alive through the temple's darkest years of ruin, along with sister Kameshwari Devi.</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="founder-card">
+          <div class="founder-avatar">🔔</div>
+          <h5>Shri Vidyanand Jha</h5>
+          <div class="role">Revival Leader & President</div>
+          <p>Led the restoration in 1990–92, collected donations, and organized the first grand Mahashivratri celebration.</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="founder-card">
+          <div class="founder-avatar">📿</div>
+          <h5>Pt. Tilaknath Mishra</h5>
+          <div class="role">Spiritual Guru & Guide</div>
+          <p>Provided spiritual guidance and direction for the revival of the temple and its sacred traditions.</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="founder-card">
+          <div class="founder-avatar">🏗️</div>
+          <h5>Shri Mohan Kumar & Team</h5>
+          <div class="role">Construction Supervisors</div>
+          <p>Shri Mohan Kumar, Late Shri Bhagirath Jha & Shri Narayan Rai supervised construction work on the ground.</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="founder-card">
+          <div class="founder-avatar">💡</div>
+          <h5>Mukhiya Jivakant Mishra</h5>
+          <div class="role">Village Head — Development</div>
+          <p>Facilitated solar lighting installation and continued financial assistance for temple development.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ===== FOOTER ===== -->
-<footer class="bg-dark text-white text-center p-4 mt-5">
-  <h5>Sidheswar Nath Mandir</h5>
-  <p>📍 Bishoul Tatuar, Darbhanga, Bihar</p>
-  <p>📞 +91 9876543210</p>
-  <a href="https://wa.me/919876543210" class="btn btn-success">WhatsApp</a>
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="footer-brand">श्री सिद्धेश्वर नाथ मंदिर</div>
+        <p class="footer-tagline">Ancient Siddha Peeth of Mithila, Darbhanga, Bihar.<br>Est. Shaka 1763 by Pt. Sidheshwar Nath Mishra.</p>
+      </div>
+      <div class="col-md-2">
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="donation.html">Donation</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <div class="footer-heading">Contact</div>
+        <div class="footer-info">
+          <p>📍 Bishoul Tatuar, Darbhanga, Bihar</p>
+          <p>📞 +91 9296860221</p>
+          <p>📧 shivratricomitteebishoultatuar@gmail.com</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="footer-heading">Puja Timings</div>
+        <div class="footer-info">
+          <p>🌅 Morning Puja — 6:00 AM</p>
+          <p>🌇 Evening Aarti — 7:00 PM</p>
+          <p>🌙 Shayan Aarti — 9:00 PM</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 श्री सिद्धेश्वर नाथ मंदिर, Bishoul Tatuar, Darbhanga, Bihar. All rights reserved.
+    </div>
+  </div>
 </footer>
 
+<!-- ===== WHATSAPP FLOATING BUTTON ===== -->
+<a href="https://wa.me/919296860221" class="whatsapp-float" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="35">
+</a>
+<!-- ===== SCROLL TOP ===== -->
+<button onclick="scrollToTop()" id="topBtn" title="Back to top">↑</button>
+
+<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- ===== ANIMATION FIX SCRIPT ===== -->
 <script>
+// ===== LANGUAGE SWITCH =====
+function showLang(lang, el) {
+  document.querySelectorAll('.lang-content').forEach(d => d.classList.remove('active'));
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.lang-title').forEach(t => t.classList.remove('active'));
+  document.getElementById(lang).classList.add('active');
+  if (el) el.classList.add('active');
+  const title = document.getElementById("title-" + lang);
+  if (title) title.classList.add('active');
+}
+
+// ===== AUTO LANGUAGE FROM URL =====
 window.addEventListener("load", () => {
-  const elements = document.querySelectorAll(".fade-in");
-
-  elements.forEach(el => {
-    el.classList.add("show");
-  });
+  const params = new URLSearchParams(window.location.search);
+  const lang = params.get("lang") || "english";
+  const btn = document.querySelector(`.lang-btn[onclick*="${lang}"]`);
+  showLang(lang, btn);
 });
-</script>
 
-<!-- ===== SCROLL TO TOP BUTTON ===== -->
-<button onclick="scrollToTop()" id="topBtn">⬆️</button>
+// ===== SCROLL REVEAL =====
+const revealEls = document.querySelectorAll(".reveal");
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+revealEls.forEach(el => observer.observe(el));
 
-<script>
-let btn = document.getElementById("topBtn");
-
-window.onscroll = function() {
-  btn.style.display = window.scrollY > 200 ? "block" : "none";
-};
-
+// ===== SCROLL TOP =====
+const topBtn = document.getElementById("topBtn");
+window.addEventListener("scroll", () => {
+  topBtn.style.display = window.scrollY > 250 ? "block" : "none";
+});
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-</script>
-
-
-
-<script>
-function showLang(lang, el) {
-
-  // ===== CONTENT SWITCH =====
-  document.querySelectorAll('.lang-content').forEach(div => {
-    div.classList.remove('active');
-  });
-
-  document.getElementById(lang).classList.add('active');
-
-  // ===== BUTTON ACTIVE =====
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.remove('active');
-  });
-
-  el.classList.add('active');
-
-  // ===== TITLE SWITCH =====
-  document.querySelectorAll('.lang-title').forEach(title => {
-    title.classList.remove('active');
-  });
-
-  document.getElementById("title-" + lang).classList.add('active');
-}
-</script>
-<script>
-// ===== AUTO LANGUAGE FROM URL (UPDATED) =====
-window.onload = function() {
-
-  const params = new URLSearchParams(window.location.search);
-  const lang = params.get("lang");
-
- if (lang) {
-  showLang(lang); // URL se language aayega
-} else {
-  showLang("english"); // default
-}
-
-};
 </script>
 
 </body>

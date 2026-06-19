@@ -1,191 +1,693 @@
-/* ============================= */
-/* ===== GLOBAL SETTINGS ===== */
-/* ============================= */
+/* =====================================================
+   STYLE.CSS — श्री सिद्धेश्वर नाथ मंदिर
+   Global stylesheet for all pages
+   ===================================================== */
+
+/* =====================================================
+   1. GLOBAL RESET & BASE
+   ===================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-    font-family: Arial, sans-serif;
-    scroll-behavior: smooth; /* smooth scroll */
+  font-family: 'Poppins', Arial, sans-serif;
+  background: #fffaf4;
+  color: #222;
+  line-height: 1.6;
 }
 
-/* ============================= */
-/* ===== NAVBAR ===== */
-/* ============================= */
-
-.navbar {
-    position: sticky; /* navbar upar fix rahega */
-    top: 0;
-    z-index: 1000;
-    backdrop-filter: blur(10px); /* glass effect */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Tiro Devanagari Sanskrit', 'Poppins', serif;
+  line-height: 1.3;
 }
 
-/* ===== NAVBAR HOVER ANIMATION ===== */
-.nav-link {
-    position: relative;
-    transition: 0.1s;
+p {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.75;
 }
 
-/* underline animation */
-.nav-link::after {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    left: 0;
-    bottom: -5px;
-    background: yellow;
-    transition: 0.3s;
+a {
+  transition: color 0.25s;
 }
+
+img {
+  max-width: 100%;
+  transition: transform 0.4s ease;
+}
+
+section {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* =====================================================
+   2. NAVBAR
+   ===================================================== */
 
 .premium-navbar {
   background: linear-gradient(90deg, #ff9933, #ff6600);
+  position: sticky;
+  top: 0;
+  z-index: 1050;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 16px rgba(255, 102, 0, 0.25);
+  padding: 8px 0;
 }
 
-.premium-navbar .nav-link {
-  color: white !important;
-  font-weight: 500;
-}
-
-.premium-navbar .nav-link:hover {
-  color: yellow !important;
-}
-
-
-/* active link glow */
-.nav-link.active {
-    color: yellow !important;
-   
-}
-
-/* ============================= */
-/* ===== LOGO STYLE ===== */
-/* ============================= */
-
+/* Logo Image */
 .logo-img {
-    width: 40px;         /* size chhota rakha */
-    height: 40px;
-    border-radius: 50%;  /* circle bana dega */
-    object-fit: cover;   /* image stretch nahi hogi */
-    border: 2px solid white; /* border for premium look */
-}
-/* LOGO HOVER EFFECT */
-.logo-img:hover {
-    transform: scale(1.1);
-    transition: 0.3s;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  transition: transform 0.3s;
 }
 
-/* logo text */
-.navbar-brand span {
-    font-size: 16px;
-    color: white;
-    font-weight: bold;
+.logo-img:hover {
+  transform: scale(1.1) rotate(5deg);
 }
+
+/* Brand Text */
+.navbar-brand span {
+  font-size: 18px;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
 @media (max-width: 768px) {
   .navbar-brand span {
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 13px;
   }
 }
 
-
-.nav-link.active {
-    color: yellow !important;
-    border-bottom: 2px solid yellow;
+/* Nav Links */
+.premium-navbar .nav-link {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 6px 14px !important;
+  border-radius: 20px;
+  transition: background 0.25s, color 0.25s;
+  position: relative;
 }
 
-.nav-link:hover {
-    color: orange !important;
+.premium-navbar .nav-link:hover {
+  color: white !important;
+  background: rgba(255, 255, 255, 0.15);
 }
 
-/* ============================= */
-/* ===== HERO SECTION ===== */
-/* ============================= */
+.premium-navbar .nav-link.active {
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.22);
+  font-weight: 700;
+}
 
-.hero {
-    height: 90vh;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-                url("images/maha.jpg");
-    background-size: cover;
-    background-position: center;
+/* Underline effect */
+.premium-navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  background: white;
+  transition: width 0.3s;
+  border-radius: 2px;
 }
-/* HERO TEXT CENTER FIX */
-.hero .container {
-    position: relative;
-    z-index: 2;
+
+.premium-navbar .nav-link:hover::after,
+.premium-navbar .nav-link.active::after {
+  width: 60%;
 }
+
+/* Hamburger icon */
+.navbar-toggler {
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+
+.navbar-toggler-icon {
+  filter: brightness(0) invert(1);
+}
+
+/* Mobile menu */
+@media (max-width: 991px) {
+  .navbar-collapse {
+    background: rgba(255, 102, 0, 0.97);
+    border-radius: 12px;
+    padding: 14px 10px;
+    margin-top: 8px;
+  }
+
+  .premium-navbar .nav-link {
+    padding: 10px 16px !important;
+    border-radius: 10px;
+    margin-bottom: 4px;
+  }
+}
+
+/* =====================================================
+   3. EVENTS TICKER (Home page top bar)
+   ===================================================== */
+
+.events-ticker {
+  background: #1a1a1a;
+  color: white;
+  padding: 9px 0;
+  overflow: hidden;
+}
+
+.ticker-inner {
+  display: flex;
+  gap: 70px;
+  animation: ticker 24s linear infinite;
+  white-space: nowrap;
+}
+
+.ticker-inner span {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+.ticker-inner span::before {
+  content: "🔔 ";
+}
+
+@keyframes ticker {
+  from { transform: translateX(100vw); }
+  to   { transform: translateX(-100%); }
+}
+
+/* =====================================================
+   4. HERO SECTION (Home)
+   ===================================================== */
 
 .hero-section {
-  height: 90vh;
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+  min-height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
               url("images/maha.jpg");
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   display: flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
 }
 
 @media (max-width: 768px) {
   .hero-section {
-    height: auto;
+    background-attachment: scroll;
+    min-height: 100svh;
     padding: 60px 20px;
   }
 }
 
-/* ============================= */
-/* ===== TEXT ===== */
-/* ============================= */
+/* =====================================================
+   5. STATS STRIP
+   ===================================================== */
 
-h2 {
-    font-weight: bold;
-    text-align: center;
+.stats-strip {
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  padding: 18px 0;
+  color: white;
 }
 
-p {
-    font-size: 18px;
+.stat-item { text-align: center; padding: 6px 0; }
+.stat-number { font-size: 28px; font-weight: 700; line-height: 1; }
+.stat-label { font-size: 12px; opacity: 0.88; letter-spacing: 0.5px; margin-top: 3px; }
+
+/* =====================================================
+   6. SECTION HELPERS
+   ===================================================== */
+
+.section-eyebrow {
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #ff6600;
+  font-weight: 600;
+  margin-bottom: 6px;
 }
 
-/* ============================= */
-/* ===== CARD DESIGN ===== */
-/* ============================= */
-
-.card {
-    border-radius: 12px;
-    transition: 0.3s;
-    overflow: hidden;
+.section-heading {
+  font-size: clamp(22px, 3.5vw, 34px);
+  font-weight: bold;
+  color: #1a1a1a;
+  margin-bottom: 10px;
 }
 
-.card:hover {
-    transform: translateY(-8px); /* hover lift effect */
+.section-heading span { color: #ff6600; }
+
+.orange-rule {
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  border-radius: 10px;
+  margin: 0 auto 36px;
 }
 
-/* ============================= */
-/* ===== IMAGE EFFECT ===== */
-/* ============================= */
-
-img {
-    transition: 0.4s;
-}
-
-img:hover {
-    transform: scale(1.08);
-}
-
-/* ============================= */
-/* ===== BUTTON EFFECT ===== */
-/* ============================= */
-
-.btn {
-    background: linear-gradient(90deg, #ff9933, #ff6600);
+.orange-divider {
   border: none;
+  height: 3px;
+  background: linear-gradient(90deg, #ff9933, #ff6600, transparent);
+  border-radius: 10px;
+  margin: 50px 0 40px;
+}
+
+/* =====================================================
+   7. BUTTONS
+   ===================================================== */
+
+.btn-hero-primary {
+  display: inline-block;
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  color: white;
+  border: none;
+  padding: 13px 32px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: 0.3s;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+
+.btn-hero-primary:hover {
+  transform: scale(1.06);
+  color: white;
+  box-shadow: 0 6px 20px rgba(255, 102, 0, 0.5);
+}
+
+.btn-hero-outline {
+  display: inline-block;
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 11px 28px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.btn-hero-outline:hover {
+  background: white;
+  color: #ff6600;
+}
+
+/* Override Bootstrap .btn defaults */
+.btn {
+  border-radius: 25px;
+  font-weight: 600;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .btn:hover {
-    transform: scale(1.1);
+  transform: scale(1.05);
 }
 
-/* ============================= */
-/* ===== ANIMATION ===== */
-/* ============================= */
+.btn-warning {
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  border: none;
+  color: white;
+}
 
+.btn-warning:hover {
+  color: white;
+  box-shadow: 0 4px 16px rgba(255, 102, 0, 0.4);
+}
+
+/* =====================================================
+   8. CARDS — PREMIUM & HIGHLIGHT
+   ===================================================== */
+
+.card {
+  border-radius: 16px;
+  border: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.12);
+}
+
+.premium-card {
+  border-radius: 16px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  background: white;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.premium-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 16px 40px rgba(255, 102, 0, 0.15);
+}
+
+/* =====================================================
+   9. GALLERY IMAGES
+   ===================================================== */
+
+.gallery-img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  margin-bottom: 16px;
+}
+
+.gallery-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+}
+
+/* =====================================================
+   10. ABOUT SECTION (Home preview)
+   ===================================================== */
+
+.about-strip {
+  background: #fffaf4;
+  padding: 70px 0;
+}
+
+.about-img-wrap {
+  position: relative;
+}
+
+.about-img-wrap img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+
+.about-img-badge {
+  position: absolute;
+  bottom: -18px;
+  right: -12px;
+  background: linear-gradient(135deg, #ff9933, #ff6600);
+  color: white;
+  border-radius: 14px;
+  padding: 12px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 6px 20px rgba(255, 102, 0, 0.4);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.about-text p {
+  font-size: 16px;
+  line-height: 1.85;
+  color: #444;
+  margin-bottom: 16px;
+}
+
+/* Older home-page about styles kept for compatibility */
+.about-title {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  border-radius: 50px;
+}
+
+.about-short {
+  font-size: 16px;
+  line-height: 1.75;
+  color: #333;
+  font-weight: 500;
+}
+
+.about-img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 20px;
+  transition: 0.4s;
+}
+
+.about-img:hover { transform: scale(1.05); }
+
+/* =====================================================
+   11. LANGUAGE DROPDOWN (Home about section)
+   ===================================================== */
+
+.lang-dropdown { position: relative; display: inline-block; }
+
+.lang-toggle {
+  background: #fff;
+  border: 2px solid #ff9933;
+  padding: 7px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #ff6600;
+  transition: 0.2s;
+}
+
+.lang-toggle:hover { background: #ff9933; color: white; }
+
+.lang-menu {
+  position: absolute;
+  top: 42px;
+  left: 0;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  display: none;
+  min-width: 130px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+  z-index: 100;
+}
+
+.lang-menu div { padding: 10px 16px; cursor: pointer; font-size: 14px; transition: 0.2s; }
+.lang-menu div:hover { background: #ff9933; color: white; }
+.lang-dropdown.active .lang-menu { display: block; }
+
+/* =====================================================
+   12. HIGHLIGHT CARDS (Home features)
+   ===================================================== */
+
+.highlights-section {
+  padding: 70px 0;
+  background: white;
+}
+
+.highlight-card {
+  border: none;
+  border-radius: 18px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  transition: 0.35s;
+  height: 100%;
+  background: white;
+}
+
+.highlight-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 14px 40px rgba(255,102,0,0.15);
+}
+
+.highlight-icon { font-size: 44px; margin-bottom: 14px; display: block; }
+.highlight-card h5 { font-weight: 700; color: #1a1a1a; margin-bottom: 8px; font-size: 18px; }
+.highlight-card p  { font-size: 14px; color: #666; margin: 0; line-height: 1.6; }
+
+/* =====================================================
+   13. PUJA TIMINGS TABLE
+   ===================================================== */
+
+.timings-section {
+  padding: 70px 0;
+  background: linear-gradient(135deg, #fff5e6, #ffe8cc);
+}
+
+.timing-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+}
+
+.timing-table th {
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  color: white;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.timing-table th:first-child { border-radius: 10px 0 0 10px; }
+.timing-table th:last-child  { border-radius: 0 10px 10px 0; }
+.timing-table td { background: white; padding: 12px 18px; font-size: 14px; color: #333; }
+.timing-table tr td:first-child { border-radius: 10px 0 0 10px; font-weight: 600; }
+.timing-table tr td:last-child  { border-radius: 0 10px 10px 0; color: #ff6600; font-weight: 600; }
+
+/* =====================================================
+   14. DONATION CTA (Home)
+   ===================================================== */
+
+.donation-cta {
+  padding: 70px 0;
+  background: linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.72)),
+              url("images/m1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  text-align: center;
+  color: white;
+}
+
+.donation-cta h2 { font-size: clamp(24px,4vw,42px); font-weight: bold; margin-bottom: 14px; }
+.donation-cta p  { font-size: 17px; opacity: 0.85; margin-bottom: 28px; }
+
+@media (max-width: 768px) {
+  .donation-cta { background-attachment: scroll; }
+}
+
+/* =====================================================
+   15. FOOTER
+   ===================================================== */
+
+.site-footer {
+  background: #111;
+  color: #ccc;
+  padding: 50px 0 20px;
+}
+
+.footer-brand {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ff9933;
+  margin-bottom: 8px;
+}
+
+.footer-tagline { font-size: 13px; color: #888; line-height: 1.6; }
+
+.footer-heading {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ff9933;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.footer-links { list-style: none; padding: 0; margin: 0; }
+.footer-links li { margin-bottom: 7px; }
+.footer-links a  { color: #aaa; text-decoration: none; font-size: 13px; transition: 0.2s; }
+.footer-links a:hover { color: #ff9933; padding-left: 4px; }
+
+.footer-info p { font-size: 13px; color: #aaa; margin-bottom: 5px; }
+
+.footer-bottom {
+  border-top: 1px solid #2a2a2a;
+  margin-top: 36px;
+  padding-top: 16px;
+  text-align: center;
+  font-size: 12px;
+  color: #555;
+}
+
+/* Old premium-footer kept for compatibility */
+.premium-footer {
+  background: #111;
+  color: white;
+  padding: 28px 20px;
+  text-align: center;
+}
+
+.premium-footer h5 { color: #ff9933; margin-bottom: 6px; }
+
+/* =====================================================
+   16. SCROLL TOP BUTTON
+   ===================================================== */
+
+#topBtn {
+  position: fixed;
+  bottom: 84px;
+  right: 22px;
+  display: none;
+  background: linear-gradient(135deg, #ff9933, #ff6600);
+  color: white;
+  border: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(255,102,0,0.4);
+  z-index: 998;
+  transition: 0.3s;
+}
+
+#topBtn:hover { transform: scale(1.12); }
+
+/* =====================================================
+   17. WHATSAPP FLOATING BUTTON
+   ===================================================== */
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  background: #25d366;
+  color: white;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(37,211,102,0.5);
+  z-index: 999;
+  transition: 0.3s;
+}
+
+.whatsapp-float:hover { transform: scale(1.12); color: white; }
+
+/* =====================================================
+   18. SCROLL REVEAL ANIMATION
+   ===================================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Old fade-in kept for compatibility */
 .fade-in {
   opacity: 0;
   transform: translateY(50px);
@@ -197,456 +699,256 @@ img:hover {
   transform: translateY(0);
 }
 
-/* HERO TEXT ENTRY */
-.hero h1 {
-    animation: slideDown 1s ease;
+/* =====================================================
+   19. ABOUT PAGE — SPECIFIC STYLES
+   ===================================================== */
+
+.about-section {
+  background: linear-gradient(135deg, #fff5e6, #ffe0b3);
+  padding: 50px 0;
 }
 
-.hero p {
-    animation: fadeIn 2s ease;
+.about-banner-glass {
+  height: 250px;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("images/m1.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes slideDown {
-    from {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+.banner-text {
+  color: #fff;
+  font-size: 42px;
+  font-weight: bold;
+  text-shadow: 0 0 20px rgba(255,165,0,0.8);
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+/* Language buttons (About page) */
+.language-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 
-/* ============================= */
-/* ===== SECTION SPACING ===== */
-/* ============================= */
-
-section {
-    padding-top: 20px;
-    padding-bottom: 20px;
+.lang-btn {
+  padding: 10px 28px;
+  border: 2px solid #ff9933;
+  border-radius: 30px;
+  background: white;
+  color: #ff6600;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.25s;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* ===== SCROLL BUTTON ===== */
-#topBtn {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    display: none;
-    background: black;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 50%;
-    cursor: pointer;
+.lang-btn:hover, .lang-btn.active {
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  color: white;
+  border-color: transparent;
 }
 
-/* ===== CONTACT FORM ===== */
-form {
-    background: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
+/* History box */
+.history-box {
+  background: rgba(255,255,255,0.75);
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+  max-height: 420px;
+  overflow-y: auto;
 }
 
-form input, form textarea {
-    border-radius: 8px;
+.history-box::-webkit-scrollbar { width: 5px; }
+.history-box::-webkit-scrollbar-thumb { background: orange; border-radius: 10px; }
+.history-box::-webkit-scrollbar-track { background: transparent; }
+
+.lang-content { display: none; animation: fadeIn 0.5s ease; }
+.lang-content.active { display: block; }
+
+.lang-content p, .history-box p {
+  font-size: 16px;
+  line-height: 1.9;
+  color: #333;
+  margin-bottom: 16px;
 }
 
-form button {
-    font-size: 18px;
+/* History title pill */
+.history-main-title {
+  display: none;
+  text-align: center;
+  font-size: clamp(15px, 2.5vw, 21px);
+  font-weight: 600;
+  color: white;
+  background: rgba(0,0,0,0.72);
+  padding: 10px 22px;
+  border-radius: 50px;
+  margin: 0 auto 22px;
+  max-width: 90%;
 }
 
-/* ===== ABOUT SECTION DESIGN (BHAGWA THEME) ===== */
+.history-main-title.active { display: block; }
+.lang-title { display: none; }
+.lang-title.active { display: block; }
 
-
-/* Mandir History text ke upar gap kam */
-.container.mt-5 {
-    margin-top: 20px !important;
+@media (max-width: 768px) {
+  .history-box { max-height: 320px; padding: 20px; }
+  .banner-text { font-size: 28px; }
 }
 
+/* =====================================================
+   20. SECTION TITLE MAIN (used in multiple pages)
+   ===================================================== */
 
 .section-title-main {
   font-size: 30px;
   font-weight: bold;
-  margin-bottom: 30px;
+  margin-bottom: 28px;
   color: #b30000;
+  text-align: center;
 }
 
-.premium-card {
-  border-radius: 15px;
-  transition: 0.3s;
+/* =====================================================
+   21. BREADCRUMB STRIP
+   ===================================================== */
+
+.breadcrumb-strip {
+  background: white;
+  border-bottom: 1px solid #f0e8dc;
+  padding: 10px 0;
 }
 
-.premium-card:hover {
-  transform: translateY(-10px);
+.breadcrumb-strip a {
+  color: #ff6600;
+  text-decoration: none;
+  font-size: 13px;
+  transition: 0.2s;
 }
 
+.breadcrumb-strip a:hover { text-decoration: underline; }
+.breadcrumb-strip span { color: #999; font-size: 13px; }
 
-.gallery-img {
-  width: 100%;
-  border-radius: 10px;
-  transition: 0.3s;
+/* =====================================================
+   22. ANIMATIONS
+   ===================================================== */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
-.gallery-img:hover {
-  transform: scale(1.08);
-}
-
-.premium-footer {
-  background: black;
-  color: white;
-  padding: 20px;
-}
-
-.language-toggle button {
-  margin-left: 5px;
-  border-radius: 20px;
-}
-
-.about-hero {
-  height: 90vh;
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-              url("images/m1.jpg"); /* new image */
-  background-size: cover;
-  background-position: center;
-}
-
-/* ============================= */
-/* ===== ULTRA PREMIUM ABOUT ===== */
-/* ============================= */
-
-/* Section background gradient */
-.about-section {
-    background: linear-gradient(135deg, #fff5e6, #ffe0b3);
-    padding: 50px 0;
-}
-
-/* Glass banner */
-.about-banner-glass {
-    height: 250px;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-                url("images/m1.jpg");
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Banner text glow */
-.banner-text {
-    color: #fff;
-    font-size: 45px;
-    font-weight: bold;
-    text-shadow: 0 0 20px rgba(255,165,0,0.8);
-}
-
-/* Glass effect cards */
-.glass-card {
-    background: rgba(255, 255, 255, 0.25);
-    border-radius: 20px;
-    padding: 30px;
-    backdrop-filter: blur(15px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-    transition: 0.4s;
-
-    /* animation */
-    opacity: 0;
-    transform: translateY(40px);
-    animation: fadeUp 1s ease forwards;
-}
-
-/* Hover animation */
-.glass-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 15px 40px rgba(255, 140, 0, 0.5);
-}
-
-/* Title */
-.glass-title {
-    text-align: center;
-    font-size: 28px;
-    font-weight: bold;
-    color: #ff6600;
-    margin-bottom: 15px;
-}
-
-/* Text */
-.glass-card p {
-    font-size: 17px;
-    line-height: 1.8;
-    color: #222;
-}
-
-/* Smooth fade animation */
-.glass-card {
-    opacity: 0;
-    transform: translateY(40px);
-    animation: fadeUp 1s ease forwards;
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== LANGUAGE BUTTONS ===== */
-/* ===== PREMIUM LANGUAGE BUTTONS ===== */
-.language-buttons {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(8px); }
 }
 
-/* buttons */
-.lang-btn {
-    padding: 10px 40px;
-    border: none;
-    border-radius: 25px;
-    background: #fff;
-    color: #ff6600;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
+/* =====================================================
+   23. FORM STYLES (Contact page)
+   ===================================================== */
+
+.form-control, .form-select {
+  border: 2px solid #ffe0b3;
+  border-radius: 12px;
+  padding: 11px 16px;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  transition: 0.25s;
+  background: #fffaf4;
 }
 
-/* hover */
-.lang-btn:hover {
-    background: #ff6600;
-    color: white;
+.form-control:focus, .form-select:focus {
+  border-color: #ff9933;
+  box-shadow: 0 0 0 3px rgba(255,153,51,0.15);
+  background: white;
+  outline: none;
 }
 
-/* active */
-.lang-btn.active {
-    background: #ff6600;
-    color: white;
+.form-control::placeholder { color: #bbb; }
+
+textarea.form-control { resize: vertical; min-height: 120px; }
+
+.form-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 5px;
 }
 
-/* ===== CONTENT BOX ===== */
-.history-box {
-    background: rgba(255,255,255,0.7);
-    padding: 30px;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+/* =====================================================
+   24. GLASS CARD (About page)
+   ===================================================== */
 
-    max-height: 400px;   /* 👈 scroll ke liye important */
-    overflow-y: auto;    /* 👈 scroll enable */
-}
-
-/* 🔥 PREMIUM SCROLLBAR */
-.history-box::-webkit-scrollbar {
-    width: 6px;
-}
-
-.history-box::-webkit-scrollbar-thumb {
-    background: orange;
-    border-radius: 10px;
-}
-
-.history-box::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-@media (max-width: 768px) {
-    .history-box {
-        max-height: 300px;
-    }
-}
-/* Hide all content */
-.lang-content {
-display: none;
-animation: fadeIn 0.5s ease;
-}
-
-/* Show active */
-.lang-content.active {
-display: block;
-}
-
-.lang-content p {
-    color: black;
-    font-weight: bold;
-}
-
-/* TEXT STYLE */
-.history-box p {
-font-size: 18px;
-line-height: 1.8;
-color: #222;
-}
-
-/* MOBILE RESPONSIVE */
-@media (max-width: 768px) {
-    .history-box {
-        padding: 20px;
-    }
-
-    .history-box p {
-        font-size: 16px;
-    }
-
-    .banner-text {
-        font-size: 30px;
-    }
-}
-
-/* ===== SMALL LANGUAGE DROPDOWN ===== */
-
-/* Button */
-.lang-toggle {
-    background: #fff;
-    border: none;
-    padding: 6px 10px;
-    border-radius: 20px;
-    font-size: 14px;
-    cursor: pointer;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
-
-/* Dropdown menu */
-.lang-menu {
-    position: absolute;
-    top: 40px;
-    right: 0;
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    display: none;
-    min-width: 120px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-/* Items */
-.lang-menu div {
-    padding: 8px 12px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-/* Hover */
-.lang-menu div:hover {
-    background: orange;
-    color: white;
-}
-
-@media (max-width: 768px) {
-  .lang-menu {
-    right: auto;
-    left: 0;
-  }
-}
-
-/* Show dropdown */
-.lang-dropdown.active .lang-menu {
-    display: block;
-}
-
-.lang-dropdown {
-    position: relative;   /* 👈 IMPORTANT FIX */
-    display: inline-block; /* 👈 optional but recommended */
-}
-
-/* ===== PREMIUM LANGUAGE TITLE ===== */
-
-.history-main-title {
-    display: inline-block;
-    width: fit-content;
-
-    margin: 0 auto;        /* 👈 center karega */
-    text-align: center;
-
-    padding: 10px 16px;
-    border-radius: 50px;
-
-    font-size: clamp(18px, 2.5vw, 24px);
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 20px;
-
-    background: rgba(0,0,0,0.7);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-}
-
-/* Hide all titles by default */
-.lang-title {
-    display: none;
-}
-
-/* Only active one will show */
-.lang-title.active {
-    display: block;
-}
-
-
-/* ===== PREMIUM ABOUT HOME ===== */
-
-.about-title {
-  display: block;
-  width: fit-content;
-  margin: 0 auto;
-  text-align: center;   /* 👈 ye add karo */
-  padding: 10px 20px;
-
-  font-size: 25px;
-  font-weight: bold;
-  color: white;
-
-  background: linear-gradient(90deg, #ff9933, #ff6600);
-  border-radius: 50px;
-}
-
-.about-short {
-  font-size: 18px;
-  line-height: 1.7;
-  color: #000;        /* pure black */
-  font-weight: bold;  /* bold text */
-}
-
-
-/* IMAGE STYLE */
-.about-img {
-  width: 100%;
-  max-width: 400px;
+.glass-card {
+  background: rgba(255,255,255,0.25);
   border-radius: 20px;
+  padding: 30px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
   transition: 0.4s;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1s ease forwards;
 }
 
-.about-img:hover {
-  transform: scale(1.05);
+.glass-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(255,140,0,0.5);
 }
+
+.glass-title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
+  color: #ff6600;
+  margin-bottom: 14px;
+}
+
+/* =====================================================
+   25. RESPONSIVE UTILITIES
+   ===================================================== */
 
 @media (max-width: 768px) {
-  .about-title {
-    font-size: 24px;
-    text-align: center;
+  h2 { font-size: 22px; }
+  p  { font-size: 14px; }
+
+  .about-img-badge {
+    position: static;
+    display: inline-block;
+    margin-top: 14px;
   }
 
-  .about-short {
-    font-size: 16px;
-    text-align: center;
-  }
+  .about-img-wrap { margin-bottom: 30px; }
 
-  .about-img {
-    max-width: 100%;
-    margin-top: 20px;
+  .stat-number { font-size: 22px; }
+  .stat-label  { font-size: 11px; }
+
+  .orange-rule { margin-bottom: 24px; }
+
+  .footer-brand { font-size: 18px; }
+}
+
+@media (max-width: 480px) {
+  .btn-hero-primary,
+  .btn-hero-outline {
+    padding: 11px 20px;
+    font-size: 14px;
   }
 }
 
-/* BUTTON IMPROVE */
-.btn-warning {
-  background: linear-gradient(90deg, #ff9933, #ff6600);
-  border: none;
-  font-weight: bold;
-}
-
-.btn-warning:hover {
-  transform: scale(1.08);
-}
+/* =====================================================
+   END OF STYLE.CSS
+   ===================================================== */

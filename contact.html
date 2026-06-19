@@ -1,160 +1,784 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
-    <title>Contact - Mandir</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — श्री सिद्धेश्वर नाथ मंदिर</title>
+<meta name="description" content="Contact Baba Sidheswar Nath Mandir, Bishoul Tatuar, Darbhanga, Bihar. Get directions, puja timings and reach us on WhatsApp.">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-</head>
+<style>
+body { font-family: 'Poppins', Arial, sans-serif; background: #fffaf4; }
+h1,h2,h3 { font-family: 'Tiro Devanagari Sanskrit', serif; }
 
+/* HERO */
+.contact-hero {
+  height: 50vh;
+  background: linear-gradient(rgba(0,0,0,0.62),rgba(0,0,0,0.62)), url("images/maha.jpg");
+  background-size: cover; background-position: center; background-attachment: fixed;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; color: white;
+}
+.contact-hero h1 {
+  font-size: clamp(28px,5vw,54px); font-weight: bold;
+  text-shadow: 0 3px 20px rgba(0,0,0,0.7); animation: slideDown .9s ease both;
+}
+.contact-hero p { font-size: 16px; opacity: .85; margin-top: 8px; animation: fadeUp 1.3s ease both; }
+.hero-badge-contact {
+  display: inline-block;
+  background: rgba(255,153,51,.3); border: 1px solid rgba(255,153,51,.7);
+  color: #ffcc88; font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+  padding: 5px 18px; border-radius: 30px; margin-bottom: 14px; animation: fadeUp .7s ease both;
+}
+@keyframes slideDown { from{opacity:0;transform:translateY(-28px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeUp    { from{opacity:0;transform:translateY(20px)}  to{opacity:1;transform:translateY(0)} }
+@media(max-width:768px){ .contact-hero{ background-attachment:scroll; height:40vh; } }
+
+/* BREADCRUMB */
+.breadcrumb-strip { background:white; border-bottom:1px solid #f0e8dc; padding:10px 0; }
+.breadcrumb-strip a { color:#ff6600; text-decoration:none; font-size:13px; }
+.breadcrumb-strip span { color:#999; font-size:13px; }
+
+/* SHARED */
+.section-eyebrow { font-size:12px; letter-spacing:2.5px; text-transform:uppercase; color:#ff6600; font-weight:600; margin-bottom:6px; }
+.section-heading { font-size:clamp(22px,3.5vw,34px); font-weight:bold; color:#1a1a1a; margin-bottom:10px; }
+.section-heading span { color:#ff6600; }
+.orange-rule { width:50px; height:3px; background:linear-gradient(90deg,#ff9933,#ff6600); border-radius:10px; margin:0 auto 36px; }
+
+/* CONTACT INFO CARDS */
+.info-section { padding: 60px 0; background: white; }
+.info-card {
+  background: #fffaf4; border-radius: 18px; padding: 28px 20px; text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,.08); transition: .3s; height: 100%;
+}
+.info-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(255,102,0,.15); }
+.info-icon { font-size: 40px; margin-bottom: 12px; display: block; }
+.info-card h5 { font-weight: 700; color: #ff6600; font-size: 15px; margin-bottom: 8px; letter-spacing: .5px; text-transform: uppercase; }
+.info-card p  { font-size: 14px; color: #555; margin: 0; line-height: 1.7; }
+.info-card a  { color: #ff6600; text-decoration: none; font-weight: 600; }
+.info-card a:hover { text-decoration: underline; }
+
+/* FORM SECTION */
+.form-section { padding: 60px 0; background: linear-gradient(135deg,#fff5e6,#ffe8cc); }
+
+.contact-form-wrap {
+  background: white; border-radius: 20px; padding: 40px 36px;
+  box-shadow: 0 8px 36px rgba(0,0,0,.09);
+}
+@media(max-width:576px){ .contact-form-wrap{ padding: 28px 18px; } }
+
+.form-label { font-size: 13px; font-weight: 600; color: #444; margin-bottom: 5px; }
+
+.form-control, .form-select {
+  border: 2px solid #ffe0b3; border-radius: 12px;
+  padding: 11px 16px; font-size: 14px; font-family: 'Poppins', sans-serif;
+  transition: .25s; background: #fffaf4;
+}
+.form-control:focus, .form-select:focus {
+  border-color: #ff9933; box-shadow: 0 0 0 3px rgba(255,153,51,.15);
+  background: white; outline: none;
+}
+.form-control::placeholder { color: #bbb; }
+
+textarea.form-control { resize: vertical; min-height: 120px; }
+
+.submit-btn {
+  width: 100%; padding: 13px;
+  background: linear-gradient(90deg,#ff9933,#ff6600);
+  color: white; border: none; border-radius: 30px;
+  font-size: 16px; font-weight: 700; cursor: pointer;
+  font-family: 'Poppins', sans-serif; transition: .3s; margin-top: 6px;
+}
+.submit-btn:hover { transform: scale(1.03); box-shadow: 0 6px 20px rgba(255,102,0,.4); }
+
+/* success message */
+.form-success {
+  display: none; text-align: center; padding: 30px 20px;
+}
+.form-success .tick { font-size: 54px; margin-bottom: 12px; }
+.form-success h4 { font-weight: 700; color: #2e7d32; margin-bottom: 8px; }
+.form-success p  { font-size: 14px; color: #666; }
+
+/* CONNECT SIDEBAR */
+.connect-wrap { padding-left: 10px; }
+@media(max-width:768px){ .connect-wrap{ padding-left: 0; margin-top: 30px; } }
+
+.connect-card {
+  background: white; border-radius: 16px; padding: 22px 20px;
+  box-shadow: 0 4px 18px rgba(0,0,0,.08); margin-bottom: 16px;
+  transition: .3s;
+}
+.connect-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(255,102,0,.13); }
+.connect-card-inner { display: flex; align-items: center; gap: 14px; }
+.connect-icon { font-size: 28px; flex-shrink: 0; }
+.connect-info h6 { font-weight: 700; color: #1a1a1a; font-size: 14px; margin: 0 0 3px; }
+.connect-info p  { font-size: 13px; color: #777; margin: 0; }
+.connect-info a  { color: #ff6600; text-decoration: none; font-weight: 600; font-size: 13px; }
+.connect-info a:hover { text-decoration: underline; }
+
+.whatsapp-big {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: #25d366; color: white; border-radius: 16px;
+  padding: 16px 20px; text-decoration: none; font-weight: 700; font-size: 15px;
+  box-shadow: 0 4px 16px rgba(37,211,102,.4); transition: .3s; margin-top: 6px;
+}
+.whatsapp-big:hover { transform: scale(1.04); color: white; }
+.whatsapp-big span { font-size: 22px; }
+
+/* TIMING TABLE */
+.timing-section { padding: 60px 0; background: white; }
+.timing-wrap {
+  background: linear-gradient(135deg,#fff5e6,#ffe0b3);
+  border-radius: 20px; padding: 32px 28px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.07);
+}
+.timing-table { width: 100%; border-collapse: separate; border-spacing: 0 8px; }
+.timing-table th {
+  background: linear-gradient(90deg,#ff9933,#ff6600); color: white;
+  padding: 12px 18px; font-size: 14px; font-weight: 600;
+}
+.timing-table th:first-child { border-radius: 10px 0 0 10px; }
+.timing-table th:last-child  { border-radius: 0 10px 10px 0; }
+.timing-table td { background: white; padding: 12px 18px; font-size: 14px; color: #333; }
+.timing-table tr td:first-child { border-radius: 10px 0 0 10px; font-weight: 600; }
+.timing-table tr td:last-child  { border-radius: 0 10px 10px 0; color: #ff6600; font-weight: 600; }
+
+/* MAP SECTION */
+.map-section { padding: 60px 0; background: #fffaf4; }
+.map-wrap {
+  border-radius: 18px; overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,.12); height: 360px;
+}
+.map-wrap iframe { width: 100%; height: 100%; border: none; }
+.map-placeholder {
+  background: linear-gradient(135deg,#1a1a1a,#2d2d2d);
+  height: 100%; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  color: white; padding: 30px;
+}
+.map-placeholder .map-icon { font-size: 52px; margin-bottom: 14px; opacity: .7; }
+.map-placeholder p { font-size: 14px; color: rgba(255,255,255,.6); max-width: 320px; }
+
+/* ADDRESS CARD */
+.address-card {
+  background: white; border-radius: 18px; padding: 28px 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.08); height: 100%;
+}
+.address-card h5 { font-weight: 700; color: #ff6600; margin-bottom: 16px; font-size: 16px; }
+.address-row { display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start; }
+.address-row .addr-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+.address-row .addr-text { font-size: 14px; color: #444; line-height: 1.6; }
+.address-row .addr-text strong { display: block; color: #1a1a1a; font-size: 13px; margin-bottom: 2px; }
+
+.directions-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(90deg,#ff9933,#ff6600);
+  color: white; border: none; border-radius: 25px;
+  padding: 11px 24px; font-size: 14px; font-weight: 700;
+  text-decoration: none; transition: .3s; margin-top: 10px;
+  font-family: 'Poppins', sans-serif; cursor: pointer;
+}
+.directions-btn:hover { transform: scale(1.05); color: white; box-shadow: 0 6px 18px rgba(255,102,0,.4); }
+
+/* FAQ */
+.faq-section { padding: 60px 0; background: linear-gradient(135deg,#fff5e6,#ffe8cc); }
+.accordion-button {
+  font-weight: 600; font-size: 15px; color: #1a1a1a;
+  background: white !important; border-radius: 12px !important;
+}
+.accordion-button:not(.collapsed) { color: #ff6600 !important; box-shadow: none !important; }
+.accordion-button::after { filter: hue-rotate(200deg) saturate(2); }
+.accordion-item { border: none; margin-bottom: 10px; border-radius: 12px !important; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,.07); }
+.accordion-body { font-size: 14px; color: #555; line-height: 1.75; background: white; }
+
+/* REVEAL */
+.reveal { opacity:0; transform:translateY(36px); transition:opacity .7s ease,transform .7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* WHATSAPP FLOAT */
+.whatsapp-float {
+  position:fixed; bottom:22px; right:22px; background:#25d366; color:white;
+  width:54px; height:54px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center; font-size:26px;
+  text-decoration:none; box-shadow:0 4px 18px rgba(37,211,102,.5); z-index:999; transition:.3s;
+}
+.whatsapp-float:hover { transform:scale(1.12); color:white; }
+
+/* SCROLL TOP */
+#topBtn {
+  position:fixed; bottom:84px; right:22px; display:none;
+  background:linear-gradient(135deg,#ff9933,#ff6600); color:white;
+  border:none; width:42px; height:42px; border-radius:50%; font-size:18px;
+  cursor:pointer; box-shadow:0 4px 14px rgba(255,102,0,.4); z-index:998; transition:.3s;
+}
+#topBtn:hover { transform:scale(1.1); }
+
+/* FOOTER */
+.site-footer { background:#111; color:#ccc; padding:50px 0 20px; }
+.footer-brand { font-size:20px; font-weight:bold; color:#ff9933; margin-bottom:8px; }
+.footer-tagline { font-size:13px; color:#888; line-height:1.6; }
+.footer-heading { font-size:13px; font-weight:700; color:#ff9933; letter-spacing:1px; text-transform:uppercase; margin-bottom:12px; }
+.footer-links { list-style:none; padding:0; margin:0; }
+.footer-links li { margin-bottom:7px; }
+.footer-links a { color:#aaa; text-decoration:none; font-size:13px; transition:.2s; }
+.footer-links a:hover { color:#ff9933; }
+.footer-info p { font-size:13px; color:#aaa; margin-bottom:5px; }
+.footer-bottom { border-top:1px solid #2a2a2a; margin-top:36px; padding-top:16px; text-align:center; font-size:12px; color:#555; }
+</style>
+</head>
 <body>
 
-<!-- ===== NAVBAR START ===== -->
-<nav class="navbar navbar-expand-lg premium-navbar">
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg premium-navbar sticky-top">
   <div class="container">
-
     <a class="navbar-brand d-flex align-items-center" href="index.html">
-      <img src="images/m7.jpg" class="logo-img me-2">
+      <img src="images/m7.jpg" class="logo-img me-2" alt="Mandir Logo">
       <span>श्री सिद्धेश्वर नाथ मंदिर</span>
     </a>
-
-    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="menu">
       <ul class="navbar-nav ms-auto">
-        <li><a class="nav-link" href="index.html">Home</a></li>
-        <li><a class="nav-link" href="about.html">About</a></li>
-        <li><a class="nav-link" href="gallery.html">Gallery</a></li>
-        <li><a class="nav-link" href="donation.html">Donation</a></li>
-        <li><a class="nav-link" href="committee.html">Committee</a></li>
-        <li><a class="nav-link active" href="contact.html">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="donation.html">Donation</a></li>
+        <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
       </ul>
     </div>
-
   </div>
 </nav>
-<!-- ===== NAVBAR END ===== -->
-<!-- CONTACT DETAILS -->
-<!-- ===== HERO ===== -->
-<section class="hero d-flex align-items-center text-center text-white" style="height:40vh;">
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-strip">
   <div class="container">
-    <h1>Contact Us</h1>
+    <a href="index.html">Home</a><span> &rsaquo; Contact</span>
   </div>
-</section>
-
-<!-- ===== CONTACT SECTION ===== -->
-<section class="container mt-5">
-
-  <div class="row">
-
-    <!-- ===== LEFT SIDE: DETAILS ===== -->
-    <div class="col-md-6">
-      <h4>Address</h4>
-      <p>Bishoul Tatuar, Darbhanga, Bihar</p>
-
-      <h4>Phone</h4>
-      <p>+91 9876543210</p>
-
-      <h4>Email</h4>
-      <p>mandir@gmail.com</p>
-    </div>
-
-    <!-- ===== RIGHT SIDE: GOOGLE MAP ===== -->
-    <div class="col-md-6">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2726.7854220619597!2d86.17924657396024!3d26.203839300000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39edd736256a7f23%3A0x6622126b226569d!2sMahadev%20Mandir%2C%20Bisaul!5e1!3m2!1sen!2sin!4v1773829068968!5m2!1sen!2sin"
-              width="100%" 
-              height="200" 
-              style="border:0;"
-              allowfullscreen=""
-              loading="lazy">
-            </iframe>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ===== CONTACT FORM START ===== -->
-<div class="container mt-5">
-  <h3 class="text-center mb-4">Send Message</h3>
-
-  <!-- FORM START -->
-  <form action="https://formsubmit.co/shivratricomitteebishoultatuar@gmail.com" method="POST">
-
-    <!-- Name -->
-    <div class="mb-3">
-      <label>Your Name</label>
-      <input type="text" name="name" class="form-control" required>
-    </div>
-
-    <!-- Email -->
-    <div class="mb-3">
-      <label>Your Email</label>
-      <input type="email" name="email" class="form-control" required>
-    </div>
-
-    <!-- Message -->
-    <div class="mb-3">
-      <label>Message</label>
-      <textarea name="message" class="form-control" rows="4" required></textarea>
-    </div>
-
-    <!-- Hidden settings -->
-    <input type="hidden" name="_captcha" value="false">
-
-    <!-- Submit Button -->
-    <button type="submit" class="btn btn-success w-100">Send Message</button>
-
-    <input type="hidden" name="_next" value="https://yourwebsite.com/thankyou.html">
-
-  </form>
-  <!-- FORM END -->
-
 </div>
-<!-- ===== CONTACT FORM END ===== -->
 
-<!-- Bootstrap JS (Required for mobile menu toggle) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- HERO -->
+<section class="contact-hero">
+  <div>
+    <div class="hero-badge-contact">॥ हमसे जुड़ें ॥</div>
+    <h1>Contact Us</h1>
+    <p>हम आपकी सेवा में सदैव तत्पर हैं — We are always here to help</p>
+  </div>
+</section>
 
-<!-- ===== FOOTER ===== -->
-<footer class="bg-dark text-white text-center p-4 mt-5">
-  <h5>Sidheswar Nath Mandir</h5>
-  <p>📍 Bishoul Tatuar, Darbhanga, Bihar</p>
-  <p>📞 +91 9876543210</p>
-  <a href="https://wa.me/919876543210" class="btn btn-success">WhatsApp</a>
+<!-- INFO CARDS -->
+<section class="info-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Get In Touch</div>
+      <h2 class="section-heading">संपर्क <span>जानकारी</span></h2>
+      <div class="orange-rule"></div>
+    </div>
+    <div class="row g-4 reveal">
+
+      <div class="col-md-3 col-sm-6">
+        <div class="info-card">
+          <span class="info-icon">📍</span>
+          <h5>Address</h5>
+          <p>Bishoul Tatuar, Darbhanga,<br>Bihar — 847422</p>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+        <div class="info-card">
+          <span class="info-icon">📞</span>
+          <h5>Phone</h5>
+          <p><a href="tel:+919296860221">+91 92968 60221</a><br>
+          <small style="color:#aaa;">Mon–Sun, 6 AM – 9 PM</small></p>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+        <div class="info-card">
+          <span class="info-icon">📧</span>
+          <h5>Email</h5>
+          <p><a href="mailto:shivratricomitteebishoultatuar@gmail.com">shivratricomitteebishoultatuar@gmail.com</a><br>
+          <small style="color:#aaa;">We reply within 24 hours</small></p>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+        <div class="info-card">
+          <span class="info-icon">💬</span>
+          <h5>WhatsApp</h5>
+          <p><a href="https://wa.me/919296860221" target="_blank">+91 92968 60221</a><br>
+          <small style="color:#aaa;">Fastest way to reach us</small></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FORM + CONNECT SIDEBAR -->
+<section class="form-section">
+  <div class="container">
+    <div class="row g-4">
+
+      <!-- CONTACT FORM -->
+      <div class="col-md-7 reveal">
+        <div class="contact-form-wrap">
+          <div class="section-eyebrow" style="margin-bottom:4px;">Send a Message</div>
+          <h3 style="font-weight:700;color:#1a1a1a;margin-bottom:24px;">हमें <span style="color:#ff6600;">संदेश भेजें</span></h3>
+
+          <div id="contactForm">
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label class="form-label">Your Name *</label>
+                <input type="text" class="form-control" id="fname" placeholder="आपका नाम">
+              </div>
+              <div class="col-sm-6">
+                <label class="form-label">Phone Number *</label>
+                <input type="tel" class="form-control" id="fphone" placeholder="+91 XXXXX XXXXX">
+              </div>
+              <div class="col-12">
+                <label class="form-label">Email (Optional)</label>
+                <input type="email" class="form-control" id="femail" placeholder="yourname@email.com">
+              </div>
+              <div class="col-12">
+                <label class="form-label">Purpose of Contact *</label>
+                <select class="form-select" id="fpurpose">
+                  <option value="">— Select a reason —</option>
+                  <option>Donation Enquiry</option>
+                  <option>Puja Booking</option>
+                  <option>Mahashivratri Information</option>
+                  <option>Temple Visit / Directions</option>
+                  <option>General Enquiry</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Your Message *</label>
+                <textarea class="form-control" id="fmessage" placeholder="अपना संदेश यहाँ लिखें..."></textarea>
+              </div>
+              <div class="col-12">
+                <button class="submit-btn" onclick="sendMessage()">
+                  🙏 Send via WhatsApp
+                </button>
+                <p style="font-size:12px;color:#aaa;text-align:center;margin-top:10px;">
+                  Your message will open in WhatsApp — send it to complete
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUCCESS MESSAGE -->
+          <div class="form-success" id="formSuccess">
+            <div class="tick">✅</div>
+            <h4>Message Ready!</h4>
+            <p>Your WhatsApp will open with the message pre-filled.<br>Just press Send to complete.</p>
+            <button class="submit-btn" style="max-width:220px;margin:16px auto 0;" onclick="resetForm()">
+              Send Another Message
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CONNECT SIDEBAR -->
+      <div class="col-md-5 reveal">
+        <div class="connect-wrap">
+          <div class="section-eyebrow" style="margin-bottom:4px;">Quick Connect</div>
+          <h3 style="font-weight:700;color:#1a1a1a;margin-bottom:20px;">सीधे <span style="color:#ff6600;">जुड़ें</span></h3>
+
+          <!-- WhatsApp big button -->
+          <a href="https://wa.me/919296860221?text=Jai%20Baba%20Sidheswar%20Nath!%20I%20would%20like%20to%20know%20more%20about%20the%20mandir." target="_blank" class="whatsapp-big">
+            <span>💬</span> Chat on WhatsApp
+          </a>
+
+          <div style="height:20px;"></div>
+
+          <div class="connect-card">
+            <div class="connect-card-inner">
+              <div class="connect-icon">📞</div>
+              <div class="connect-info">
+                <h6>Call Us Directly</h6>
+                <p>Available 6 AM – 9 PM daily</p>
+                <a href="tel:+919296860221">+91 9296860221</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="connect-card">
+            <div class="connect-card-inner">
+              <div class="connect-icon">💳</div>
+              <div class="connect-info">
+                <h6>Make a Donation</h6>
+                <p>Support the temple with any amount</p>
+                <a href="donation.html">Go to Donation Page →</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="connect-card">
+            <div class="connect-card-inner">
+              <div class="connect-icon">🗓️</div>
+              <div class="connect-info">
+                <h6>Book a Puja</h6>
+                <p>Special puja, abhishek, or ritual</p>
+                <a href="https://wa.me/919296860221?text=I%20would%20like%20to%20book%20a%20puja%20at%20Sidheswar%20Nath%20Mandir." target="_blank">Book via WhatsApp →</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="connect-card">
+            <div class="connect-card-inner">
+              <div class="connect-icon">🖼️</div>
+              <div class="connect-info">
+                <h6>Share Photos / Videos</h6>
+                <p>Send your mandir memories to us</p>
+                <a href="https://wa.me/919296860221?text=I%20want%20to%20share%20photos%20of%20Sidheswar%20Nath%20Mandir." target="_blank">Send on WhatsApp →</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PUJA TIMINGS -->
+<section class="timing-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Daily Schedule</div>
+      <h2 class="section-heading">पूजा <span>Timings</span></h2>
+      <div class="orange-rule"></div>
+    </div>
+    <div class="row justify-content-center reveal">
+      <div class="col-md-8">
+        <div class="timing-wrap">
+          <table class="timing-table">
+            <thead>
+              <tr>
+                <th>Puja / Event</th>
+                <th>Time</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>🌅 Pratah Puja</td>
+                <td>6:00 AM</td>
+                <td>Morning Abhishek &amp; Aarti</td>
+              </tr>
+              <tr>
+                <td>☀️ Madhyanha Puja</td>
+                <td>12:00 PM</td>
+                <td>Bhog Offering</td>
+              </tr>
+              <tr>
+                <td>🌇 Sandhya Aarti</td>
+                <td>7:00 PM</td>
+                <td>Evening Aarti &amp; Kirtan</td>
+              </tr>
+              
+              <tr>
+                <td>🎉 Mahashivratri</td>
+                <td>Annual</td>
+                <td>Grand All-Night Celebration</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="text-align:center;margin-top:14px;font-size:12px;color:#999;">
+            * Timings may vary on special occasions. Please confirm via WhatsApp before visiting.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP + ADDRESS -->
+<section class="map-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Find Us</div>
+      <h2 class="section-heading">मंदिर का <span>Location</span></h2>
+      <div class="orange-rule"></div>
+    </div>
+    <div class="row g-4 align-items-stretch reveal">
+
+      <!-- MAP -->
+      <div class="col-md-7">
+        <div class="map-wrap">
+          <!--
+            TO ADD GOOGLE MAP:
+            1. Go to maps.google.com
+            2. Search "Bishoul Tatuar Darbhanga Bihar"
+            3. Click Share > Embed a map > Copy HTML
+            4. Replace the div below with that <iframe> code
+          -->
+          <div class="map-placeholder">
+            <div class="map-icon">🗺️</div>
+            <h5 style="color:white;margin-bottom:10px;">Map Coming Soon</h5>
+            <p>To add Google Map: go to maps.google.com, search the mandir location, click Share &rsaquo; Embed a map, and paste the iframe here.</p>
+            <a href="https://maps.google.com/?q=Bishoul+Tatuar+Darbhanga+Bihar" target="_blank"
+               class="directions-btn" style="margin-top:16px;">
+              📍 Open in Google Maps
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADDRESS CARD -->
+      <div class="col-md-5">
+        <div class="address-card">
+          <h5>📍 मंदिर का पता — Temple Address</h5>
+
+          <div class="address-row">
+            <div class="addr-icon">🏛️</div>
+            <div class="addr-text">
+              <strong>Mandir Name</strong>
+              बाबा सिद्धेश्वर नाथ मंदिर
+            </div>
+          </div>
+
+          <div class="address-row">
+            <div class="addr-icon">🏘️</div>
+            <div class="addr-text">
+              <strong>Village</strong>
+              Bishoul Tatuar (बिशौल टटुआर)
+            </div>
+          </div>
+
+          <div class="address-row">
+            <div class="addr-icon">🗾</div>
+            <div class="addr-text">
+              <strong>District</strong>
+              Manigachhi, Darbhanga, Bihar
+            </div>
+          </div>
+
+          <div class="address-row">
+            <div class="addr-icon">📮</div>
+            <div class="addr-text">
+              <strong>PIN Code</strong>
+              847422
+            </div>
+          </div>
+
+          <div class="address-row">
+            <div class="addr-icon">🚂</div>
+            <div class="addr-text">
+              <strong>Nearest Railway Station</strong>
+              Darbhanga Junction (~40 km)
+            </div>
+          </div>
+
+          <div class="address-row">
+            <div class="addr-icon">🛣️</div>
+            <div class="addr-text">
+              <strong>How to Reach</strong>
+              Auto / taxi available from Darbhanga city to Bishoul Tatuar
+            </div>
+          </div>
+
+          <a href="https://maps.google.com/?q=Bishoul+Tatuar+Darbhanga+Bihar"
+             target="_blank" class="directions-btn">
+            🧭 Get Directions
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Common Questions</div>
+      <h2 class="section-heading">अक्सर पूछे जाने वाले <span>प्रश्न</span></h2>
+      <div class="orange-rule"></div>
+    </div>
+
+    <div class="row justify-content-center reveal">
+      <div class="col-md-9">
+        <div class="accordion" id="faqAccordion">
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                मंदिर कितने बजे खुलता और बंद होता है?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                मंदिर प्रतिदिन सुबह 6:00 बजे से रात 9:00 बजे तक खुला रहता है। प्रातः पूजा 6:00 AM, मध्याह्न पूजा 12:00 PM, संध्या आरती 7:00 PM और शयन आरती 9:00 PM को होती है।
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                महाशिवरात्रि कब मनाई जाती है?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                महाशिवरात्रि प्रत्येक वर्ष फाल्गुन कृष्ण चतुर्दशी को मनाई जाती है (usually February or March). This mandir has been celebrating it grandly since 1992 with Shiv Baraat, bhajan-kirtan, and Jalabhishek. Contact us on WhatsApp for the exact date each year.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                मंदिर तक कैसे पहुँचें?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                मंदिर दरभंगा जिले के बिशौल टटुआर गाँव में स्थित है। दरभंगा रेलवे स्टेशन से लगभग 15 किमी की दूरी पर है। शहर से ऑटो या टैक्सी द्वारा आसानी से पहुँचा जा सकता है। सटीक दिशा-निर्देश के लिए हमें WhatsApp पर संपर्क करें।
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                क्या विशेष पूजा बुक की जा सकती है?
+              </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                हाँ! रुद्राभिषेक, जलाभिषेक, और अन्य विशेष पूजा के लिए WhatsApp पर संपर्क करें। हम आपकी सुविधा के अनुसार समय निर्धारित कर सकते हैं।
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                दान कैसे करें? क्या ऑनलाइन दान संभव है?
+              </button>
+            </h2>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                हाँ! आप UPI, QR कोड स्कैन, या बैंक ट्रांसफर द्वारा ऑनलाइन दान कर सकते हैं। अधिक जानकारी के लिए हमारे <a href="donation.html" style="color:#ff6600;font-weight:600;">Donation Page</a> पर जाएं। दान के बाद WhatsApp पर स्क्रीनशॉट भेजें।
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="footer-brand">श्री सिद्धेश्वर नाथ मंदिर</div>
+        <p class="footer-tagline">Ancient Siddha Peeth of Mithila, Darbhanga, Bihar.<br>Est. Shaka 1763 by Pt. Sidheshwar Nath Mishra.</p>
+      </div>
+      <div class="col-md-2">
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="donation.html">Donation</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <div class="footer-heading">Contact</div>
+        <div class="footer-info">
+          <p>📍 Bishoul Tatuar, Darbhanga, Bihar</p>
+          <p>📞 +91 9296860221</p>
+          <p>📧 shivratricomitteebishoultatuar@gmail.com</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="footer-heading">Puja Timings</div>
+        <div class="footer-info">
+          <p>🌅 Morning Puja — 6:00 AM</p>
+          <p>🌇 Evening Aarti — 7:00 PM</p>
+          <p>🌙 Shayan Aarti — 9:00 PM</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 श्री सिद्धेश्वर नाथ मंदिर, Bishoul Tatuar, Darbhanga, Bihar. All rights reserved.
+    </div>
+  </div>
 </footer>
 
-<!-- ===== ANIMATION FIX SCRIPT ===== -->
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/919296860221" class="whatsapp-float" target="_blank" title="Chat on WhatsApp"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="35">
+</a>
+
+<!-- SCROLL TOP -->
+<button onclick="scrollToTop()" id="topBtn" title="Back to top">&#x2191;</button>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-window.addEventListener("load", () => {
-  const elements = document.querySelectorAll(".fade-in");
+// SEND MESSAGE VIA WHATSAPP
+function sendMessage() {
+  const name    = document.getElementById('fname').value.trim();
+  const phone   = document.getElementById('fphone').value.trim();
+  const purpose = document.getElementById('fpurpose').value;
+  const message = document.getElementById('fmessage').value.trim();
 
-  elements.forEach(el => {
-    el.classList.add("show");
-  });
-});
-</script>
+  if (!name || !phone || !purpose || !message) {
+    alert('कृपया सभी required fields भरें। Please fill all required fields.');
+    return;
+  }
 
-<!-- ===== SCROLL TO TOP BUTTON ===== -->
-<button onclick="scrollToTop()" id="topBtn">⬆️</button>
+  const text = `🙏 Jai Baba Sidheswar Nath!
 
-<script>
-let btn = document.getElementById("topBtn");
+*Name:* ${name}
+*Phone:* ${phone}
+*Purpose:* ${purpose}
+*Message:* ${message}
 
-window.onscroll = function() {
-  btn.style.display = window.scrollY > 200 ? "block" : "none";
-};
+(Sent from Sidheswar Nath Mandir website)`;
 
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  const url = 'https://wa.me/919296860221?text=' + encodeURIComponent(text);
+  window.open(url, '_blank');
+
+  document.getElementById('contactForm').style.display  = 'none';
+  document.getElementById('formSuccess').style.display  = 'block';
 }
+
+function resetForm() {
+  document.getElementById('fname').value    = '';
+  document.getElementById('fphone').value   = '';
+  document.getElementById('femail').value   = '';
+  document.getElementById('fpurpose').value = '';
+  document.getElementById('fmessage').value = '';
+  document.getElementById('contactForm').style.display = 'block';
+  document.getElementById('formSuccess').style.display = 'none';
+}
+
+// SCROLL REVEAL
+const revealEls = document.querySelectorAll('.reveal');
+const observer  = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+  });
+}, { threshold: 0.1 });
+revealEls.forEach(el => observer.observe(el));
+
+// SCROLL TOP
+const topBtn = document.getElementById('topBtn');
+window.addEventListener('scroll', () => { topBtn.style.display = window.scrollY > 250 ? 'block' : 'none'; });
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 </script>
 </body>
 </html>

@@ -1,126 +1,1001 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Donation - Mandir</title>
-
-<!-- Bootstrap CSS -->
+<title>Donation — श्री सिद्धेश्वर नाथ मंदिर</title>
+<meta name="description" content="Donate to Baba Sidheswar Nath Mandir, Bishoul Tatuar, Darbhanga, Bihar.">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Custom CSS -->
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-</head>
+<style>
+body { font-family: 'Poppins', Arial, sans-serif; background: #fffaf4; }
+h1,h2,h3 { font-family: 'Tiro Devanagari Sanskrit', serif; }
 
+/* ── HERO ── */
+.donation-hero {
+  height: 50vh;
+  background: linear-gradient(rgba(0,0,0,0.62),rgba(0,0,0,0.62)), url("images/maha.jpg");
+  background-size:cover; background-position:center; background-attachment:fixed;
+  display:flex; align-items:center; justify-content:center; text-align:center; color:white;
+}
+.donation-hero h1 { font-size:clamp(28px,5vw,54px); font-weight:bold; text-shadow:0 3px 20px rgba(0,0,0,.7); animation:slideDown .9s ease both; }
+.donation-hero p   { font-size:16px; opacity:.85; margin-top:8px; animation:fadeUp 1.3s ease both; }
+.hero-badge-donate { display:inline-block; background:rgba(255,153,51,.3); border:1px solid rgba(255,153,51,.7); color:#ffcc88; font-size:12px; letter-spacing:2px; text-transform:uppercase; padding:5px 18px; border-radius:30px; margin-bottom:14px; animation:fadeUp .7s ease both; }
+@keyframes slideDown { from{opacity:0;transform:translateY(-28px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeUp    { from{opacity:0;transform:translateY(20px)}  to{opacity:1;transform:translateY(0)} }
+@media(max-width:768px){ .donation-hero{ background-attachment:scroll; height:40vh; } }
+
+/* ── BREADCRUMB ── */
+.breadcrumb-strip { background:white; border-bottom:1px solid #f0e8dc; padding:10px 0; }
+.breadcrumb-strip a { color:#ff6600; text-decoration:none; font-size:13px; }
+.breadcrumb-strip span { color:#999; font-size:13px; }
+
+/* ── SHARED ── */
+.section-eyebrow { font-size:12px; letter-spacing:2.5px; text-transform:uppercase; color:#ff6600; font-weight:600; margin-bottom:6px; }
+.section-heading  { font-size:clamp(22px,3.5vw,34px); font-weight:bold; color:#1a1a1a; margin-bottom:10px; }
+.section-heading span { color:#ff6600; }
+.orange-rule { width:50px; height:3px; background:linear-gradient(90deg,#ff9933,#ff6600); border-radius:10px; margin:0 auto 36px; }
+
+/* ── PURPOSE CARDS ── */
+.purpose-section { padding:60px 0; background:white; }
+.purpose-card { background:#fffaf4; border-radius:16px; padding:24px 20px; text-align:center; box-shadow:0 4px 18px rgba(0,0,0,.08); transition:.3s; height:100%; }
+.purpose-card:hover { transform:translateY(-6px); box-shadow:0 12px 30px rgba(255,102,0,.15); }
+.purpose-icon { font-size:38px; margin-bottom:10px; display:block; }
+.purpose-card h5 { font-weight:700; color:#1a1a1a; font-size:15px; margin-bottom:6px; }
+.purpose-card p  { font-size:13px; color:#666; margin:0; line-height:1.6; }
+
+/* ── AMOUNT SECTION ── */
+.amount-section { padding:60px 0; background:white; }
+.amount-grid { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-bottom:24px; }
+.amount-btn { padding:12px 28px; border:2px solid #ff9933; border-radius:30px; background:white; color:#ff6600; font-weight:700; font-size:15px; cursor:pointer; transition:.25s; font-family:'Poppins',sans-serif; }
+.amount-btn:hover,.amount-btn.active { background:linear-gradient(90deg,#ff9933,#ff6600); color:white; border-color:transparent; }
+.amount-note { text-align:center; font-size:13px; color:#888; margin-top:8px; }
+
+/* ── DONATE SECTION ── */
+.donate-section { padding:60px 0; background:linear-gradient(135deg,#fff5e6,#ffe8cc); }
+.donate-card { background:white; border:none; border-radius:20px; padding:32px 24px; box-shadow:0 6px 28px rgba(0,0,0,.09); transition:.35s; height:100%; }
+.donate-card:hover { transform:translateY(-8px); box-shadow:0 14px 40px rgba(255,102,0,.18); }
+.donate-card-icon { font-size:44px; margin-bottom:12px; display:block; text-align:center; }
+.donate-card h4  { font-weight:700; color:#333; margin-bottom:8px; font-size:20px; text-align:center; }
+.donate-card .sub { font-size:13px; color:#888; text-align:center; margin-bottom:18px; }
+.qr-img { width:180px; height:180px; object-fit:cover; border-radius:14px; border:3px solid #ff9933; display:block; margin:0 auto; }
+.upi-box { background:#fff5e6; border:2px dashed #ff9933; border-radius:12px; padding:12px 16px; font-size:17px; font-weight:bold; color:#cc4400; letter-spacing:.5px; word-break:break-all; text-align:center; }
+.copy-btn { display:block; width:100%; background:linear-gradient(90deg,#ff9933,#ff6600); color:white; border:none; border-radius:25px; padding:10px 0; font-size:14px; font-weight:700; cursor:pointer; transition:.3s; margin-top:12px; font-family:'Poppins',sans-serif; }
+.copy-btn:hover { transform:scale(1.04); }
+.bank-table { width:100%; border-collapse:separate; border-spacing:0 6px; font-size:14px; }
+.bank-table td:first-child { color:#999; font-weight:500; padding-right:10px; white-space:nowrap; }
+.bank-table td:last-child  { font-weight:700; color:#222; }
+
+/* ── TRUST ── */
+.trust-section { padding:50px 0; background:#fffaf4; }
+.trust-banner { background:white; border-left:5px solid #ff6600; border-radius:16px; padding:28px 30px; box-shadow:0 4px 20px rgba(0,0,0,.07); }
+.trust-banner h5 { font-weight:700; color:#cc4400; margin-bottom:12px; font-size:17px; }
+.trust-banner p  { font-size:15px; color:#444; margin:0; line-height:1.8; }
+.trust-points { list-style:none; padding:0; margin:16px 0 0; }
+.trust-points li { font-size:14px; color:#555; margin-bottom:8px; }
+.trust-points li::before { content:"✅ "; }
+
+/* ── WHATSAPP CTA ── */
+.wacta-section { padding:60px 0; background:linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.72)),url("images/m1.jpg"); background-size:cover; background-position:center; background-attachment:fixed; text-align:center; color:white; }
+.wacta-section h2 { font-size:clamp(22px,4vw,40px); font-weight:bold; margin-bottom:14px; }
+.wacta-section p  { font-size:16px; opacity:.85; margin-bottom:28px; }
+@media(max-width:768px){ .wacta-section{ background-attachment:scroll; } }
+
+/* ── BUTTONS ── */
+.btn-primary-orange { display:inline-block; background:linear-gradient(90deg,#ff9933,#ff6600); color:white; border:none; border-radius:30px; padding:13px 32px; font-weight:700; font-size:15px; text-decoration:none; transition:.3s; cursor:pointer; font-family:'Poppins',sans-serif; }
+.btn-primary-orange:hover { transform:scale(1.06); color:white; box-shadow:0 6px 20px rgba(255,102,0,.5); }
+.btn-outline-white { display:inline-block; background:transparent; color:white; border:2px solid white; border-radius:30px; padding:11px 28px; font-weight:700; font-size:15px; text-decoration:none; transition:.3s; }
+.btn-outline-white:hover { background:white; color:#ff6600; }
+
+/* ── COPY TOAST ── */
+.copy-toast { position:fixed; bottom:30px; left:50%; transform:translateX(-50%); background:#222; color:white; padding:11px 26px; border-radius:30px; font-size:14px; z-index:9999; opacity:0; transition:opacity .4s; pointer-events:none; }
+.copy-toast.show { opacity:1; }
+
+/* ════════════════════════════════════════════
+   CONTRIBUTION RECORD SECTION — NEW FEATURE
+   ════════════════════════════════════════════ */
+
+.record-section { padding:70px 0; background:linear-gradient(135deg,#fff5e6,#ffe0b3); }
+
+/* Entry Button */
+.record-entry-btn {
+  display:flex; align-items:center; justify-content:center; gap:14px;
+  background:linear-gradient(135deg,#ff9933,#ff6600);
+  color:white; border:none; border-radius:20px;
+  padding:22px 36px; font-size:18px; font-weight:700;
+  cursor:pointer; transition:.35s; font-family:'Poppins',sans-serif;
+  box-shadow:0 6px 28px rgba(255,102,0,.35); width:100%; max-width:460px;
+  margin:0 auto; text-align:center;
+}
+.record-entry-btn:hover { transform:translateY(-4px); box-shadow:0 12px 36px rgba(255,102,0,.45); }
+.record-entry-btn .btn-icon { font-size:30px; }
+
+/* Modal Overlay */
+.cr-overlay {
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,.65); z-index:10000;
+  align-items:center; justify-content:center; padding:16px;
+}
+.cr-overlay.open { display:flex; }
+
+/* Modal Box */
+.cr-modal {
+  background:white; border-radius:24px; width:100%; max-width:520px;
+  box-shadow:0 20px 60px rgba(0,0,0,.3);
+  animation:modalPop .35s ease both; overflow:hidden;
+  max-height:90vh; display:flex; flex-direction:column;
+}
+@keyframes modalPop { from{opacity:0;transform:scale(.9) translateY(20px)} to{opacity:1;transform:scale(1) translateY(0)} }
+
+.cr-modal-header {
+  background:linear-gradient(135deg,#ff9933,#ff6600);
+  padding:22px 24px 18px; color:white; flex-shrink:0;
+}
+.cr-modal-header h4 { font-weight:700; font-size:18px; margin:0 0 4px; }
+.cr-modal-header p  { font-size:13px; opacity:.88; margin:0; }
+.cr-modal-close {
+  float:right; background:rgba(255,255,255,.25); border:none; color:white;
+  width:32px; height:32px; border-radius:50%; font-size:18px; cursor:pointer;
+  display:flex; align-items:center; justify-content:center; margin-top:-4px; transition:.2s;
+}
+.cr-modal-close:hover { background:rgba(255,255,255,.4); }
+
+.cr-modal-body { padding:28px 24px; overflow-y:auto; flex:1; }
+
+/* Step indicator */
+.cr-steps { display:flex; align-items:center; justify-content:center; gap:0; margin-bottom:28px; }
+.cr-step {
+  display:flex; flex-direction:column; align-items:center; gap:4px;
+}
+.cr-step-num {
+  width:32px; height:32px; border-radius:50%; display:flex; align-items:center;
+  justify-content:center; font-size:14px; font-weight:700;
+  background:#eee; color:#aaa; transition:.3s;
+}
+.cr-step.active .cr-step-num  { background:linear-gradient(135deg,#ff9933,#ff6600); color:white; }
+.cr-step.done .cr-step-num    { background:#4caf50; color:white; }
+.cr-step-label { font-size:11px; color:#aaa; font-weight:600; transition:.3s; white-space:nowrap; }
+.cr-step.active .cr-step-label { color:#ff6600; }
+.cr-step.done  .cr-step-label  { color:#4caf50; }
+.cr-step-line { flex:1; height:2px; background:#eee; margin:0 6px; margin-bottom:18px; transition:.3s; }
+.cr-step-line.done { background:#4caf50; }
+
+/* Panels */
+.cr-panel { display:none; }
+.cr-panel.active { display:block; animation:fadeUp .4s ease both; }
+
+/* Input styling inside modal */
+.cr-input {
+  width:100%; border:2px solid #ffe0b3; border-radius:12px;
+  padding:12px 16px; font-size:15px; font-family:'Poppins',sans-serif;
+  background:#fffaf4; transition:.25s; outline:none;
+}
+.cr-input:focus { border-color:#ff9933; background:white; box-shadow:0 0 0 3px rgba(255,153,51,.15); }
+.cr-label { font-size:13px; font-weight:600; color:#444; margin-bottom:6px; display:block; }
+
+.cr-btn {
+  width:100%; padding:13px; border:none; border-radius:25px;
+  background:linear-gradient(90deg,#ff9933,#ff6600); color:white;
+  font-size:15px; font-weight:700; cursor:pointer; transition:.3s;
+  font-family:'Poppins',sans-serif; margin-top:10px;
+}
+.cr-btn:hover { transform:scale(1.03); box-shadow:0 4px 16px rgba(255,102,0,.4); }
+.cr-btn:disabled { opacity:.5; cursor:not-allowed; transform:none; }
+
+.cr-hint { font-size:12px; color:#aaa; margin-top:8px; text-align:center; line-height:1.5; }
+
+/* Status messages */
+.cr-status { border-radius:12px; padding:12px 16px; font-size:14px; margin-top:12px; display:none; }
+.cr-status.error   { background:#fff0f0; color:#c62828; border:1px solid #ffcdd2; display:block; }
+.cr-status.success { background:#f0fff4; color:#2e7d32; border:1px solid #c8e6c9; display:block; }
+.cr-status.info    { background:#fff5e6; color:#e65100; border:1px solid #ffe0b2; display:block; }
+
+/* OTP boxes */
+.otp-wrap { display:flex; gap:10px; justify-content:center; margin:10px 0; }
+.otp-box {
+  width:48px; height:54px; border:2px solid #ffe0b3; border-radius:12px;
+  font-size:22px; font-weight:700; text-align:center; color:#ff6600;
+  background:#fffaf4; outline:none; transition:.25s; font-family:'Poppins',sans-serif;
+}
+.otp-box:focus { border-color:#ff9933; background:white; box-shadow:0 0 0 3px rgba(255,153,51,.15); }
+
+/* Resend */
+.resend-wrap { text-align:center; margin-top:10px; }
+.resend-btn { background:none; border:none; color:#ff6600; font-weight:600; font-size:13px; cursor:pointer; font-family:'Poppins',sans-serif; }
+.resend-btn:disabled { color:#aaa; cursor:not-allowed; }
+#resendTimer { font-size:12px; color:#999; }
+
+/* ── RECORDS TABLE ── */
+.records-wrap { margin-top:4px; }
+.records-greeting { font-size:15px; font-weight:600; color:#333; margin-bottom:16px; }
+.records-greeting span { color:#ff6600; }
+
+.records-summary {
+  display:flex; gap:12px; flex-wrap:wrap; margin-bottom:20px;
+}
+.summary-chip {
+  background:linear-gradient(135deg,#ff9933,#ff6600);
+  color:white; border-radius:12px; padding:10px 18px;
+  font-size:13px; font-weight:600; flex:1; min-width:110px; text-align:center;
+}
+.summary-chip .chip-num { font-size:22px; font-weight:700; display:block; line-height:1.1; }
+.summary-chip .chip-lbl { font-size:11px; opacity:.88; }
+
+.records-table-wrap { overflow-x:auto; border-radius:14px; box-shadow:0 4px 16px rgba(0,0,0,.08); }
+.records-table {
+  width:100%; border-collapse:collapse; font-size:13px; background:white;
+}
+.records-table th {
+  background:linear-gradient(90deg,#ff9933,#ff6600); color:white;
+  padding:11px 14px; font-size:12px; font-weight:600; white-space:nowrap;
+}
+.records-table td { padding:11px 14px; border-bottom:1px solid #f5f0eb; color:#333; white-space:nowrap; }
+.records-table tr:last-child td { border-bottom:none; }
+.records-table tr:hover td { background:#fffaf4; }
+
+.badge-paid    { background:#e8f5e9; color:#2e7d32; border-radius:20px; padding:3px 10px; font-size:11px; font-weight:700; }
+.badge-pending { background:#fff3e0; color:#e65100; border-radius:20px; padding:3px 10px; font-size:11px; font-weight:700; }
+
+.no-records { text-align:center; padding:30px; color:#aaa; font-size:14px; }
+.no-records .no-icon { font-size:40px; display:block; margin-bottom:8px; }
+
+/* Admin badge */
+.admin-badge {
+  display:inline-block; background:linear-gradient(135deg,#7b1fa2,#4a148c);
+  color:white; border-radius:20px; padding:4px 14px; font-size:12px; font-weight:700;
+  margin-left:8px; vertical-align:middle;
+}
+
+/* Logout button inside records */
+.cr-logout {
+  background:none; border:1px solid #ffccaa; color:#ff6600; border-radius:20px;
+  padding:6px 16px; font-size:12px; font-weight:600; cursor:pointer;
+  font-family:'Poppins',sans-serif; transition:.2s; float:right;
+}
+.cr-logout:hover { background:#ff6600; color:white; }
+
+/* ── REVEAL ── */
+.reveal { opacity:0; transform:translateY(36px); transition:opacity .7s ease,transform .7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* ── WHATSAPP FLOAT ── */
+.whatsapp-float { position:fixed; bottom:22px; right:22px; background:#25d366; color:white; width:54px; height:54px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:26px; text-decoration:none; box-shadow:0 4px 18px rgba(37,211,102,.5); z-index:999; transition:.3s; }
+.whatsapp-float:hover { transform:scale(1.12); color:white; }
+
+/* ── SCROLL TOP ── */
+#topBtn { position:fixed; bottom:84px; right:22px; display:none; background:linear-gradient(135deg,#ff9933,#ff6600); color:white; border:none; width:42px; height:42px; border-radius:50%; font-size:18px; cursor:pointer; box-shadow:0 4px 14px rgba(255,102,0,.4); z-index:998; transition:.3s; }
+#topBtn:hover { transform:scale(1.1); }
+
+/* ── FOOTER ── */
+.site-footer { background:#111; color:#ccc; padding:50px 0 20px; }
+.footer-brand { font-size:20px; font-weight:bold; color:#ff9933; margin-bottom:8px; }
+.footer-tagline { font-size:13px; color:#888; line-height:1.6; }
+.footer-heading { font-size:13px; font-weight:700; color:#ff9933; letter-spacing:1px; text-transform:uppercase; margin-bottom:12px; }
+.footer-links { list-style:none; padding:0; margin:0; }
+.footer-links li { margin-bottom:7px; }
+.footer-links a { color:#aaa; text-decoration:none; font-size:13px; transition:.2s; }
+.footer-links a:hover { color:#ff9933; }
+.footer-info p { font-size:13px; color:#aaa; margin-bottom:5px; }
+.footer-bottom { border-top:1px solid #2a2a2a; margin-top:36px; padding-top:16px; text-align:center; font-size:12px; color:#555; }
+</style>
+</head>
 <body>
 
-<!-- ===== NAVBAR (Same in all pages) ===== -->
-<!-- NOTE: Sirf active change hota hai -->
-<nav class="navbar navbar-expand-lg premium-navbar">
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg premium-navbar sticky-top">
   <div class="container">
-
     <a class="navbar-brand d-flex align-items-center" href="index.html">
-      <img src="images/m7.jpg" class="logo-img me-2">
+      <img src="images/m7.jpg" class="logo-img me-2" alt="Mandir Logo">
       <span>श्री सिद्धेश्वर नाथ मंदिर</span>
     </a>
-
-    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="menu">
       <ul class="navbar-nav ms-auto">
-        <li><a class="nav-link" href="index.html">Home</a></li>
-        <li><a class="nav-link" href="about.html">About</a></li>
-        <li><a class="nav-link" href="gallery.html">Gallery</a></li>
-        <li><a class="nav-link active" href="donation.html">Donation</a></li>
-        <li><a class="nav-link" href="committee.html">Committee</a></li>
-        <li><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link active" href="donation.html">Donation</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
       </ul>
     </div>
-
   </div>
 </nav>
 
-<!-- ===== HERO HEADER ===== -->
-<section class="hero d-flex align-items-center text-center text-white" style="height:40vh;">
+<!-- BREADCRUMB -->
+<div class="breadcrumb-strip">
   <div class="container">
-    <h1>Support Our Mandir 🙏</h1>
+    <a href="index.html">Home</a><span> &rsaquo; Donation</span>
+  </div>
+</div>
+
+<!-- HERO (UNCHANGED) -->
+<section class="donation-hero">
+  <div>
+    <div class="hero-badge-donate">॥ दान महापुण्य है ॥</div>
+    <h1>🙏 Support Our Mandir</h1>
+    <p>आपका दान मंदिर के विकास और महाशिवरात्रि महोत्सव में सहयोग करता है</p>
   </div>
 </section>
 
-<!-- ===== DONATION CONTENT ===== -->
-<section class="container mt-5 text-center">
-
-  <p>Your contribution helps temple development and Mahashivratri celebration</p>
-
-  <div class="row mt-4">
-
-    <!-- QR CODE -->
-    <div class="col-md-4">
-      <div class="card p-3 shadow">
-        <h4>Scan & Pay</h4>
-        <img src="images/qr.jpeg" class="img-fluid">
-      </div>
+<!-- PURPOSE SECTION (UNCHANGED) -->
+<section class="purpose-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Your Contribution Matters</div>
+      <h2 class="section-heading">आपका दान <span>कहाँ जाता है?</span></h2>
+      <div class="orange-rule"></div>
     </div>
-
-    <!-- UPI -->
-    <div class="col-md-4">
-      <div class="card p-3 shadow">
-        <h4>UPI ID</h4>
-        <p><b>6202037142-2@ybl</b></p>
-      </div>
+    <div class="row g-3 justify-content-center reveal">
+      <div class="col-6 col-md-3"><div class="purpose-card"><span class="purpose-icon">🛕</span><h5>Temple Repair</h5><p>Building &amp; maintenance of the sacred mandir premises</p></div></div>
+      <div class="col-6 col-md-3"><div class="purpose-card"><span class="purpose-icon">🎉</span><h5>Mahashivratri</h5><p>Grand annual festival — Shiv Baraat, kirtan &amp; puja expenses</p></div></div>
+      <div class="col-6 col-md-3"><div class="purpose-card"><span class="purpose-icon">🪔</span><h5>Daily Puja</h5><p>Flowers, diyas, prasad &amp; daily puja samagri</p></div></div>
+      <div class="col-6 col-md-3"><div class="purpose-card"><span class="purpose-icon">💡</span><h5>Infrastructure</h5><p>Solar lights, facilities &amp; temple development projects</p></div></div>
     </div>
-
-    <!-- BANK -->
-    <div class="col-md-4">
-      <div class="card p-3 shadow">
-        <h4>Bank Details</h4>
-        <p>Account No: 44885405435</p>
-      </div>
-    </div>
-
   </div>
-
 </section>
 
-<!-- ===== FOOTER (Same everywhere) ===== -->
-<footer class="bg-dark text-white text-center p-4 mt-5">
-  <h5>Sidheswar Nath Mandir</h5>
-  <p>📍 Bishoul Tatuar, Darbhanga, Bihar</p>
-  <p>📞 +91 9876543210</p>
-  <a href="https://wa.me/919876543210" class="btn btn-success">WhatsApp</a>
+<!-- AMOUNT SECTION (UNCHANGED) -->
+<section class="amount-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Choose Your Seva</div>
+      <h2 class="section-heading">दान <span>राशि चुनें</span></h2>
+      <div class="orange-rule"></div>
+    </div>
+    <div class="reveal">
+      <div class="amount-grid">
+        <button class="amount-btn" onclick="selectAmount(this,'51')">₹51</button>
+        <button class="amount-btn" onclick="selectAmount(this,'101')">₹101</button>
+        <button class="amount-btn" onclick="selectAmount(this,'251')">₹251</button>
+        <button class="amount-btn" onclick="selectAmount(this,'501')">₹501</button>
+        <button class="amount-btn" onclick="selectAmount(this,'1001')">₹1,001</button>
+        <button class="amount-btn" onclick="selectAmount(this,'2100')">₹2,100</button>
+        <button class="amount-btn" onclick="selectAmount(this,'5100')">₹5,100</button>
+        <button class="amount-btn" onclick="selectAmount(this,'11000')">₹11,000</button>
+      </div>
+      <p class="amount-note" id="amountNote">👆 Select an amount then scan the QR or use the UPI ID below</p>
+    </div>
+  </div>
+</section>
+
+<!-- DONATE CARDS (UNCHANGED) -->
+<section class="donate-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Payment Methods</div>
+      <h2 class="section-heading">दान करें — <span>Donate Now</span></h2>
+      <div class="orange-rule"></div>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-4 reveal">
+        <div class="donate-card text-center">
+          <span class="donate-card-icon">📱</span>
+          <h4>Scan &amp; Pay</h4>
+          <p class="sub">Open any UPI app and scan this QR code</p>
+          <img src="images/qr.jpeg" class="qr-img" alt="UPI QR Code">
+          <p style="margin-top:12px;font-size:12px;color:#aaa;">Works with PhonePe, GPay, Paytm &amp; all UPI apps</p>
+        </div>
+      </div>
+      <div class="col-md-4 reveal">
+        <div class="donate-card">
+          <span class="donate-card-icon">💳</span>
+          <h4>UPI ID</h4>
+          <p class="sub">Copy and paste in any UPI payment app</p>
+          <div class="upi-box" id="upiId">6202037142-2@ybl</div>
+          <button class="copy-btn" onclick="copyUPI()">📋 Copy UPI ID</button>
+          <p style="margin-top:16px;font-size:12px;color:#aaa;text-align:center;">After paying, please WhatsApp us the screenshot</p>
+        </div>
+      </div>
+      <div class="col-md-4 reveal">
+        <div class="donate-card">
+          <span class="donate-card-icon">🏦</span>
+          <h4>Bank Transfer</h4>
+          <p class="sub">For larger donations via NEFT / IMPS</p>
+          <table class="bank-table">
+            <tr><td>Account Name</td><td>Sidheswar Nath Mandir</td></tr>
+            <tr><td>Account No.</td><td>44885405435</td></tr>
+            <tr><td>Bank</td><td>— add bank name —</td></tr>
+            <tr><td>IFSC Code</td><td>— add IFSC —</td></tr>
+            <tr><td>Branch</td><td>— add branch —</td></tr>
+            <tr><td>Account Type</td><td>Savings</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST SECTION (UNCHANGED) -->
+<section class="trust-section">
+  <div class="container">
+    <div class="row justify-content-center reveal">
+      <div class="col-md-9">
+        <div class="trust-banner">
+          <h5>🔒 पारदर्शिता का वचन — Our Promise of Transparency</h5>
+          <p>बाबा सिद्धेश्वर नाथ मंदिर ट्रस्ट आपके हर दान का सदुपयोग करने के लिए प्रतिबद्ध है। All donations are used solely for temple development, religious activities, and community welfare.</p>
+          <ul class="trust-points">
+            <li>Every rupee goes directly to the temple trust</li>
+            <li>Used for daily puja, festivals &amp; building maintenance</li>
+            <li>No middlemen — direct community managed fund</li>
+            <li>For any questions, contact us on WhatsApp</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     NEW: VIEW CONTRIBUTION RECORD
+     ════════════════════════════════════ -->
+<section class="record-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Secure Member Portal</div>
+      <h2 class="section-heading">अपना <span>Contribution Record</span> देखें</h2>
+      <div class="orange-rule"></div>
+      <p style="color:#666;font-size:15px;max-width:520px;margin:0 auto 32px;">
+        View your personal donation history and seva contributions.<br>
+        Your records are private — only you can see your own data.
+      </p>
+    </div>
+    <div class="text-center reveal">
+      <button class="record-entry-btn" onclick="openCRModal()">
+        <span class="btn-icon">📋</span>
+        <span>View My Contribution Record</span>
+      </button>
+      <p style="font-size:12px;color:#aaa;margin-top:14px;">🔒 Secure · Private · Your data only</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHATSAPP CTA (UNCHANGED) -->
+<section class="wacta-section">
+  <div class="container reveal">
+    <h2>दान के बाद स्क्रीनशॉट भेजें 📲</h2>
+    <p>After donating, share your payment screenshot on WhatsApp so we can acknowledge your seva</p>
+    <div class="d-flex gap-3 justify-content-center flex-wrap">
+      <a href="https://wa.me/919876543210?text=Jai%20Baba%20Sidheswar%20Nath!%20I%20have%20made%20a%20donation%20to%20the%20mandir." class="btn-primary-orange" target="_blank">📲 Send Receipt on WhatsApp</a>
+      <a href="contact.html" class="btn-outline-white">✉️ Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="footer-brand">श्री सिद्धेश्वर नाथ मंदिर</div>
+        <p class="footer-tagline">Ancient Siddha Peeth of Mithila, Darbhanga, Bihar.<br>Est. Shaka 1763 by Pt. Sidheshwar Nath Mishra.</p>
+      </div>
+      <div class="col-md-2">
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="donation.html">Donation</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <div class="footer-heading">Contact</div>
+        <div class="footer-info">
+          <p>📍 Bishoul Tatuar, Darbhanga, Bihar</p>
+          <p>📞 +91 98765 43210</p>
+          <p>📧 mandir@gmail.com</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="footer-heading">Puja Timings</div>
+        <div class="footer-info">
+          <p>🌅 Morning Puja — 6:00 AM</p>
+          <p>🌇 Evening Aarti — 7:00 PM</p>
+          <p>🌙 Shayan Aarti — 9:00 PM</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2025 श्री सिद्धेश्वर नाथ मंदिर, Bishoul Tatuar, Darbhanga, Bihar. All rights reserved.</div>
+  </div>
 </footer>
+
+<!-- ══════════════════════════════════════════
+     CONTRIBUTION RECORD MODAL
+     ══════════════════════════════════════════ -->
+<div class="cr-overlay" id="crOverlay" onclick="closeCROnBg(event)">
+  <div class="cr-modal" id="crModal">
+
+    <!-- Modal Header -->
+    <div class="cr-modal-header">
+      <button class="cr-modal-close" onclick="closeCRModal()">&#x2715;</button>
+      <h4>📋 Contribution Record Portal</h4>
+      <p>Verify your identity to view your personal records</p>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="cr-modal-body">
+
+      <!-- Step Indicator -->
+      <div class="cr-steps">
+        <div class="cr-step active" id="step-dot-1">
+          <div class="cr-step-num">1</div>
+          <div class="cr-step-label">Email</div>
+        </div>
+        <div class="cr-step-line" id="line-1"></div>
+        <div class="cr-step" id="step-dot-2">
+          <div class="cr-step-num">2</div>
+          <div class="cr-step-label">Verify OTP</div>
+        </div>
+        <div class="cr-step-line" id="line-2"></div>
+        <div class="cr-step" id="step-dot-3">
+          <div class="cr-step-num">3</div>
+          <div class="cr-step-label">Records</div>
+        </div>
+      </div>
+
+      <!-- PANEL 1: Email Entry -->
+      <div class="cr-panel active" id="cr-panel-1">
+        <label class="cr-label">Enter your Email Address</label>
+        <input type="email" class="cr-input" id="cr-email" placeholder="yourname@gmail.com" oninput="clearStatus()">
+        <div class="cr-status" id="email-status"></div>
+        <button class="cr-btn" id="cr-send-otp-btn" onclick="sendOTP()">Send OTP to Email →</button>
+        <p class="cr-hint">We'll send a one-time code to your email.<br>Your email must be registered in our records.</p>
+      </div>
+
+      <!-- PANEL 2: OTP Verification -->
+      <div class="cr-panel" id="cr-panel-2">
+        <p style="font-size:14px;color:#555;margin-bottom:16px;text-align:center;">
+          A 6-digit OTP has been sent to<br>
+          <strong id="cr-email-show" style="color:#ff6600;"></strong>
+        </p>
+        <label class="cr-label" style="text-align:center;display:block;">Enter 6-digit OTP</label>
+        <div class="otp-wrap">
+          <input class="otp-box" maxlength="1" id="otp0" oninput="otpNext(this,1)" onkeydown="otpBack(this,event,-1)">
+          <input class="otp-box" maxlength="1" id="otp1" oninput="otpNext(this,2)" onkeydown="otpBack(this,event,0)">
+          <input class="otp-box" maxlength="1" id="otp2" oninput="otpNext(this,3)" onkeydown="otpBack(this,event,1)">
+          <input class="otp-box" maxlength="1" id="otp3" oninput="otpNext(this,4)" onkeydown="otpBack(this,event,2)">
+          <input class="otp-box" maxlength="1" id="otp4" oninput="otpNext(this,5)" onkeydown="otpBack(this,event,3)">
+          <input class="otp-box" maxlength="1" id="otp5" oninput="otpNext(this,6)" onkeydown="otpBack(this,event,4)">
+        </div>
+        <div class="cr-status" id="otp-status"></div>
+        <button class="cr-btn" onclick="verifyOTP()">Verify OTP &amp; View Records →</button>
+        <div class="resend-wrap">
+          <button class="resend-btn" id="resendBtn" onclick="resendOTP()" disabled>Resend OTP</button>
+          <span id="resendTimer"> (wait 60s)</span>
+        </div>
+        <p class="cr-hint" style="margin-top:10px;">Check your spam/junk folder if OTP not received.</p>
+      </div>
+
+      <!-- PANEL 3: Records View -->
+      <div class="cr-panel" id="cr-panel-3">
+        <div class="records-wrap">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
+            <div class="records-greeting">
+              Welcome, <span id="rec-name">Member</span>
+              <span id="admin-badge-wrap"></span>
+            </div>
+            <button class="cr-logout" onclick="logoutCR()">🚪 Logout</button>
+          </div>
+          <div class="records-summary" id="rec-summary"></div>
+          <div class="records-table-wrap">
+            <table class="records-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Date</th>
+                  <th>Member Name</th>
+                  <th>Type</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="rec-tbody"></tbody>
+            </table>
+          </div>
+          <p style="font-size:11px;color:#aaa;margin-top:12px;text-align:center;">
+            🔒 Showing only your personal records. Data is fetched live from our official records.
+          </p>
+        </div>
+      </div>
+
+    </div><!-- /modal-body -->
+  </div><!-- /modal -->
+</div><!-- /overlay -->
+
+<!-- COPY TOAST -->
+<div class="copy-toast" id="copyToast">✅ UPI ID Copied!</div>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank">💬</a>
+
+<!-- SCROLL TOP -->
+<button onclick="scrollToTop()" id="topBtn">&#x2191;</button>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- ===== ANIMATION FIX SCRIPT ===== -->
-<script>
-window.addEventListener("load", () => {
-  const elements = document.querySelectorAll(".fade-in");
-
-  elements.forEach(el => {
-    el.classList.add("show");
-  });
-});
-</script>
-
-<!-- ===== SCROLL TO TOP BUTTON ===== -->
-<button onclick="scrollToTop()" id="topBtn">⬆️</button>
+<!-- EmailJS SDK (free OTP sending) -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script>
-let btn = document.getElementById("topBtn");
+/* ══════════════════════════════════════════════════════
+   CONFIGURATION — EDIT THESE VALUES
+   ══════════════════════════════════════════════════════ */
+const CONFIG = {
+  // ── EmailJS (free at emailjs.com) ──
+  EMAILJS_PUBLIC_KEY  : "CI8Y_uWMCPboRjaM1",   // paste from EmailJS dashboard
+  EMAILJS_SERVICE_ID  : "service_2xondwq",           // e.g. "service_abc123"
+  EMAILJS_TEMPLATE_ID : "template_enhjopq",          // e.g. "template_xyz789"
 
-window.onscroll = function() {
-  btn.style.display = window.scrollY > 200 ? "block" : "none";
+  // ── Google Sheet CSV URL ──
+  // Steps: In your Google Sheet → File → Share → Publish to web
+  //        Choose "CSV" format for Sheet1 → Copy the link
+  SHEET_CSV_URL : "https://docs.google.com/spreadsheets/d/e/2PACX-1vTtDEIc3fq76YEp_eVN_BDqwOXPKAmtFyzTxbrTsB8fjjJIUOQzMejMmWmOk2RtfWc1SPbNmdtZnHvE/pub?output=csv",
+
+  // ── Column indices in your Google Sheet (0-based) ──
+  // Open your sheet, count columns from left starting at 0
+  // CHANGE these numbers to match YOUR sheet columns
+  COL_EMAIL  : 5,   // column F = index 5 (where member email is stored)
+  COL_NAME   : 1,   // column B = index 1 (member name)
+  COL_DATE   : 0,   // column A = index 0 (date)
+  COL_TYPE   : 2,   // column C = index 2 (donation type / category)
+  COL_AMOUNT : 3,   // column D = index 3 (amount)
+  COL_STATUS : 4,   // column E = index 4 (paid/pending)
+
+  // ── Admin emails (can see ALL records) ──
+  ADMIN_EMAILS : [
+    "admin@mandir.com",          // replace with real admin email
+    "committee@mandir.com"       // add more if needed
+  ],
+
+  // ── Header rows to skip (rows that are titles, not data) ──
+  HEADER_ROWS : 2   // skip first 2 rows (title + column headers)
 };
 
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-</script>
+/* ══════════════════════════════════════════════════════
+   STATE
+   ══════════════════════════════════════════════════════ */
+let generatedOTP   = "";
+let verifiedEmail  = "";
+let resendInterval = null;
 
+/* ══════════════════════════════════════════════════════
+   MODAL OPEN / CLOSE
+   ══════════════════════════════════════════════════════ */
+function openCRModal() {
+  document.getElementById('crOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  resetToStep1();
+}
+
+function closeCRModal() {
+  document.getElementById('crOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeCROnBg(e) {
+  if (e.target.id === 'crOverlay') closeCRModal();
+}
+
+/* ══════════════════════════════════════════════════════
+   STEP NAVIGATION
+   ══════════════════════════════════════════════════════ */
+function goToStep(n) {
+  // panels
+  document.querySelectorAll('.cr-panel').forEach((p,i) => {
+    p.classList.toggle('active', i + 1 === n);
+  });
+  // step dots
+  for (let i = 1; i <= 3; i++) {
+    const dot = document.getElementById('step-dot-' + i);
+    dot.classList.remove('active','done');
+    if (i < n)  dot.classList.add('done');
+    if (i === n) dot.classList.add('active');
+  }
+  // lines
+  for (let i = 1; i <= 2; i++) {
+    const line = document.getElementById('line-' + i);
+    line.classList.toggle('done', i < n);
+  }
+}
+
+function resetToStep1() {
+  document.getElementById('cr-email').value = '';
+  document.getElementById('email-status').className = 'cr-status';
+  document.getElementById('email-status').textContent = '';
+  for (let i = 0; i < 6; i++) document.getElementById('otp' + i).value = '';
+  goToStep(1);
+  generatedOTP = '';
+  verifiedEmail = '';
+  clearResendTimer();
+}
+
+/* ══════════════════════════════════════════════════════
+   STEP 1 — SEND OTP
+   ══════════════════════════════════════════════════════ */
+async function sendOTP() {
+  const email = document.getElementById('cr-email').value.trim().toLowerCase();
+  const btn   = document.getElementById('cr-send-otp-btn');
+  const status = document.getElementById('email-status');
+
+  // basic validation
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showStatus('email-status', 'error', '⚠️ Please enter a valid email address.');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = '⏳ Checking records…';
+  showStatus('email-status', 'info', '🔍 Checking if your email is in our records…');
+
+  try {
+    // Fetch sheet data
+    const rows = await fetchSheetData();
+
+    // Check if email exists in sheet (or is admin)
+    const isAdmin  = CONFIG.ADMIN_EMAILS.includes(email);
+    const userRows = rows.filter(r => {
+      const cellEmail = (r[CONFIG.COL_EMAIL] || '').trim().toLowerCase();
+      return cellEmail === email;
+    });
+
+    if (!isAdmin && userRows.length === 0) {
+      showStatus('email-status', 'error',
+        '❌ This email is not found in our records. Please use the email registered with your contribution, or contact us on WhatsApp.');
+      btn.disabled = false;
+      btn.textContent = 'Send OTP to Email →';
+      return;
+    }
+
+    // Generate OTP
+    generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+
+    // Send OTP via EmailJS
+    await emailjs.init(CONFIG.EMAILJS_PUBLIC_KEY);
+    await emailjs.send(CONFIG.EMAILJS_SERVICE_ID, CONFIG.EMAILJS_TEMPLATE_ID, {
+      to_email  : email,
+      otp_code  : generatedOTP,
+      mandir    : "श्री सिद्धेश्वर नाथ मंदिर"
+    });
+
+    verifiedEmail = email;
+    document.getElementById('cr-email-show').textContent = email;
+    showStatus('email-status', 'success', '✅ OTP sent! Check your email inbox.');
+    startResendTimer();
+    goToStep(2);
+
+  } catch (err) {
+    console.error(err);
+    showStatus('email-status', 'error',
+      '⚠️ Could not send OTP. Please check your internet connection or try again.');
+    btn.disabled = false;
+    btn.textContent = 'Send OTP to Email →';
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Send OTP to Email →';
+}
+
+/* ══════════════════════════════════════════════════════
+   STEP 2 — VERIFY OTP
+   ══════════════════════════════════════════════════════ */
+function verifyOTP() {
+  const entered = [0,1,2,3,4,5].map(i => document.getElementById('otp'+i).value).join('');
+
+  if (entered.length < 6) {
+    showStatus('otp-status','error','⚠️ Please enter all 6 digits of the OTP.');
+    return;
+  }
+
+  if (entered !== generatedOTP) {
+    showStatus('otp-status','error','❌ Incorrect OTP. Please try again or resend.');
+    return;
+  }
+
+  showStatus('otp-status','success','✅ OTP verified! Loading your records…');
+  clearResendTimer();
+  setTimeout(() => loadRecords(), 800);
+}
+
+/* ══════════════════════════════════════════════════════
+   STEP 3 — LOAD RECORDS
+   ══════════════════════════════════════════════════════ */
+async function loadRecords() {
+  goToStep(3);
+  const tbody   = document.getElementById('rec-tbody');
+  const summary = document.getElementById('rec-summary');
+  tbody.innerHTML   = '<tr><td colspan="6" class="no-records"><span class="no-icon">⏳</span>Loading your records…</td></tr>';
+  summary.innerHTML = '';
+
+  try {
+    const rows     = await fetchSheetData();
+    const isAdmin  = CONFIG.ADMIN_EMAILS.includes(verifiedEmail);
+    const email    = verifiedEmail;
+
+    // Filter rows
+    let myRows = isAdmin ? rows : rows.filter(r =>
+      (r[CONFIG.COL_EMAIL] || '').trim().toLowerCase() === email
+    );
+
+    // Name for greeting
+    const firstName = myRows.length > 0
+      ? (myRows[0][CONFIG.COL_NAME] || 'Member').split(' ')[0]
+      : 'Member';
+    document.getElementById('rec-name').textContent = firstName;
+
+    // Admin badge
+    document.getElementById('admin-badge-wrap').innerHTML = isAdmin
+      ? '<span class="admin-badge">👑 Admin</span>' : '';
+
+    // Summary chips
+    const total = myRows.reduce((s, r) => s + (parseFloat((r[CONFIG.COL_AMOUNT]||'0').replace(/[^0-9.]/g,''))||0), 0);
+    summary.innerHTML = `
+      <div class="summary-chip"><span class="chip-num">${myRows.length}</span><span class="chip-lbl">Total Entries</span></div>
+      <div class="summary-chip"><span class="chip-num">₹${total.toLocaleString('en-IN')}</span><span class="chip-lbl">Total Contributed</span></div>
+      ${isAdmin ? '<div class="summary-chip" style="background:linear-gradient(135deg,#7b1fa2,#4a148c)"><span class="chip-num">ALL</span><span class="chip-lbl">Admin View</span></div>' : ''}
+    `;
+
+    // Rows
+    if (myRows.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="6" class="no-records"><span class="no-icon">📭</span>No contribution records found for your email.<br>If you believe this is a mistake, contact us on WhatsApp.</td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = myRows.map((r, i) => {
+      const status = (r[CONFIG.COL_STATUS] || '').trim();
+      const badge  = status.toLowerCase().includes('paid') || status.toLowerCase().includes('complete')
+        ? `<span class="badge-paid">✅ Paid</span>`
+        : status ? `<span class="badge-pending">${status}</span>` : '—';
+      return `
+        <tr>
+          <td>${i+1}</td>
+          <td>${r[CONFIG.COL_DATE] || '—'}</td>
+          <td>${r[CONFIG.COL_NAME] || '—'}</td>
+          <td>${r[CONFIG.COL_TYPE] || '—'}</td>
+          <td><strong>₹${(r[CONFIG.COL_AMOUNT]||'—')}</strong></td>
+          <td>${badge}</td>
+        </tr>`;
+    }).join('');
+
+  } catch (err) {
+    console.error(err);
+    tbody.innerHTML = `<tr><td colspan="6" class="no-records"><span class="no-icon">⚠️</span>Could not load records. Please try again later.</td></tr>`;
+  }
+}
+
+/* ══════════════════════════════════════════════════════
+   FETCH GOOGLE SHEET DATA
+   ══════════════════════════════════════════════════════ */
+async function fetchSheetData() {
+  const res  = await fetch(CONFIG.SHEET_CSV_URL + '&t=' + Date.now()); // cache-bust
+  const text = await res.text();
+  const rows = parseCSV(text);
+  return rows.slice(CONFIG.HEADER_ROWS); // skip header rows
+}
+
+/* Simple CSV parser (handles quoted fields) */
+function parseCSV(text) {
+  return text.trim().split('\n').map(line => {
+    const cells = []; let cur = ''; let inQ = false;
+    for (let c of line) {
+      if (c === '"') { inQ = !inQ; }
+      else if (c === ',' && !inQ) { cells.push(cur.trim()); cur = ''; }
+      else { cur += c; }
+    }
+    cells.push(cur.trim());
+    return cells;
+  });
+}
+
+/* ══════════════════════════════════════════════════════
+   OTP BOX HELPERS
+   ══════════════════════════════════════════════════════ */
+function otpNext(el, next) {
+  if (el.value && next <= 5) document.getElementById('otp'+next).focus();
+}
+function otpBack(el, e, prev) {
+  if (e.key === 'Backspace' && !el.value && prev >= 0) document.getElementById('otp'+prev).focus();
+}
+
+/* ══════════════════════════════════════════════════════
+   RESEND TIMER
+   ══════════════════════════════════════════════════════ */
+function startResendTimer() {
+  let secs = 60;
+  document.getElementById('resendBtn').disabled = true;
+  document.getElementById('resendTimer').textContent = ` (wait ${secs}s)`;
+  clearResendTimer();
+  resendInterval = setInterval(() => {
+    secs--;
+    if (secs <= 0) {
+      clearResendTimer();
+      document.getElementById('resendBtn').disabled = false;
+      document.getElementById('resendTimer').textContent = '';
+    } else {
+      document.getElementById('resendTimer').textContent = ` (wait ${secs}s)`;
+    }
+  }, 1000);
+}
+
+function clearResendTimer() {
+  if (resendInterval) { clearInterval(resendInterval); resendInterval = null; }
+  document.getElementById('resendTimer').textContent = '';
+}
+
+async function resendOTP() {
+  generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+  try {
+    await emailjs.send(CONFIG.EMAILJS_SERVICE_ID, CONFIG.EMAILJS_TEMPLATE_ID, {
+      to_email : verifiedEmail,
+      otp_code : generatedOTP,
+      mandir   : "श्री सिद्धेश्वर नाथ मंदिर"
+    });
+    showStatus('otp-status','success','✅ New OTP sent!');
+    startResendTimer();
+    for (let i=0;i<6;i++) document.getElementById('otp'+i).value='';
+    document.getElementById('otp0').focus();
+  } catch(e) {
+    showStatus('otp-status','error','⚠️ Could not resend OTP. Try again.');
+  }
+}
+
+/* ══════════════════════════════════════════════════════
+   HELPERS
+   ══════════════════════════════════════════════════════ */
+function showStatus(id, type, msg) {
+  const el = document.getElementById(id);
+  el.className = 'cr-status ' + type;
+  el.textContent = msg;
+}
+
+function clearStatus() {
+  const el = document.getElementById('email-status');
+  el.className = 'cr-status';
+  el.textContent = '';
+}
+
+function logoutCR() {
+  verifiedEmail = '';
+  generatedOTP  = '';
+  clearResendTimer();
+  resetToStep1();
+}
+
+/* ══════════════════════════════════════════════════════
+   EXISTING FEATURES (UNCHANGED)
+   ══════════════════════════════════════════════════════ */
+function copyUPI() {
+  navigator.clipboard.writeText(document.getElementById('upiId').innerText.trim()).then(() => {
+    const t = document.getElementById('copyToast');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2500);
+  });
+}
+
+function selectAmount(el, amount) {
+  document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('amountNote').textContent = '✅ Amount selected: ₹' + amount + ' — Now scan the QR or use UPI ID below';
+}
+
+/* SCROLL REVEAL */
+const revealEls = document.querySelectorAll('.reveal');
+const observer  = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+revealEls.forEach(el => observer.observe(el));
+
+/* SCROLL TOP */
+const topBtn = document.getElementById('topBtn');
+window.addEventListener('scroll', () => { topBtn.style.display = window.scrollY > 250 ? 'block' : 'none'; });
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+/* KEYBOARD close modal */
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCRModal(); });
+</script>
 </body>
 </html>

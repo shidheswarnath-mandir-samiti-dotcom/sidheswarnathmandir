@@ -1,238 +1,944 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>श्री सिद्धेश्वर नाथ मंदिर — Bishoul Tatuar, Darbhanga</title>
 
+<!-- SEO Meta Tags -->
+<meta name="description" content="Baba Sidheswar Nath Mandir, Bishoul Tatuar, Darbhanga, Bihar — Ancient Shiv temple of Mithila. Daily puja, Mahashivratri, donations.">
+<meta name="keywords" content="Sidheswar Nath Mandir, Darbhanga temple, Bihar mandir, Mithila shiv temple, Bishoul">
 
-<title>Sidheswar Nath Mandir</title>
-
-<!-- Bootstrap -->
+<!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <!-- Custom CSS -->
 <link rel="stylesheet" href="style.css">
+
+<style>
+/* ============================
+   HOME PAGE — EXTRA STYLES
+   ============================ */
+
+/* FONT */
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+}
+
+h1, h2, .devanagari {
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+}
+
+/* ===== HERO ===== */
+.hero-section {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+              url("images/maha.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,153,51,0.25);
+  border: 1px solid rgba(255,153,51,0.6);
+  color: #ffcc88;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 18px;
+  border-radius: 30px;
+  margin-bottom: 18px;
+}
+
+.hero-title {
+  font-size: clamp(32px, 6vw, 68px);
+  font-weight: bold;
+  line-height: 1.2;
+  text-shadow: 0 3px 20px rgba(0,0,0,0.7);
+  animation: heroSlideDown 1s ease both;
+}
+
+.hero-sub {
+  font-size: clamp(15px, 2.5vw, 20px);
+  opacity: 0.88;
+  margin-top: 10px;
+  animation: heroFadeIn 1.5s ease both;
+  color: white;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #ff9933, #ffcc00);
+  margin: 18px auto;
+  border-radius: 10px;
+}
+
+.hero-buttons {
+  margin-top: 28px;
+  animation: heroFadeIn 2s ease both;
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-hero-primary {
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  color: white;
+  border: none;
+  padding: 13px 32px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.btn-hero-primary:hover {
+  transform: scale(1.06);
+  color: white;
+  box-shadow: 0 6px 20px rgba(255,102,0,0.5);
+}
+
+.btn-hero-outline {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 11px 28px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.btn-hero-outline:hover {
+  background: white;
+  color: #ff6600;
+}
+
+/* scroll indicator */
+.scroll-hint {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.6);
+  font-size: 22px;
+  animation: bounce 1.6s infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+@keyframes heroSlideDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .hero-section { background-attachment: scroll; min-height: 100svh; }
+}
+
+/* ===== STATS STRIP ===== */
+.stats-strip {
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  padding: 18px 0;
+  color: white;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 6px 0;
+}
+
+.stat-number {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 12px;
+  opacity: 0.88;
+  letter-spacing: 0.5px;
+  margin-top: 3px;
+}
+
+/* ===== SECTION SHARED ===== */
+.section-eyebrow {
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #ff6600;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.section-heading {
+  font-size: clamp(22px, 3.5vw, 34px);
+  font-weight: bold;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+}
+
+.section-heading span {
+  color: #ff6600;
+}
+
+.orange-rule {
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  border-radius: 10px;
+  margin: 0 auto 36px;
+}
+
+/* ===== ABOUT STRIP ===== */
+.about-strip {
+  background: #fffaf4;
+  padding: 70px 0;
+}
+
+.about-img-wrap {
+  position: relative;
+}
+
+.about-img-wrap img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+
+.about-img-badge {
+  position: absolute;
+  bottom: -18px;
+  right: -12px;
+  background: linear-gradient(135deg, #ff9933, #ff6600);
+  color: white;
+  border-radius: 14px;
+  padding: 12px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 6px 20px rgba(255,102,0,0.4);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.about-text p {
+  font-size: 16px;
+  line-height: 1.85;
+  color: #444;
+  margin-bottom: 16px;
+}
+
+/* lang dropdown (unchanged from your code) */
+.lang-dropdown { position: relative; display: inline-block; }
+.lang-toggle {
+  background: #fff; border: 2px solid #ff9933;
+  padding: 7px 14px; border-radius: 20px;
+  font-size: 14px; cursor: pointer; font-weight: 600; color: #ff6600;
+  transition: 0.2s;
+}
+.lang-toggle:hover { background: #ff9933; color: white; }
+.lang-menu {
+  position: absolute; top: 42px; left: 0;
+  background: white; border-radius: 12px;
+  overflow: hidden; display: none; min-width: 130px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.18); z-index: 100;
+}
+.lang-menu div { padding: 10px 16px; cursor: pointer; font-size: 14px; transition: 0.2s; }
+.lang-menu div:hover { background: #ff9933; color: white; }
+.lang-dropdown.active .lang-menu { display: block; }
+
+/* ===== HIGHLIGHTS (Features) ===== */
+.highlights-section {
+  padding: 70px 0;
+  background: white;
+}
+
+.highlight-card {
+  border: none;
+  border-radius: 18px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  transition: 0.35s;
+  height: 100%;
+  background: white;
+}
+
+.highlight-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 14px 40px rgba(255,102,0,0.15);
+}
+
+.highlight-icon {
+  font-size: 44px;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.highlight-card h5 {
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.highlight-card p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ===== PUJA TIMINGS ===== */
+.timings-section {
+  padding: 70px 0;
+  background: linear-gradient(135deg, #fff5e6, #ffe8cc);
+}
+
+.timing-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+}
+
+.timing-table th {
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  color: white;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.timing-table th:first-child { border-radius: 10px 0 0 10px; }
+.timing-table th:last-child  { border-radius: 0 10px 10px 0; }
+
+.timing-table td {
+  background: white;
+  padding: 12px 18px;
+  font-size: 14px;
+  color: #333;
+}
+
+.timing-table tr td:first-child { border-radius: 10px 0 0 10px; font-weight: 600; }
+.timing-table tr td:last-child  { border-radius: 0 10px 10px 0; color: #ff6600; font-weight: 600; }
+
+/* ===== GALLERY PREVIEW ===== */
+.gallery-section {
+  padding: 70px 0;
+  background: white;
+}
+
+.gallery-thumb {
+  width: 100%;
+  border-radius: 14px;
+  object-fit: cover;
+  height: 200px;
+  transition: 0.35s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.gallery-thumb:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.gallery-item {
+  overflow: hidden;
+  border-radius: 14px;
+  margin-bottom: 16px;
+}
+
+/* ===== DONATION CTA ===== */
+.donation-cta {
+  padding: 70px 0;
+  background: linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.72)),
+              url("images/m1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  text-align: center;
+  color: white;
+}
+
+.donation-cta h2 {
+  font-size: clamp(24px, 4vw, 42px);
+  font-weight: bold;
+  margin-bottom: 14px;
+}
+
+.donation-cta p {
+  font-size: 17px;
+  opacity: 0.85;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 768px) {
+  .donation-cta { background-attachment: scroll; }
+}
+
+/* ===== EVENTS TICKER ===== */
+.events-ticker {
+  background: #1a1a1a;
+  color: white;
+  padding: 10px 0;
+  overflow: hidden;
+}
+
+.ticker-inner {
+  display: flex;
+  gap: 60px;
+  animation: ticker 22s linear infinite;
+  white-space: nowrap;
+}
+
+.ticker-inner span {
+  font-size: 14px;
+  opacity: 0.88;
+}
+
+.ticker-inner span::before {
+  content: "🔔 ";
+}
+
+@keyframes ticker {
+  from { transform: translateX(100vw); }
+  to   { transform: translateX(-100%); }
+}
+
+/* ===== WHATSAPP FLOAT ===== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  background: #25d366;
+  color: white;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(37,211,102,0.5);
+  z-index: 999;
+  transition: 0.3s;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.12);
+  color: white;
+}
+
+/* ===== FOOTER ===== */
+.site-footer {
+  background: #111;
+  color: #ccc;
+  padding: 50px 0 20px;
+}
+
+.footer-brand {
+  font-size: 22px;
+  font-weight: bold;
+  color: #ff9933;
+  margin-bottom: 8px;
+}
+
+.footer-tagline {
+  font-size: 13px;
+  color: #888;
+  line-height: 1.6;
+}
+
+.footer-heading {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ff9933;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li { margin-bottom: 8px; }
+.footer-links a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.2s;
+}
+.footer-links a:hover { color: #ff9933; }
+
+.footer-info p {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 6px;
+}
+
+.footer-bottom {
+  border-top: 1px solid #2a2a2a;
+  margin-top: 36px;
+  padding-top: 18px;
+  text-align: center;
+  font-size: 12px;
+  color: #555;
+}
+
+/* ===== SCROLL TOP ===== */
+#topBtn {
+  position: fixed;
+  bottom: 84px;
+  right: 22px;
+  display: none;
+  background: linear-gradient(135deg, #ff9933, #ff6600);
+  color: white;
+  border: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(255,102,0,0.4);
+  z-index: 998;
+  transition: 0.3s;
+}
+#topBtn:hover { transform: scale(1.1); }
+
+/* ===== SCROLL REVEAL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
 </head>
 
 <body>
 
+<!-- ===== EVENTS TICKER ===== -->
+<div class="events-ticker">
+  <div class="ticker-inner">
+    <span>Mahashivratri 2025 — Grand Celebration at Sidheswar Nath Mandir</span>
+    <span>Daily Puja: Morning 6:00 AM &amp; Evening 7:00 PM</span>
+    <span>Contribute to the temple development — Donate Now</span>
+    <span>Bishaul Tatuar, Darbhanga, Bihar — Visit Us</span>
+    <span>Mahashivratri 2025 — Grand Celebration at Sidheswar Nath Mandir</span>
+    <span>Daily Puja: Morning 6:00 AM &amp; Evening 7:00 PM</span>
+  </div>
+</div>
+
 <!-- ===== NAVBAR ===== -->
-<nav class="navbar navbar-expand-lg premium-navbar">
+<nav class="navbar navbar-expand-lg premium-navbar sticky-top">
   <div class="container">
 
     <a class="navbar-brand d-flex align-items-center" href="index.html">
-      <img src="images/m7.jpg" class="logo-img me-2">
+      <img src="images/m7.jpg" class="logo-img me-2" alt="Mandir Logo">
       <span>श्री सिद्धेश्वर नाथ मंदिर</span>
     </a>
 
-    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+    <button class="navbar-toggler" type="button"
+      data-bs-toggle="collapse" data-bs-target="#menu"
+      aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="menu">
       <ul class="navbar-nav ms-auto">
-        <li><a class="nav-link active" href="index.html">Home</a></li>
-        <li><a class="nav-link" href="about.html">About</a></li>
-        <li><a class="nav-link" href="gallery.html">Gallery</a></li>
-        <li><a class="nav-link" href="donation.html">Donation</a></li>
-        <li><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="donation.html">Donation</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
       </ul>
     </div>
 
   </div>
-  
 </nav>
-<!-- ===== HERO SECTION ===== -->
-<section class="hero-section text-center text-white">
-  <div class="container">
-    <h1>
-  <span class="lang-en">सिद्धेश्वर नाथ मंदिर</span>
-  
-</h1>
-    <p>
-  <span class="lang-en">बिशौल टटुआर, दरभंगा, बिहार</span>
 
-</p>
-    <a href="donation.html" class="btn btn-warning mt-3">Explore</a>
+<!-- ===== HERO ===== -->
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-badge">॥ हर हर महादेव ॥</div>
+    <h1 class="hero-title">श्री सिद्धेश्वर नाथ मंदिर</h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">बिशौल टटुआर, दरभंगा, बिहार — मिथिला का प्राचीन सिद्धपीठ</p>
+    <div class="hero-buttons">
+      <a href="about.html" class="btn-hero-primary">मंदिर के बारे में जानें</a>
+      <a href="donation.html" class="btn-hero-outline">दान करें 🙏</a>
+    </div>
   </div>
+  <div class="scroll-hint">↓</div>
 </section>
 
-<!-- ===== ABOUT PREVIEW (HOME PAGE) ===== -->
-<!-- ===== PREMIUM ABOUT PREVIEW ===== -->
-<section class="container mt-5 fade-in">
-
-  <div class="row align-items-center">
-
-    <!-- LEFT SIDE TEXT -->
-    <div class="col-md-6 text-start">
-
-      <h2 class="about-title">एक विद्वत् शैली में संक्षिप्त प्रस्तुति</h2>
-
-      <p class="about-short">
-        बाबा सिद्धेश्वर नाथ मंदिर मिथिला क्षेत्र के दरभंगा जिले के विशौल (बिशौल टटुआर) गांव में स्थित एक प्राचीन एवं पवित्र शिव मंदिर है। यह सिद्धपीठ अपनी आध्यात्मिक महिमा और मनोकामना पूर्ति के लिए प्रसिद्ध है, जिसकी स्थापना महान शिवभक्त पंडित श्री सिद्धेश्वर नाथ मिश्र द्वारा की गई थी।
-      </p>
-
-
-      <!-- BUTTONS -->
-      <div class="d-flex gap-3 mt-3 flex-wrap">
-
-        <!-- Read More -->
-  <a href="about.html" class="btn btn-warning">
-    Read More
-  </a>
-
-        <!-- SMALL LANGUAGE BUTTON -->
-  <div class="lang-dropdown">
-
-    <button class="lang-toggle">
-      🌍▼
-    </button>
-
-
-           <div class="lang-menu">
-      <div onclick="goToAbout('english')">English</div>
-      <div onclick="goToAbout('hindi')">हिंदी</div>
-      <div onclick="goToAbout('maithili')">मैथिली</div>
+<!-- ===== STATS STRIP ===== -->
+<div class="stats-strip">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-6 col-md-3">
+        <div class="stat-item">
+          <div class="stat-number">263+</div>
+          <div class="stat-label">Years of History</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-item">
+          <div class="stat-number">34+</div>
+          <div class="stat-label">Mahashivratri Celebrations</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-item">
+          <div class="stat-number">40,000+</div>
+          <div class="stat-label">Devotees Every Year</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-item">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Sacred Divine Idols</div>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
 
+<!-- ===== ABOUT STRIP ===== -->
+<section class="about-strip">
+  <div class="container">
+    <div class="row align-items-center g-5">
 
+      <!-- IMAGE -->
+      <div class="col-md-5 reveal">
+        <div class="about-img-wrap">
+          <img src="images/m7.jpg" alt="Mandir image">
+          <div class="about-img-badge">
+            स्थापना<br>
+            <strong style="font-size:18px;">शाके १७६३</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- TEXT -->
+      <div class="col-md-7 reveal">
+        <div class="section-eyebrow">Our Story</div>
+        <h2 class="section-heading">एक विद्वत् शैली में<br><span>संक्षिप्त प्रस्तुति</span></h2>
+        <div class="orange-rule" style="margin: 0 0 24px;"></div>
+
+        <div class="about-text">
+          <p>
+            बाबा सिद्धेश्वर नाथ मंदिर मिथिला क्षेत्र के दरभंगा जिले के विशौल (बिशौल टटुआर) गांव में
+            स्थित एक प्राचीन एवं पवित्र शिव मंदिर है। यह सिद्धपीठ अपनी आध्यात्मिक महिमा और
+            मनोकामना पूर्ति के लिए प्रसिद्ध है।
+          </p>
+          <p>
+            महान शिवभक्त पंडित श्री सिद्धेश्वर नाथ मिश्र द्वारा स्थापित इस मंदिर में भगवान शिव,
+            माता पार्वती एवं भगवान गणेश की दिव्य मूर्तियाँ नर्मदा कुंड से लाई गई हैं।
+          </p>
         </div>
 
+        <div class="d-flex gap-3 mt-3 flex-wrap align-items-center">
+          <a href="about.html" class="btn-hero-primary" style="display:inline-block;">Read More</a>
+          <div class="lang-dropdown">
+            <button class="lang-toggle">🌍 Language ▼</button>
+            <div class="lang-menu">
+              <div onclick="goToAbout('english')">English</div>
+              <div onclick="goToAbout('hindi')">हिंदी</div>
+              <div onclick="goToAbout('maithili')">मैथिली</div>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
-
-    <!-- RIGHT SIDE IMAGE -->
-    <div class="col-md-6 text-center mt-4 mt-md-0">
-      <img src="images/m7.jpg" class="about-img shadow">
-    </div>
-
-  </div>
-
-</section>
-<!-- ===== FEATURES ===== -->
-<section class="container mt-5 text-center">
-  <h2 class="section-title-main">Temple Highlights</h2>
-
-  <div class="row">
-
-    <div class="col-md-4">
-      <div class="card premium-card p-3">
-        <h4>🛕 Daily Puja</h4>
-        <p>Daily rituals and पूजा performed</p>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card premium-card p-3">
-        <h4>🎉 Mahashivratri</h4>
-        <p>Grand celebration every year</p>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card premium-card p-3">
-        <h4>🙏 Donation</h4>
-        <p>Support temple development</p>
-      </div>
-    </div>
-
   </div>
 </section>
+
+<!-- ===== HIGHLIGHTS ===== -->
+<section class="highlights-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Temple Life</div>
+      <h2 class="section-heading">Temple <span>Highlights</span></h2>
+      <div class="orange-rule"></div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4 col-sm-6 reveal">
+        <div class="highlight-card">
+          <span class="highlight-icon">🛕</span>
+          <h5>Daily Puja</h5>
+          <p>Rituals performed every morning and evening with full Vedic tradition and devotion.</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 reveal">
+        <div class="highlight-card">
+          <span class="highlight-icon">🎉</span>
+          <h5>Mahashivratri</h5>
+          <p>Grand annual festival celebrated for 34+ years with Shiv Baraat, bhajan-kirtan, and Jalabhishek.</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 reveal">
+        <div class="highlight-card">
+          <span class="highlight-icon">🌊</span>
+          <h5>Jalabhishek</h5>
+          <p>200+ devotees carry holy Ganga water from Simaria for sacred Abhishek every Mahashivratri.</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 reveal">
+        <div class="highlight-card">
+          <span class="highlight-icon">🪔</span>
+          <h5>Narmada Idols</h5>
+          <p>Rare sacred idols brought from Narmada Kund — the origin of the holy Narmada river.</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 reveal">
+        <div class="highlight-card">
+          <span class="highlight-icon">🙏</span>
+          <h5>Manokamna Siddhi</h5>
+          <p>Devotees from across Mithila visit to fulfill their heartfelt wishes at this Siddha Peeth.</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 reveal">
+        <div class="highlight-card">
+          <span class="highlight-icon">💡</span>
+          <h5>Community Welfare</h5>
+          <p>Solar lighting, public gatherings, and village development supported through the temple trust.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PUJA TIMINGS ===== -->
+<section class="timings-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Daily Schedule</div>
+      <h2 class="section-heading">पूजा <span>Timings</span></h2>
+      <div class="orange-rule"></div>
+    </div>
+
+    <div class="row justify-content-center reveal">
+      <div class="col-md-8">
+        <table class="timing-table">
+          <thead>
+            <tr>
+              <th>Puja / Event</th>
+              <th>Time</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>🌅 Pratah Puja</td>
+              <td>6:00 AM</td>
+              <td>Morning Abhishek & Aarti</td>
+            </tr>
+            <tr>
+              <td>☀️ Madhyanha Puja</td>
+              <td>12:00 PM</td>
+              <td>Bhog Offering</td>
+            </tr>
+            <tr>
+              <td>🌇 Sandhya Aarti</td>
+              <td>7:30 PM</td>
+              <td>Evening Aarti & Kirtan</td>
+            </tr>
+           
+            <tr>
+              <td>🎉 Mahashivratri</td>
+              <td>Annual</td>
+              <td>Grand Celebration — All Night</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="text-center mt-3" style="font-size:13px; color:#888;">
+          * Timings may vary on special occasions. Contact us to confirm.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== GALLERY PREVIEW ===== -->
-<section class="container mt-5 text-center">
-  <h2>Gallery</h2>
+<section class="gallery-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Visual Tour</div>
+      <h2 class="section-heading">Temple <span>Gallery</span></h2>
+      <div class="orange-rule"></div>
+    </div>
 
-  <div class="row mt-4">
-    <div class="col-md-4">
-      <img src="images/maha.jpg" class="img-fluid rounded shadow">
+    <div class="row g-3">
+      <div class="col-md-4 col-6 gallery-item reveal">
+        <img src="images/m1.jpg" class="gallery-thumb" alt="Mandir">
+      </div>
+      <div class="col-md-4 col-6 gallery-item reveal">
+        <img src="images/m2.jpg" class="gallery-thumb" alt="Mandir">
+      </div>
+      <div class="col-md-4 col-6 gallery-item reveal">
+        <img src="images/m3.jpg" class="gallery-thumb" alt="Mandir">
+      </div>
+      <div class="col-md-4 col-6 gallery-item reveal">
+        <img src="images/maha.jpg" class="gallery-thumb" alt="Mahashivratri">
+      </div>
+      <div class="col-md-4 col-6 gallery-item reveal">
+        <img src="images/m5.jpeg" class="gallery-thumb" alt="Mandir">
+      </div>
+      <div class="col-md-4 col-6 gallery-item reveal">
+        <img src="images/m6.jpeg" class="gallery-thumb" alt="Mandir">
+      </div>
     </div>
-    <div class="col-md-4">
-      <img src="images/qr.jpeg" class="img-fluid rounded shadow">
+
+    <div class="text-center mt-4 reveal">
+      <a href="gallery.html" class="btn-hero-primary" style="display:inline-block;">View Full Gallery →</a>
     </div>
-    <div class="col-md-4">
-      <img src="images/maha.jpg" class="img-fluid rounded shadow">
+  </div>
+</section>
+
+<!-- ===== DONATION CTA ===== -->
+<section class="donation-cta">
+  <div class="container reveal">
+    <h2>आपका दान मंदिर की शक्ति है 🙏</h2>
+    <p>Support the temple development, Mahashivratri festival & daily puja expenses</p>
+    <div class="d-flex gap-3 justify-content-center flex-wrap">
+      <a href="donation.html" class="btn-hero-primary" style="display:inline-block;">Donate Now</a>
+      <a href="https://chat.whatsapp.com/EERB79NBcRtFM26ZZxdMpW?s=cl&p=a&mlu=0&amv=2" class="btn-hero-outline" style="display:inline-block;" target="_blank">📲 WhatsApp Us</a>
     </div>
   </div>
 </section>
 
 <!-- ===== FOOTER ===== -->
-<footer class="premium-footer text-center">
-  <h5>Sidheswar Nath Mandir</h5>
-  <p>📍 Darbhanga, Bihar</p>
-  <a href="#" class="btn btn-success">WhatsApp</a>
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4">
+
+      <!-- Brand -->
+      <div class="col-md-4">
+        <div class="footer-brand">श्री सिद्धेश्वर नाथ मंदिर</div>
+        <p class="footer-tagline">
+          An ancient Siddha Peeth of Mithila, Darbhanga, Bihar.<br>
+          Established in Shaka 1763 by Pt. Sidheshwar Nath Mishra.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-md-2">
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="donation.html">Donation</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Info -->
+      <div class="col-md-3">
+        <div class="footer-heading">Contact</div>
+        <div class="footer-info">
+          <p>📍 Bishoul Tatuar, Darbhanga, Bihar</p>
+          <p>📞 +91 9296860221</p>
+          <p>📧 shivratricomitteebishoultatuar@gmail.com</p>
+        </div>
+      </div>
+
+      <!-- Puja Timings mini -->
+      <div class="col-md-3">
+        <div class="footer-heading">Puja Timings</div>
+        <div class="footer-info">
+          <p>🌅 Morning Puja — 6:00 AM</p>
+          <p>🌇 Evening Aarti — 7:00 PM</p>
+          <p>🌙 Shayan Aarti — 9:00 PM</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      © 2025 श्री सिद्धेश्वर नाथ मंदिर, Bishoul Tatuar, Darbhanga, Bihar. All rights reserved.
+    </div>
+  </div>
 </footer>
+
+<!-- ===== WHATSAPP FLOATING BUTTON ===== -->
+<a href="https://wa.me/919296860221" class="whatsapp-float" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="35">
+</a>
+<!-- ===== SCROLL TO TOP ===== -->
+<button onclick="scrollToTop()" id="topBtn" title="Back to top">↑</button>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-
-<!-- ===== ANIMATION FIX SCRIPT ===== -->
 <script>
-window.addEventListener("load", () => {
-  const elements = document.querySelectorAll(".fade-in");
-
-  elements.forEach(el => {
-    el.classList.add("show");
-  });
+// ===== SCROLL TO TOP =====
+const topBtn = document.getElementById("topBtn");
+window.addEventListener("scroll", () => {
+  topBtn.style.display = window.scrollY > 250 ? "block" : "none";
 });
-</script>
-
-<!-- ===== SCROLL TO TOP BUTTON ===== -->
-<button onclick="scrollToTop()" id="topBtn">⬆️</button>
-
-<script>
-let btn = document.getElementById("topBtn");
-
-window.onscroll = function() {
-  btn.style.display = window.scrollY > 200 ? "block" : "none";
-};
-
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-</script>
 
-<script>
-function switchLang(lang) {
-  const en = document.querySelectorAll(".lang-en");
-  const hi = document.querySelectorAll(".lang-hi");
+// ===== SCROLL REVEAL =====
+const revealEls = document.querySelectorAll(".reveal");
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(el => observer.observe(el));
 
-  if (lang === "en") {
-    en.forEach(el => el.style.display = "block");
-    hi.forEach(el => el.style.display = "none");
-  } else {
-    en.forEach(el => el.style.display = "none");
-    hi.forEach(el => el.style.display = "block");
-  }
-}
-</script>
-<script>
-// ===== GO TO ABOUT WITH LANGUAGE =====
-function goToAbout(lang) {
-  if (lang !== "") {
-    window.location.href = "about.html?lang=" + lang;
-  }
-}
-</script>
-
-<script>
-// dropdown open/close
+// ===== LANG DROPDOWN =====
 const toggle = document.querySelector(".lang-toggle");
 const dropdown = document.querySelector(".lang-dropdown");
+if (toggle && dropdown) {
+  toggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    dropdown.classList.toggle("active");
+  });
+  window.addEventListener("click", () => dropdown.classList.remove("active"));
+}
 
-toggle.addEventListener("click", () => {
-  dropdown.classList.toggle("active");
-});
-
-// click outside close
-window.addEventListener("click", (e) => {
-  if (!dropdown.contains(e.target)) {
-    dropdown.classList.remove("active");
-  }
-});
+function goToAbout(lang) {
+  window.location.href = "about.html?lang=" + lang;
+}
 </script>
 
 </body>
 </html>
-
