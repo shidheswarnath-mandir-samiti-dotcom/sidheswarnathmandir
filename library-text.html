@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text — श्री सिद्धेश्वर नाथ मंदिर</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg premium-navbar sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="images/m7.jpg" class="logo-img me-2" alt="Mandir Logo">
+      <span>श्री सिद्धेश्वर नाथ मंदिर</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-label="Toggle">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link active" href="library.html">Library</a></li>
+        <li class="nav-item"><a class="nav-link" href="donation.html">Donation</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-strip">
+  <div class="container">
+    <a href="index.html">Home</a><span> &rsaquo; </span>
+    <a href="library.html">Library</a><span> &rsaquo; </span>
+    <a href="#" id="bcDeityLink">Deity</a><span> &rsaquo; </span>
+    <span id="bcContent">Content</span>
+  </div>
+</div>
+
+<!-- BACK BUTTON -->
+<div class="container" style="padding-top:30px;">
+  <a href="#" id="backBtn" class="back-btn">‹ Back to Deity Library</a>
+</div>
+
+<!-- TEXT DISPLAY -->
+<section class="text-section">
+  <div class="container">
+
+    <div class="text-center" style="margin-bottom:10px;">
+      <div class="section-eyebrow" id="contentEyebrow">Content</div>
+      <h1 class="section-heading" id="contentTitle">Title</h1>
+      <div class="orange-rule"></div>
+    </div>
+
+    <!-- LANGUAGE SWITCHER -->
+    <div class="lang-bar" style="border-radius:14px;margin-bottom:30px;">
+      <span class="lang-label">Language:</span>
+      <button class="lang-sw-btn active" onclick="setLang('hindi', this)">हिंदी</button>
+      <button class="lang-sw-btn" onclick="setLang('maithili', this)">मैथिली</button>
+    </div>
+
+    <!-- TEXT BOX -->
+    <div class="content-item open" style="max-width:750px;margin:0 auto;">
+      <div class="content-body" style="display:block;">
+        <div class="hindi-text" id="hindiText">
+          <div class="devanagari-text" id="hindiContent">Loading...</div>
+        </div>
+        <div class="maithili-text" id="maithiliText" style="display:none;">
+          <div class="devanagari-text" id="maithiliContent">Loading...</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center" style="margin-top:30px;">
+      <a href="#" id="backBtn2" class="back-btn">‹ Back to Deity Library</a>
+    </div>
+
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// ===== TEXT DATABASE (Shiva only for now) =====
+const textDatabase = {
+  shiva: {
+    name: 'भगवान शिव',
+    chalisa: {
+      title: 'श्री शिव चालीसा', titleEn: 'Shiv Chalisa', icon: '📖',
+      hindi: `॥ दोहा ॥
+जय गणेश गिरिजा सुवन, मंगल मूल सुजान।
+कहत अयोध्यादास तुम, देहु अभय वरदान॥
+
+॥ चौपाई ॥
+जय गिरिजापति दीनदयाला। सदा करत संतन प्रतिपाला॥
+भाल चंद्रमा सोहत नीके। कानन कुंडल नागफनी के॥
+अंग गौर शिर गंग बहाए। मुंडमाल तन छार लगाए॥
+वस्त्र खाल बाघंबर सोहे। छवि को देख नाग मन मोहे॥
+कर त्रिशूल सोहत छवि भारी। करत सदा शत्रुन क्षयकारी॥
+जय जय जय अनंत अविनाशी। करत कृपा सब के घटवासी॥
+
+॥ दोहा ॥
+नित्य नेम कर प्रातः ही, पाठ करो चालीसा।
+तुम मेरी मनोकामना, पूर्ण करो जगदीशा॥`,
+      maithili: `॥ दोहा ॥
+जय गणेश गिरिजा सुअन, मंगल मूल सुजान।
+कहैत अयोध्यादास तुम, देहु अभय वरदान॥
+
+॥ चौपाई ॥
+जय गिरिजापति दीनदयाला। सदा करैत संतनक प्रतिपाला॥
+भाल चंद्रमा सोहैत नीके। कानन कुंडल नागफनी के॥
+अंग गौर शिर गंग बहाए। मुंडमाल तन छार लगाए॥
+वस्त्र खाल बाघंबर सोहे। छवि देखि नाग मन मोहे॥
+कर त्रिशूल सोहैत छवि भारी। करैत सदा शत्रुन क्षयकारी॥
+
+॥ दोहा ॥
+नित्य नेम क' प्रातः हीं, पाठ करू चालीसा।
+तुम हमर मनोकामना, पूर्ण करू जगदीशा॥`
+    },
+    aarti: {
+      title: 'ॐ जय शिव ओंकारा', titleEn: 'Shiv Aarti', icon: '🙏',
+      hindi: `ॐ जय शिव ओंकारा, स्वामी जय शिव ओंकारा।
+ब्रह्मा विष्णु सदाशिव, अर्द्धांगी धारा॥ ॐ जय शिव ओंकारा॥
+
+एकानन चतुरानन पञ्चानन राजे।
+हंसासन गरुड़ासन वृषवाहन साजे॥ ॐ जय शिव ओंकारा॥
+
+दो भुज चार चतुर्भुज दस भुज अति सोहे।
+त्रिगुण रूप निरखते त्रिभुवन जन मोहे॥ ॐ जय शिव ओंकारा॥
+
+शिव की आरती जो कोई नर गावे।
+कहत शिवानन्द स्वामी सुख संपत्ति पावे॥ ॐ जय शिव ओंकारा॥`,
+      maithili: `ॐ जय शिव ओंकारा, स्वामी जय शिव ओंकारा।
+ब्रह्मा विष्णु सदाशिव, अर्द्धांगी धारा॥ ॐ जय शिव ओंकारा॥
+
+दू भुज चारि चतुर्भुज दस भुज अति सोहे।
+त्रिगुण रूप निरखैत त्रिभुवन जन मोहे॥ ॐ जय शिव ओंकारा॥
+
+शिव केर आरती जे कोई नर गावे।
+सुख संपत्ति पावे, हर हर महादेव उचारी॥ ॐ जय शिव ओंकारा॥`
+    },
+    mantra: {
+      title: 'शिव मंत्र', titleEn: 'Shiv Mantra', icon: '🔱',
+      hindi: `ॐ नम: शिवाय॥
+
+न — पृथ्वी तत्व | म — जल तत्व
+शि — अग्नि तत्व | वा — वायु तत्व | य — आकाश तत्व
+
+यह सबसे सरल और शक्तिशाली शिव मंत्र है। नियमित जाप करें।`,
+      maithili: `ॐ नम: शिवाय॥
+
+न — पृथ्वी तत्व | म — जल तत्व
+शि — अग्नि तत्व | वा — वायु तत्व | य — आकाश तत्व
+
+ई सबसँ सरल आ शक्तिशाली शिव मंत्र अछि। नियमित जाप करू।`
+    },
+    mahamrityunjaya: {
+      title: 'महामृत्युंजय मंत्र', titleEn: 'Mahamrityunjaya Mantra', icon: '🌙',
+      hindi: `ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम्।
+उर्वारुकमिव बन्धनान् मृत्योर्मुक्षीय मामृतात्॥
+
+अर्थ: हम त्रिनेत्र भगवान शिव की पूजा करते हैं जो हमारा पोषण करते हैं।
+जैसे ककड़ी बंधन से मुक्त होती है, वैसे हम मृत्यु से मुक्त हों।
+
+महत्त्व: यह मंत्र ऋग्वेद से लिया गया है। रोग, भय और मृत्यु से रक्षा करता है। 108 बार जाप करें।`,
+      maithili: `ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम्।
+उर्वारुकमिव बन्धनान् मृत्योर्मुक्षीय मामृतात्॥
+
+अर्थ: हम त्रिनेत्र भगवान शिवक पूजा करैत छी जे हमर पोषण करैत छथि।
+जेना ककड़ी बंधनसँ मुक्त होइत अछि, तेना हमहूँ मृत्युसँ मुक्त होई।
+
+महत्त्व: ई मंत्र ऋग्वेदसँ लेल गेल अछि। रोग, भय आ मृत्युसँ रक्षा करैत अछि। 108 बेर जाप करू।`
+    },
+    panchakshari: {
+      title: 'पंचाक्षरी मंत्र', titleEn: 'Panchakshari Mantra', icon: '🕉️',
+      hindi: `ॐ नम: शिवाय॥
+
+पंचाक्षरी मंत्र — ना, म, शि, वा, य — पाँच तत्वों का प्रतीक है।
+
+नमामि शम्भुं पुरुषं पुराणं नमामि सर्वज्ञमनन्त रूपम्।
+नमामि रुद्रं करुणावतारं नमामि शंभुं शिवमेकमीशम्॥`,
+      maithili: `ॐ नम: शिवाय॥
+
+पंचाक्षरी मंत्र — ना, म, शि, वा, य — पाँच तत्वक प्रतीक अछि।
+
+नमामि शम्भुं पुरुषं पुराणं नमामि सर्वज्ञमनन्त रूपम्।
+नमामि रुद्रं करुणावतारं नमामि शंभुं शिवमेकमीशम्॥`
+    },
+    stotram: {
+      title: 'शिव स्तोत्रम्', titleEn: 'Shiv Stotram', icon: '📿',
+      hindi: `॥ लिंगाष्टकम् ॥
+
+ब्रह्ममुरारिसुरार्चितलिंगं निर्मलभाषितशोभितलिंगम्।
+जन्मजदुःखविनाशकलिंगं तत्प्रणमामि सदाशिवलिंगम्॥१॥
+
+देवमुनिप्रवरार्चितलिंगं कामदहं करुणाकरलिंगम्।
+रावणदर्पविनाशनलिंगं तत्प्रणमामि सदाशिवलिंगम्॥२॥
+
+लिंगाष्टकमिदं पुण्यं यः पठेच्छिवसन्निधौ।
+शिवलोकमवाप्नोति शिवेन सह मोदते॥`,
+      maithili: `॥ लिंगाष्टकम् ॥
+
+ब्रह्ममुरारिसुरार्चितलिंगं निर्मलभाषितशोभितलिंगम्।
+जन्मजदुःखविनाशकलिंगं तत्प्रणमामि सदाशिवलिंगम्॥१॥
+
+देवमुनिप्रवरार्चितलिंगं कामदहं करुणाकरलिंगम्।
+रावणदर्पविनाशनलिंगं तत्प्रणमामि सदाशिवलिंगम्॥२॥
+
+लिंगाष्टकम् ई पुण्य जे पढ़ैत छथि — शिवलोक प्राप्त करैत छथि॥`
+    },
+    rudrashtakam: {
+      title: 'रुद्राष्टकम्', titleEn: 'Rudrashtakam', icon: '🔥',
+      hindi: `नमामीशमीशान निर्वाणरूपं विभुं व्यापकं ब्रह्मवेदस्वरूपम्।
+निजं निर्गुणं निर्विकल्पं निरीहं चिदाकाशमाकाशवासं भजेऽहम्॥
+
+निराकारमोंकारमूलं तुरीयं गिराज्ञानगोतीतमीशं गिरीशम्।
+करालं महाकालकालं कृपालं गुणागारसंसारपारं नतोऽहम्॥
+
+रचयिता: यह स्तोत्र गोस्वामी तुलसीदास जी द्वारा रचित है।`,
+      maithili: `नमामीशमीशान निर्वाणरूपं विभुं व्यापकं ब्रह्मवेदस्वरूपम्।
+निजं निर्गुणं निर्विकल्पं निरीहं चिदाकाशमाकाशवासं भजेऽहम्॥
+
+निराकारमोंकारमूलं तुरीयं गिराज्ञानगोतीतमीशं गिरीशम्।
+करालं महाकालकालं कृपालं गुणागारसंसारपारं नतोऽहम्॥
+
+रचयिता: ई स्तोत्र गोस्वामी तुलसीदास जी द्वारा रचित अछि।`
+    }
+  },
+  hanuman: {
+    name: 'हनुमान जी',
+    chalisa: {
+      title: 'श्री हनुमान चालीसा', titleEn: 'Hanuman Chalisa', icon: '📖',
+      hindi: `॥ दोहा ॥
+श्रीगुरु चरन सरोज रज, निज मनु मुकुरु सुधारि।
+बरनउं रघुबर बिमल जसु, जो दायकु फल चारि॥
+
+बुद्धिहीन तनु जानिके, सुमिरौं पवन-कुमार।
+बल बुधि बिद्या देहु मोहिं, हरहु कलेस बिकार॥
+
+॥ चौपाई ॥
+जय हनुमान ज्ञान गुन सागर। जय कपीस तिहुं लोक उजागर॥
+राम दूत अतुलित बल धामा। अंजनि पुत्र पवनसुत नामा॥
+महाबीर बिक्रम बजरंगी। कुमति निवार सुमति के संगी॥
+कंचन बरन बिराज सुबेसा। कानन कुंडल कुंचित केसा॥
+हाथ बज्र अरु ध्वजा बिराजै। कांधे मूंज जनेऊ साजै॥
+संकर सुवन केसरीनंदन। तेज प्रताप महा जग बंदन॥
+बिद्यावान गुनी अति चातुर। राम काज करिबे को आतुर॥
+प्रभु चरित्र सुनिबे को रसिया। राम लखन सीता मन बसिया॥
+सूक्ष्म रूप धरि सियहिं दिखावा। बिकट रूप धरि लंक जरावा॥
+भीम रूप धरि असुर सँहारे। रामचंद्र के काज सँवारे॥
+लाय सजीवन लखन जियाए। श्रीरघुबीर हरषि उर लाए॥
+रघुपति कीन्ही बहुत बड़ाई। तुम मम प्रिय भरतहि सम भाई॥
+
+॥ दोहा ॥
+पवनतनय संकट हरन, मंगल मूरति रूप।
+राम लखन सीता सहित, हृदय बसहु सुर भूप॥`,
+      maithili: `॥ दोहा ॥
+श्रीगुरु चरन सरोज रज, निज मनु मुकुरु सुधारि।
+बरनउं रघुबर बिमल जसु, जो दायकु फल चारि॥
+
+बुद्धिहीन तनु जानिके, सुमिरौं पवन-कुमार।
+बल बुधि बिद्या देहु मोहिं, हरहु कलेस बिकार॥
+
+॥ चौपाई ॥
+जय हनुमान ज्ञान गुन सागर। जय कपीस तिहुं लोक उजागर॥
+राम दूत अतुलित बल धामा। अंजनि पुत्र पवनसुत नामा॥
+महाबीर बिक्रम बजरंगी। कुमति निवार सुमति के संगी॥
+कंचन बरन बिराज सुबेसा। कानन कुंडल कुंचित केसा॥
+हाथ बज्र अरु ध्वजा बिराजै। कांधे मूंज जनेऊ साजै॥
+संकर सुवन केसरीनंदन। तेज प्रताप महा जग बंदन॥
+
+॥ दोहा ॥
+पवनतनय संकट हरन, मंगल मूरति रूप।
+राम लखन सीता सहित, हृदय बसहु सुर भूप॥
+
+(ई चालीसा हिंदीक समान अछि, उच्चारणमे क्षेत्रीय शैली अपनाओल जा सकैत अछि)`
+    },
+    aarti: {
+      title: 'श्री हनुमान आरती', titleEn: 'Hanuman Aarti', icon: '🙏',
+      hindi: `आरती कीजै हनुमान लला की।
+दुष्ट दलन रघुनाथ कला की॥
+
+जाके बल से गिरिवर कांपे।
+रोग दोष जाके निकट न झांके॥
+अंजनि पुत्र महा बलदायी।
+संतन के प्रभु सदा सहायी॥
+
+दे बीरा रघुनाथ पठाए।
+लंका जारि सिया सुधि लाए॥
+लंका सो कोट समुद्र सी खाई।
+जात पवनसुत बार न लाई॥
+
+आरती कीजै हनुमान लला की।
+दुष्ट दलन रघुनाथ कला की॥`,
+      maithili: `आरती कीजै हनुमान लला केर।
+दुष्ट दलन रघुनाथ कला केर॥
+
+जाकर बलसँ गिरिवर कांपे।
+रोग दोष जाकर निकट न झांके॥
+अंजनि पुत्र महा बलदायी।
+संतनक प्रभु सदा सहायी॥
+
+आरती कीजै हनुमान लला केर।
+दुष्ट दलन रघुनाथ कला केर॥`
+    },
+    mantra: {
+      title: 'हनुमान मंत्र', titleEn: 'Hanuman Mantra', icon: '🔱',
+      hindi: `ॐ हं हनुमते नमः॥
+
+यह मंत्र संकट निवारण के लिए जपा जाता है।
+मंगलवार और शनिवार को विशेष फलदायी।
+
+मनोजवं मारुततुल्यवेगं जितेन्द्रियं बुद्धिमतां वरिष्ठम्।
+वातात्मजं वानरयूथमुख्यं श्रीरामदूतं शरणं प्रपद्ये॥`,
+      maithili: `ॐ हं हनुमते नमः॥
+
+ई मंत्र संकट निवारणक लेल जपल जाइत अछि।
+मंगलवार आ शनिवार दिन विशेष फलदायी।
+
+मनोजवं मारुततुल्यवेगं जितेन्द्रियं बुद्धिमतां वरिष्ठम्।
+वातात्मजं वानरयूथमुख्यं श्रीरामदूतं शरणं प्रपद्ये॥`
+    },
+    'bajrang-baan': {
+      title: 'बजरंग बाण', titleEn: 'Bajrang Baan', icon: '⚡',
+      hindi: `॥ दोहा ॥
+निश्चय प्रेम प्रतीति ते, बिनय करैं सनमान।
+तेहि के कारज सकल शुभ, सिद्ध करैं हनुमान॥
+
+॥ चौपाई ॥
+जय हनुमंत संत हितकारी। सुनि लीजै प्रभु अरज हमारी॥
+जन के काज विलंब न कीजै। आतुर दौरि महा सुख दीजै॥
+जैसे कूदि सिंधु महिपारा। सुरसा बदन पैठि बिस्तारा॥
+आगे जाय लंकिनी रोका। मारेहु लात गई सुरलोका॥
+
+ॐ नमो हनुमंते रुद्रावतार सकल विकार॥`,
+      maithili: `॥ दोहा ॥
+निश्चय प्रेम प्रतीति ते, बिनय करैं सनमान।
+तेहि के कारज सकल शुभ, सिद्ध करैं हनुमान॥
+
+॥ चौपाई ॥
+जय हनुमंत संत हितकारी। सुनि लीजै प्रभु अरज हमारी॥
+जन के काज विलंब न कीजै। आतुर दौरि महा सुख दीजै॥
+
+ॐ नमो हनुमंते रुद्रावतार सकल विकार॥
+
+(संकटक समयमे एकर पाठ अत्यंत फलदायी मानल जाइत अछि)`
+    }
+  },
+  durga: {
+    name: 'माँ दुर्गा',
+    chalisa: {
+      title: 'दुर्गा चालीसा', titleEn: 'Durga Chalisa', icon: '📖',
+      hindi: `[Paste Full Durga Chalisa Here]
+
+नमो नमो दुर्गे सुख करनी। नमो नमो अंबे दुख हरनी॥
+— Durga Chalisa content will be added here —`,
+      maithili: `[Paste Full Durga Chalisa Maithili Here]
+
+नमो नमो दुर्गे सुख करनी। नमो नमो अंबे दुख हरनी॥
+— Durga Chalisa Maithili content yahan aayega —`
+    },
+    aarti: {
+      title: 'दुर्गा आरती', titleEn: 'Durga Aarti', icon: '🙏',
+      hindi: `[Paste Full Durga Aarti Here]
+
+जय अंबे गौरी, मैया जय श्यामा गौरी॥
+— Durga Aarti content will be added here —`,
+      maithili: `[Paste Full Durga Aarti Maithili Here]
+
+जय अंबे गौरी, मैया जय श्यामा गौरी॥
+— Durga Aarti Maithili content yahan aayega —`
+    },
+    mantra: {
+      title: 'दुर्गा मंत्र', titleEn: 'Durga Mantra', icon: '🔱',
+      hindi: `[Paste Full Durga Mantra Here]
+
+ॐ दुं दुर्गायै नमः॥
+— Durga Mantra content will be added here —`,
+      maithili: `[Paste Full Durga Mantra Maithili Here]
+
+ॐ दुं दुर्गायै नमः॥
+— Durga Mantra Maithili content yahan aayega —`
+    },
+    kavach: {
+      title: 'दुर्गा कवच', titleEn: 'Durga Kavach', icon: '🛡️',
+      hindi: `[Paste Full Durga Kavach Here]
+
+॥ ॐ नमश्चण्डिकायै ॥
+— Durga Kavach content will be added here —`,
+      maithili: `[Paste Full Durga Kavach Maithili Here]
+
+॥ ॐ नमश्चण्डिकायै ॥
+— Durga Kavach Maithili content yahan aayega —`
+    }
+  }
+};
+
+// ===== READ URL PARAMETERS =====
+const params    = new URLSearchParams(window.location.search);
+const deityKey  = params.get('deity')   || 'shiva';
+const contentKey= params.get('content') || 'chalisa';
+
+const deityData   = textDatabase[deityKey];
+const contentData = deityData ? deityData[contentKey] : null;
+
+// ===== RENDER PAGE =====
+if (contentData) {
+  document.getElementById('contentEyebrow').textContent = contentData.icon + ' ' + deityData.name;
+  document.getElementById('contentTitle').textContent   = contentData.title;
+  document.getElementById('bcDeityLink').textContent    = deityData.name;
+  document.getElementById('bcDeityLink').href           = `library-deity.html?deity=${deityKey}`;
+  document.getElementById('bcContent').textContent      = contentData.titleEn;
+  document.title = contentData.titleEn + ' — श्री सिद्धेश्वर नाथ मंदिर';
+
+  document.getElementById('hindiContent').textContent    = contentData.hindi;
+  document.getElementById('maithiliContent').textContent = contentData.maithili;
+
+  document.getElementById('backBtn').href  = `library-deity.html?deity=${deityKey}`;
+  document.getElementById('backBtn2').href = `library-deity.html?deity=${deityKey}`;
+} else {
+  document.getElementById('contentTitle').textContent = 'Content Coming Soon';
+  document.getElementById('hindiContent').textContent = 'यह सामग्री जल्द जोड़ी जाएगी 🙏';
+  document.getElementById('backBtn').href  = 'library.html';
+  document.getElementById('backBtn2').href = 'library.html';
+}
+
+// ===== LANGUAGE SWITCH =====
+function setLang(lang, el) {
+  document.querySelectorAll('.lang-sw-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('hindiText').style.display    = (lang === 'hindi')    ? 'block' : 'none';
+  document.getElementById('maithiliText').style.display = (lang === 'maithili') ? 'block' : 'none';
+}
+</script>
+</body>
+</html>

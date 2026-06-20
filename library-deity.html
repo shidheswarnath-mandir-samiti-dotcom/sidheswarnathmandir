@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deity Library — श्री सिद्धेश्वर नाथ मंदिर</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg premium-navbar sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="images/m7.jpg" class="logo-img me-2" alt="Mandir Logo">
+      <span>श्री सिद्धेश्वर नाथ मंदिर</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-label="Toggle">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link active" href="library.html">Library</a></li>
+        <li class="nav-item"><a class="nav-link" href="donation.html">Donation</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-strip">
+  <div class="container">
+    <a href="index.html">Home</a><span> &rsaquo; </span>
+    <a href="library.html">Library</a><span> &rsaquo; </span>
+    <span id="bcDeity">Deity</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="lib-hero">
+  <div class="container">
+    <div class="hero-badge" id="heroBadge">॥ जय हो ॥</div>
+    <h1 id="heroTitle">Deity Name</h1>
+    <p>Select content to read</p>
+  </div>
+</section>
+
+<!-- BACK BUTTON -->
+<div class="container" style="padding-top:30px;">
+  <a href="library.html" class="back-btn">‹ Back to Library</a>
+</div>
+
+<!-- CONTENT BUTTONS GRID -->
+<section class="deity-section">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:30px;">
+      <div class="section-eyebrow">Choose Content</div>
+      <h2 class="section-heading" id="sectionHeading">सामग्री चुनें</h2>
+      <div class="orange-rule"></div>
+    </div>
+
+    <div class="deity-grid" id="contentGrid">
+      <!-- Buttons will be inserted here by JavaScript -->
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// ===== DEITY DATA (only Shiva for now) =====
+const deityInfo = {
+  shiva: {
+    name: 'भगवान शिव',
+    nameEn: 'LORD SHIVA',
+    emoji: '🕉️',
+    badge: '॥ हर हर महादेव ॥',
+    contents: [
+      { id:'chalisa',          icon:'📖', title:'शिव चालीसा',         titleEn:'Shiv Chalisa' },
+      { id:'aarti',            icon:'🙏', title:'शिव आरती',           titleEn:'Shiv Aarti' },
+      { id:'mantra',           icon:'🔱', title:'शिव मंत्र',           titleEn:'Shiv Mantra' },
+      { id:'mahamrityunjaya',  icon:'🌙', title:'महामृत्युंजय मंत्र',  titleEn:'Mahamrityunjaya' },
+      { id:'panchakshari',     icon:'🕉️', title:'पंचाक्षरी मंत्र',     titleEn:'Panchakshari Mantra' },
+      { id:'stotram',          icon:'📿', title:'शिव स्तोत्रम्',       titleEn:'Shiv Stotram' },
+      { id:'rudrashtakam',     icon:'🔥', title:'रुद्राष्टकम्',        titleEn:'Rudrashtakam' },
+    ]
+  },
+  hanuman: {
+    name: 'हनुमान जी',
+    nameEn: 'HANUMAN JI',
+    emoji: '🐒',
+    badge: '॥ जय बजरंगबली ॥',
+    contents: [
+      { id:'chalisa', icon:'📖', title:'हनुमान चालीसा',   titleEn:'Hanuman Chalisa' },
+      { id:'aarti',   icon:'🙏', title:'हनुमान आरती',     titleEn:'Hanuman Aarti' },
+      { id:'mantra',  icon:'🔱', title:'हनुमान मंत्र',     titleEn:'Hanuman Mantra' },
+      { id:'bajrang-baan', icon:'⚡', title:'बजरंग बाण',  titleEn:'Bajrang Baan' },
+    ]
+  },
+  durga: {
+    name: 'माँ दुर्गा',
+    nameEn: 'MAA DURGA',
+    emoji: '🌺',
+    badge: '॥ जय माता दी ॥',
+    contents: [
+      { id:'chalisa', icon:'📖', title:'दुर्गा चालीसा', titleEn:'Durga Chalisa' },
+      { id:'aarti',   icon:'🙏', title:'दुर्गा आरती',   titleEn:'Durga Aarti' },
+      { id:'mantra',  icon:'🔱', title:'दुर्गा मंत्र',   titleEn:'Durga Mantra' },
+      { id:'kavach',  icon:'🛡️', title:'दुर्गा कवच',    titleEn:'Durga Kavach' },
+    ]
+  }
+};
+// ===== GET DEITY FROM URL =====
+const params = new URLSearchParams(window.location.search);
+const deityKey = params.get('deity') || 'shiva';
+const deity = deityInfo[deityKey];
+
+// ===== RENDER PAGE =====
+if (deity) {
+  document.getElementById('heroBadge').textContent = deity.badge;
+  document.getElementById('heroTitle').textContent  = deity.emoji + ' ' + deity.name;
+  document.getElementById('bcDeity').textContent    = deity.nameEn;
+  document.title = deity.nameEn + ' — श्री सिद्धेश्वर नाथ मंदिर';
+  document.getElementById('sectionHeading').innerHTML = deity.name + ' — <span>सामग्री चुनें</span>';
+
+  const grid = document.getElementById('contentGrid');
+  deity.contents.forEach(item => {
+    const link = document.createElement('a');
+    link.href = `library-text.html?deity=${deityKey}&content=${item.id}`;
+    link.className = 'deity-card';
+    link.innerHTML = `
+      <span class="deity-emoji">${item.icon}</span>
+      <div class="deity-name-hi">${item.title}</div>
+      <div class="deity-name-en">${item.titleEn.toUpperCase()}</div>
+    `;
+    grid.appendChild(link);
+  });
+} else {
+  document.getElementById('contentGrid').innerHTML = '<p style="color:#aaa;text-align:center;">Deity data coming soon</p>';
+}
+</script>
+</body>
+</html>

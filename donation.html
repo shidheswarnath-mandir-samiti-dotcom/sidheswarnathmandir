@@ -298,6 +298,7 @@ h1,h2,h3 { font-family: 'Tiro Devanagari Sanskrit', serif; }
         <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
         <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
         <li class="nav-item"><a class="nav-link active" href="donation.html">Donation</a></li>
+        <li class="nav-item"><a class="nav-link" href="library.html">Library</a></li>
         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
       </ul>
     </div>
@@ -346,18 +347,43 @@ h1,h2,h3 { font-family: 'Tiro Devanagari Sanskrit', serif; }
       <div class="orange-rule"></div>
     </div>
     <div class="reveal">
-      <div class="amount-grid">
-        <button class="amount-btn" onclick="selectAmount(this,'51')">₹51</button>
-        <button class="amount-btn" onclick="selectAmount(this,'101')">₹101</button>
-        <button class="amount-btn" onclick="selectAmount(this,'251')">₹251</button>
-        <button class="amount-btn" onclick="selectAmount(this,'501')">₹501</button>
-        <button class="amount-btn" onclick="selectAmount(this,'1001')">₹1,001</button>
-        <button class="amount-btn" onclick="selectAmount(this,'2100')">₹2,100</button>
-        <button class="amount-btn" onclick="selectAmount(this,'5100')">₹5,100</button>
-        <button class="amount-btn" onclick="selectAmount(this,'11000')">₹11,000</button>
-      </div>
-      <p class="amount-note" id="amountNote">👆 Select an amount then scan the QR or use the UPI ID below</p>
+      <div class="amount-grid" id="amountGrid">
+  <button class="amount-btn" onclick="selectAmount(this,'51')">₹51</button>
+  <button class="amount-btn" onclick="selectAmount(this,'101')">₹101</button>
+  <button class="amount-btn" onclick="selectAmount(this,'251')">₹251</button>
+  <button class="amount-btn" onclick="selectAmount(this,'501')">₹501</button>
+  <button class="amount-btn" onclick="selectAmount(this,'1001')">₹1,001</button>
+  <button class="amount-btn" onclick="selectAmount(this,'2100')">₹2,100</button>
+  <button class="amount-btn" onclick="selectAmount(this,'5100')">₹5,100</button>
+  <button class="amount-btn" onclick="selectAmount(this,'11000')">₹11,000</button>
+</div>
+<p class="amount-note" id="amountNote">👆 Select an amount then choose a payment method below</p>
+
+<!-- PAYMENT METHOD POPUP (hidden by default) -->
+<div class="payment-popup-overlay" id="paymentPopup" onclick="closePaymentPopup(event)">
+  <div class="payment-popup">
+    <button class="popup-close" onclick="closePaymentPopup()">&#x2715;</button>
+    <h4>दान राशि: <span id="popupAmount">₹0</span></h4>
+    <p style="font-size:13px;color:#888;margin-bottom:20px;">भुगतान का तरीका चुनें — Choose payment method</p>
+
+    <div class="popup-options">
+      <button class="popup-option" id="payUPIApp">
+        <span class="popup-icon">📱</span>
+        <div><strong>UPI App से Pay करें</strong><small>PhonePe, GPay, Paytm खोलें</small></div>
+      </button>
+
+      <button class="popup-option" onclick="scrollToQR()">
+        <span class="popup-icon">🔲</span>
+        <div><strong>QR Code Scan करें</strong><small>नीचे QR सेक्शन पर जाएं</small></div>
+      </button>
+
+      <button class="popup-option" id="payCopyUPI">
+        <span class="popup-icon">📋</span>
+        <div><strong>UPI ID Copy करें</strong><small id="popupUpiId">6202037142-2@ybl</small></div>
+      </button>
     </div>
+  </div>
+</div>
   </div>
 </section>
 
@@ -395,11 +421,11 @@ h1,h2,h3 { font-family: 'Tiro Devanagari Sanskrit', serif; }
           <h4>Bank Transfer</h4>
           <p class="sub">For larger donations via NEFT / IMPS</p>
           <table class="bank-table">
-            <tr><td>Account Name</td><td>Sidheswar Nath Mandir</td></tr>
+            <tr><td>Account Name</td><td>Abhinandan Kumar</td></tr>
             <tr><td>Account No.</td><td>44885405435</td></tr>
-            <tr><td>Bank</td><td>— add bank name —</td></tr>
-            <tr><td>IFSC Code</td><td>— add IFSC —</td></tr>
-            <tr><td>Branch</td><td>— add branch —</td></tr>
+            <tr><td>Bank</td><td>State Bank of India</td></tr>
+            <tr><td>IFSC Code</td><td>SBIN0006021</td></tr>
+            <tr><td>Branch</td><td>Manigachhi</td></tr>
             <tr><td>Account Type</td><td>Savings</td></tr>
           </table>
         </div>
@@ -479,6 +505,7 @@ h1,h2,h3 { font-family: 'Tiro Devanagari Sanskrit', serif; }
           <li><a href="about.html">About</a></li>
           <li><a href="gallery.html">Gallery</a></li>
           <li><a href="donation.html">Donation</a></li>
+          <li><a href="donation.html">Library</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
@@ -486,8 +513,8 @@ h1,h2,h3 { font-family: 'Tiro Devanagari Sanskrit', serif; }
         <div class="footer-heading">Contact</div>
         <div class="footer-info">
           <p>📍 Bishoul Tatuar, Darbhanga, Bihar</p>
-          <p>📞 +91 98765 43210</p>
-          <p>📧 mandir@gmail.com</p>
+          <p>📞 +91 92968 60221</p>
+          <p>📧 shivratricomitteebishoultatuar@gmail.com</p>
         </div>
       </div>
       <div class="col-md-3">
@@ -495,11 +522,11 @@ h1,h2,h3 { font-family: 'Tiro Devanagari Sanskrit', serif; }
         <div class="footer-info">
           <p>🌅 Morning Puja — 6:00 AM</p>
           <p>🌇 Evening Aarti — 7:00 PM</p>
-          <p>🌙 Shayan Aarti — 9:00 PM</p>
+         
         </div>
       </div>
     </div>
-    <div class="footer-bottom">&copy; 2025 श्री सिद्धेश्वर नाथ मंदिर, Bishoul Tatuar, Darbhanga, Bihar. All rights reserved.</div>
+    <div class="footer-bottom">&copy; 2026 श्री सिद्धेश्वर नाथ मंदिर, Bishoul Tatuar, Darbhanga, Bihar. All rights reserved.</div>
   </div>
 </footer>
 
@@ -610,7 +637,9 @@ h1,h2,h3 { font-family: 'Tiro Devanagari Sanskrit', serif; }
 <div class="copy-toast" id="copyToast">✅ UPI ID Copied!</div>
 
 <!-- WHATSAPP FLOAT -->
-<a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank">💬</a>
+<a href="https://wa.me/919296860221" class="whatsapp-float" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="35">
+</a>
 
 <!-- SCROLL TOP -->
 <button onclick="scrollToTop()" id="topBtn">&#x2191;</button>
@@ -976,11 +1005,49 @@ function copyUPI() {
   });
 }
 
+// AMOUNT SELECT — ab payment popup direct khulega
+let selectedAmount = 0;
+
 function selectAmount(el, amount) {
   document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
-  document.getElementById('amountNote').textContent = '✅ Amount selected: ₹' + amount + ' — Now scan the QR or use UPI ID below';
+  selectedAmount = amount;
+  document.getElementById('amountNote').textContent = '✅ Amount selected: ₹' + amount;
+  openPaymentPopup(amount);
 }
+
+function openPaymentPopup(amount) {
+  document.getElementById('popupAmount').textContent = '₹' + amount;
+  document.getElementById('paymentPopup').classList.add('open');
+}
+
+function closePaymentPopup(e) {
+  if (e && e.target.id !== 'paymentPopup' && !e.target.classList.contains('popup-close')) return;
+  document.getElementById('paymentPopup').classList.remove('open');
+}
+
+function scrollToQR() {
+  closePaymentPopup();
+  document.querySelector('.donate-card').scrollIntoView({ behavior:'smooth', block:'center' });
+}
+
+// UPI App se direct pay (UPI deep link)
+document.getElementById('payUPIApp').addEventListener('click', function() {
+  const upiId = '6202037142-2@ybl';
+  const payeeName = 'Sidheswar Nath Mandir';
+  const upiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payeeName)}&am=${selectedAmount}&cu=INR`;
+  window.location.href = upiUrl;
+});
+
+// Copy UPI ID from popup
+document.getElementById('payCopyUPI').addEventListener('click', function() {
+  navigator.clipboard.writeText('6202037142-2@ybl').then(() => {
+    const t = document.getElementById('copyToast');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2500);
+    closePaymentPopup();
+  });
+});
 
 /* SCROLL REVEAL */
 const revealEls = document.querySelectorAll('.reveal');

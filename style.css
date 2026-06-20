@@ -952,3 +952,512 @@ textarea.form-control { resize: vertical; min-height: 120px; }
 /* =====================================================
    END OF STYLE.CSS
    ===================================================== */
+
+   /* =====================================================
+   LIBRARY PAGE — HERO
+   ===================================================== */
+
+.lib-hero {
+  min-height: 45vh;
+  background: linear-gradient(rgba(0,0,0,0.63), rgba(0,0,0,0.63)),
+              url("images/maha.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.lib-hero h1 {
+  font-size: clamp(26px, 5vw, 50px);
+  font-weight: bold;
+  text-shadow: 0 3px 20px rgba(0,0,0,0.7);
+}
+
+.lib-hero p {
+  font-size: 15px;
+  opacity: 0.85;
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .lib-hero {
+    background-attachment: scroll;
+    min-height: 38vh;
+  }
+}
+
+/* =====================================================
+   LIBRARY PAGE — DEITY CARDS
+   ===================================================== */
+
+.deity-section {
+  padding: 50px 0 70px;
+  background: white;
+}
+
+.deity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 576px) {
+  .deity-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+}
+
+.deity-card {
+  background: white;
+  border-radius: 18px;
+  padding: 30px 16px;
+  text-align: center;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.09);
+  transition: 0.3s;
+  text-decoration: none;
+  display: block;
+  border: 2px solid transparent;
+}
+
+.deity-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 34px rgba(255,102,0,0.18);
+  border-color: #ff9933;
+  text-decoration: none;
+}
+
+.deity-emoji {
+  font-size: 44px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.deity-name-hi {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 3px;
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+}
+
+.deity-name-en {
+  font-size: 11px;
+  color: #ff6600;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* =====================================================
+   LIBRARY PAGE — LANGUAGE SWITCHER
+   ===================================================== */
+
+.lang-switcher {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.lang-sw-btn {
+  padding: 9px 26px;
+  border: 2px solid #ff9933;
+  border-radius: 30px;
+  background: white;
+  color: #ff6600;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.25s;
+  font-family: 'Poppins', sans-serif;
+}
+
+.lang-sw-btn:hover,
+.lang-sw-btn.active {
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  color: white;
+  border-color: transparent;
+}
+
+/* =====================================================
+   DEITY PAGE — STICKY TABS
+   ===================================================== */
+
+.sticky-tabs {
+  position: sticky;
+  top: 62px;
+  z-index: 100;
+  background: white;
+  border-bottom: 2px solid #f0e8dc;
+  padding: 12px 0;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.tab-nav {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tab-btn {
+  padding: 8px 18px;
+  border: 2px solid #ff9933;
+  border-radius: 25px;
+  background: white;
+  color: #ff6600;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.25s;
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tab-btn:hover {
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  color: white;
+  border-color: transparent;
+}
+
+/* =====================================================
+   DEITY PAGE — TEXT SECTIONS
+   ===================================================== */
+
+.text-section {
+  padding: 50px 0;
+}
+
+.text-section:nth-child(even) { background: #fffaf4; }
+.text-section:nth-child(odd)  { background: white; }
+
+/* =====================================================
+   DEITY PAGE — COLLAPSIBLE CONTENT CARDS
+   ===================================================== */
+
+.content-item {
+  background: white;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 3px 16px rgba(0,0,0,0.07);
+  overflow: hidden;
+  border: 1px solid #f0e8dc;
+}
+
+.content-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.content-header:hover { background: #fff5e6; }
+
+.content-header-left { display: flex; align-items: center; gap: 12px; }
+.content-icon { font-size: 22px; }
+.content-title { font-size: 16px; font-weight: 700; color: #1a1a1a; }
+.content-subtitle { font-size: 12px; color: #aaa; }
+
+.content-arrow {
+  font-size: 18px;
+  color: #ff9933;
+  transition: transform 0.3s;
+}
+
+.content-item.open .content-arrow { transform: rotate(90deg); }
+
+.content-body {
+  display: none;
+  padding: 20px 22px 24px;
+  border-top: 1px solid #f0e8dc;
+}
+
+.content-item.open .content-body { display: block; }
+
+.devanagari-text {
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+  font-size: 18px;
+  line-height: 2.1;
+  color: #222;
+  white-space: pre-line;
+}
+
+@media (max-width: 480px) {
+  .devanagari-text { font-size: 16px; line-height: 2; }
+}
+
+/* =====================================================
+   DEITY PAGE — LANGUAGE BAR
+   ===================================================== */
+
+.lang-bar {
+  background: #fff5e6;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0e8dc;
+  text-align: center;
+}
+
+.lang-label {
+  font-size: 13px;
+  color: #888;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+/* =====================================================
+   DEITY/CONTENT PAGES — BACK BUTTON
+   ===================================================== */
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ff6600;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 18px;
+  border: 2px solid #ff9933;
+  border-radius: 25px;
+  transition: 0.2s;
+  background: white;
+}
+
+.back-btn:hover {
+  background: #ff9933;
+  color: white;
+}
+
+/* =====================================================
+   DONATION — PAYMENT POPUP
+   ===================================================== */
+
+.payment-popup-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.payment-popup-overlay.open {
+  display: flex;
+}
+
+.payment-popup {
+  background: white;
+  border-radius: 20px;
+  padding: 30px 26px;
+  max-width: 380px;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  animation: popupOpen 0.3s ease;
+}
+
+@keyframes popupOpen {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.payment-popup h4 {
+  font-size: 18px;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.payment-popup h4 span {
+  color: #ff6600;
+  font-weight: 800;
+}
+
+.popup-close {
+  position: absolute;
+  top: 14px; right: 16px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #999;
+  cursor: pointer;
+}
+
+.popup-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.popup-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #fffaf4;
+  border: 2px solid #ffe0b3;
+  border-radius: 14px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: 0.25s;
+  text-align: left;
+  font-family: 'Poppins', sans-serif;
+}
+
+.popup-option:hover {
+  border-color: #ff9933;
+  background: #fff5e6;
+  transform: translateY(-2px);
+}
+
+.popup-icon { font-size: 26px; flex-shrink: 0; }
+
+.popup-option strong {
+  display: block;
+  font-size: 14px;
+  color: #1a1a1a;
+}
+
+.popup-option small {
+  font-size: 12px;
+  color: #999;
+}
+
+.deity-image img{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #ff6600;
+    box-shadow:0 4px 12px rgba(0,0,0,0.2);
+}
+
+.nav-social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: white;
+  transition: 0.25s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.nav-social-icon:hover {
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+/* =====================================================
+   FOOTER — SOCIAL ICONS
+   ===================================================== */
+
+.footer-social {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.footer-social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: white;
+  transition: 0.25s;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.footer-social-icon:hover {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+/* =====================================================
+   HOME PAGE — CONNECT WITH US SECTION
+   ===================================================== */
+
+.connect-section {
+  padding: 70px 0;
+  background: linear-gradient(135deg, #fff5e6, #ffe8cc);
+}
+
+.connect-subtitle {
+  font-size: 15px;
+  color: #777;
+  max-width: 500px;
+  margin: 14px auto 0;
+}
+
+.connect-card-social {
+  background: white;
+  border-radius: 20px;
+  padding: 36px 28px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.09);
+  transition: 0.35s;
+  height: 100%;
+}
+
+.connect-card-social:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 42px rgba(0,0,0,0.15);
+}
+
+.connect-icon-wrap {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+}
+
+.fb-bg { background: #1877F2; }
+.yt-bg { background: #FF0000; }
+
+.connect-card-social h4 {
+  font-weight: 700;
+  color: #1a1a1a;
+  font-size: 19px;
+  margin-bottom: 10px;
+}
+
+.connect-card-social p {
+  font-size: 14px;
+  color: #777;
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+
+.connect-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: 0.3s;
+  color: white;
+}
+
+.fb-btn { background: #1877F2; }
+.fb-btn:hover { background: #145dbf; color: white; transform: scale(1.05); }
+
+.yt-btn { background: #FF0000; }
+.yt-btn:hover { background: #cc0000; color: white; transform: scale(1.05); }
+
