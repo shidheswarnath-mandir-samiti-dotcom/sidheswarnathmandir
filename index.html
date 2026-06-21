@@ -566,9 +566,17 @@ h1, h2, .devanagari {
       <span>श्री सिद्धेश्वर नाथ मंदिर</span>
     </a>
 
-    <button class="navbar-toggler" type="button"
-      data-bs-toggle="collapse" data-bs-target="#menu"
-      aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- ALWAYS-VISIBLE SOCIAL ICONS (mobile + desktop) -->
+    <div class="navbar-social-always">
+      <a href="https://www.facebook.com/profile.php?id=61588132485509" target="_blank" class="nav-social-icon icon-fb" title="Facebook">
+        <svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="12" fill="#1877F2"/><path fill="#fff" d="M16.5 12.5h-2.2V20h-3.1v-7.5H9.5v-2.6h1.7V8.2c0-1.7 1-3.2 3.6-3.2.9 0 1.7.1 1.7.1v2.5h-1.3c-.9 0-1.1.5-1.1 1.2v1.6h2.3l-.3 2.6z"/></svg>
+      </a>
+      <a href="https://youtube.com/@SiddheshwarNathMandirBishoul" target="_blank" class="nav-social-icon icon-yt" title="YouTube">
+        <svg viewBox="0 0 24 24" width="20" height="20"><rect x="1" y="4" width="22" height="16" rx="5" fill="#FF0000"/><path fill="#fff" d="M10 8.5l6 3.5-6 3.5z"/></svg>
+      </a>
+    </div>
+
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -577,25 +585,20 @@ h1, h2, .devanagari {
         <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
         <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Donation
+  </a>
+  <ul class="dropdown-menu donation-dropdown">
+    <li><a class="dropdown-item" href="donation.html">💰 Donate Now</a></li>
+    <li><a class="dropdown-item" href="accounts-login.html">📊 Accounts Portal</a></li>
+  </ul>
+</li>
         <li class="nav-item"><a class="nav-link" href="library.html">Library</a></li>
-        <li class="nav-item"><a class="nav-link" href="donation.html">Donation</a></li>
         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
       </ul>
 
-      <!-- SOCIAL ICONS -->
-      <!-- SOCIAL ICONS -->
-      <ul class="navbar-nav nav-social">
-        <li class="nav-item">
-          <a class="nav-social-icon icon-fb" href="https://www.facebook.com/profile.php?id=61588132485509" target="_blank" title="Facebook">
-            <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="12" fill="#1877F2"/><path fill="#fff" d="M16.5 12.5h-2.2V20h-3.1v-7.5H9.5v-2.6h1.7V8.2c0-1.7 1-3.2 3.6-3.2.9 0 1.7.1 1.7.1v2.5h-1.3c-.9 0-1.1.5-1.1 1.2v1.6h2.3l-.3 2.6z"/></svg>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-social-icon icon-yt" href="https://youtube.com/@SiddheshwarNathMandirBishoul" target="_blank" title="YouTube">
-            <svg viewBox="0 0 24 24" width="22" height="22"><rect x="1" y="4" width="22" height="16" rx="5" fill="#FF0000"/><path fill="#fff" d="M10 8.5l6 3.5-6 3.5z"/></svg>
-          </a>
-        </li>
-      </ul>
+  
     </div>
     </div>
 

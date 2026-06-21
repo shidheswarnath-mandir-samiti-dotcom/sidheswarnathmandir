@@ -1340,6 +1340,15 @@ textarea.form-control { resize: vertical; min-height: 120px; }
     box-shadow:0 4px 12px rgba(0,0,0,0.2);
 }
 
+/* Wrapper jo hamesha visible rahega (mobile + desktop) */
+.navbar-social-always {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  margin-right: 12px;
+}
+
 .nav-social-icon {
   display: flex;
   align-items: center;
@@ -1350,6 +1359,23 @@ textarea.form-control { resize: vertical; min-height: 120px; }
   background: white;
   transition: 0.25s;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  flex-shrink: 0;
+}
+
+.nav-social-icon:hover {
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+@media (max-width: 480px) {
+  .nav-social-icon {
+    width: 28px;
+    height: 28px;
+  }
+  .navbar-social-always {
+    gap: 6px;
+    margin-right: 8px;
+  }
 }
 
 .nav-social-icon:hover {
@@ -1461,3 +1487,32 @@ textarea.form-control { resize: vertical; min-height: 120px; }
 .yt-btn { background: #FF0000; }
 .yt-btn:hover { background: #cc0000; color: white; transform: scale(1.05); }
 
+/* =====================================================
+   NAVBAR — DONATION DROPDOWN
+   ===================================================== */
+
+.donation-dropdown {
+  border: none;
+  border-radius: 14px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+  padding: 8px;
+  margin-top: 8px !important;
+}
+
+.donation-dropdown .dropdown-item {
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+  transition: 0.2s;
+}
+
+.donation-dropdown .dropdown-item:hover {
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  color: white;
+}
+
+.premium-navbar .dropdown-toggle::after {
+  vertical-align: 2px;
+}
