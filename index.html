@@ -18,6 +18,8 @@
 <!-- Custom CSS -->
 <link rel="stylesheet" href="style.css">
 
+<script src="sheet-config.js"></script>
+
 <style>
 /* ============================
    HOME PAGE — EXTRA STYLES
@@ -620,6 +622,63 @@ h1, h2, .devanagari {
   <div class="scroll-hint">↓</div>
 </section>
 
+<!-- ===== LIVE FINANCIAL COUNTER ===== -->
+<section class="live-counter-section">
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="lc-header">
+      <div class="lc-badge">🔴 LIVE</div>
+      <h2 class="lc-title">पारदर्शी वित्तीय विवरण</h2>
+      <p class="lc-subtitle">शिवरात्रि पूजा समिति, बिशौल टटुआर — वार्षिक आय-व्यय 2026-27</p>
+    </div>
+
+    <!-- COUNTER CARDS -->
+    <div class="lc-cards">
+
+      <div class="lc-card lc-income">
+        <div class="lc-card-icon">💰</div>
+        <div class="lc-card-label">कुल आय</div>
+        <div class="lc-card-label-en">Total Income</div>
+        <div class="lc-card-value" id="lcTotalIncome">
+          <span class="lc-loading">Loading...</span>
+        </div>
+      </div>
+
+      <div class="lc-card lc-expense">
+        <div class="lc-card-icon">📤</div>
+        <div class="lc-card-label">कुल व्यय</div>
+        <div class="lc-card-label-en">Total Expense</div>
+        <div class="lc-card-value" id="lcTotalExpense">
+          <span class="lc-loading">Loading...</span>
+        </div>
+      </div>
+
+      <div class="lc-card lc-balance">
+        <div class="lc-card-icon">🏦</div>
+        <div class="lc-card-label">शेष राशि</div>
+        <div class="lc-card-label-en">Current Balance</div>
+        <div class="lc-card-value" id="lcBalance">
+          <span class="lc-loading">Loading...</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- VIEW DETAILED BUTTON -->
+    <div class="lc-btn-wrap">
+      <a href="accounts-login.html" class="lc-detail-btn">
+        📊 View Detailed Accounts
+        <span class="lc-btn-arrow">→</span>
+      </a>
+      <p class="lc-btn-hint">
+        🔒 Login karke saare records dekhen — Member, Market, Shubh Karya, Expenses
+      </p>
+    </div>
+
+  </div>
+</section>
+
 <!-- ===== STATS STRIP ===== -->
 <div class="stats-strip">
   <div class="container">
@@ -1021,6 +1080,76 @@ if (toggle && dropdown) {
 function goToAbout(lang) {
   window.location.href = "about.html?lang=" + lang;
 }
+</script>
+
+<script>
+// ===== LIVE COUNTER — Fetch from Google Sheet =====
+(async function loadLiveCounter() {
+  try {
+    // sheet-config.js se SHEET_URLS.summary use kar rahe hain
+    const response = await fetch(SHEET_URLS.summary);
+    const csvText  = await response.text();
+    const rows     = csvText.split('\n').map(r => r.split(','));
+
+    function findValue(keyword) {
+      for (const row of rows) {
+        const colB = (row[1] || '').replace(/"/g,'').trim();
+        if (colB.includes(keyword)) {
+          return (row[2] || '').replace(/"/g,'').trim();
+        }
+      }
+      return null;
+    }
+
+    const income  = parseFloat(findValue('कुल आय'))  || 0;
+    const expense = parseFloat(findValue('कुल व्यय')) || 0;
+    const balance = parseFloat(findValue('शेष राशि')) || 0;
+
+    // Count-up animation function
+    function countUp(elementId, targetValue) {
+      const el = document.getElementById(elementId);
+      if (!el) return;
+      const duration = 1800;
+      const start    = performance.now();
+      function update(now) {
+        const elapsed  = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(eased * targetValue);
+        el.textContent = '₹' + current.toLocaleString('en-IN');
+        if (progress < 1) requestAnimationFrame(update);
+        else {
+          el.textContent = '₹' + targetValue.toLocaleString('en-IN');
+          el.classList.add('counted');
+        }
+      }
+      requestAnimationFrame(update);
+    }
+
+    // Use IntersectionObserver — count-up sirf tab chale jab section screen pe aaye
+    const section = document.querySelector('.live-counter-section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          countUp('lcTotalIncome',  income);
+          countUp('lcTotalExpense', expense);
+          countUp('lcBalance',      balance);
+          observer.unobserve(section);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    observer.observe(section);
+
+  } catch (err) {
+    // Agar fetch fail ho (e.g. file:// protocol)
+    document.getElementById('lcTotalIncome').textContent  = 'N/A';
+    document.getElementById('lcTotalExpense').textContent = 'N/A';
+    document.getElementById('lcBalance').textContent      = 'N/A';
+    console.error('Live counter error:', err);
+  }
+})();
 </script>
 
 </body>
