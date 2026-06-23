@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mahashivratri 2026 Report — श्री सिद्धेश्वर नाथ मंदिर</title>
+<meta name="description" content="Mahashivratri 2026 financial records, page-wise verification totals, and archived PDFs for transparency.">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+body { font-family:'Poppins',Arial,sans-serif; background:#fffaf4; }
+h1,h2,h3,h4 { font-family:'Tiro Devanagari Sanskrit','Poppins',serif; }
+
+/* HERO */
+.ms-hero {
+  min-height: 42vh;
+  background: linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.65)),
+              url("images/maha.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+.ms-hero h1 {
+  font-size: clamp(24px,5vw,48px);
+  font-weight: bold;
+  text-shadow: 0 3px 20px rgba(0,0,0,.7);
+  animation: slideDown .9s ease both;
+}
+.ms-hero p {
+  font-size: 15px;
+  opacity: .85;
+  margin-top: 8px;
+  animation: fadeUp 1.3s ease both;
+}
+.hero-badge-ms {
+  display: inline-block;
+  background: rgba(255,153,51,.3);
+  border: 1px solid rgba(255,153,51,.7);
+  color: #ffcc88;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 18px;
+  border-radius: 30px;
+  margin-bottom: 14px;
+  animation: fadeUp .7s ease both;
+}
+@keyframes slideDown { from{opacity:0;transform:translateY(-28px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeUp    { from{opacity:0;transform:translateY(20px)}  to{opacity:1;transform:translateY(0)} }
+@media(max-width:768px){ .ms-hero{ background-attachment:scroll; min-height:36vh; } }
+
+/* BREADCRUMB */
+.breadcrumb-strip { background:white; border-bottom:1px solid #f0e8dc; padding:10px 0; }
+.breadcrumb-strip a { color:#ff6600; text-decoration:none; font-size:13px; }
+.breadcrumb-strip span { color:#999; font-size:13px; }
+
+/* SHARED */
+.section-eyebrow { font-size:12px; letter-spacing:2.5px; text-transform:uppercase; color:#ff6600; font-weight:600; margin-bottom:6px; }
+.section-heading { font-size:clamp(20px,3.5vw,30px); font-weight:bold; color:#1a1a1a; margin-bottom:10px; }
+.section-heading span { color:#ff6600; }
+.orange-rule { width:50px; height:3px; background:linear-gradient(90deg,#ff9933,#ff6600); border-radius:10px; margin:0 auto 30px; }
+
+/* SECTION WRAPPER */
+.ms-section { padding:55px 0; }
+.ms-section:nth-child(even) { background:#fffaf4; }
+.ms-section:nth-child(odd)  { background:white; }
+
+/* SUMMARY CARDS */
+.summary-card {
+  border-radius:18px;
+  padding:28px 20px;
+  text-align:center;
+  box-shadow:0 4px 20px rgba(0,0,0,.08);
+  height:100%;
+  transition:.3s;
+}
+.summary-card:hover { transform:translateY(-5px); }
+.summary-card .sc-icon { font-size:36px; margin-bottom:10px; display:block; }
+.summary-card .sc-label { font-size:13px; color:#888; font-weight:600; margin-bottom:8px; letter-spacing:.5px; }
+.summary-card .sc-value { font-size:clamp(22px,3.5vw,32px); font-weight:800; }
+.summary-card .sc-note  { font-size:11px; color:#aaa; margin-top:6px; }
+
+.sc-recorded  { background:linear-gradient(135deg,#e8f8ee,#d4f4dd); }
+.sc-recorded  .sc-value { color:#27ae60; }
+.sc-recalc    { background:linear-gradient(135deg,#e8f0ff,#d4e4ff); }
+.sc-recalc    .sc-value { color:#2563eb; }
+.sc-diff      { background:linear-gradient(135deg,#fff5e6,#ffe0b3); }
+.sc-diff      .sc-value { color:#ff6600; }
+
+/* PAGE-WISE TABLE */
+.pw-table-wrap {
+  background:white;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,.08);
+  overflow-x:auto;
+}
+.pw-table {
+  width:100%;
+  border-collapse:collapse;
+}
+.pw-table thead tr {
+  background:linear-gradient(90deg,#ff9933,#ff6600);
+  color:white;
+}
+.pw-table thead th {
+  padding:14px 20px;
+  font-size:14px;
+  font-weight:600;
+  text-align:left;
+}
+.pw-table tbody tr {
+  border-bottom:1px solid #f0e8dc;
+  transition:.2s;
+}
+.pw-table tbody tr:hover { background:#fff5e6; }
+.pw-table tbody tr:last-child { border-bottom:none; }
+.pw-table tbody td {
+  padding:12px 20px;
+  font-size:14px;
+  color:#333;
+}
+.pw-table tbody td:last-child {
+  font-weight:700;
+  color:#ff6600;
+  text-align:right;
+}
+.pw-table tfoot tr {
+  background:linear-gradient(90deg,#1a1a2e,#16213e);
+  color:white;
+}
+.pw-table tfoot td {
+  padding:14px 20px;
+  font-size:15px;
+  font-weight:800;
+}
+.pw-table tfoot td:last-child {
+  color:#ffd580;
+  text-align:right;
+}
+
+/* PAGE NUMBER BADGE */
+.page-badge {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:32px; height:32px;
+  background:linear-gradient(135deg,#ff9933,#ff6600);
+  color:white;
+  border-radius:50%;
+  font-size:12px;
+  font-weight:700;
+  margin-right:8px;
+}
+
+/* BAR VISUAL */
+.pw-bar-wrap { margin-top:6px; }
+.pw-bar {
+  height:6px;
+  background:linear-gradient(90deg,#ff9933,#ff6600);
+  border-radius:10px;
+  transition:width .8s ease;
+}
+
+/* PDF CARDS */
+.pdf-card {
+  background:white;
+  border-radius:18px;
+  padding:30px 24px;
+  box-shadow:0 4px 20px rgba(0,0,0,.08);
+  text-align:center;
+  transition:.3s;
+  height:100%;
+}
+.pdf-card:hover {
+  transform:translateY(-5px);
+  box-shadow:0 12px 32px rgba(255,102,0,.15);
+}
+.pdf-card .pdf-icon { font-size:52px; margin-bottom:14px; display:block; }
+.pdf-card h4 { font-weight:700; color:#1a1a1a; margin-bottom:8px; font-size:18px; }
+.pdf-card p  { font-size:13px; color:#888; margin-bottom:20px; line-height:1.6; }
+.pdf-btn-wrap { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+.pdf-btn-view {
+  display:inline-flex; align-items:center; gap:7px;
+  background:linear-gradient(90deg,#ff9933,#ff6600);
+  color:white; text-decoration:none; font-weight:700;
+  font-size:13px; padding:10px 22px; border-radius:25px;
+  transition:.3s; font-family:'Poppins',sans-serif;
+}
+.pdf-btn-view:hover { transform:scale(1.05); color:white; box-shadow:0 4px 16px rgba(255,102,0,.4); }
+.pdf-btn-download {
+  display:inline-flex; align-items:center; gap:7px;
+  background:white; color:#ff6600; text-decoration:none;
+  font-weight:700; font-size:13px; padding:10px 22px;
+  border-radius:25px; border:2px solid #ff9933; transition:.3s;
+  font-family:'Poppins',sans-serif;
+}
+.pdf-btn-download:hover { background:#ff9933; color:white; }
+
+/* TRANSPARENCY NOTICE */
+.notice-card {
+  background:linear-gradient(135deg,#fffbf0,#fff5e0);
+  border-left:5px solid #ff9933;
+  border-radius:16px;
+  padding:32px 30px;
+  box-shadow:0 4px 20px rgba(255,153,51,.12);
+}
+.notice-heading {
+  font-size:clamp(16px,2.5vw,22px);
+  font-weight:700;
+  color:#cc4400;
+  margin-bottom:20px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.hindi-notice {
+  font-family:'Tiro Devanagari Sanskrit',serif;
+  font-size:17px;
+  line-height:2;
+  color:#333;
+}
+.hindi-notice p { margin-bottom:16px; }
+.hindi-notice p:last-child { margin-bottom:0; }
+@media(max-width:576px){
+  .hindi-notice { font-size:15px; line-height:1.9; }
+  .notice-card  { padding:22px 18px; }
+}
+
+/* STAMP / SEAL decoration */
+.archive-stamp {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(255,102,0,.08);
+  border:1.5px solid rgba(255,102,0,.25);
+  color:#cc4400;
+  font-size:12px;
+  font-weight:600;
+  padding:6px 16px;
+  border-radius:20px;
+  margin-bottom:20px;
+  letter-spacing:.5px;
+}
+
+/* REVEAL */
+.reveal { opacity:0; transform:translateY(30px); transition:opacity .7s ease,transform .7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* WHATSAPP FLOAT */
+.whatsapp-float {
+  position:fixed; bottom:22px; right:22px; background:#25d366; color:white;
+  width:54px; height:54px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center; font-size:26px;
+  text-decoration:none; box-shadow:0 4px 18px rgba(37,211,102,.5); z-index:999; transition:.3s;
+}
+.whatsapp-float:hover { transform:scale(1.12); color:white; }
+
+/* SCROLL TOP */
+#topBtn {
+  position:fixed; bottom:84px; right:22px; display:none;
+  background:linear-gradient(135deg,#ff9933,#ff6600); color:white;
+  border:none; width:42px; height:42px; border-radius:50%; font-size:18px;
+  cursor:pointer; box-shadow:0 4px 14px rgba(255,102,0,.4); z-index:998; transition:.3s;
+}
+#topBtn:hover { transform:scale(1.1); }
+
+/* FOOTER */
+.site-footer { background:#111; color:#ccc; padding:50px 0 20px; }
+.footer-brand { font-size:20px; font-weight:bold; color:#ff9933; margin-bottom:8px; }
+.footer-tagline { font-size:13px; color:#888; line-height:1.6; }
+.footer-heading { font-size:13px; font-weight:700; color:#ff9933; letter-spacing:1px; text-transform:uppercase; margin-bottom:12px; }
+.footer-links { list-style:none; padding:0; margin:0; }
+.footer-links li { margin-bottom:7px; }
+.footer-links a { color:#aaa; text-decoration:none; font-size:13px; transition:.2s; }
+.footer-links a:hover { color:#ff9933; }
+.footer-info p { font-size:13px; color:#aaa; margin-bottom:5px; }
+.footer-bottom { border-top:1px solid #2a2a2a; margin-top:36px; padding-top:16px; text-align:center; font-size:12px; color:#555; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg premium-navbar sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="images/m7.jpg" class="logo-img me-2" alt="Mandir Logo">
+      <span>श्री सिद्धेश्वर नाथ मंदिर</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-label="Toggle">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="library.html">📚 Library</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Donation</a>
+          <ul class="dropdown-menu donation-dropdown">
+            <li><a class="dropdown-item" href="donation.html">💰 Donate Now</a></li>
+            <li><a class="dropdown-item" href="accounts-login.html">📊 Accounts Portal</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-strip">
+  <div class="container">
+    <a href="index.html">Home</a><span> &rsaquo; </span>
+    <span>Mahashivratri 2026 Report</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="ms-hero">
+  <div class="container">
+    <div class="hero-badge-ms">॥ अभिलेख एवं पारदर्शिता ॥</div>
+    <h1>🕉️ Mahashivratri 2026 Report</h1>
+    <p>Financial Records · Page-wise Verification · Archived PDFs</p>
+  </div>
+</section>
+
+<!-- ============================
+     SECTION 1: SUMMARY OVERVIEW
+     ============================ -->
+<section class="ms-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Financial Summary</div>
+      <h2 class="section-heading">आय-व्यय <span>सारांश</span></h2>
+      <div class="orange-rule"></div>
+    </div>
+
+    <div class="row g-4 justify-content-center reveal">
+
+      <div class="col-md-4 col-sm-6">
+        <div class="summary-card sc-recorded">
+          <span class="sc-icon">📋</span>
+          <div class="sc-label">Committee Recorded Total</div>
+          <div class="sc-value">₹3,19,151</div>
+          <div class="sc-note">As per original committee records</div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="summary-card sc-recalc">
+          <span class="sc-icon">🔢</span>
+          <div class="sc-label">Page-wise Recalculated Total</div>
+          <div class="sc-value">₹3,23,697</div>
+          <div class="sc-note">Sum of all 16 page-end totals</div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="summary-card sc-diff">
+          <span class="sc-icon">📊</span>
+          <div class="sc-label">Difference</div>
+          <div class="sc-value">₹4,546</div>
+          <div class="sc-note">Between both recorded figures</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     SECTION 2: PAGE-WISE TABLE
+     ============================ -->
+<section class="ms-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Verification Details</div>
+      <h2 class="section-heading">पृष्ठवार <span>सत्यापन विवरण</span></h2>
+      <div class="orange-rule"></div>
+      <p style="color:#888;font-size:14px;margin-bottom:30px;max-width:600px;margin-left:auto;margin-right:auto;">
+        Each page-end total as recorded in the original donation register
+      </p>
+    </div>
+
+    <div class="pw-table-wrap reveal">
+      <table class="pw-table">
+        <thead>
+          <tr>
+            <th>Page</th>
+            <th>Amount (₹)</th>
+            <th style="min-width:160px;">Visual</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="page-badge">1</span> Page 1</td>
+            <td style="font-weight:700;color:#ff6600;text-align:right;">₹1,21,929</td>
+            <td><div class="pw-bar-wrap"><div class="pw-bar" style="width:100%;"></div></div></td>
+          </tr>
+          <tr>
+            <td><span class="page-badge">2</span> Page 2</td>
+            <td style="font-weight:700;color:#ff6600;text-align:right;">₹19,485</td>
+            <td><div class="pw-bar-wrap"><div class="pw-bar" style="width:16%;"></div></div></td>
+          </tr>
+          <tr>
+            <td><span class="page-badge">3</span> Page 3</td>
+            <td style="font-weight:700;color:#ff6600;text-align:right;">₹13,086</td>
+            <td><div class="pw-bar-wrap"><div class="pw-bar" style="width:11%;"></div></div></td>
+          </tr>
+          <tr>
+            <td><span class="page-badge">4</span> Page 4</td>
+            <td style="font-weight:700;color:#ff6600;text-align:right;">₹13,681</td>
+            <td><div class="pw-bar-wrap"><div class="pw-bar" style="width:11%;"></div></div></td>
+          </tr>
+          <tr>
+            <td><span class="page-badge">5</span> Page 5</td>
+            <td style="font-weight:700;color:#ff6600;text-align:right;">₹12,678</td>
+            <td><div class="pw-bar-wrap"><div class="pw-bar" style="width:10%;"></div></div></td>
+          </tr>
+          <tr>
+            <td><span class="page-badge">6</span> Page 6</td>
+            <td style="font-weight:700;color:#ff6600;text-align:right;">₹7,440</td>
+            <td><div class="pw-bar-wrap"><div class="pw-bar" style="width:6%;"></div></div></td>
+          </tr>
+          <tr>
+            <td><span class="page-badge">7</span> Page 7</td>
+            <td style="font-weight:700;color:#ff6600;text-align:right;">₹10,027</td>
+            <td><div class="pw-bar-wrap"><div class="pw-bar" style="width:8%;"></div></div></td>
+          </tr>
+          <tr>
+            <td><span class="page-badge">8</span> Page 8</td>
+            <td style="font-weight:700;color:#ff6600;text-align:right;">₹8,916</td>
+            <td><div class="pw-bar-wrap"><div class="pw-bar" style="width:7%;"></div></div></td>
+          </tr>
+          <tr>
+            <td><span class="page-badge">9</span> Page 9</td>
+            <td style="font-weight:700;color:#ff6600;text-align:right;">₹8,669</td>
+            <td><div class="pw-bar-wrap"><div class="pw-bar" style="width:7%;"></div></div></td>
+          </tr>
+          <tr>
+            <td><span class="page-badge">10</span> Page 10</td>
+            <td style="font-weight:700;color:#ff6600;text-align:right;">₹9,560</td>
+            <td><div class="pw-bar-wrap"><div class="pw-bar" style="width:8%;"></div></div></td>
+          </tr>
+          <tr>
+            <td><span class="page-badge">11</span> Page 11</td>
+            <td style="font-weight:700;color:#ff6600;text-align:right;">₹5,358</td>
+            <td><div class="pw-bar-wrap"><div class="pw-bar" style="width:4%;"></div></div></td>
+          </tr>
+          <tr>
+            <td><span class="page-badge">12</span> Page 12</td>
+            <td style="font-weight:700;color:#ff6600;text-align:right;">₹10,667</td>
+            <td><div class="pw-bar-wrap"><div class="pw-bar" style="width:9%;"></div></div></td>
+          </tr>
+          <tr>
+            <td><span class="page-badge">13</span> Page 13</td>
+            <td style="font-weight:700;color:#ff6600;text-align:right;">₹14,632</td>
+            <td><div class="pw-bar-wrap"><div class="pw-bar" style="width:12%;"></div></div></td>
+          </tr>
+          <tr>
+            <td><span class="page-badge">14</span> Page 14</td>
+            <td style="font-weight:700;color:#ff6600;text-align:right;">₹23,782</td>
+            <td><div class="pw-bar-wrap"><div class="pw-bar" style="width:20%;"></div></div></td>
+          </tr>
+          <tr>
+            <td><span class="page-badge">15</span> Page 15</td>
+            <td style="font-weight:700;color:#ff6600;text-align:right;">₹37,525</td>
+            <td><div class="pw-bar-wrap"><div class="pw-bar" style="width:31%;"></div></div></td>
+          </tr>
+          <tr>
+            <td><span class="page-badge">16</span> Page 16</td>
+            <td style="font-weight:700;color:#ff6600;text-align:right;">₹6,262</td>
+            <td><div class="pw-bar-wrap"><div class="pw-bar" style="width:5%;"></div></div></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td style="color:white;font-size:15px;">🔢 Grand Total (16 Pages)</td>
+            <td colspan="2" style="color:#ffd580;font-size:18px;text-align:right;">₹3,23,697</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     SECTION 3 & 4: PDF CARDS
+     ============================ -->
+<section class="ms-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Official Documents</div>
+      <h2 class="section-heading">अभिलेख <span>PDF</span></h2>
+      <div class="orange-rule"></div>
+    </div>
+
+    <div class="row g-4 justify-content-center reveal">
+
+      <!-- DONATION PDF -->
+      <div class="col-md-5">
+        <div class="pdf-card">
+          <span class="pdf-icon">📄</span>
+          <h4>Donation Record</h4>
+          <p>Complete donor records for Mahashivratri 2026 in PDF format for archival and reference.</p>
+          <div class="pdf-btn-wrap">
+            <a href="pdfs/donation-record-2026.pdf"
+               target="_blank"
+               class="pdf-btn-view">
+              👁️ View PDF
+            </a>
+            <a href="pdfs/donation-record-2026.pdf"
+               download="Mahashivratri-2026-Donation-Record.pdf"
+               class="pdf-btn-download">
+              ⬇️ Download
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXPENSE PDF -->
+      <div class="col-md-5">
+        <div class="pdf-card">
+          <span class="pdf-icon">📄</span>
+          <h4>Expense Record</h4>
+          <p>Complete expense records for Mahashivratri 2026 in PDF format for archival and reference.</p>
+          <div class="pdf-btn-wrap">
+            <a href="pdfs/expense-record-2026.pdf"
+               target="_blank"
+               class="pdf-btn-view">
+              👁️ View PDF
+            </a>
+            <a href="pdfs/expense-record-2026.pdf"
+               download="Mahashivratri-2026-Expense-Record.pdf"
+               class="pdf-btn-download">
+              ⬇️ Download
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     SECTION 5: TRANSPARENCY NOTICE
+     ============================ -->
+<section class="ms-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Archival Notice</div>
+      <h2 class="section-heading">अभिलेख एवं <span>पारदर्शिता</span></h2>
+      <div class="orange-rule"></div>
+    </div>
+
+    <div class="row justify-content-center reveal">
+      <div class="col-md-9">
+        <div class="notice-card">
+
+          <div class="archive-stamp">
+            📜 अभिलेख सूचना — Archival Notice
+          </div>
+
+          <div class="notice-heading">
+            📜 अभिलेख सत्यापन एवं पारदर्शिता सूचना
+          </div>
+
+          <div class="hindi-notice">
+            <p>
+              महाशिवरात्रि 2026 से संबंधित उपलब्ध आय-व्यय अभिलेखों को डिजिटल रूप में सुरक्षित रखने तथा भविष्य में संदर्भ हेतु उपलब्ध कराने के उद्देश्य से यह विवरण प्रस्तुत किया जा रहा है।
+            </p>
+            <p>
+              उपलब्ध मूल अभिलेखों के अनुसार चंदा संग्रह का विवरण कुल 16 पृष्ठों में दर्ज है। प्रत्येक पृष्ठ के अंत में उस पृष्ठ का कुल योग अंकित किया गया है। इन सभी पृष्ठीय योगों का पुनः समेकित योग करने पर कुल चंदा राशि ₹3,23,697 प्राप्त होती है।
+            </p>
+            <p>
+              उपलब्ध सारांश अभिलेख में कुल चंदा राशि ₹3,19,151 अंकित है।
+            </p>
+            <p>
+              दोनों आंकड़े उपलब्ध अभिलेखों के आधार पर यथावत प्रस्तुत किए जा रहे हैं ताकि भविष्य में किसी भी इच्छुक व्यक्ति को संदर्भ एवं सत्यापन की सुविधा प्राप्त हो सके।
+            </p>
+            <p>
+              इस पृष्ठ का उद्देश्य किसी व्यक्ति, सदस्य, पदाधिकारी अथवा किसी भी समिति के कार्य पर टिप्पणी करना नहीं है। यह केवल उपलब्ध अभिलेखों का डिजिटल संरक्षण, दस्तावेजीकरण तथा सार्वजनिक संदर्भ हेतु प्रस्तुतीकरण है।
+            </p>
+            <p>
+              पूर्ण पारदर्शिता बनाए रखने के उद्देश्य से पृष्ठवार योग तथा संबंधित PDF दस्तावेज इस पोर्टल पर उपलब्ध कराए जा रहे हैं ताकि इच्छुक व्यक्ति स्वयं उनका अवलोकन एवं सत्यापन कर सकें।
+            </p>
+            <p>
+              मंदिर की परंपरा, श्रद्धालुओं के सहयोग तथा सामूहिक सहभागिता का सम्मान करते हुए यह प्रयास केवल अभिलेखों को व्यवस्थित एवं सुरक्षित रूप में संरक्षित करने के लिए किया गया है।
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="footer-brand">श्री सिद्धेश्वर नाथ मंदिर</div>
+        <p class="footer-tagline">Ancient Siddha Peeth of Mithila, Darbhanga, Bihar.<br>Est. Shaka 1763 by Pt. Sidheshwar Nath Mishra.</p>
+      </div>
+      <div class="col-md-2">
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="library.html">Library</a></li>
+          <li><a href="donation.html">Donation</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <div class="footer-heading">Contact</div>
+        <div class="footer-info">
+          <p>📍 Bishoul Tatuar, Darbhanga, Bihar</p>
+          <p>📞 +91 92968 60221</p>
+          <p>📧 mandir@gmail.com</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="footer-heading">Puja Timings</div>
+        <div class="footer-info">
+          <p>🌅 Morning Puja — 6:00 AM</p>
+          <p>🌇 Evening Aarti — 7:00 PM</p>
+          <p>🌙 Shayan Aarti — 9:00 PM</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 श्री सिद्धेश्वर नाथ मंदिर, Bishoul Tatuar, Darbhanga, Bihar. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/919296860221" class="whatsapp-float" target="_blank">💬</a>
+
+<!-- SCROLL TOP -->
+<button onclick="scrollToTop()" id="topBtn">&#x2191;</button>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+// SCROLL REVEAL
+const revealEls = document.querySelectorAll('.reveal');
+const observer  = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+revealEls.forEach(el => observer.observe(el));
+
+// SCROLL TOP
+const topBtn = document.getElementById('topBtn');
+window.addEventListener('scroll', () => {
+  topBtn.style.display = window.scrollY > 250 ? 'block' : 'none';
+});
+function scrollToTop() { window.scrollTo({ top:0, behavior:'smooth' }); }
+</script>
+</body>
+</html>
