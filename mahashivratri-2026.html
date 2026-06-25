@@ -302,7 +302,7 @@ h1,h2,h3,h4 { font-family:'Tiro Devanagari Sanskrit','Poppins',serif; }
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
         <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-        <li class="nav-item"><a class="nav-link" href="library.html">📚 Library</a></li>
+        <li class="nav-item"><a class="nav-link" href="library.html">Library</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Donation</a>
           <ul class="dropdown-menu donation-dropdown">
@@ -348,33 +348,100 @@ h1,h2,h3,h4 { font-family:'Tiro Devanagari Sanskrit','Poppins',serif; }
 
       <div class="col-md-4 col-sm-6">
         <div class="summary-card sc-recorded">
-          <span class="sc-icon">📋</span>
-          <div class="sc-label">Committee Recorded Total</div>
-          <div class="sc-value">₹3,19,151</div>
-          <div class="sc-note">As per original committee records</div>
+          <span class="sc-icon">💰</span>
+          <div class="sc-label">कुल आय</div>
+          <div class="sc-value">₹3,23,697</div>
+          <div class="sc-note">Total Income — Mahashivratri 2026</div>
+
+          <!-- BREAKDOWN BUTTON -->
+          <button
+            onclick="toggleBreakdown(this)"
+            style="margin-top:14px;display:inline-flex;align-items:center;gap:6px;
+                   background:white;color:#27ae60;border:2px solid #27ae60;
+                   border-radius:20px;padding:7px 16px;font-size:12px;
+                   font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif;
+                   transition:.25s;">
+            📋 आय का विवरण देखें ▼
+          </button>
+
+          <!-- BREAKDOWN BOX -->
+          <div id="incomeBreakdown" style="display:none;margin-top:14px;text-align:left;">
+            <div style="background:rgba(255,255,255,0.7);border-radius:12px;padding:14px 16px;">
+
+              <!-- Member Chanda -->
+              <div style="display:flex;justify-content:space-between;align-items:center;
+                          padding:8px 0;border-bottom:1px solid rgba(39,174,96,0.2);">
+                <div>
+                  <div style="font-size:13px;font-weight:700;color:#1a1a1a;">👥 सदस्य चंदा</div>
+                  <div style="font-size:11px;color:#888;">Member Contributions</div>
+                </div>
+                <div style="font-size:14px;font-weight:800;color:#27ae60;">₹3,19,151</div>
+              </div>
+
+              <!-- Market Income --> <!-- Shubh Karya -->
+              <div style="display:flex;justify-content:space-between;align-items:center;
+                          padding:8px 0;border-bottom:1px solid rgba(39,174,96,0.2);">
+                <div>
+                  <div style="font-size:13px;font-weight:700;color:#1a1a1a;">🏪बट्टी + 🎉 शुभ कार्य</div>
+                  <div style="font-size:11px;color:#888;">Market Collection</div>
+                </div>
+                <div style="font-size:14px;font-weight:800;color:#27ae60;">₹ 5400</div>
+              </div>
+
+              <!-- Chanda (Main Donation) -->
+              <div style="display:flex;justify-content:space-between;align-items:center;
+                          padding:8px 0;">
+                <div>
+                  <div style="font-size:13px;font-weight:700;color:#1a1a1a;">🙏ब्यास गद्दी</div>
+                  <div style="font-size:11px;color:#888;">Spiritual Seat</div>
+                </div>
+                <div style="font-size:14px;font-weight:800;color:#27ae60;">₹10,900</div>
+              </div>
+
+              <!-- Total line -->
+              <div style="border-top:2px solid #27ae60;margin-top:10px;padding-top:10px;
+                          display:flex;justify-content:space-between;align-items:center;">
+                <div style="font-size:13px;font-weight:700;color:#1a1a1a;">कुल योग</div>
+                <div style="font-size:15px;font-weight:800;color:#27ae60;">₹3,35,951</div>
+              </div>
+
+            </div>
+          </div>
+
         </div>
       </div>
 
       <div class="col-md-4 col-sm-6">
         <div class="summary-card sc-recalc">
-          <span class="sc-icon">🔢</span>
-          <div class="sc-label">Page-wise Recalculated Total</div>
-          <div class="sc-value">₹3,23,697</div>
-          <div class="sc-note">Sum of all 16 page-end totals</div>
+          <span class="sc-icon">📤</span>
+          <div class="sc-label">कुल व्यय</div>
+          <div class="sc-value">2,22,250</div>
+          <div class="sc-note">Total Expense—Mahashivratri 2026</div>
+
+          <!-- PDF BUTTON -->
+          <a href="pdfs/expense-record-2026.pdf"
+             target="_blank"
+             style="margin-top:14px;display:inline-flex;align-items:center;gap:6px;
+                    background:white;color:#2563eb;border:2px solid #2563eb;
+                    border-radius:20px;padding:7px 16px;font-size:12px;
+                    font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif;
+                    text-decoration:none;transition:.25s;">
+            📄 व्यय विवरण PDF देखें
+          </a>
+
         </div>
       </div>
 
       <div class="col-md-4 col-sm-6">
         <div class="summary-card sc-diff">
-          <span class="sc-icon">📊</span>
-          <div class="sc-label">Difference</div>
-          <div class="sc-value">₹4,546</div>
-          <div class="sc-note">Between both recorded figures</div>
+          <span class="sc-icon">🏦</span>
+          <div class="sc-label">मुनाफा / शेष राशि</div>
+          <div class="sc-value">1,13,701</div>
+          <div class="sc-note">Net Balance</div>
         </div>
       </div>
 
     </div>
-  </div>
 </section>
 
 <!-- ============================
@@ -575,28 +642,45 @@ h1,h2,h3,h4 { font-family:'Tiro Devanagari Sanskrit','Poppins',serif; }
             📜 अभिलेख सत्यापन एवं पारदर्शिता सूचना
           </div>
 
-          <div class="hindi-notice">
-            <p>
-              महाशिवरात्रि 2026 से संबंधित उपलब्ध आय-व्यय अभिलेखों को डिजिटल रूप में सुरक्षित रखने तथा भविष्य में संदर्भ हेतु उपलब्ध कराने के उद्देश्य से यह विवरण प्रस्तुत किया जा रहा है।
-            </p>
-            <p>
-              उपलब्ध मूल अभिलेखों के अनुसार चंदा संग्रह का विवरण कुल 16 पृष्ठों में दर्ज है। प्रत्येक पृष्ठ के अंत में उस पृष्ठ का कुल योग अंकित किया गया है। इन सभी पृष्ठीय योगों का पुनः समेकित योग करने पर कुल चंदा राशि ₹3,23,697 प्राप्त होती है।
-            </p>
-            <p>
-              उपलब्ध सारांश अभिलेख में कुल चंदा राशि ₹3,19,151 अंकित है।
-            </p>
-            <p>
-              दोनों आंकड़े उपलब्ध अभिलेखों के आधार पर यथावत प्रस्तुत किए जा रहे हैं ताकि भविष्य में किसी भी इच्छुक व्यक्ति को संदर्भ एवं सत्यापन की सुविधा प्राप्त हो सके।
-            </p>
-            <p>
-              इस पृष्ठ का उद्देश्य किसी व्यक्ति, सदस्य, पदाधिकारी अथवा किसी भी समिति के कार्य पर टिप्पणी करना नहीं है। यह केवल उपलब्ध अभिलेखों का डिजिटल संरक्षण, दस्तावेजीकरण तथा सार्वजनिक संदर्भ हेतु प्रस्तुतीकरण है।
-            </p>
-            <p>
-              पूर्ण पारदर्शिता बनाए रखने के उद्देश्य से पृष्ठवार योग तथा संबंधित PDF दस्तावेज इस पोर्टल पर उपलब्ध कराए जा रहे हैं ताकि इच्छुक व्यक्ति स्वयं उनका अवलोकन एवं सत्यापन कर सकें।
-            </p>
-            <p>
-              मंदिर की परंपरा, श्रद्धालुओं के सहयोग तथा सामूहिक सहभागिता का सम्मान करते हुए यह प्रयास केवल अभिलेखों को व्यवस्थित एवं सुरक्षित रूप में संरक्षित करने के लिए किया गया है।
-            </p>
+         <!-- TOGGLE BUTTON -->
+          <div style="text-align:center; margin-bottom:16px;">
+            <button
+              onclick="toggleNotice(this)"
+              style="display:inline-flex;align-items:center;gap:8px;
+                     background:linear-gradient(90deg,#ff9933,#ff6600);
+                     color:white;border:none;border-radius:30px;
+                     padding:11px 26px;font-size:14px;font-weight:700;
+                     cursor:pointer;font-family:'Poppins',sans-serif;
+                     transition:.3s;box-shadow:0 4px 14px rgba(255,102,0,.3);">
+              📜 पारदर्शिता सूचना पढ़ें ▼
+            </button>
+          </div>
+
+          <!-- COLLAPSIBLE HINDI TEXT -->
+          <div id="hindiNoticeBox" style="display:none; overflow:hidden; transition:all .4s ease;">
+            <div class="hindi-notice">
+              <p>
+                महाशिवरात्रि 2026 से संबंधित उपलब्ध आय-व्यय अभिलेखों को डिजिटल रूप में सुरक्षित रखने तथा भविष्य में संदर्भ हेतु उपलब्ध कराने के उद्देश्य से यह विवरण प्रस्तुत किया जा रहा है।
+              </p>
+              <p>
+                उपलब्ध मूल अभिलेखों के अनुसार चंदा संग्रह का विवरण कुल 16 पृष्ठों में दर्ज है। प्रत्येक पृष्ठ के अंत में उस पृष्ठ का कुल योग अंकित किया गया है। इन सभी पृष्ठीय योगों का पुनः समेकित योग करने पर कुल चंदा राशि ₹3,23,697 प्राप्त होती है।
+              </p>
+              <p>
+                उपलब्ध सारांश अभिलेख में कुल चंदा राशि ₹3,19,151 अंकित है।
+              </p>
+              <p>
+                दोनों आंकड़े उपलब्ध अभिलेखों के आधार पर यथावत प्रस्तुत किए जा रहे हैं ताकि भविष्य में किसी भी इच्छुक व्यक्ति को संदर्भ एवं सत्यापन की सुविधा प्राप्त हो सके।
+              </p>
+              <p>
+                इस पृष्ठ का उद्देश्य किसी व्यक्ति, सदस्य, पदाधिकारी अथवा किसी भी समिति के कार्य पर टिप्पणी करना नहीं है। यह केवल उपलब्ध अभिलेखों का डिजिटल संरक्षण, दस्तावेजीकरण तथा सार्वजनिक संदर्भ हेतु प्रस्तुतीकरण है।
+              </p>
+              <p>
+                पूर्ण पारदर्शिता बनाए रखने के उद्देश्य से पृष्ठवार योग तथा संबंधित PDF दस्तावेज इस पोर्टल पर उपलब्ध कराए जा रहे हैं ताकि इच्छुक व्यक्ति स्वयं उनका अवलोकन एवं सत्यापन कर सकें।
+              </p>
+              <p>
+                मंदिर की परंपरा, श्रद्धालुओं के सहयोग तथा सामूहिक सहभागिता का सम्मान करते हुए यह प्रयास केवल अभिलेखों को व्यवस्थित एवं सुरक्षित रूप में संरक्षित करने के लिए किया गया है।
+              </p>
+            </div>
           </div>
 
         </div>
@@ -673,6 +757,28 @@ window.addEventListener('scroll', () => {
   topBtn.style.display = window.scrollY > 250 ? 'block' : 'none';
 });
 function scrollToTop() { window.scrollTo({ top:0, behavior:'smooth' }); }
+
+// TOGGLE HINDI NOTICE
+function toggleNotice(btn) {
+  const box = document.getElementById('hindiNoticeBox');
+  const isHidden = box.style.display === 'none';
+  box.style.display = isHidden ? 'block' : 'none';
+  btn.innerHTML = isHidden
+    ? '📜 पारदर्शिता सूचना छुपाएं ▲'
+    : '📜 पारदर्शिता सूचना पढ़ें ▼';
+}
+
+// TOGGLE INCOME BREAKDOWN
+function toggleBreakdown(btn) {
+  const box = document.getElementById('incomeBreakdown');
+  const isHidden = box.style.display === 'none';
+  box.style.display = isHidden ? 'block' : 'none';
+  btn.innerHTML = isHidden
+    ? '📋 आय का विवरण छुपाएं ▲'
+    : '📋 आय का विवरण देखें ▼';
+}
+
 </script>
+
 </body>
 </html>
