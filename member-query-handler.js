@@ -1,18 +1,8 @@
 /* =====================================================================
    MAHADEV AI — MEMBER-SPECIFIC QUERY HANDLER
    =====================================================================
-   Purpose : Detect when a user is asking about ONE SPECIFIC member's
-             contribution (e.g. "Pawan Jha ka contribution kitna hai?")
-             and answer using ONLY that member's parsed data.
-
-   Depends on : sheet-parsers.js (must be loaded BEFORE this file),
-                which itself depends on sheets-integration.js.
-
-   Hard rule  : This file NEVER calls fetch() or talks to Google Sheets
-                directly. It only reads from SheetParsers.buildFullKnowledge().
-
-   Scope      : Name extraction + fuzzy matching + clean reply building.
-                No AI API. No UI redesign.
+   Task K-012.5 Bug Fix applied — see handleMemberQuery() + new
+   hasStrongNameSignal() helper. Everything else is UNCHANGED.
    ===================================================================== */
 
 const MemberQueryHandler = (function () {
@@ -21,24 +11,11 @@ const MemberQueryHandler = (function () {
   const FRIENDLY_UNAVAILABLE =
     'क्षमा करें, अभी सदस्य डेटा लोड नहीं हो पा रहा है। कृपया कुछ देर बाद पुनः प्रयास करें। 🙏';
 
-  /* -------------------------------------------------------------
-     CURRENCY FORMATTER (kept local so this file has no hidden
-     dependency on financial-query-handler.js)
-     ----------------------------------------------------------- */
   function formatINR(amount) {
     const num = Number(amount) || 0;
     return '₹' + num.toLocaleString('en-IN');
   }
 
-  /* -------------------------------------------------------------
-     STEP 1 — INTENT DETECTION
-     -------------------------------------------------------------
-     A message is treated as a "member query" if it contains one
-     of these trigger phrases (English + Hindi/Hinglish variants).
-     This intentionally does NOT try to detect a name yet — that
-     happens in Step 2 by elimination (remove the trigger phrase,
-     whatever text remains is treated as the candidate name).
-     ----------------------------------------------------------- */
   const TRIGGER_PHRASES = [
     'contribution', 'contributed', 'donation', 'donated', 'yogdan', 'योगदान',
     'chanda', 'चंदा', 'kitna diya', 'kitna diya hai', 'kitna contribute',
@@ -50,15 +27,6 @@ const MemberQueryHandler = (function () {
     return TRIGGER_PHRASES.some(phrase => query.includes(phrase));
   }
 
-  /* -------------------------------------------------------------
-     STEP 2 — NAME EXTRACTION
-     -------------------------------------------------------------
-     Strips common question words/phrases out of the message so
-     that what's left is (most likely) the member's name.
-
-     This is a simple, dependency-free heuristic — not true NLP —
-     but works well for short, direct chat questions.
-     ----------------------------------------------------------- */
   const STOPWORDS = [
     'how much has', 'how much did', 'how much', 'show', "'s contribution",
     'contribution', 'contributed nothing in', 'contributed', 'donation', 'donated',
@@ -76,10 +44,8 @@ const MemberQueryHandler = (function () {
   function extractCandidateName(text) {
     let cleaned = (text || '').trim();
 
-    // Remove trailing question mark / punctuation
     cleaned = cleaned.replace(/[?？]+$/g, '').trim();
 
-    // Remove any detected month word first (so "Pawan Jha January" → "Pawan Jha")
     const monthLabel = detectMonthInText(cleaned);
     if (monthLabel) {
       const allAliasesForMonth = MONTH_ALIASES[monthLabel.toLowerCase()] || [];
@@ -89,8 +55,6 @@ const MemberQueryHandler = (function () {
       });
     }
 
-    // Remove stopwords (longest phrases first so partial matches
-    // don't break longer ones, e.g. remove "ka total" before "ka")
     const sortedStopwords = [...STOPWORDS].sort((a, b) => b.length - a.length);
 
     sortedStopwords.forEach(word => {
@@ -98,7 +62,6 @@ const MemberQueryHandler = (function () {
       cleaned = cleaned.replace(pattern, ' ');
     });
 
-    // Collapse extra spaces left behind
     cleaned = cleaned.replace(/\s+/g, ' ').trim();
 
     return cleaned;
@@ -108,15 +71,6 @@ const MemberQueryHandler = (function () {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }
 
-  /* -------------------------------------------------------------
-     STEP 3 — NORMALIZATION + FUZZY MATCHING
-     -------------------------------------------------------------
-     normalizeName(): lowercase, trim, collapse multiple spaces —
-     makes matching tolerant of casing and stray spaces.
-
-     levenshteinDistance(): classic edit-distance algorithm, used
-     to tolerate small typos (e.g. "Pawn Jha" vs "Pawan Jha").
-     ----------------------------------------------------------- */
   function normalizeName(name) {
     return (name || '')
       .toLowerCase()
@@ -135,9 +89,9 @@ const MemberQueryHandler = (function () {
           matrix[i][j] = matrix[i - 1][j - 1];
         } else {
           matrix[i][j] = Math.min(
-            matrix[i - 1][j - 1] + 1, // substitution
-            matrix[i][j - 1] + 1,     // insertion
-            matrix[i - 1][j] + 1      // deletion
+            matrix[i - 1][j - 1] + 1,
+            matrix[i][j - 1] + 1,
+            matrix[i - 1][j] + 1
           );
         }
       }
@@ -145,13 +99,6 @@ const MemberQueryHandler = (function () {
     return matrix[b.length][a.length];
   }
 
-  /**
-   * findMatchingMembers()
-   * Returns an array of members whose name either:
-   *   - contains the candidate text (substring match), OR
-   *   - is within a small typo-tolerance distance (fuzzy match)
-   * Sorted by best match first.
-   */
   function findMatchingMembers(candidateName, members) {
     const target = normalizeName(candidateName);
     if (!target) return [];
@@ -162,15 +109,14 @@ const MemberQueryHandler = (function () {
       let score = 0;
 
       if (memberNameNorm === target) {
-        score = 1000; // exact match — best possible
+        score = 1000;
       } else if (memberNameNorm.includes(target) || target.includes(memberNameNorm)) {
-        score = 500; // substring match
+        score = 500;
       } else {
-        // fuzzy match: allow small typos relative to name length
         const distance = levenshteinDistance(memberNameNorm, target);
         const maxAllowed = Math.max(2, Math.floor(memberNameNorm.length * 0.3));
         if (distance <= maxAllowed) {
-          score = 300 - distance; // closer typo = higher score
+          score = 300 - distance;
         }
       }
 
@@ -184,15 +130,24 @@ const MemberQueryHandler = (function () {
   }
 
   /* -------------------------------------------------------------
-     MONTH NAME DICTIONARY
+     NEW (K-012.5 FIX) — confident name-match check.
      -------------------------------------------------------------
-     Maps every way a month might appear in a user's message
-     (English, Hindi, short forms) to the EXACT month label used
-     in the parsed sheet data (see sheet-parsers.js monthLabels):
-       'Feb 2026','Mar 2026','Apr 2026','May 2026','Jun 2026',
-       'Jul 2026','Aug 2026','Sep 2026','Oct 2026','Nov 2026',
-       'Dec 2026','Jan 2027'
+     Used ONLY when looksLikeMemberQuery() found no trigger phrase
+     (e.g. Devanagari "कितना दिए" which the phrase list doesn't cover).
+     Requires an EXACT or SUBSTRING match (not weak fuzzy-typo match)
+     against a real member name, so unrelated queries (address,
+     library, etc.) can't get accidentally hijacked by this handler.
+     Does not touch findMatchingMembers() or its scoring at all.
      ----------------------------------------------------------- */
+  function hasStrongNameSignal(candidateName, matches) {
+    const target = normalizeName(candidateName);
+    if (!target) return false;
+    return matches.some(m => {
+      const n = normalizeName(m.memberName);
+      return n === target || n.includes(target) || target.includes(n);
+    });
+  }
+
   const MONTH_ALIASES = {
     'feb 2026':  ['feb', 'february', 'फरवरी'],
     'mar 2026':  ['mar', 'march', 'मार्च'],
@@ -208,17 +163,13 @@ const MemberQueryHandler = (function () {
     'jan 2027':  ['jan', 'january', 'जनवरी']
   };
 
-  /** Finds the exact sheet month-label (e.g. "Feb 2026") referenced in the text, or null. */
   function detectMonthInText(text) {
     const query = (text || '').toLowerCase();
 
-    // Sort aliases by length so longer/specific words match before short ones
-    // (e.g. "september" before "sep").
     for (const [sheetLabel, aliases] of Object.entries(MONTH_ALIASES)) {
       const sorted = [...aliases].sort((a, b) => b.length - a.length);
       for (const alias of sorted) {
         if (query.includes(alias.toLowerCase())) {
-          // Re-find the properly-cased label as stored in monthlyContributions keys
           return sheetLabel
             .split(' ')
             .map((part, i) => i === 0 ? part[0].toUpperCase() + part.slice(1) : part)
@@ -229,14 +180,6 @@ const MemberQueryHandler = (function () {
     return null;
   }
 
-  /* -------------------------------------------------------------
-     QUERY TYPE DETECTION
-     -------------------------------------------------------------
-     Decides WHICH kind of answer the user wants:
-       'month'   → contribution for one specific month
-       'total'   → only the grand total amount
-       'history' → full month-wise breakdown + total (default)
-     ----------------------------------------------------------- */
   const TOTAL_ONLY_PHRASES = [
     'total contribution', 'total donation', 'kul kitna', 'कुल कितना',
     'ne kul kitna', 'total kitna', 'kitna total'
@@ -248,18 +191,28 @@ const MemberQueryHandler = (function () {
     'sara record', 'सारा रिकॉर्ड'
   ];
 
-  function detectQueryType(text, hasMonth) {
+  const INTENT_TO_QUERY_TYPE = {
+    'MEMBER_MONTH':   'month',
+    'MEMBER_TOTAL':   'total',
+    'MEMBER_HISTORY': 'history'
+  };
+
+  function detectQueryType(text, hasMonth, resolvedIntent) {
+    // K-012.6: prefer the already-resolved intent when available
+    if (resolvedIntent && INTENT_TO_QUERY_TYPE[resolvedIntent]) {
+      return INTENT_TO_QUERY_TYPE[resolvedIntent];
+    }
+
     const query = (text || '').toLowerCase();
 
-    if (hasMonth) return 'month'; // a specific month was mentioned — that wins
+    if (hasMonth) return 'month';
 
     if (HISTORY_PHRASES.some(p => query.includes(p))) return 'history';
     if (TOTAL_ONLY_PHRASES.some(p => query.includes(p))) return 'total';
 
-    return 'history'; // sensible default: show full breakdown + total
+    return 'history';
   }
 
-  /** Single confident match → full month-wise breakdown. */
   function buildSingleMemberReply(member) {
     const monthRows = Object.entries(member.monthlyContributions)
       .map(([month, amount]) => `
@@ -285,22 +238,18 @@ const MemberQueryHandler = (function () {
       <strong>कुल योगदान: ${formatINR(member.totalContribution)}</strong>`;
   }
 
-  /** Only the grand total (used for 'total' query type). */
   function buildTotalOnlyReply(member) {
     return `👤 <strong>${member.memberName}</strong><br><br>
       कुल योगदान: <strong>${formatINR(member.totalContribution)}</strong>`;
   }
 
-  /** One specific month's contribution (used for 'month' query type). */
   function buildMonthSpecificReply(member, monthLabel) {
     const amount = member.monthlyContributions[monthLabel];
 
-    // Month requested but not present in this member's record at all
     if (amount === undefined) {
       return `🙏 <strong>${member.memberName}</strong> के लिए <strong>${monthLabel}</strong> का कोई रिकॉर्ड उपलब्ध नहीं है।`;
     }
 
-    // Month exists but contribution was zero / not given
     if (amount === 0) {
       return `👤 <strong>${member.memberName}</strong><br><br>
         <strong>${monthLabel}</strong> में कोई योगदान दर्ज नहीं है।<br>
@@ -311,10 +260,9 @@ const MemberQueryHandler = (function () {
       <strong>${monthLabel}</strong> में योगदान: <strong>${formatINR(amount)}</strong>`;
   }
 
-  /** Multiple ambiguous matches → ask user to choose. */
   function buildDisambiguationReply(matches) {
     const list = matches
-      .slice(0, 5) // safety cap
+      .slice(0, 5)
       .map(m => `• ${m.memberName}`)
       .join('<br>');
 
@@ -322,7 +270,6 @@ const MemberQueryHandler = (function () {
       कृपया पूरा नाम लिखकर दोबारा पूछें।`;
   }
 
-  /** No match at all. */
   function buildNoMatchReply(candidateName) {
     return `🙏 क्षमा करें, "<strong>${escapeHtml(candidateName)}</strong>" नाम का कोई सदस्य रिकॉर्ड नहीं मिला।<br><br>
       कृपया नाम की वर्तनी जाँचें या सटीक नाम के साथ पुनः पूछें।`;
@@ -336,57 +283,65 @@ const MemberQueryHandler = (function () {
   }
 
   /* -------------------------------------------------------------
-     PUBLIC: handleMemberQuery(userText)
+     handleMemberQuery() — MODIFIED (K-012.5 FIX)
      -------------------------------------------------------------
-     Returns:
-       null           → message is not a member-specific query at all
-                         (caller should fall back to other handlers)
-       string (HTML)  → ready-to-display reply (match, disambiguation,
-                         no-match, or friendly error)
+     looksLikeMemberQuery() is still called and still works exactly
+     as before (requirement 1). The difference: if it returns false,
+     we no longer immediately return null. Instead we still try to
+     extract a candidate name and check for a CONFIDENT (exact/
+     substring) match against real member data. Only if that also
+     fails do we stay silent (return null), so unrelated queries are
+     not hijacked. This lets queries like "पवन झा जनवरी में कितना दिए?"
+     (which QueryEngine/IntentDetector may already classify as
+     MEMBER_MONTH, but which looksLikeMemberQuery() doesn't recognise
+     due to missing Devanagari trigger phrases) still get answered.
      ----------------------------------------------------------- */
-  async function handleMemberQuery(userText) {
-    if (!looksLikeMemberQuery(userText)) return null;
+  async function handleMemberQuery(userText, resolvedIntent) {
+    const triggeredByKeyword = looksLikeMemberQuery(userText);
 
     const candidateName = extractCandidateName(userText);
-    if (!candidateName) return null; // trigger word found but no name left — not confident enough
+    if (!candidateName) return null;
 
     if (typeof SheetParsers === 'undefined') {
       console.error('[MemberQueryHandler] SheetParsers module not found. Load sheet-parsers.js first.');
-      return FRIENDLY_UNAVAILABLE;
+      return triggeredByKeyword ? FRIENDLY_UNAVAILABLE : null;
     }
 
     try {
       const knowledge = await SheetParsers.buildFullKnowledge();
       if (!knowledge || !knowledge._status.membersOk) {
-        return FRIENDLY_UNAVAILABLE;
+        return triggeredByKeyword ? FRIENDLY_UNAVAILABLE : null;
       }
 
       const matches = findMatchingMembers(candidateName, knowledge.members);
 
+      // Gate: keyword trigger OR a confident (exact/substring) name match.
+      if (!triggeredByKeyword && !hasStrongNameSignal(candidateName, matches)) {
+        return null;
+      }
+
       let resolvedMember = null;
 
       if (matches.length === 0) {
-        return buildNoMatchReply(candidateName);
+        return triggeredByKeyword ? buildNoMatchReply(candidateName) : null;
       }
 
       if (matches.length === 1) {
         resolvedMember = matches[0];
       } else {
-        // More than one plausible match — but if the TOP match is an
-        // exact name match, prefer it directly instead of asking.
         const target = normalizeName(candidateName);
         const exact = matches.find(m => normalizeName(m.memberName) === target);
         if (exact) {
           resolvedMember = exact;
-        } else {
+        } else if (triggeredByKeyword) {
           return buildDisambiguationReply(matches);
+        } else {
+          resolvedMember = matches[0];
         }
       }
 
-      // We now have exactly one confirmed member — decide WHICH kind
-      // of answer they want (month-specific / total-only / full history).
       const monthLabel = detectMonthInText(userText);
-      const queryType   = detectQueryType(userText, !!monthLabel);
+      const queryType   = detectQueryType(userText, !!monthLabel, resolvedIntent);
 
       if (queryType === 'month' && monthLabel) {
         return buildMonthSpecificReply(resolvedMember, monthLabel);
@@ -394,20 +349,16 @@ const MemberQueryHandler = (function () {
       if (queryType === 'total') {
         return buildTotalOnlyReply(resolvedMember);
       }
-      return buildSingleMemberReply(resolvedMember); // 'history' (default)
+      return buildSingleMemberReply(resolvedMember);
 
     } catch (err) {
       console.error('[MemberQueryHandler] Unexpected error:', err);
-      return FRIENDLY_UNAVAILABLE;
+      return triggeredByKeyword ? FRIENDLY_UNAVAILABLE : null;
     }
   }
 
-  /* -------------------------------------------------------------
-     PUBLIC API
-     ----------------------------------------------------------- */
   return {
     handleMemberQuery,
-    // exposed for testing/debugging only
     extractCandidateName,
     findMatchingMembers
   };

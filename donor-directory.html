@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temple Donor Directory — श्री सिद्धेश्वर नाथ मंदिर</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+body { font-family: 'Poppins', Arial, sans-serif; background: #fffaf4; }
+h1, h2 { font-family: 'Tiro Devanagari Sanskrit', serif; }
+
+/* HERO */
+.dd-hero {
+  min-height: 38vh;
+  background: linear-gradient(rgba(0,0,0,0.62), rgba(0,0,0,0.62)),
+              url("images/maha.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 60px 20px;
+}
+@media (max-width: 768px) { .dd-hero { background-attachment: scroll; min-height: 32vh; } }
+
+.dd-hero-badge {
+  display: inline-block;
+  background: rgba(255,153,51,0.25);
+  border: 1px solid rgba(255,153,51,0.6);
+  color: #ffcc88;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 18px;
+  border-radius: 30px;
+  margin-bottom: 18px;
+}
+
+.dd-hero h1 {
+  font-size: clamp(26px, 5vw, 50px);
+  font-weight: bold;
+  text-shadow: 0 3px 20px rgba(0,0,0,0.7);
+  margin-bottom: 14px;
+}
+
+.dd-hero p {
+  font-size: 15px;
+  opacity: 0.85;
+  max-width: 580px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* BREADCRUMB */
+.breadcrumb-strip { background: white; border-bottom: 1px solid #f0e8dc; padding: 10px 0; }
+.breadcrumb-strip a { color: #ff6600; text-decoration: none; font-size: 13px; }
+.breadcrumb-strip span { color: #999; font-size: 13px; }
+
+/* PLACEHOLDER */
+.dd-placeholder {
+  padding: 80px 0 100px;
+}
+
+.dd-placeholder-card {
+  background: white;
+  border-radius: 24px;
+  padding: 60px 40px;
+  text-align: center;
+  box-shadow: 0 6px 30px rgba(0,0,0,0.07);
+  border: 1px solid rgba(255,153,51,0.2);
+  border-top: 4px solid #ff9933;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.dd-placeholder-icon {
+  font-size: 64px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.dd-placeholder-card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 14px;
+}
+
+.dd-placeholder-card p {
+  font-size: 15px;
+  color: #888;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.dd-notice {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,153,51,0.1);
+  border: 1px solid rgba(255,153,51,0.35);
+  color: #cc5500;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 30px;
+}
+
+/* BACK BUTTON */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #ff6600;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: 0.2s;
+}
+.back-btn:hover { color: #cc4400; }
+
+/* FOOTER */
+.site-footer { background: #111; color: #ccc; padding: 30px 0 20px; text-align: center; }
+.footer-brand { font-size: 18px; font-weight: bold; color: #ff9933; margin-bottom: 6px; }
+.footer-bottom { font-size: 12px; color: #555; margin-top: 16px; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg premium-navbar sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="images/m7.jpg" class="logo-img me-2" alt="Mandir Logo">
+      <span>श्री सिद्धेश्वर नाथ मंदिर</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-label="Toggle">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Donation</a>
+          <ul class="dropdown-menu donation-dropdown">
+            <li><a class="dropdown-item" href="donation.html">💰 Donate Now</a></li>
+            <li><a class="dropdown-item" href="accounts-login.html">📊 Accounts Portal</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="library.html">Library</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-strip">
+  <div class="container">
+    <a href="index.html">Home</a>
+    <span> › </span>
+    <span>Temple Donor Directory</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="dd-hero">
+  <div class="container">
+    <div class="dd-hero-badge">॥ दानं परमं तपः ॥</div>
+    <h1>🙏 Temple Donor Directory</h1>
+    <p>Complete record of devotees who have contributed to the temple through donations of money, materials, services, or other offerings.</p>
+  </div>
+</section>
+
+<!-- BACK BUTTON -->
+<div class="container" style="padding-top:28px;">
+  <a href="index.html" class="back-btn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Back to Home
+  </a>
+</div>
+
+<!-- PLACEHOLDER SECTION -->
+<section class="dd-placeholder">
+  <div class="container">
+    <div class="dd-placeholder-card">
+      <span class="dd-placeholder-icon">📋</span>
+      <h3>Complete Donor Records</h3>
+      <p>
+        यहाँ उन सभी श्रद्धालु भक्तों की सूची प्रदर्शित की जाएगी जिन्होंने मंदिर के विकास में अपना योगदान दिया है — चाहे वह धनराशि हो, सामग्री हो, सेवा हो या अन्य कोई उपहार।
+      </p>
+      <div class="dd-notice">
+        🕐 Complete donor records will be available here soon.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-brand">श्री सिद्धेश्वर नाथ मंदिर</div>
+    <p style="font-size:13px; color:#888;">📍 Bishoul Tatuar, Darbhanga, Bihar</p>
+    <div class="footer-bottom">
+      © 2026 श्री सिद्धेश्वर नाथ मंदिर. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

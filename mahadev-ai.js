@@ -176,35 +176,12 @@
   async function placeholderResponse(userText) {
     showTyping();
 
-    let reply = null;
-
-    // 1. Try a specific member's contribution first (most specific intent)
-    if (typeof MemberQueryHandler !== 'undefined') {
-      try {
-        reply = await MemberQueryHandler.handleMemberQuery(userText);
-      } catch (err) {
-        console.error('[MahadevAI] Member query failed:', err);
-      }
-    }
-
-    // 2. Try general live financial data (totals, lists)
-    if (!reply && typeof FinancialQueryHandler !== 'undefined') {
-      try {
-        reply = await FinancialQueryHandler.handleFinancialQuery(userText);
-      } catch (err) {
-        console.error('[MahadevAI] Financial query failed:', err);
-      }
-    }
-
-    // 3. Fall back to static knowledge base
-    if (!reply && typeof searchKnowledgeBase === 'function') {
-      reply = searchKnowledgeBase(userText);
-    }
+    const result = await QueryEngine.process(userText);
 
     hideTyping();
 
-    if (reply) {
-      addMessage(reply, 'ai');
+    if (result.reply) {
+      addMessage(result.reply, 'ai');
     } else {
       addMessage(
         'क्षमा करें, मुझे इसका उत्तर अभी नहीं पता। 🙏<br>कृपया हमें WhatsApp पर संपर्क करें: <strong>+91 92968 60221</strong>',
