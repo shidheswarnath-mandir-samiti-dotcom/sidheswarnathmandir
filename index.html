@@ -655,6 +655,7 @@ h1, h2, .devanagari {
      EXACTLY ABOVE:
     ============================================================ -->
 <!-- ===== SHIVBHAKT SAHYOG SUCHI ===== -->
+<!-- ===== SHIVBHAKT SAHYOG SUCHI ===== -->
 <section class="sahyog-section">
   <div class="container">
     <div class="text-center sahyog-header reveal">
@@ -662,14 +663,15 @@ h1, h2, .devanagari {
       <h2 class="section-heading">🙏 शिवभक्त <span>सहयोग सूची</span></h2>
       <div class="orange-rule"></div>
       <p class="sahyog-subtitle">उन श्रद्धालु भक्तों का हृदय से आभार, जिन्होंने मंदिर के विकास में अपना अमूल्य योगदान दिया।</p>
-      <div style="display:inline-block; background:linear-gradient(90deg,#ff9933,#ff6600); color:white; font-size:13px; font-weight:700; padding:6px 20px; border-radius:30px; margin-top:10px;">
-  🎁 अब तक 3 भक्तों ने योगदान दिया
-</div>
+      <div style="display:inline-block;background:linear-gradient(90deg,#ff9933,#ff6600);color:white;font-size:13px;font-weight:700;padding:6px 20px;border-radius:30px;margin-top:10px;">
+        🎁 अब तक 3 भक्तों ने योगदान दिया
+      </div>
     </div>
   </div>
 
-  <div class="sahyog-track-wrap">
-    <div class="sahyog-track">
+  <!-- SLIDER -->
+  <div class="sahyog-track-wrap" id="sahyogWrap">
+    <div class="sahyog-track" id="sahyogTrack">
 
       <!-- CARD 1 -->
       <div class="sahyog-card">
@@ -677,11 +679,11 @@ h1, h2, .devanagari {
           <div class="sahyog-avatar">🙏</div>
           <div class="sahyog-badge">दान</div>
         </div>
-        <h4 class="sahyog-name">सोना झा</h4>
+        <h4 class="sahyog-name">दिलीप झा</h4>
         <p class="sahyog-village">🏡 बिशौल, टटुआर</p>
         <div class="sahyog-divider"></div>
-        <p class="sahyog-item">🎁 एग्जॉस्ट फैन</p>
-        <p class="sahyog-date">📅 8 जून 2026</p>
+        <p class="sahyog-item">🎁 सीलिंग पंखा</p>
+        <p class="sahyog-date">📅 जून 2026</p>
       </div>
 
       <!-- CARD 2 -->
@@ -693,8 +695,8 @@ h1, h2, .devanagari {
         <h4 class="sahyog-name">अभिनव मिश्रा (गोलू)</h4>
         <p class="sahyog-village">🏡 टटुआर</p>
         <div class="sahyog-divider"></div>
-        <p class="sahyog-item">🎁 पंडा जी के लिए गैस सिलेंडर</p>
-        <p class="sahyog-date">📅 23 जून 2026</p>
+        <p class="sahyog-item">🎁 पंडा जी हेतु गैस सिलेंडर</p>
+        <p class="sahyog-date">📅 जून 2026</p>
       </div>
 
       <!-- CARD 3 -->
@@ -703,20 +705,28 @@ h1, h2, .devanagari {
           <div class="sahyog-avatar">🙏</div>
           <div class="sahyog-badge">दान</div>
         </div>
-        <h4 class="sahyog-name">दिलीप झा</h4>
+        <h4 class="sahyog-name">सोना झा</h4>
         <p class="sahyog-village">🏡 बिशौल, टटुआर</p>
         <div class="sahyog-divider"></div>
-        <p class="sahyog-item">🎁 सीलिंग फैन</p>
-        <p class="sahyog-date">📅 28 जून 2026</p>
+        <p class="sahyog-item">🎁 एग्जॉस्ट पंखा</p>
+        <p class="sahyog-date">📅 जून 2026</p>
       </div>
 
-      <!-- DUPLICATE SET (infinite loop ke liye zaruri) -->
-      
     </div><!-- /.sahyog-track -->
   </div><!-- /.sahyog-track-wrap -->
 
+  <!-- BUTTON -->
+  <div class="sahyog-bottom-row">
+    <a href="donor-directory.html" class="sahyog-view-btn">
+      View All Donors
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </div>
+
 </section>
-<!-- ===== END SHIVBHAKT SAHYOG SUCHI ===== -->
+<!-- ===== END SHIVBHAKT SAHYOG SUCHI ===== --><!-- ===== END SHIVBHAKT SAHYOG SUCHI ===== -->
 
 <!-- ===== LIVE FINANCIAL COUNTER ===== -->
 
@@ -1312,5 +1322,23 @@ function goToAbout(lang) {
 <script src="gemini-service.js"></script>
 <script src="query-engine.js"></script>
 <script src="mahadev-ai.js"></script>
+
+
+<script>
+// ===== SAHYOG SLIDER =====
+(function () {
+  const wrap  = document.getElementById('sahyogWrap');
+  const track = document.getElementById('sahyogTrack');
+  if (!wrap || !track) return;
+
+  // Auto-clone for infinite loop
+  track.innerHTML += track.innerHTML;
+
+  // Mobile touch pause
+  wrap.addEventListener('touchstart', () => wrap.classList.add('paused'),    { passive: true });
+  wrap.addEventListener('touchend',   () => wrap.classList.remove('paused'), { passive: true });
+})();
+</script>
+
 </body>
 </html>
