@@ -1971,3 +1971,2006 @@ textarea.form-control { resize: vertical; min-height: 120px; }
   .sahyog-card { width: 185px; padding: 18px 14px; }
   .sahyog-bottom-row { justify-content: center; padding: 0 16px; }
 }
+
+
+/* =====================================================
+   STYLE.CSS — श्री सिद्धेश्वर नाथ मंदिर
+   Global stylesheet for all pages
+   ===================================================== */
+
+/* =====================================================
+   1. GLOBAL RESET & BASE
+   ===================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background: #fffaf4;
+  color: #222;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Tiro Devanagari Sanskrit', 'Poppins', serif;
+  line-height: 1.3;
+}
+
+p {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.75;
+}
+
+a {
+  transition: color 0.25s;
+}
+
+img {
+  max-width: 100%;
+  transition: transform 0.4s ease;
+}
+
+section {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* =====================================================
+   2. NAVBAR
+   ===================================================== */
+
+.premium-navbar {
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  position: sticky;
+  top: 0;
+  z-index: 1050;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 16px rgba(255, 102, 0, 0.25);
+  padding: 8px 0;
+}
+
+/* Logo Image */
+.logo-img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  transition: transform 0.3s;
+}
+
+.logo-img:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Brand Text */
+.navbar-brand span {
+  font-size: 18px;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+@media (max-width: 768px) {
+  .navbar-brand span {
+    font-size: 13px;
+  }
+}
+
+/* Nav Links */
+.premium-navbar .nav-link {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 6px 14px !important;
+  border-radius: 20px;
+  transition: background 0.25s, color 0.25s;
+  position: relative;
+}
+
+.premium-navbar .nav-link:hover {
+  color: white !important;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.premium-navbar .nav-link.active {
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.22);
+  font-weight: 700;
+}
+
+/* Underline effect */
+.premium-navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  background: white;
+  transition: width 0.3s;
+  border-radius: 2px;
+}
+
+.premium-navbar .nav-link:hover::after,
+.premium-navbar .nav-link.active::after {
+  width: 60%;
+}
+
+/* Hamburger icon */
+.navbar-toggler {
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+
+.navbar-toggler-icon {
+  filter: brightness(0) invert(1);
+}
+
+/* Mobile menu */
+@media (max-width: 991px) {
+  .navbar-collapse {
+    background: rgba(255, 102, 0, 0.97);
+    border-radius: 12px;
+    padding: 14px 10px;
+    margin-top: 8px;
+  }
+
+  .premium-navbar .nav-link {
+    padding: 10px 16px !important;
+    border-radius: 10px;
+    margin-bottom: 4px;
+  }
+}
+
+/* =====================================================
+   3. EVENTS TICKER (Home page top bar)
+   ===================================================== */
+
+.events-ticker {
+  background: #1a1a1a;
+  color: white;
+  padding: 9px 0;
+  overflow: hidden;
+}
+
+.ticker-inner {
+  display: flex;
+  gap: 70px;
+  animation: ticker 24s linear infinite;
+  white-space: nowrap;
+}
+
+.ticker-inner span {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+.ticker-inner span::before {
+  content: "🔔 ";
+}
+
+@keyframes ticker {
+  from { transform: translateX(100vw); }
+  to   { transform: translateX(-100%); }
+}
+
+/* =====================================================
+   4. HERO SECTION (Home)
+   ===================================================== */
+
+.hero-section {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+              url("images/maha.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    background-attachment: scroll;
+    min-height: 100svh;
+    padding: 60px 20px;
+  }
+}
+
+/* =====================================================
+   5. STATS STRIP
+   ===================================================== */
+
+.stats-strip {
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  padding: 18px 0;
+  color: white;
+}
+
+.stat-item { text-align: center; padding: 6px 0; }
+.stat-number { font-size: 28px; font-weight: 700; line-height: 1; }
+.stat-label { font-size: 12px; opacity: 0.88; letter-spacing: 0.5px; margin-top: 3px; }
+
+/* =====================================================
+   6. SECTION HELPERS
+   ===================================================== */
+
+.section-eyebrow {
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #ff6600;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.section-heading {
+  font-size: clamp(22px, 3.5vw, 34px);
+  font-weight: bold;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.section-heading span { color: #ff6600; }
+
+.orange-rule {
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  border-radius: 10px;
+  margin: 0 auto 36px;
+}
+
+.orange-divider {
+  border: none;
+  height: 3px;
+  background: linear-gradient(90deg, #ff9933, #ff6600, transparent);
+  border-radius: 10px;
+  margin: 50px 0 40px;
+}
+
+/* =====================================================
+   7. BUTTONS
+   ===================================================== */
+
+.btn-hero-primary {
+  display: inline-block;
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  color: white;
+  border: none;
+  padding: 13px 32px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: 0.3s;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+
+.btn-hero-primary:hover {
+  transform: scale(1.06);
+  color: white;
+  box-shadow: 0 6px 20px rgba(255, 102, 0, 0.5);
+}
+
+.btn-hero-outline {
+  display: inline-block;
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 11px 28px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.btn-hero-outline:hover {
+  background: white;
+  color: #ff6600;
+}
+
+/* Override Bootstrap .btn defaults */
+.btn {
+  border-radius: 25px;
+  font-weight: 600;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.btn-warning {
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  border: none;
+  color: white;
+}
+
+.btn-warning:hover {
+  color: white;
+  box-shadow: 0 4px 16px rgba(255, 102, 0, 0.4);
+}
+
+/* =====================================================
+   8. CARDS — PREMIUM & HIGHLIGHT
+   ===================================================== */
+
+.card {
+  border-radius: 16px;
+  border: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.12);
+}
+
+.premium-card {
+  border-radius: 16px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  background: white;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.premium-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 16px 40px rgba(255, 102, 0, 0.15);
+}
+
+/* =====================================================
+   9. GALLERY IMAGES
+   ===================================================== */
+
+.gallery-img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  margin-bottom: 16px;
+}
+
+.gallery-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+}
+
+/* =====================================================
+   10. ABOUT SECTION (Home preview)
+   ===================================================== */
+
+.about-strip {
+  background: #fffaf4;
+  padding: 70px 0;
+}
+
+.about-img-wrap {
+  position: relative;
+}
+
+.about-img-wrap img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+
+.about-img-badge {
+  position: absolute;
+  bottom: -18px;
+  right: -12px;
+  background: linear-gradient(135deg, #ff9933, #ff6600);
+  color: white;
+  border-radius: 14px;
+  padding: 12px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 6px 20px rgba(255, 102, 0, 0.4);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.about-text p {
+  font-size: 16px;
+  line-height: 1.85;
+  color: #444;
+  margin-bottom: 16px;
+}
+
+/* Older home-page about styles kept for compatibility */
+.about-title {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  border-radius: 50px;
+}
+
+.about-short {
+  font-size: 16px;
+  line-height: 1.75;
+  color: #333;
+  font-weight: 500;
+}
+
+.about-img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 20px;
+  transition: 0.4s;
+}
+
+.about-img:hover { transform: scale(1.05); }
+
+/* =====================================================
+   11. LANGUAGE DROPDOWN (Home about section)
+   ===================================================== */
+
+.lang-dropdown { position: relative; display: inline-block; }
+
+.lang-toggle {
+  background: #fff;
+  border: 2px solid #ff9933;
+  padding: 7px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #ff6600;
+  transition: 0.2s;
+}
+
+.lang-toggle:hover { background: #ff9933; color: white; }
+
+.lang-menu {
+  position: absolute;
+  top: 42px;
+  left: 0;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  display: none;
+  min-width: 130px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+  z-index: 100;
+}
+
+.lang-menu div { padding: 10px 16px; cursor: pointer; font-size: 14px; transition: 0.2s; }
+.lang-menu div:hover { background: #ff9933; color: white; }
+.lang-dropdown.active .lang-menu { display: block; }
+
+/* =====================================================
+   12. HIGHLIGHT CARDS (Home features)
+   ===================================================== */
+
+.highlights-section {
+  padding: 70px 0;
+  background: white;
+}
+
+.highlight-card {
+  border: none;
+  border-radius: 18px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  transition: 0.35s;
+  height: 100%;
+  background: white;
+}
+
+.highlight-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 14px 40px rgba(255,102,0,0.15);
+}
+
+.highlight-icon { font-size: 44px; margin-bottom: 14px; display: block; }
+.highlight-card h5 { font-weight: 700; color: #1a1a1a; margin-bottom: 8px; font-size: 18px; }
+.highlight-card p  { font-size: 14px; color: #666; margin: 0; line-height: 1.6; }
+
+/* =====================================================
+   13. PUJA TIMINGS TABLE
+   ===================================================== */
+
+.timings-section {
+  padding: 70px 0;
+  background: linear-gradient(135deg, #fff5e6, #ffe8cc);
+}
+
+.timing-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+}
+
+.timing-table th {
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  color: white;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.timing-table th:first-child { border-radius: 10px 0 0 10px; }
+.timing-table th:last-child  { border-radius: 0 10px 10px 0; }
+.timing-table td { background: white; padding: 12px 18px; font-size: 14px; color: #333; }
+.timing-table tr td:first-child { border-radius: 10px 0 0 10px; font-weight: 600; }
+.timing-table tr td:last-child  { border-radius: 0 10px 10px 0; color: #ff6600; font-weight: 600; }
+
+/* =====================================================
+   14. DONATION CTA (Home)
+   ===================================================== */
+
+.donation-cta {
+  padding: 70px 0;
+  background: linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.72)),
+              url("images/m1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  text-align: center;
+  color: white;
+}
+
+.donation-cta h2 { font-size: clamp(24px,4vw,42px); font-weight: bold; margin-bottom: 14px; }
+.donation-cta p  { font-size: 17px; opacity: 0.85; margin-bottom: 28px; }
+
+@media (max-width: 768px) {
+  .donation-cta { background-attachment: scroll; }
+}
+
+/* =====================================================
+   15. FOOTER
+   ===================================================== */
+
+.site-footer {
+  background: #111;
+  color: #ccc;
+  padding: 50px 0 20px;
+}
+
+.footer-brand {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ff9933;
+  margin-bottom: 8px;
+}
+
+.footer-tagline { font-size: 13px; color: #888; line-height: 1.6; }
+
+.footer-heading {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ff9933;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.footer-links { list-style: none; padding: 0; margin: 0; }
+.footer-links li { margin-bottom: 7px; }
+.footer-links a  { color: #aaa; text-decoration: none; font-size: 13px; transition: 0.2s; }
+.footer-links a:hover { color: #ff9933; padding-left: 4px; }
+
+.footer-info p { font-size: 13px; color: #aaa; margin-bottom: 5px; }
+
+.footer-bottom {
+  border-top: 1px solid #2a2a2a;
+  margin-top: 36px;
+  padding-top: 16px;
+  text-align: center;
+  font-size: 12px;
+  color: #555;
+}
+
+/* Old premium-footer kept for compatibility */
+.premium-footer {
+  background: #111;
+  color: white;
+  padding: 28px 20px;
+  text-align: center;
+}
+
+.premium-footer h5 { color: #ff9933; margin-bottom: 6px; }
+
+/* =====================================================
+   16. SCROLL TOP BUTTON
+   ===================================================== */
+
+#topBtn {
+  position: fixed;
+  bottom: 84px;
+  right: 22px;
+  display: none;
+  background: linear-gradient(135deg, #ff9933, #ff6600);
+  color: white;
+  border: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(255,102,0,0.4);
+  z-index: 998;
+  transition: 0.3s;
+}
+
+#topBtn:hover { transform: scale(1.12); }
+
+/* =====================================================
+   17. WHATSAPP FLOATING BUTTON
+   ===================================================== */
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  background: #25d366;
+  color: white;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(37,211,102,0.5);
+  z-index: 999;
+  transition: 0.3s;
+}
+
+.whatsapp-float:hover { transform: scale(1.12); color: white; }
+
+/* =====================================================
+   18. SCROLL REVEAL ANIMATION
+   ===================================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Old fade-in kept for compatibility */
+.fade-in {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 1s;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =====================================================
+   19. ABOUT PAGE — SPECIFIC STYLES
+   ===================================================== */
+
+.about-section {
+  background: linear-gradient(135deg, #fff5e6, #ffe0b3);
+  padding: 50px 0;
+}
+
+.about-banner-glass {
+  height: 250px;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("images/m1.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-text {
+  color: #fff;
+  font-size: 42px;
+  font-weight: bold;
+  text-shadow: 0 0 20px rgba(255,165,0,0.8);
+}
+
+/* Language buttons (About page) */
+.language-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.lang-btn {
+  padding: 10px 28px;
+  border: 2px solid #ff9933;
+  border-radius: 30px;
+  background: white;
+  color: #ff6600;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.25s;
+  font-family: 'Poppins', sans-serif;
+}
+
+.lang-btn:hover, .lang-btn.active {
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  color: white;
+  border-color: transparent;
+}
+
+/* History box */
+.history-box {
+  background: rgba(255,255,255,0.75);
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.history-box::-webkit-scrollbar { width: 5px; }
+.history-box::-webkit-scrollbar-thumb { background: orange; border-radius: 10px; }
+.history-box::-webkit-scrollbar-track { background: transparent; }
+
+.lang-content { display: none; animation: fadeIn 0.5s ease; }
+.lang-content.active { display: block; }
+
+.lang-content p, .history-box p {
+  font-size: 16px;
+  line-height: 1.9;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+/* History title pill */
+.history-main-title {
+  display: none;
+  text-align: center;
+  font-size: clamp(15px, 2.5vw, 21px);
+  font-weight: 600;
+  color: white;
+  background: rgba(0,0,0,0.72);
+  padding: 10px 22px;
+  border-radius: 50px;
+  margin: 0 auto 22px;
+  max-width: 90%;
+}
+
+.history-main-title.active { display: block; }
+.lang-title { display: none; }
+.lang-title.active { display: block; }
+
+@media (max-width: 768px) {
+  .history-box { max-height: 320px; padding: 20px; }
+  .banner-text { font-size: 28px; }
+}
+
+/* =====================================================
+   20. SECTION TITLE MAIN (used in multiple pages)
+   ===================================================== */
+
+.section-title-main {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 28px;
+  color: #b30000;
+  text-align: center;
+}
+
+/* =====================================================
+   21. BREADCRUMB STRIP
+   ===================================================== */
+
+.breadcrumb-strip {
+  background: white;
+  border-bottom: 1px solid #f0e8dc;
+  padding: 10px 0;
+}
+
+.breadcrumb-strip a {
+  color: #ff6600;
+  text-decoration: none;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.breadcrumb-strip a:hover { text-decoration: underline; }
+.breadcrumb-strip span { color: #999; font-size: 13px; }
+
+/* =====================================================
+   22. ANIMATIONS
+   ===================================================== */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(8px); }
+}
+
+/* =====================================================
+   23. FORM STYLES (Contact page)
+   ===================================================== */
+
+.form-control, .form-select {
+  border: 2px solid #ffe0b3;
+  border-radius: 12px;
+  padding: 11px 16px;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  transition: 0.25s;
+  background: #fffaf4;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #ff9933;
+  box-shadow: 0 0 0 3px rgba(255,153,51,0.15);
+  background: white;
+  outline: none;
+}
+
+.form-control::placeholder { color: #bbb; }
+
+textarea.form-control { resize: vertical; min-height: 120px; }
+
+.form-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 5px;
+}
+
+/* =====================================================
+   24. GLASS CARD (About page)
+   ===================================================== */
+
+.glass-card {
+  background: rgba(255,255,255,0.25);
+  border-radius: 20px;
+  padding: 30px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  transition: 0.4s;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1s ease forwards;
+}
+
+.glass-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(255,140,0,0.5);
+}
+
+.glass-title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
+  color: #ff6600;
+  margin-bottom: 14px;
+}
+
+/* =====================================================
+   25. RESPONSIVE UTILITIES
+   ===================================================== */
+
+@media (max-width: 768px) {
+  h2 { font-size: 22px; }
+  p  { font-size: 14px; }
+
+  .about-img-badge {
+    position: static;
+    display: inline-block;
+    margin-top: 14px;
+  }
+
+  .about-img-wrap { margin-bottom: 30px; }
+
+  .stat-number { font-size: 22px; }
+  .stat-label  { font-size: 11px; }
+
+  .orange-rule { margin-bottom: 24px; }
+
+  .footer-brand { font-size: 18px; }
+}
+
+@media (max-width: 480px) {
+  .btn-hero-primary,
+  .btn-hero-outline {
+    padding: 11px 20px;
+    font-size: 14px;
+  }
+}
+
+/* =====================================================
+   END OF STYLE.CSS
+   ===================================================== */
+
+   /* =====================================================
+   LIBRARY PAGE — HERO
+   ===================================================== */
+
+.lib-hero {
+  min-height: 45vh;
+  background: linear-gradient(rgba(0,0,0,0.63), rgba(0,0,0,0.63)),
+              url("images/maha.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.lib-hero h1 {
+  font-size: clamp(26px, 5vw, 50px);
+  font-weight: bold;
+  text-shadow: 0 3px 20px rgba(0,0,0,0.7);
+}
+
+.lib-hero p {
+  font-size: 15px;
+  opacity: 0.85;
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .lib-hero {
+    background-attachment: scroll;
+    min-height: 38vh;
+  }
+}
+
+/* =====================================================
+   LIBRARY PAGE — DEITY CARDS
+   ===================================================== */
+
+.deity-section {
+  padding: 50px 0 70px;
+  background: white;
+}
+
+.deity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 576px) {
+  .deity-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+}
+
+.deity-card {
+  background: white;
+  border-radius: 18px;
+  padding: 30px 16px;
+  text-align: center;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.09);
+  transition: 0.3s;
+  text-decoration: none;
+  display: block;
+  border: 2px solid transparent;
+}
+
+.deity-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 34px rgba(255,102,0,0.18);
+  border-color: #ff9933;
+  text-decoration: none;
+}
+
+.deity-emoji {
+  font-size: 44px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.deity-name-hi {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 3px;
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+}
+
+.deity-name-en {
+  font-size: 11px;
+  color: #ff6600;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* =====================================================
+   LIBRARY PAGE — LANGUAGE SWITCHER
+   ===================================================== */
+
+.lang-switcher {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.lang-sw-btn {
+  padding: 9px 26px;
+  border: 2px solid #ff9933;
+  border-radius: 30px;
+  background: white;
+  color: #ff6600;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.25s;
+  font-family: 'Poppins', sans-serif;
+}
+
+.lang-sw-btn:hover,
+.lang-sw-btn.active {
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  color: white;
+  border-color: transparent;
+}
+
+/* =====================================================
+   DEITY PAGE — STICKY TABS
+   ===================================================== */
+
+.sticky-tabs {
+  position: sticky;
+  top: 62px;
+  z-index: 100;
+  background: white;
+  border-bottom: 2px solid #f0e8dc;
+  padding: 12px 0;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.tab-nav {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tab-btn {
+  padding: 8px 18px;
+  border: 2px solid #ff9933;
+  border-radius: 25px;
+  background: white;
+  color: #ff6600;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.25s;
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tab-btn:hover {
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  color: white;
+  border-color: transparent;
+}
+
+/* =====================================================
+   DEITY PAGE — TEXT SECTIONS
+   ===================================================== */
+
+.text-section {
+  padding: 50px 0;
+}
+
+.text-section:nth-child(even) { background: #fffaf4; }
+.text-section:nth-child(odd)  { background: white; }
+
+/* =====================================================
+   DEITY PAGE — COLLAPSIBLE CONTENT CARDS
+   ===================================================== */
+
+.content-item {
+  background: white;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 3px 16px rgba(0,0,0,0.07);
+  overflow: hidden;
+  border: 1px solid #f0e8dc;
+}
+
+.content-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.content-header:hover { background: #fff5e6; }
+
+.content-header-left { display: flex; align-items: center; gap: 12px; }
+.content-icon { font-size: 22px; }
+.content-title { font-size: 16px; font-weight: 700; color: #1a1a1a; }
+.content-subtitle { font-size: 12px; color: #aaa; }
+
+.content-arrow {
+  font-size: 18px;
+  color: #ff9933;
+  transition: transform 0.3s;
+}
+
+.content-item.open .content-arrow { transform: rotate(90deg); }
+
+.content-body {
+  display: none;
+  padding: 20px 22px 24px;
+  border-top: 1px solid #f0e8dc;
+}
+
+.content-item.open .content-body { display: block; }
+
+.devanagari-text {
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+  font-size: 18px;
+  line-height: 2.1;
+  color: #222;
+  white-space: pre-line;
+}
+
+@media (max-width: 480px) {
+  .devanagari-text { font-size: 16px; line-height: 2; }
+}
+
+/* =====================================================
+   DEITY PAGE — LANGUAGE BAR
+   ===================================================== */
+
+.lang-bar {
+  background: #fff5e6;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0e8dc;
+  text-align: center;
+}
+
+.lang-label {
+  font-size: 13px;
+  color: #888;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+/* =====================================================
+   DEITY/CONTENT PAGES — BACK BUTTON
+   ===================================================== */
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ff6600;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 18px;
+  border: 2px solid #ff9933;
+  border-radius: 25px;
+  transition: 0.2s;
+  background: white;
+}
+
+.back-btn:hover {
+  background: #ff9933;
+  color: white;
+}
+
+/* =====================================================
+   DONATION — PAYMENT POPUP
+   ===================================================== */
+
+.payment-popup-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.payment-popup-overlay.open {
+  display: flex;
+}
+
+.payment-popup {
+  background: white;
+  border-radius: 20px;
+  padding: 30px 26px;
+  max-width: 380px;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  animation: popupOpen 0.3s ease;
+}
+
+@keyframes popupOpen {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.payment-popup h4 {
+  font-size: 18px;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.payment-popup h4 span {
+  color: #ff6600;
+  font-weight: 800;
+}
+
+.popup-close {
+  position: absolute;
+  top: 14px; right: 16px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #999;
+  cursor: pointer;
+}
+
+.popup-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.popup-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #fffaf4;
+  border: 2px solid #ffe0b3;
+  border-radius: 14px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: 0.25s;
+  text-align: left;
+  font-family: 'Poppins', sans-serif;
+}
+
+.popup-option:hover {
+  border-color: #ff9933;
+  background: #fff5e6;
+  transform: translateY(-2px);
+}
+
+.popup-icon { font-size: 26px; flex-shrink: 0; }
+
+.popup-option strong {
+  display: block;
+  font-size: 14px;
+  color: #1a1a1a;
+}
+
+.popup-option small {
+  font-size: 12px;
+  color: #999;
+}
+
+.deity-image img{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #ff6600;
+    box-shadow:0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Wrapper jo hamesha visible rahega (mobile + desktop) */
+.navbar-social-always {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  margin-right: 12px;
+}
+
+.nav-social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: white;
+  transition: 0.25s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  flex-shrink: 0;
+}
+
+.nav-social-icon:hover {
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+@media (max-width: 480px) {
+  .nav-social-icon {
+    width: 28px;
+    height: 28px;
+  }
+  .navbar-social-always {
+    gap: 6px;
+    margin-right: 8px;
+  }
+}
+
+.nav-social-icon:hover {
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+/* =====================================================
+   FOOTER — SOCIAL ICONS
+   ===================================================== */
+
+.footer-social {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.footer-social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: white;
+  transition: 0.25s;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.footer-social-icon:hover {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+/* =====================================================
+   HOME PAGE — CONNECT WITH US SECTION
+   ===================================================== */
+
+.connect-section {
+  padding: 70px 0;
+  background: linear-gradient(135deg, #fff5e6, #ffe8cc);
+}
+
+.connect-subtitle {
+  font-size: 15px;
+  color: #777;
+  max-width: 500px;
+  margin: 14px auto 0;
+}
+
+.connect-card-social {
+  background: white;
+  border-radius: 20px;
+  padding: 36px 28px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.09);
+  transition: 0.35s;
+  height: 100%;
+}
+
+.connect-card-social:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 42px rgba(0,0,0,0.15);
+}
+
+.connect-icon-wrap {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+}
+
+.fb-bg { background: #1877F2; }
+.yt-bg { background: #FF0000; }
+
+.connect-card-social h4 {
+  font-weight: 700;
+  color: #1a1a1a;
+  font-size: 19px;
+  margin-bottom: 10px;
+}
+
+.connect-card-social p {
+  font-size: 14px;
+  color: #777;
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+
+.connect-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: 0.3s;
+  color: white;
+}
+
+.fb-btn { background: #1877F2; }
+.fb-btn:hover { background: #145dbf; color: white; transform: scale(1.05); }
+
+.yt-btn { background: #FF0000; }
+.yt-btn:hover { background: #cc0000; color: white; transform: scale(1.05); }
+
+/* =====================================================
+   NAVBAR — DONATION DROPDOWN
+   ===================================================== */
+
+.donation-dropdown {
+  border: none;
+  border-radius: 14px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+  padding: 8px;
+  margin-top: 8px !important;
+}
+
+.donation-dropdown .dropdown-item {
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+  transition: 0.2s;
+}
+
+.donation-dropdown .dropdown-item:hover {
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  color: white;
+}
+
+.premium-navbar .dropdown-toggle::after {
+  vertical-align: 2px;
+}
+
+/* =====================================================
+   HOME PAGE — LIVE FINANCIAL COUNTER
+   ===================================================== */
+
+.live-counter-section {
+  padding: 28px 0;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background decorative glow */
+.live-counter-section::before {
+  content: '';
+  position: absolute;
+  top: -60px; left: 50%;
+  transform: translateX(-50%);
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(255,153,51,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* HEADER */
+.lc-header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.lc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,59,59,0.2);
+  border: 1px solid rgba(255,59,59,0.5);
+  color: #ff6b6b;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-red {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.6; }
+}
+
+.lc-title {
+  font-size: clamp(16px, 2.5vw, 22px);
+  font-weight: 700;
+  color: white;
+  margin-bottom: 4px;
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+}
+
+.lc-subtitle {
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  margin: 0;
+}
+
+/* CARDS */
+.lc-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+@media (max-width: 576px) {
+  .lc-cards {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+.lc-card {
+  border-radius: 14px;
+  padding: 16px 14px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.lc-card:hover {
+  transform: translateY(-6px);
+}
+
+.lc-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  padding: 1.5px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.03));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.lc-income {
+  background: linear-gradient(135deg, rgba(39,174,96,0.2), rgba(39,174,96,0.08));
+  box-shadow: 0 8px 32px rgba(39,174,96,0.15);
+}
+
+.lc-expense {
+  background: linear-gradient(135deg, rgba(231,76,60,0.2), rgba(231,76,60,0.08));
+  box-shadow: 0 8px 32px rgba(231,76,60,0.15);
+}
+
+.lc-balance {
+  background: linear-gradient(135deg, rgba(255,153,51,0.2), rgba(255,153,51,0.08));
+  box-shadow: 0 8px 32px rgba(255,153,51,0.15);
+}
+
+.lc-card-icon {
+  font-size: 24px;
+  margin-bottom: 4px;
+  display: block;
+}
+.lc-card-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 1px;
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+}
+
+.lc-card-label-en {
+  font-size: 10px;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.lc-card-value {
+  font-size: clamp(18px, 3vw, 26px);
+  font-weight: 800;
+  color: white;
+  letter-spacing: -0.5px;
+}
+
+.lc-income  .lc-card-value { color: #6ee7a0; }
+.lc-expense .lc-card-value { color: #ff8a80; }
+.lc-balance .lc-card-value { color: #ffd580; }
+
+/* Loading shimmer */
+.lc-loading {
+  font-size: 14px;
+  color: rgba(255,255,255,0.3);
+  font-weight: 400;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.3; }
+  50%       { opacity: 0.8; }
+}
+
+/* Number count-up animation */
+.lc-card-value.counted {
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+/* BUTTON */
+.lc-btn-wrap {
+  text-align: center;
+}
+
+.lc-detail-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 10px 26px;
+  border-radius: 50px;
+  transition: 0.3s;
+  box-shadow: 0 6px 24px rgba(255,102,0,0.4);
+}
+
+.lc-detail-btn:hover {
+  transform: scale(1.05);
+  color: white;
+  box-shadow: 0 10px 32px rgba(255,102,0,0.6);
+}
+
+.lc-btn-arrow {
+  transition: transform 0.3s;
+}
+
+.lc-detail-btn:hover .lc-btn-arrow {
+  transform: translateX(5px);
+}
+
+.lc-btn-hint {
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+.verse-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 0;
+  border-bottom: 1px solid #f0e8dc;
+  flex-wrap: wrap;
+}
+.verse-block:last-child { border-bottom: none; }
+
+.verse-text {
+  flex: 1;
+  min-width: 220px;
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+  font-size: 17px;
+  line-height: 1.9;
+  color: #333;
+  white-space: pre-line;
+}
+
+.arth-btn {
+  flex-shrink: 0;
+  background: linear-gradient(90deg,#ff9933,#ff6600);
+  color: white;
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: 0.2s;
+}
+.arth-btn:hover { transform: scale(1.05); }
+
+.verse-meaning {
+  display: none;
+  width: 100%;
+  margin-top: 10px;
+  background: #fff5e6;
+  border-left: 3px solid #ff9933;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.7;
+}
+.verse-meaning.open { display: block; }
+
+@media (max-width: 576px) {
+  .verse-block { flex-direction: column; align-items: stretch; }
+  .arth-btn { align-self: flex-start; }
+}
+
+/* ===== ARTH SIDE PANEL ===== */
+.arth-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: none;
+  z-index: 1000;
+}
+.arth-overlay.open { display: block; }
+
+.arth-panel {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: 380px;
+  max-width: 88vw;
+  height: 100%;
+  background: #fffaf4;
+  box-shadow: -8px 0 28px rgba(0,0,0,.22);
+  z-index: 1001;
+  transition: right 0.35s ease;
+  display: flex;
+  flex-direction: column;
+}
+.arth-panel.open { right: 0; }
+
+.arth-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 22px;
+  background: linear-gradient(90deg,#ff9933,#ff6600);
+  color: white;
+  flex-shrink: 0;
+}
+.arth-panel-header h4 {
+  margin: 0;
+  font-size: 18px;
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+}
+.arth-close {
+  background: rgba(255,255,255,.25);
+  border: none;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.arth-close:hover { background: rgba(255,255,255,.4); }
+
+.arth-panel-body {
+  padding: 22px;
+  overflow-y: auto;
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+  font-size: 16px;
+  line-height: 1.9;
+  color: #444;
+  white-space: pre-line;
+  flex: 1;
+}
+
+
+/* ============================================================
+   SHIVBHAKT SAHYOG SUCHI — Paste at BOTTOM of style.css
+   ============================================================ */
+
+/* SECTION WRAPPER */
+/* ===== SAHYOG SLIDER ===== */
+.sahyog-section {
+  padding: 60px 0 50px;
+  background: linear-gradient(160deg, #fffaf4 0%, #fff5e6 60%, #fffaf4 100%);
+  overflow: hidden;
+}
+.sahyog-header { margin-bottom: 36px; }
+.sahyog-subtitle {
+  font-size: 15px; color: #888;
+  max-width: 560px; margin: -16px auto 0; line-height: 1.7;
+}
+.sahyog-track-wrap {
+  width: 100%; overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  padding: 12px 0 20px;
+}
+.sahyog-track {
+  display: flex; gap: 20px;
+  width: max-content;
+  will-change: transform;
+  animation: sahyogScroll 18s linear infinite;
+}
+.sahyog-track-wrap:hover .sahyog-track,
+.sahyog-track-wrap.paused .sahyog-track {
+  animation-play-state: paused;
+}
+@keyframes sahyogScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@media (max-width: 768px) {
+  .sahyog-track { animation-duration: 12s; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sahyog-track { animation: none; }
+}
+
+/* CARD */
+.sahyog-card {
+  width: 210px; flex-shrink: 0;
+  background: white; border-radius: 20px;
+  padding: 22px 18px 18px;
+  box-shadow: 0 4px 22px rgba(0,0,0,0.07);
+  border: 1px solid rgba(255,153,51,0.18);
+  border-top: 3px solid #ff9933;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative; overflow: hidden;
+}
+.sahyog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(255,102,0,0.14);
+}
+.sahyog-card-top {
+  display: flex; justify-content: space-between;
+  align-items: center; margin-bottom: 12px;
+}
+.sahyog-avatar {
+  width: 42px; height: 42px;
+  background: linear-gradient(135deg, #fff5e6, #ffe0b3);
+  border-radius: 50%; display: flex;
+  align-items: center; justify-content: center;
+  font-size: 20px;
+  border: 2px solid rgba(255,153,51,0.3);
+  animation: avatarPulse 2.5s ease infinite;
+}
+@keyframes avatarPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,153,51,0.4); }
+  50%       { box-shadow: 0 0 0 8px rgba(255,153,51,0); }
+}
+.sahyog-badge {
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  color: white; font-size: 10px; font-weight: 700;
+  letter-spacing: 1px; padding: 3px 10px; border-radius: 20px;
+}
+.sahyog-name {
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+  font-size: 15px; font-weight: 700;
+  background: linear-gradient(90deg, #cc4400, #ff9933);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; margin: 0 0 4px;
+}
+.sahyog-village { font-size: 12px; color: #888; margin: 0 0 10px; }
+.sahyog-divider {
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, #ff9933, transparent);
+  margin-bottom: 10px; opacity: 0.4;
+}
+.sahyog-item { font-size: 13px; font-weight: 600; color: #ff6600; margin: 0 0 5px; }
+.sahyog-date { font-size: 11px; color: #aaa; margin: 0; }
+
+/* BOTTOM ROW */
+.sahyog-bottom-row {
+  display: flex; justify-content: flex-end;
+  padding: 0 20px; margin-top: 20px;
+}
+.sahyog-view-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  color: white; text-decoration: none;
+  font-weight: 700; font-size: 14px;
+  padding: 11px 26px; border-radius: 50px;
+  box-shadow: 0 5px 18px rgba(255,102,0,0.3);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.sahyog-view-btn:hover {
+  transform: scale(1.05); color: white;
+  box-shadow: 0 8px 26px rgba(255,102,0,0.42);
+}
+@media (max-width: 576px) {
+  .sahyog-card { width: 185px; padding: 18px 14px; }
+  .sahyog-bottom-row { justify-content: center; padding: 0 16px; }
+}
+
+/* LANGUAGE SWITCHER */
+.lang-switcher-widget {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 4px 10px;
+}
+.lang-sw-option {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.75);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  transition: 0.2s;
+}
+.lang-sw-option.active {
+  background: white;
+  color: #ff6600;
+}
+.lang-sw-option:hover { color: white; }
+.lang-sw-sep { color: rgba(255,255,255,0.4); font-size: 11px; }
