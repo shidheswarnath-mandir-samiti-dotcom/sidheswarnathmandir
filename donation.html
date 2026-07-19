@@ -41,7 +41,7 @@ h1,h2,h3 { font-family: 'Tiro Devanagari Sanskrit', serif; }
 }
 .donation-hero h1 { font-size:clamp(28px,5vw,54px); font-weight:bold; text-shadow:0 3px 20px rgba(0,0,0,.7); animation:slideDown .9s ease both; }
 .donation-hero p   { font-size:16px; opacity:.85; margin-top:8px; animation:fadeUp 1.3s ease both; }
-.hero-badge-donate { display:inline-block; background:rgba(255,153,51,.3); border:1px solid rgba(255,153,51,.7); color:#ffcc88; font-size:12px; letter-spacing:2px; text-transform:uppercase; padding:5px 18px; border-radius:30px; margin-bottom:14px; animation:fadeUp .7s ease both; }
+.hero-badge-donate { display:inline-block; background:rgba(255,153,51,.3); border:1px solid rgba(255,153,51,.7); color:#ffcc88; font-size:12px; letter-spacing:2px; text-transform:uppercase; padding:5px 18px; border-radius:30px; margin-bottom:14px; animation:fadeUp .7s ease both;  }
 @keyframes slideDown { from{opacity:0;transform:translateY(-28px)} to{opacity:1;transform:translateY(0)} }
 @keyframes fadeUp    { from{opacity:0;transform:translateY(20px)}  to{opacity:1;transform:translateY(0)} }
 @media(max-width:768px){ .donation-hero{ background-attachment:scroll; height:40vh; } }
@@ -73,13 +73,13 @@ h1,h2,h3 { font-family: 'Tiro Devanagari Sanskrit', serif; }
 .amount-note { text-align:center; font-size:13px; color:#888; margin-top:8px; }
 
 /* ── DONATE SECTION ── */
-.donate-section { padding:60px 0; background:linear-gradient(135deg,#fff5e6,#ffe8cc); }
-.donate-card { background:white; border:none; border-radius:20px; padding:32px 24px; box-shadow:0 6px 28px rgba(0,0,0,.09); transition:.35s; height:100%; }
+.donate-section { padding:30px 0; background:linear-gradient(135deg,#fff5e6,#ffe8cc); }
+.donate-card { background:white; border:none; border-radius:20px; padding:5px 8px; box-shadow:0 6px 28px rgba(0,0,0,.09); transition:.35s; height:100%; }
 .donate-card:hover { transform:translateY(-8px); box-shadow:0 14px 40px rgba(255,102,0,.18); }
 .donate-card-icon { font-size:44px; margin-bottom:12px; display:block; text-align:center; }
 .donate-card h4  { font-weight:700; color:#333; margin-bottom:8px; font-size:20px; text-align:center; }
 .donate-card .sub { font-size:13px; color:#888; text-align:center; margin-bottom:18px; }
-.qr-img { width:180px; height:180px; object-fit:cover; border-radius:14px; border:3px solid #ff9933; display:block; margin:0 auto; }
+.qr-img { width:190px; height:170px; object-fit:cover; border-radius:14px; border:3px solid #ff9933; display:block; margin:0 auto; }
 .upi-box { background:#fff5e6; border:2px dashed #ff9933; border-radius:12px; padding:12px 16px; font-size:17px; font-weight:bold; color:#cc4400; letter-spacing:.5px; word-break:break-all; text-align:center; }
 .copy-btn { display:block; width:100%; background:linear-gradient(90deg,#ff9933,#ff6600); color:white; border:none; border-radius:25px; padding:10px 0; font-size:14px; font-weight:700; cursor:pointer; transition:.3s; margin-top:12px; font-family:'Poppins',sans-serif; }
 .copy-btn:hover { transform:scale(1.04); }
@@ -397,23 +397,6 @@ h1,h2,h3 { font-family: 'Tiro Devanagari Sanskrit', serif; }
 </section>
 
 
-<!-- PURPOSE SECTION (UNCHANGED) -->
-<section class="purpose-section">
-  <div class="container">
-    <div class="text-center reveal">
-      <div class="section-eyebrow">Your Contribution Matters</div>
-      <h2 class="section-heading">आपका दान <span>कहाँ जाता है?</span></h2>
-      <div class="orange-rule"></div>
-    </div>
-    <div class="row g-3 justify-content-center reveal">
-      <div class="col-6 col-md-3"><div class="purpose-card"><span class="purpose-icon">🛕</span><h5>Temple Repair</h5><p>Building &amp; maintenance of the sacred mandir premises</p></div></div>
-      <div class="col-6 col-md-3"><div class="purpose-card"><span class="purpose-icon">🎉</span><h5>Mahashivratri</h5><p>Grand annual festival — Shiv Baraat, kirtan &amp; puja expenses</p></div></div>
-      <div class="col-6 col-md-3"><div class="purpose-card"><span class="purpose-icon">🪔</span><h5>Daily Puja</h5><p>Flowers, diyas, prasad &amp; daily puja samagri</p></div></div>
-      <div class="col-6 col-md-3"><div class="purpose-card"><span class="purpose-icon">💡</span><h5>Infrastructure</h5><p>Solar lights, facilities &amp; temple development projects</p></div></div>
-    </div>
-  </div>
-</section>
-
 <!-- AMOUNT SECTION (UNCHANGED) -->
 <section class="amount-section">
   <div class="container">
@@ -434,6 +417,25 @@ h1,h2,h3 { font-family: 'Tiro Devanagari Sanskrit', serif; }
   <button class="amount-btn" onclick="selectAmount(this,'11000')">₹11,000</button>
 </div>
 <p class="amount-note" id="amountNote">👆 Select an amount then choose a payment method below</p>
+
+
+<!-- PURPOSE SECTION (UNCHANGED) -->
+<section class="purpose-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Your Contribution Matters</div>
+      <h2 class="section-heading">आपका दान <span>कहाँ जाता है?</span></h2>
+      <div class="orange-rule"></div>
+    </div>
+    <div class="row g-3 justify-content-center reveal">
+      <div class="col-6 col-md-3"><div class="purpose-card"><span class="purpose-icon">🛕</span><h5>Temple Repair</h5><p>Building &amp; maintenance of the sacred mandir premises</p></div></div>
+      <div class="col-6 col-md-3"><div class="purpose-card"><span class="purpose-icon">🎉</span><h5>Mahashivratri</h5><p>Grand annual festival — Shiv Baraat, kirtan &amp; puja expenses</p></div></div>
+      <div class="col-6 col-md-3"><div class="purpose-card"><span class="purpose-icon">🪔</span><h5>Daily Puja</h5><p>Flowers, diyas, prasad &amp; daily puja samagri</p></div></div>
+      <div class="col-6 col-md-3"><div class="purpose-card"><span class="purpose-icon">💡</span><h5>Infrastructure</h5><p>Solar lights, facilities &amp; temple development projects</p></div></div>
+    </div>
+  </div>
+</section>
+
 
 <!-- PAYMENT METHOD POPUP (hidden by default) -->
 <div class="payment-popup-overlay" id="paymentPopup" onclick="closePaymentPopup(event)">
