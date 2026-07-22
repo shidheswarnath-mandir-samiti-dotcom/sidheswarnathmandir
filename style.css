@@ -3974,3 +3974,28 @@ textarea.form-control { resize: vertical; min-height: 120px; }
 }
 .lang-sw-option:hover { color: white; }
 .lang-sw-sep { color: rgba(255,255,255,0.4); font-size: 11px; }
+
+@media (min-width: 992px) {
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+  }
+  .nav-item.dropdown .dropdown-menu {
+    transition: none;
+  }
+}
+
+/* Custom Gradient Fill for Instagram Icon */
+.insta-gradient-icon {
+  fill: url(#instagram-gradient);
+}
+
+#serviceTab .nav-link {
+  color: #888; border: none; border-bottom: 3px solid transparent;
+  border-radius: 0; font-size: 15px;
+}
+#serviceTab .nav-link.active {
+  color: #ff6600; border-bottom: 3px solid #ff6600;
+  background: transparent;
+}
+#serviceTab .nav-link:hover { color: #ff6600; }
