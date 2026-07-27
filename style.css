@@ -4046,28 +4046,29 @@ textarea.form-control { resize: vertical; min-height: 120px; }
 }
 
 @media (max-width: 991px) {
-  .navbar-nav .dropdown-toggle::after {
-    display: inline-block !important;
-    margin-left: 8px;
-    border-top: 5px solid white;
-    border-right: 5px solid transparent;
-    border-left: 5px solid transparent;
-    vertical-align: middle;
+  .premium-navbar .dropdown-toggle::after {
+    float: right;
+    margin-top: 6px;
+    border-top: 6px solid white !important;
+    border-right: 5px solid transparent !important;
+    border-left: 5px solid transparent !important;
+    border-bottom: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: none !important;
   }
-  .navbar-nav .dropdown-menu {
+  .premium-navbar .navbar-nav .dropdown-menu.show {
+    background: rgba(0,0,0,0.2);
     border: none;
-    box-shadow: none;
-    background: rgba(0,0,0,0.15);
-    padding-left: 20px;
+    padding-left: 16px;
   }
-  .navbar-nav .dropdown-item {
+  .premium-navbar .navbar-nav .dropdown-item {
     color: white !important;
     font-size: 14px;
-    padding: 8px 12px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
   }
-  .navbar-nav .dropdown-item:hover {
+  .premium-navbar .navbar-nav .dropdown-item:hover {
     background: rgba(255,255,255,0.15);
-    color: white !important;
   }
 }
