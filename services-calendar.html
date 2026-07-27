@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>पर्व-व्रत कैलेंडर — श्री सिद्धेश्वर नाथ धाम</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+body { font-family:'Poppins',Arial,sans-serif; background:#fffaf4; }
+h1,h2,h3,h4,h5 { font-family:'Tiro Devanagari Sanskrit',serif; }
+
+.srv-hero {
+  min-height:36vh;
+  background:linear-gradient(rgba(0,0,0,0.62),rgba(0,0,0,0.62)),url("images/maha.jpg");
+  background-size:cover; background-position:center; background-attachment:fixed;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center; color:white; padding:60px 20px;
+}
+@media(max-width:768px){.srv-hero{background-attachment:scroll;min-height:30vh;}}
+.srv-hero-badge {
+  display:inline-block;
+  background:rgba(255,153,51,0.25); border:1px solid rgba(255,153,51,0.6);
+  color:#ffcc88; font-size:12px; letter-spacing:2px;
+  text-transform:uppercase; padding:5px 18px; border-radius:30px; margin-bottom:16px;
+}
+.srv-hero h1 { font-size:clamp(26px,5vw,48px); font-weight:bold; text-shadow:0 3px 20px rgba(0,0,0,.7); margin-bottom:8px; }
+.srv-hero p  { font-size:14px; opacity:.85; max-width:500px; margin:0 auto; line-height:1.7; }
+
+.breadcrumb-strip { background:white; border-bottom:1px solid #f0e8dc; padding:10px 0; }
+.breadcrumb-strip a { color:#ff6600; text-decoration:none; font-size:13px; }
+.breadcrumb-strip span { color:#999; font-size:13px; }
+
+.section-eyebrow { font-size:12px; letter-spacing:2.5px; text-transform:uppercase; color:#ff6600; font-weight:600; margin-bottom:6px; }
+.section-heading { font-size:clamp(22px,3.5vw,34px); font-weight:bold; color:#1a1a1a; margin-bottom:12px; }
+.section-heading span { color:#ff6600; }
+.orange-rule { width:50px; height:3px; background:linear-gradient(90deg,#ff9933,#ff6600); border-radius:10px; margin:0 auto 40px; }
+
+/* CALENDAR */
+.cal-list { display:flex; flex-direction:column; gap:14px; }
+.cal-item {
+  background:white; border-radius:16px; padding:20px 22px;
+  box-shadow:0 3px 16px rgba(0,0,0,.06);
+  border:1px solid rgba(255,153,51,.15);
+  display:flex; align-items:flex-start; gap:18px;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.cal-item:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(255,102,0,.12); }
+.cal-date-box {
+  flex-shrink:0; width:60px; text-align:center;
+  background:linear-gradient(135deg,#ff9933,#ff6600);
+  color:white; border-radius:12px; padding:10px 6px;
+}
+.cal-date-box .cal-day   { font-size:22px; font-weight:800; line-height:1; }
+.cal-date-box .cal-month { font-size:10px; font-weight:600; letter-spacing:.5px; opacity:.9; margin-top:2px; }
+.cal-body h5 { font-size:16px; font-weight:700; color:#1a1a1a; margin:0 0 4px; }
+.cal-body p  { font-size:13px; color:#888; margin:0 0 10px; line-height:1.5; }
+.cal-badge {
+  display:inline-block; font-size:10px; font-weight:700;
+  letter-spacing:.8px; text-transform:uppercase; padding:3px 10px; border-radius:20px;
+}
+.cal-badge.festival { background:rgba(255,153,51,.15); color:#cc4400; border:1px solid rgba(255,153,51,.3); }
+.cal-badge.vrat     { background:rgba(39,174,96,.12);  color:#1a7a3c; border:1px solid rgba(39,174,96,.25); }
+.cal-badge.event    { background:rgba(37,99,235,.10);  color:#1a4ab5; border:1px solid rgba(37,99,235,.2); }
+
+/* TIMING BOX */
+.timing-box {
+  background:white; border-radius:20px; padding:28px 24px;
+  box-shadow:0 4px 24px rgba(0,0,0,.07);
+  border:1px solid rgba(255,153,51,.18); border-top:4px solid #ff9933;
+  margin-bottom:22px;
+}
+.timing-row {
+  display:flex; justify-content:space-between; font-size:14px;
+  border-bottom:1px solid #f0e8dc; padding-bottom:8px; margin-bottom:8px;
+}
+.timing-row:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+
+/* CONTACT BOX */
+.contact-box {
+  background:linear-gradient(135deg,#1a1a2e,#16213e);
+  border-radius:20px; padding:28px 24px; color:white;
+}
+.contact-box h5 { color:#ffcc88; font-size:16px; margin-bottom:8px; }
+.contact-box p  { font-size:13px; color:#bbb; margin-bottom:16px; line-height:1.6; }
+.btn-call { display:block; background:linear-gradient(90deg,#ff9933,#ff6600); color:white; text-decoration:none; font-weight:700; font-size:14px; padding:12px 20px; border-radius:25px; text-align:center; margin-bottom:10px; }
+.btn-wa   { display:block; background:#25d366; color:white; text-decoration:none; font-weight:700; font-size:14px; padding:12px 20px; border-radius:25px; text-align:center; }
+
+.reveal { opacity:0; transform:translateY(30px); transition:opacity .7s ease,transform .7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+</style>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YPPDE1B74S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-YPPDE1B74S');
+</script>
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg premium-navbar sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="images/m7.jpg" class="logo-img me-2" alt="Mandir Logo">
+      <span>श्री सिद्धेश्वर नाथ मंदिर</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">Services</a>
+          <ul class="dropdown-menu donation-dropdown">
+            <li><a class="dropdown-item" href="services-pooja.html">🪔 Pooja Booking</a></li>
+            <li><a class="dropdown-item" href="services-calendar.html">📅 Festival Calendar</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Donation</a>
+          <ul class="dropdown-menu donation-dropdown">
+            <li><a class="dropdown-item" href="donation.html">💰 Donate Now</a></li>
+            <li><a class="dropdown-item" href="accounts-login.html">📊 Accounts Portal</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="library.html">Library</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-strip">
+  <div class="container">
+    <a href="index.html">Home</a><span> › </span>
+    <a href="services-calendar.html">Services</a><span> › </span>
+    <span>पर्व-व्रत कैलेंडर</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="srv-hero">
+  <div class="container">
+    <div class="srv-hero-badge">॥ हर हर महादेव ॥</div>
+    <h1>📅 पर्व-व्रत कैलेंडर</h1>
+    <p>आगामी पर्व, व्रत एवं मंदिर आयोजन — समय पर तैयारी करें और दर्शन का लाभ उठाएं</p>
+  </div>
+</section>
+
+<!-- MAIN -->
+<section style="padding:60px 0; background:#fffaf4;">
+  <div class="container">
+    <div class="row g-5">
+
+      <!-- LEFT — Calendar -->
+      <div class="col-lg-8">
+
+        <div class="text-center reveal">
+          <div class="section-eyebrow">पर्व एवं व्रत</div>
+          <h2 class="section-heading">आगामी <span>पर्व-व्रत</span></h2>
+          <div class="orange-rule"></div>
+          <p style="color:#888;font-size:14px;max-width:540px;margin:-20px auto 40px;line-height:1.7;">
+            श्रावण मास एवं आगामी पर्वों की तिथियाँ — मंदिर में पधारें।
+          </p>
+        </div>
+
+        <div class="cal-list reveal">
+
+          <div class="cal-item">
+            <div class="cal-date-box"><div class="cal-day">21</div><div class="cal-month">JUL</div></div>
+            <div class="cal-body">
+              <h5>एकादशी व्रत — देवशयनी एकादशी</h5>
+              <p>चातुर्मास का शुभारंभ। भगवान विष्णु की विशेष पूजा। उपवास एवं जागरण का विशेष महत्व।</p>
+              <span class="cal-badge vrat">व्रत</span>
+            </div>
+          </div>
+
+          <div class="cal-item">
+            <div class="cal-date-box"><div class="cal-day">28</div><div class="cal-month">JUL</div></div>
+            <div class="cal-body">
+              <h5>श्रावण सोमवार — प्रथम</h5>
+              <p>श्रावण मास का पहला सोमवार। रुद्राभिषेक एवं जलाभिषेक हेतु विशेष व्यवस्था। प्रातः 5 बजे से दर्शन।</p>
+              <span class="cal-badge festival">श्रावण</span>
+            </div>
+          </div>
+
+          <div class="cal-item">
+            <div class="cal-date-box"><div class="cal-day">04</div><div class="cal-month">AUG</div></div>
+            <div class="cal-body">
+              <h5>प्रदोष व्रत</h5>
+              <p>त्रयोदशी तिथि को प्रदोष काल में भगवान शिव की पूजा। संध्या आरती एवं रुद्राष्टकम् पाठ।</p>
+              <span class="cal-badge vrat">व्रत</span>
+            </div>
+          </div>
+
+          <div class="cal-item">
+            <div class="cal-date-box"><div class="cal-day">04</div><div class="cal-month">AUG</div></div>
+            <div class="cal-body">
+              <h5>श्रावण सोमवार — द्वितीय</h5>
+              <p>श्रावण मास का दूसरा सोमवार। जलाभिषेक एवं बेलपत्र अर्पण। विशेष प्रसाद वितरण।</p>
+              <span class="cal-badge festival">श्रावण</span>
+            </div>
+          </div>
+
+          <div class="cal-item">
+            <div class="cal-date-box"><div class="cal-day">09</div><div class="cal-month">AUG</div></div>
+            <div class="cal-body">
+              <h5>नाग पंचमी</h5>
+              <p>नाग देवता की पूजा। मिथिला क्षेत्र में विशेष महत्व। मंदिर में विशेष अभिषेक का आयोजन।</p>
+              <span class="cal-badge festival">पर्व</span>
+            </div>
+          </div>
+
+          <div class="cal-item">
+            <div class="cal-date-box"><div class="cal-day">11</div><div class="cal-month">AUG</div></div>
+            <div class="cal-body">
+              <h5>श्रावण सोमवार — तृतीय</h5>
+              <p>श्रावण मास का तीसरा सोमवार। भव्य रुद्राभिषेक एवं भजन-कीर्तन का आयोजन।</p>
+              <span class="cal-badge festival">श्रावण</span>
+            </div>
+          </div>
+
+          <div class="cal-item">
+            <div class="cal-date-box"><div class="cal-day">18</div><div class="cal-month">AUG</div></div>
+            <div class="cal-body">
+              <h5>श्रावण सोमवार — चतुर्थ (अंतिम)</h5>
+              <p>श्रावण मास का चौथा एवं अंतिम सोमवार। विशेष महाभिषेक एवं प्रसाद वितरण।</p>
+              <span class="cal-badge festival">श्रावण</span>
+            </div>
+          </div>
+
+          <div class="cal-item">
+            <div class="cal-date-box"><div class="cal-day">27</div><div class="cal-month">FEB</div></div>
+            <div class="cal-body">
+              <h5>महाशिवरात्रि 2026</h5>
+              <p>वार्षिक महोत्सव — शिव बारात, जलाभिषेक, भजन-कीर्तन एवं रात्रि जागरण। 40,000+ श्रद्धालु।</p>
+              <span class="cal-badge event">महोत्सव</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RIGHT — Sidebar -->
+      <div class="col-lg-4 reveal">
+        <div style="position:sticky; top:100px;">
+
+          <div class="timing-box" style="margin-bottom:22px;">
+            <h5 style="font-size:17px;font-weight:700;color:#1a1a1a;margin-bottom:16px;">📍 पूजा समय</h5>
+            <div class="timing-row">
+              <span style="color:#666;">🌅 प्रातः पूजा</span>
+              <strong style="color:#ff6600;">6:00 AM</strong>
+            </div>
+            <div class="timing-row">
+              <span style="color:#666;">☀️ मध्याह्न पूजा</span>
+              <strong style="color:#ff6600;">12:00 PM</strong>
+            </div>
+            <div class="timing-row">
+              <span style="color:#666;">🌇 संध्या आरती</span>
+              <strong style="color:#ff6600;">7:30 PM</strong>
+            </div>
+          </div>
+
+          <div class="contact-box">
+            <div style="font-size:28px;margin-bottom:12px;">📞</div>
+            <h5>संपर्क करें</h5>
+            <p>पूजा बुकिंग या किसी पर्व की जानकारी के लिए संपर्क करें।</p>
+            <a href="tel:+919296860221" class="btn-call">📞 +91 9296860221</a>
+            <a href="https://wa.me/919296860221" target="_blank" class="btn-wa">💬 WhatsApp करें</a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="footer-brand">श्री सिद्धेश्वर नाथ मंदिर</div>
+        <p class="footer-tagline">An ancient Siddha Peeth of Mithila, Darbhanga, Bihar.</p>
+      </div>
+      <div class="col-md-2">
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services-pooja.html">Pooja Booking</a></li>
+          <li><a href="services-calendar.html">Festival Calendar</a></li>
+          <li><a href="donation.html">Donation</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <div class="footer-heading">Contact</div>
+        <div class="footer-info">
+          <p>📍 Bishoul Tatuar, Darbhanga, Bihar</p>
+          <p>📞 +91 9296860221</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="footer-heading">Puja Timings</div>
+        <div class="footer-info">
+          <p>🌅 Morning Puja — 6:00 AM</p>
+          <p>🌇 Evening Aarti — 7:30 PM</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 श्री सिद्धेश्वर नाथ मंदिर. All rights reserved.</div>
+  </div>
+</footer>
+
+<a href="https://wa.me/919296860221" class="whatsapp-float" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="35">
+</a>
+<button onclick="scrollToTop()" id="topBtn" title="Back to top">↑</button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const topBtn = document.getElementById("topBtn");
+window.addEventListener("scroll", () => { topBtn.style.display = window.scrollY > 250 ? "block" : "none"; });
+function scrollToTop() { window.scrollTo({top:0,behavior:'smooth'}); }
+
+const revealEls = document.querySelectorAll(".reveal");
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add("visible");observer.unobserve(e.target);} });
+},{threshold:0.1});
+revealEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

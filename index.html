@@ -53,6 +53,16 @@
 
 
 
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YPPDE1B74S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-YPPDE1B74S');
+</script>
+
+
+
 <style>
 /* ============================
    HOME PAGE — EXTRA STYLES
@@ -1212,6 +1222,11 @@ h1, h2, .devanagari {
       </div>
 
     </div>
+    <div class="visitor-counter">
+  <span class="vc-label">👁 Total Visitors:</span>
+  <div class="visitor-digits" id="visitorDigits"></div>
+</div>
+
 
     <div class="footer-bottom" data-lang="footer.copy">
       © 2026 श्री सिद्धेश्वर नाथ मंदिर, Bishoul Tatuar, Darbhanga, Bihar. All rights reserved.
@@ -1382,6 +1397,23 @@ function goToAbout(lang) {
 </script>
 
 <script src="lang-switch.js"></script>
+
+<script>
+// VISITOR COUNTER
+(function() {
+  const key = 'sndm_visits';
+  let count = parseInt(localStorage.getItem(key) || '1000') + 1;
+  localStorage.setItem(key, count);
+  const el = document.getElementById('visitorDigits');
+  if (el) {
+    String(count).split('').forEach(d => {
+      const s = document.createElement('span');
+      s.textContent = d;
+      el.appendChild(s);
+    });
+  }
+})();
+</script>
 
 </body>
 </html>

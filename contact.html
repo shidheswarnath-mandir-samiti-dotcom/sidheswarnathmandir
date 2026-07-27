@@ -253,6 +253,16 @@ textarea.form-control { resize: vertical; min-height: 120px; }
 .footer-info p { font-size:13px; color:#aaa; margin-bottom:5px; }
 .footer-bottom { border-top:1px solid #2a2a2a; margin-top:36px; padding-top:16px; text-align:center; font-size:12px; color:#555; }
 </style>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YPPDE1B74S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-YPPDE1B74S');
+</script>
+
+
 </head>
 <body>
 
@@ -805,6 +815,10 @@ textarea.form-control { resize: vertical; min-height: 120px; }
       </div>
 
     </div>
+    <div class="visitor-counter">
+  <span class="vc-label">👁 Total Visitors:</span>
+  <div class="visitor-digits" id="visitorDigits"></div>
+</div>
 
     <div class="footer-bottom" data-lang="footer.copy">
       © 2026 श्री सिद्धेश्वर नाथ मंदिर, Bishoul Tatuar, Darbhanga, Bihar. All rights reserved.
@@ -874,6 +888,23 @@ revealEls.forEach(el => observer.observe(el));
 const topBtn = document.getElementById('topBtn');
 window.addEventListener('scroll', () => { topBtn.style.display = window.scrollY > 250 ? 'block' : 'none'; });
 function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+</script>
+
+<script>
+// VISITOR COUNTER
+(function() {
+  const key = 'sndm_visits';
+  let count = parseInt(localStorage.getItem(key) || '1000') + 1;
+  localStorage.setItem(key, count);
+  const el = document.getElementById('visitorDigits');
+  if (el) {
+    String(count).split('').forEach(d => {
+      const s = document.createElement('span');
+      s.textContent = d;
+      el.appendChild(s);
+    });
+  }
+})();
 </script>
 
 <script src="sheet-config.js"></script>

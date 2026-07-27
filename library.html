@@ -35,6 +35,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="mahadev-ai.css">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YPPDE1B74S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-YPPDE1B74S');
+</script>
+
 </head>
 <body>
 
@@ -239,6 +249,11 @@
 
     </div>
 
+    <div class="visitor-counter">
+  <span class="vc-label">👁 Total Visitors:</span>
+  <div class="visitor-digits" id="visitorDigits"></div>
+</div>
+
     <div class="footer-bottom" data-lang="footer.copy">
       © 2026 श्री सिद्धेश्वर नाथ मंदिर, Bishoul Tatuar, Darbhanga, Bihar. All rights reserved.
     </div>
@@ -257,6 +272,23 @@ function setLang(lang, el) {
   document.querySelectorAll('.lang-sw-btn').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
 }
+</script>
+
+<script>
+// VISITOR COUNTER
+(function() {
+  const key = 'sndm_visits';
+  let count = parseInt(localStorage.getItem(key) || '1000') + 1;
+  localStorage.setItem(key, count);
+  const el = document.getElementById('visitorDigits');
+  if (el) {
+    String(count).split('').forEach(d => {
+      const s = document.createElement('span');
+      s.textContent = d;
+      el.appendChild(s);
+    });
+  }
+})();
 </script>
 
 <script src="sheet-config.js"></script>

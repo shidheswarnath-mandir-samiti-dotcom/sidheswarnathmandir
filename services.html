@@ -188,6 +188,15 @@ h1,h2,h3,h4,h5 { font-family: 'Tiro Devanagari Sanskrit', serif; }
 .reveal { opacity:0; transform:translateY(30px); transition:opacity .7s ease,transform .7s ease; }
 .reveal.visible { opacity:1; transform:translateY(0); }
 </style>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YPPDE1B74S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-YPPDE1B74S');
+</script>
+
 </head>
 <body>
 
@@ -593,6 +602,11 @@ h1,h2,h3,h4,h5 { font-family: 'Tiro Devanagari Sanskrit', serif; }
         </div>
       </div>
     </div>
+
+    <div class="visitor-counter">
+  <span class="vc-label">👁 Total Visitors:</span>
+  <div class="visitor-digits" id="visitorDigits"></div>
+</div>
     <div class="footer-bottom">
       © 2026 श्री सिद्धेश्वर नाथ मंदिर, Bishoul Tatuar, Darbhanga, Bihar. All rights reserved.
     </div>
@@ -642,6 +656,23 @@ window.addEventListener('DOMContentLoaded', () => {
     document.getElementById('pooja-tab').click();
   }
 });
+</script>
+
+<script>
+// VISITOR COUNTER
+(function() {
+  const key = 'sndm_visits';
+  let count = parseInt(localStorage.getItem(key) || '1000') + 1;
+  localStorage.setItem(key, count);
+  const el = document.getElementById('visitorDigits');
+  if (el) {
+    String(count).split('').forEach(d => {
+      const s = document.createElement('span');
+      s.textContent = d;
+      el.appendChild(s);
+    });
+  }
+})();
 </script>
 
 </body>
