@@ -4072,3 +4072,29 @@ textarea.form-control { resize: vertical; min-height: 120px; }
     background: rgba(255,255,255,0.15);
   }
 }
+/* Dropdown arrow — right side pe */
+@media (max-width: 991px) {
+  .premium-navbar .nav-item.dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .premium-navbar .nav-item.dropdown .nav-link {
+    flex: 1;
+  }
+  .premium-navbar .dropdown-toggle::after {
+    margin-left: auto;
+    margin-right: 8px;
+  }
+}
+
+/* Desktop pe bhi same arrow */
+@media (min-width: 992px) {
+  .premium-navbar .dropdown-toggle::after {
+    border-top: 5px solid white !important;
+    border-right: 5px solid transparent !important;
+    border-left: 5px solid transparent !important;
+    vertical-align: middle;
+    margin-left: 6px;
+  }
+}
