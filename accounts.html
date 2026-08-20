@@ -217,6 +217,7 @@ h1,h2,h3 { font-family:'Tiro Devanagari Sanskrit','Poppins',serif; }
       <a href="#market" class="tab-btn">🏪 Market</a>
       <a href="#shubhkarya" class="tab-btn">🎉 Shubh Karya</a>
       <a href="#expenses" class="tab-btn">📋 Expenses</a>
+      <a href="#vishesh" class="tab-btn">🎁 विशेष सहयोग</a>
     </div>
   </div>
 </div>
@@ -323,6 +324,23 @@ h1,h2,h3 { font-family:'Tiro Devanagari Sanskrit','Poppins',serif; }
 
     <!-- TABLE (hidden by default) -->
     <div id="expenseResult" style="max-width:850px;margin:0 auto;overflow-x:auto;display:none;"></div>
+  </div>
+</section>
+
+<section id="vishesh" style="padding:50px 0;background:#fffaf4;">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:30px;">
+      <div class="section-eyebrow">Special Contributions</div>
+      <h2 class="section-heading">विशेष आय एवं <span>सामान सहयोग</span></h2>
+      <div class="orange-rule"></div>
+    </div>
+    <div id="visheshTotalBox" style="text-align:center;margin-bottom:18px;"></div>
+    <div style="text-align:center;margin-bottom:20px;">
+      <button class="back-btn" onclick="toggleSection('visheshResult', this)">
+        📋 पूरी सूची देखें — View Full List
+      </button>
+    </div>
+    <div id="visheshResult" style="max-width:900px;margin:0 auto;overflow-x:auto;display:none;"></div>
   </div>
 </section>
 
@@ -856,6 +874,70 @@ h1,h2,h3 { font-family:'Tiro Devanagari Sanskrit','Poppins',serif; }
 
   // Load and render on page load
   loadExpenseData().then(renderExpenses);
+
+// ===== VISHESH AY & SAMAN SAHYOG =====
+async function loadVisheshData() {
+  const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTtDEIc3fq76YEp_eVN_BDqwOXPKAmtFyzTxbrTsB8fjjJIUOQzMejMmWmOk2RtfWc1SPbNmdtZnHvE/pub?gid=1078064760&single=true&output=csv";
+  const response = await fetch(url);
+  const csvText  = await response.text();
+  const rows     = parseCSVRobust(csvText);
+
+  const entries = [];
+  let total = 0;
+
+  for (const row of rows) {
+    const slNo   = (row[0] || '').replace(/"/g,'').trim();
+    const name   = (row[1] || '').replace(/"/g,'').trim();
+    const purpose= (row[2] || '').replace(/"/g,'').trim();
+    const item   = (row[3] || '').replace(/"/g,'').trim();
+    const qty    = (row[4] || '').replace(/"/g,'').trim();
+    const value  = (row[5] || '').replace(/"/g,'').trim();
+    const remark = (row[6] || '').replace(/"/g,'').trim();
+
+    if (slNo && !isNaN(slNo) && name) {
+      const amt = parseFloat(value) || 0;
+      entries.push({ slNo, name, purpose, item, qty, value: amt, remark });
+      total += amt;
+    }
+  }
+  return { entries, total };
+}
+
+function renderVishesh(data) {
+  document.getElementById('visheshTotalBox').innerHTML = `
+    <div style="display:inline-block;background:linear-gradient(90deg,#8e44ad,#6c3483);color:white;padding:14px 32px;border-radius:30px;font-weight:800;font-size:18px;">
+      🎁 कुल अनुमानित मूल्य — ₹${data.total.toLocaleString('en-IN')}
+    </div>`;
+
+  const rowsHtml = data.entries.map(e => `
+    <tr>
+      <td style="padding:10px 14px;font-size:13px;text-align:center;">${e.slNo}</td>
+      <td style="padding:10px 14px;font-size:13px;font-weight:600;">${e.name}</td>
+      <td style="padding:10px 14px;font-size:13px;">${e.purpose}</td>
+      <td style="padding:10px 14px;font-size:13px;">${e.item}</td>
+      <td style="padding:10px 14px;font-size:13px;">${e.qty}</td>
+      <td style="padding:10px 14px;font-size:13px;text-align:right;font-weight:600;color:#8e44ad;">₹${e.value}</td>
+      <td style="padding:10px 14px;font-size:12px;color:#888;">${e.remark}</td>
+    </tr>`).join('');
+
+  document.getElementById('visheshResult').innerHTML = `
+    <table style="width:100%;border-collapse:collapse;background:white;border-radius:14px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.08);min-width:700px;">
+      <thead>
+        <tr style="background:linear-gradient(90deg,#8e44ad,#6c3483);">
+          <th style="padding:10px 14px;color:white;font-size:12px;">SI No.</th>
+          <th style="padding:10px 14px;color:white;font-size:12px;text-align:left;">दानदाता का नाम</th>
+          <th style="padding:10px 14px;color:white;font-size:12px;text-align:left;">आयोजन/उद्देश्य</th>
+          <th style="padding:10px 14px;color:white;font-size:12px;text-align:left;">सामग्री/सहयोग</th>
+          <th style="padding:10px 14px;color:white;font-size:12px;text-align:left;">मात्रा/राशि</th>
+          <th style="padding:10px 14px;color:white;font-size:12px;">अनुमानित मूल्य</th>
+          <th style="padding:10px 14px;color:white;font-size:12px;text-align:left;">Remarks</th>
+        </tr>
+      </thead>
+      <tbody>${rowsHtml}</tbody>
+    </table>`;
+}
+
+loadVisheshData().then(renderVishesh);
 
   // ===== TOGGLE SHOW/HIDE FOR LONG LISTS =====
   window.toggleSection = function(sectionId, btn) {
