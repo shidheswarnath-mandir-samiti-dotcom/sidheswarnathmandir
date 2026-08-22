@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>बुकिंग — श्री सिद्धेश्वर नाथ धाम, बिशौल ططुआर</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<!-- jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YPPDE1B74S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-YPPDE1B74S');
+</script>
+
+<style>
+body { font-family:'Poppins',Arial,sans-serif; background:#fffaf4; }
+h1,h2,h3,h4,h5 { font-family:'Tiro Devanagari Sanskrit',serif; }
+
+/* HERO */
+.bk-hero {
+  min-height:38vh;
+  background:linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.65)),url("images/maha.jpg");
+  background-size:cover; background-position:center; background-attachment:fixed;
+  display:flex; align-items:center; justify-content:center; text-align:center; color:white; padding:60px 20px;
+}
+@media(max-width:768px){.bk-hero{background-attachment:scroll;min-height:32vh;}}
+.bk-hero-badge {
+  display:inline-block; background:rgba(255,153,51,.25); border:1px solid rgba(255,153,51,.6);
+  color:#ffcc88; font-size:12px; letter-spacing:2px; text-transform:uppercase;
+  padding:5px 18px; border-radius:30px; margin-bottom:14px;
+}
+.bk-hero h1 { font-size:clamp(26px,5vw,48px); font-weight:bold; text-shadow:0 3px 20px rgba(0,0,0,.7); margin-bottom:8px; }
+.bk-hero p  { font-size:14px; opacity:.85; max-width:520px; margin:0 auto; line-height:1.7; }
+
+/* BREADCRUMB */
+.breadcrumb-strip { background:white; border-bottom:1px solid #f0e8dc; padding:10px 0; }
+.breadcrumb-strip a { color:#ff6600; text-decoration:none; font-size:13px; }
+.breadcrumb-strip span { color:#999; font-size:13px; }
+
+/* SHARED */
+.section-eyebrow { font-size:12px; letter-spacing:2.5px; text-transform:uppercase; color:#ff6600; font-weight:600; margin-bottom:6px; }
+.section-heading { font-size:clamp(20px,3.5vw,32px); font-weight:bold; color:#1a1a1a; margin-bottom:10px; }
+.section-heading span { color:#ff6600; }
+.orange-rule { width:50px; height:3px; background:linear-gradient(90deg,#ff9933,#ff6600); border-radius:10px; margin:0 auto 36px; }
+
+/* NOTICE */
+.bk-notice {
+  background:linear-gradient(135deg,#fff8f0,#fff0dc);
+  border:1px solid rgba(255,153,51,.35); border-left:4px solid #ff9933;
+  border-radius:14px; padding:16px 20px; font-size:14px; color:#885500;
+  display:flex; align-items:flex-start; gap:12px; margin-bottom:36px;
+}
+
+/* YEAR GRID */
+.year-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:20px; }
+
+.year-card {
+  background:white; border-radius:20px; padding:26px 22px;
+  box-shadow:0 4px 20px rgba(0,0,0,.07);
+  border:1px solid rgba(255,153,51,.2); border-top:4px solid #ff9933;
+  position:relative; transition:transform .3s ease, box-shadow .3s ease;
+}
+.year-card:hover { transform:translateY(-5px); box-shadow:0 14px 36px rgba(255,102,0,.14); }
+.year-card.booked { border-top-color:#e74c3c; opacity:.85; }
+.year-card.booked:hover { transform:none; }
+
+.year-badge-booked {
+  position:absolute; top:14px; right:14px;
+  background:#e74c3c; color:white; font-size:10px; font-weight:700;
+  letter-spacing:1px; padding:4px 10px; border-radius:20px;
+}
+.year-badge-available {
+  position:absolute; top:14px; right:14px;
+  background:#27ae60; color:white; font-size:10px; font-weight:700;
+  letter-spacing:1px; padding:4px 10px; border-radius:20px;
+}
+
+.year-number { font-size:36px; font-weight:800; color:#1a1a1a; margin-bottom:4px; }
+.year-label  { font-size:13px; color:#888; margin-bottom:14px; }
+.year-cost   { font-size:15px; font-weight:700; color:#ff6600; margin-bottom:6px; }
+.year-range  { font-size:12px; color:#aaa; margin-bottom:18px; }
+
+.btn-book-year {
+  width:100%; padding:11px; border:none; border-radius:25px;
+  background:linear-gradient(90deg,#ff9933,#ff6600);
+  color:white; font-weight:700; font-size:14px; cursor:pointer;
+  transition:.25s; font-family:'Poppins',sans-serif;
+}
+.btn-book-year:hover { transform:scale(1.03); box-shadow:0 6px 20px rgba(255,102,0,.35); }
+.btn-book-year:disabled { background:#ccc; cursor:not-allowed; transform:none; box-shadow:none; }
+
+/* SHRAVAN SLOTS */
+.slot-card {
+  background:white; border-radius:18px; padding:22px 20px;
+  box-shadow:0 4px 18px rgba(0,0,0,.07);
+  border:1px solid rgba(255,153,51,.2); border-left:4px solid #ff9933;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:14px; flex-wrap:wrap; transition:.25s;
+}
+.slot-card:hover { box-shadow:0 10px 28px rgba(255,102,0,.12); }
+.slot-card.booked { border-left-color:#e74c3c; }
+
+.slot-info h5 { font-size:15px; font-weight:700; color:#1a1a1a; margin:0 0 4px; }
+.slot-info p  { font-size:13px; color:#888; margin:0; }
+.slot-badge-avail  { background:rgba(39,174,96,.12); color:#1a7a3c; border:1px solid rgba(39,174,96,.3); font-size:11px; font-weight:700; padding:3px 12px; border-radius:20px; }
+.slot-badge-booked { background:rgba(231,76,60,.1);  color:#c0392b; border:1px solid rgba(231,76,60,.25); font-size:11px; font-weight:700; padding:3px 12px; border-radius:20px; }
+
+.btn-book-slot {
+  padding:9px 22px; border:none; border-radius:25px;
+  background:linear-gradient(90deg,#ff9933,#ff6600);
+  color:white; font-weight:700; font-size:13px; cursor:pointer;
+  transition:.25s; font-family:'Poppins',sans-serif; white-space:nowrap;
+}
+.btn-book-slot:hover { box-shadow:0 5px 16px rgba(255,102,0,.35); }
+.btn-book-slot:disabled { background:#ccc; cursor:not-allowed; }
+
+/* ===== MODAL OVERLAY ===== */
+.bk-modal-overlay {
+  display:none; position:fixed; inset:0; background:rgba(0,0,0,.65);
+  z-index:9000; overflow-y:auto; padding:20px;
+}
+.bk-modal-overlay.open { display:block; }
+
+.bk-modal {
+  max-width:680px; margin:0 auto; background:white;
+  border-radius:22px; overflow:hidden;
+  box-shadow:0 24px 60px rgba(0,0,0,.3);
+}
+.bk-modal-header {
+  background:linear-gradient(90deg,#ff9933,#ff6600);
+  padding:22px 26px; display:flex; align-items:center; justify-content:space-between;
+}
+.bk-modal-header h4 { color:white; margin:0; font-size:18px; }
+.bk-modal-header p  { color:rgba(255,255,255,.8); margin:4px 0 0; font-size:12px; }
+.bk-modal-close {
+  background:rgba(255,255,255,.2); border:none; color:white;
+  width:36px; height:36px; border-radius:50%; font-size:18px; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+}
+.bk-modal-body { padding:26px; }
+
+/* FORM */
+.form-label-hi { font-size:12px; font-weight:700; color:#cc4400; letter-spacing:.5px; margin-bottom:4px; display:block; }
+.form-control-bk {
+  width:100%; padding:10px 14px; border:2px solid #f0e8dc; border-radius:12px;
+  font-size:14px; font-family:'Poppins',sans-serif;
+  transition:.2s; outline:none; background:white;
+}
+.form-control-bk:focus { border-color:#ff9933; box-shadow:0 0 0 3px rgba(255,153,51,.15); }
+.form-control-bk:read-only { background:#f9f9f9; color:#888; }
+
+.financial-table {
+  width:100%; border-collapse:collapse;
+  border-radius:12px; overflow:hidden;
+  box-shadow:0 2px 12px rgba(0,0,0,.06); margin-bottom:20px;
+}
+.financial-table th { background:#fff5e6; padding:10px 14px; text-align:left; font-size:13px; color:#885500; font-weight:700; }
+.financial-table td { padding:10px 14px; font-size:14px; border-bottom:1px solid #f0e8dc; }
+.financial-table tr:last-child td { border-bottom:none; font-weight:800; color:#ff6600; }
+
+.btn-submit-bk {
+  width:100%; padding:14px; border:none; border-radius:30px;
+  background:linear-gradient(90deg,#ff9933,#ff6600);
+  color:white; font-weight:800; font-size:16px; cursor:pointer;
+  font-family:'Poppins',sans-serif; letter-spacing:.3px;
+  box-shadow:0 6px 20px rgba(255,102,0,.35); transition:.25s;
+}
+.btn-submit-bk:hover { transform:scale(1.02); box-shadow:0 10px 28px rgba(255,102,0,.45); }
+.btn-submit-bk:disabled { background:#ccc; cursor:not-allowed; transform:none; }
+
+/* SUCCESS SCREEN */
+.success-screen {
+  text-align:center; padding:40px 20px;
+}
+.success-icon { font-size:64px; margin-bottom:16px; display:block; }
+.success-screen h3 { font-size:22px; color:#27ae60; margin-bottom:8px; }
+.success-screen p  { font-size:14px; color:#888; margin-bottom:24px; }
+
+.btn-download-pdf {
+  display:inline-flex; align-items:center; gap:8px;
+  background:linear-gradient(90deg,#ff9933,#ff6600);
+  color:white; text-decoration:none; font-weight:700; font-size:14px;
+  padding:12px 28px; border-radius:30px; border:none; cursor:pointer;
+  font-family:'Poppins',sans-serif;
+  box-shadow:0 5px 18px rgba(255,102,0,.3); transition:.25s;
+}
+.btn-download-pdf:hover { transform:scale(1.04); color:white; }
+
+/* LOADING SPINNER */
+.bk-spinner {
+  width:36px; height:36px; border:4px solid #ffe0b3;
+  border-top-color:#ff6600; border-radius:50%;
+  animation:spin .8s linear infinite; margin:0 auto 12px;
+}
+@keyframes spin { to { transform:rotate(360deg); } }
+
+/* REVEAL */
+.reveal { opacity:0; transform:translateY(30px); transition:opacity .7s ease,transform .7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg premium-navbar sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="images/m7.jpg" class="logo-img me-2" alt="Mandir Logo">
+      <span>श्री सिद्धेश्वर नाथ मंदिर</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Services</a>
+          <ul class="dropdown-menu donation-dropdown">
+            <li><a class="dropdown-item" href="booking.html">🪔 Pooja Booking</a></li>
+            <li><a class="dropdown-item" href="services-calendar.html">📅 Festival Calendar</a></li>
+            
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">Donation</a>
+          <ul class="dropdown-menu donation-dropdown">
+            <li><a class="dropdown-item" href="donation.html">💰 Donate Now</a></li>
+            <li><a class="dropdown-item" href="accounts-login.html">📊 Accounts Portal</a></li>
+            
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="library.html">Library</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-strip">
+  <div class="container">
+    <a href="index.html">Home</a><span> › </span>
+    <a href="services-pooja.html">Services</a><span> › </span>
+    <span>Advance Booking</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="bk-hero">
+  <div class="container">
+    <div class="bk-hero-badge">॥ शिव विवाह एवं रुद्राभिषेक ॥</div>
+    <h1>📅 एडवांस बुकिंग</h1>
+    <p>शिव विवाह प्रायोजन एवं श्रावण सोमवार रुद्राभिषेक — अभी स्लॉट बुक करें</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SECTION 1 — SHIV VIVAH SPONSORSHIP
+══════════════════════════════════════ -->
+<section style="padding:60px 0; background:#fffaf4;">
+  <div class="container">
+
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Yearly Sponsorship</div>
+      <h2 class="section-heading">🕉️ शिव विवाह <span>प्रायोजन</span></h2>
+      <div class="orange-rule"></div>
+    </div>
+
+    <div class="bk-notice reveal">
+      <span style="font-size:22px;flex-shrink:0;">ℹ️</span>
+      <div>
+        <strong>महाशिवरात्रि शिव विवाह</strong> का सम्पूर्ण व्यय प्रायोजन करें।
+        न्यूनतम ₹1,000 एडवांस जमा करके वर्ष लॉक कर सकते हैं।
+        कुल अनुमानित व्यय: <strong>₹51,000</strong> (₹50,000 – ₹52,000)।
+        एडवांस जमा करने पर वर्ष आपके नाम से <strong>LOCKED</strong> हो जाएगा।
+      </div>
+    </div>
+
+    <div class="year-grid reveal" id="shivVivahGrid">
+      <!-- Cards generated by JS -->
+      <div style="text-align:center;padding:40px;color:#aaa;grid-column:1/-1;">
+        <div class="bk-spinner"></div>
+        <p>Loading slots...</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SECTION 2 — SHRAVAN SOMWAR SLOTS
+══════════════════════════════════════ -->
+<section style="padding:60px 0; background:white;">
+  <div class="container">
+
+    <div class="text-center reveal">
+      <div class="section-eyebrow">Rudrabhishek Booking</div>
+      <h2 class="section-heading">🔱 श्रावण सोमवार <span>रुद्राभिषेक</span></h2>
+      <div class="orange-rule"></div>
+    </div>
+
+    <div class="bk-notice reveal">
+      <span style="font-size:22px;flex-shrink:0;">ℹ️</span>
+      <div>
+        श्रावण मास के प्रत्येक सोमवार के लिए <strong>रुद्राभिषेक</strong> का स्लॉट पहले से बुक करें।
+        एडवांस बुकिंग से प्राथमिकता के आधार पर सुनिश्चित समय मिलता है।
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px;" id="shravanGrid">
+      <div style="text-align:center;padding:30px;color:#aaa;">
+        <div class="bk-spinner"></div>
+        <p>Loading slots...</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     BOOKING MODAL
+══════════════════════════════════════ -->
+<div class="bk-modal-overlay" id="bookingModal">
+  <div class="bk-modal">
+
+    <!-- Header -->
+    <div class="bk-modal-header">
+      <div>
+        <h4 id="modalTitle">बुकिंग फॉर्म</h4>
+        <p id="modalSubtitle">Advance Booking — Shree Sidheshwar Nath Dham</p>
+      </div>
+      <button class="bk-modal-close" onclick="closeModal()">✕</button>
+    </div>
+
+    <!-- Body -->
+    <div class="bk-modal-body" id="modalBody">
+
+      <!-- FORM (shown initially) -->
+      <div id="bookingForm">
+
+        <!-- Personal Info -->
+        <div style="margin-bottom:20px;">
+          <h6 style="font-weight:700;color:#cc4400;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #fff5e6;">👤 व्यक्तिगत जानकारी</h6>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label-hi">पूरा नाम *</label>
+              <input type="text" class="form-control-bk" id="f_name" placeholder="आपका पूरा नाम" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-hi">पिता का नाम *</label>
+              <input type="text" class="form-control-bk" id="f_father" placeholder="पिता का नाम" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-hi">मोबाइल / WhatsApp *</label>
+              <input type="tel" class="form-control-bk" id="f_mobile" placeholder="+91 XXXXXXXXXX" maxlength="10" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-hi">ईमेल *</label>
+              <input type="email" class="form-control-bk" id="f_email" placeholder="your@email.com" required>
+            </div>
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div style="margin-bottom:20px;">
+          <h6 style="font-weight:700;color:#cc4400;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #fff5e6;">🏡 पता / Address</h6>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label-hi">गाँव *</label>
+              <input type="text" class="form-control-bk" id="f_village" placeholder="गाँव का नाम" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-hi">पंचायत *</label>
+              <input type="text" class="form-control-bk" id="f_panchayat" placeholder="पंचायत का नाम" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-hi">थाना (PS) *</label>
+              <input type="text" class="form-control-bk" id="f_ps" placeholder="पुलिस स्टेशन" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-hi">जिला *</label>
+              <input type="text" class="form-control-bk" id="f_district" placeholder="जिला" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-hi">राज्य *</label>
+              <input type="text" class="form-control-bk" id="f_state" value="Bihar" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-hi">पिन कोड *</label>
+              <input type="text" class="form-control-bk" id="f_pin" placeholder="XXXXXX" maxlength="6" required>
+            </div>
+          </div>
+        </div>
+
+        <!-- Financial -->
+        <div style="margin-bottom:24px;">
+          <h6 style="font-weight:700;color:#cc4400;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #fff5e6;">💰 वित्तीय विवरण</h6>
+
+          <table class="financial-table">
+            <thead>
+              <tr><th>विवरण</th><th>राशि</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td id="ft_event">कार्यक्रम</td>
+                <td id="ft_total" style="font-weight:700;">₹51,000</td>
+              </tr>
+              <tr>
+                <td>एडवांस राशि (न्यूनतम ₹1,000)</td>
+                <td>
+                  <input type="number" class="form-control-bk" id="f_advance"
+                    placeholder="₹1000" min="1000" step="100"
+                    oninput="calcBalance()" style="width:140px;display:inline-block;">
+                </td>
+              </tr>
+              <tr>
+                <td><strong>शेष राशि</strong></td>
+                <td id="ft_balance" style="color:#ff6600;font-weight:800;">—</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="background:#fff5e6;border-radius:10px;padding:12px 16px;font-size:13px;color:#885500;">
+            ⚠️ एडवांस राशि WhatsApp/UPI के माध्यम से जमा करें: <strong>+91 9296860221</strong><br>
+            भुगतान के बाद यह फॉर्म submit करें। रसीद ईमेल पर भेजी जाएगी।
+          </div>
+        </div>
+
+        <button class="btn-submit-bk" id="submitBtn" onclick="submitBooking()">
+          🙏 बुकिंग कन्फर्म करें — Submit Booking
+        </button>
+
+      </div>
+
+      <!-- PROCESSING STATE -->
+      <div id="processingState" style="display:none;text-align:center;padding:40px 20px;">
+        <div class="bk-spinner"></div>
+        <p style="color:#888;font-size:14px;margin-top:8px;">बुकिंग प्रोसेस हो रही है...</p>
+      </div>
+
+      <!-- SUCCESS STATE -->
+      <div id="successState" style="display:none;">
+        <div class="success-screen">
+          <span class="success-icon">🎉</span>
+          <h3>बुकिंग सफल हो गई!</h3>
+          <p id="successMsg">आपकी बुकिंग कन्फर्म हो गई है। रसीद आपके ईमेल पर भेजी जा रही है।</p>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+            <button class="btn-download-pdf" id="downloadPdfBtn" onclick="downloadPDF()">
+              📄 रसीद PDF Download
+            </button>
+            <button onclick="closeModal()" style="padding:12px 24px;border:2px solid #ff9933;border-radius:30px;background:white;color:#ff6600;font-weight:700;font-size:14px;cursor:pointer;font-family:'Poppins',sans-serif;">
+              बंद करें
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="footer-brand">श्री सिद्धेश्वर नाथ मंदिर</div>
+        <p class="footer-tagline">An ancient Siddha Peeth of Mithila, Darbhanga, Bihar.</p>
+      </div>
+      <div class="col-md-2">
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="donation.html">Donation</a></li>
+          <li><a href="booking.html">Advance Booking</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <div class="footer-heading">Contact</div>
+        <div class="footer-info">
+          <p>📍 Bishoul Tatuar, Darbhanga, Bihar</p>
+          <p>📞 +91 9296860221</p>
+          <p>📧 shivratricomitteebishoultatuar@gmail.com</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="footer-heading">Booking Help</div>
+        <div class="footer-info">
+          <p>बुकिंग हेतु संपर्क करें</p>
+          <p>📞 +91 9296860221</p>
+          <p>💬 WhatsApp Available</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 श्री सिद्धेश्वर नाथ मंदिर. All rights reserved.</div>
+  </div>
+</footer>
+
+<a href="https://wa.me/919296860221" class="whatsapp-float" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="35">
+</a>
+<button onclick="scrollToTop()" id="topBtn" title="Back to top">↑</button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- FIREBASE -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import {
+  getFirestore, doc, getDoc, setDoc, collection, getDocs
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCJBHAyw1mJAzk_ZxtRkdhk4UjW65Zehac",
+  authDomain: "sidheswar-nath-mandir.firebaseapp.com",
+  projectId: "sidheswar-nath-mandir",
+  storageBucket: "sidheswar-nath-mandir.firebasestorage.app",
+  messagingSenderId: "881069210651",
+  appId: "1:881069210651:web:7afffc665f07eb8f1e4cbe"
+};
+
+const app = initializeApp(firebaseConfig);
+const db  = getFirestore(app);
+
+// ========== EMAILJS CONFIG ==========
+// TODO: Replace with your EmailJS credentials after setup
+const EMAILJS_SERVICE_ID  = 'service_apuelvf';
+const EMAILJS_TEMPLATE_ID = 'template_76cxwur';
+const EMAILJS_PUBLIC_KEY  = 'CI8Y_uWMCPboRjaM1';
+
+// ========== STATE ==========
+let currentBooking = {
+  type: '',      // 'shiv_vivah' | 'shravan'
+  year: '',
+  slotId: '',
+  slotLabel: '',
+  totalCost: 51000
+};
+let lastBookingData = null;
+
+// ========== SHIV VIVAH YEARS ==========
+const SHIV_VIVAH_YEARS = [2027, 2028, 2029, 2030, 2031, 2032];
+
+async function loadShivVivahSlots() {
+  const grid = document.getElementById('shivVivahGrid');
+  grid.innerHTML = '';
+
+  for (const year of SHIV_VIVAH_YEARS) {
+    const docRef  = doc(db, 'shiv_vivah_bookings', String(year));
+    const docSnap = await getDoc(docRef);
+    const booked  = docSnap.exists();
+    const data    = booked ? docSnap.data() : null;
+
+    const card = document.createElement('div');
+    card.className = `year-card ${booked ? 'booked' : ''}`;
+    card.innerHTML = `
+      <span class="${booked ? 'year-badge-booked' : 'year-badge-available'}">
+        ${booked ? '🔒 BOOKED' : '✅ AVAILABLE'}
+      </span>
+      <div class="year-number">${year}</div>
+      <div class="year-label">महाशिवरात्रि शिव विवाह</div>
+      <div class="year-cost">कुल व्यय: ₹51,000</div>
+      <div class="year-range">अनुमानित: ₹50,000 – ₹52,000</div>
+      ${booked
+        ? `<div style="font-size:12px;color:#e74c3c;margin-bottom:14px;">प्रायोजक: ${data.name || 'N/A'}</div>
+           <button class="btn-book-year" disabled>🔒 बुक हो चुका है</button>`
+        : `<button class="btn-book-year" onclick="openShivVivahModal(${year})">
+             🕉️ Shiv Vivah Sponsor Book करें
+           </button>`
+      }`;
+    grid.appendChild(card);
+  }
+}
+
+// ========== SHRAVAN SOMWAR SLOTS ==========
+const SHRAVAN_SLOTS_2027 = [
+  { id: 'shravan_2027_1', label: 'श्रावण प्रथम सोमवार 2027', date: 'July 2027', est: '₹13,000 – ₹15,000' },
+  { id: 'shravan_2027_2', label: 'श्रावण द्वितीय सोमवार 2027', date: 'July 2027', est: '₹13,000 – ₹15,000' },
+  { id: 'shravan_2027_3', label: 'श्रावण तृतीय सोमवार 2027', date: 'August 2027', est: '₹13,000 – ₹15,000' },
+  { id: 'shravan_2027_4', label: 'श्रावण चतुर्थ सोमवार 2027', date: 'August 2027', est: '₹13,000 – ₹15,000' },
+];
+
+async function loadShravanSlots() {
+  const grid = document.getElementById('shravanGrid');
+  grid.innerHTML = '';
+
+  for (const slot of SHRAVAN_SLOTS_2027) {
+    const docRef  = doc(db, 'shravan_bookings', slot.id);
+    const docSnap = await getDoc(docRef);
+    const booked  = docSnap.exists();
+    const data    = booked ? docSnap.data() : null;
+
+    const card = document.createElement('div');
+    card.className = `slot-card ${booked ? 'booked' : ''}`;
+    card.innerHTML = `
+      <div class="slot-info">
+        <h5>${slot.label}</h5>
+        <p>📅 ${slot.date} &nbsp;|&nbsp; अनुमानित व्यय: ${slot.est}</p>
+        ${booked ? `<span style="font-size:12px;color:#e74c3c;">बुक किया: ${data.name || 'N/A'}</span>` : ''}
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+        <span class="${booked ? 'slot-badge-booked' : 'slot-badge-avail'}">
+          ${booked ? '🔒 Booked' : '✅ Available'}
+        </span>
+        <button class="btn-book-slot" ${booked ? 'disabled' : `onclick="openShravanModal('${slot.id}','${slot.label}')"`}>
+          ${booked ? '🔒 बुक' : '📅 बुक करें'}
+        </button>
+      </div>`;
+    grid.appendChild(card);
+  }
+}
+
+// ========== MODAL OPEN ==========
+window.openShivVivahModal = function(year) {
+  currentBooking = { type:'shiv_vivah', year: String(year), slotId: String(year), slotLabel: `महाशिवरात्रि शिव विवाह ${year}`, totalCost: 51000 };
+  document.getElementById('modalTitle').textContent    = `🕉️ शिव विवाह ${year} — बुकिंग फॉर्म`;
+  document.getElementById('modalSubtitle').textContent = `Mahashivratri Shiv Vivah Sponsorship ${year}`;
+  document.getElementById('ft_event').textContent  = `शिव विवाह ${year} — कुल व्यय`;
+  document.getElementById('ft_total').textContent  = '₹51,000';
+  document.getElementById('f_advance').min         = '1000';
+  document.getElementById('f_advance').placeholder = '₹1,000 (न्यूनतम)';
+  resetForm();
+  openModal();
+};
+
+window.openShravanModal = function(slotId, slotLabel) {
+  currentBooking = { type:'shravan', year:'2027', slotId, slotLabel, totalCost: 15000 };
+  document.getElementById('modalTitle').textContent    = `🔱 ${slotLabel}`;
+  document.getElementById('modalSubtitle').textContent = 'Rudrabhishek Advance Booking';
+  document.getElementById('ft_event').textContent  = slotLabel;
+  document.getElementById('ft_total').textContent  = '₹15,000 (अनुमानित)';
+  document.getElementById('f_advance').min         = '500';
+  document.getElementById('f_advance').placeholder = '₹500 (न्यूनतम)';
+  resetForm();
+  openModal();
+};
+
+function openModal() {
+  document.getElementById('bookingModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  showFormState();
+}
+
+window.closeModal = function() {
+  document.getElementById('bookingModal').classList.remove('open');
+  document.body.style.overflow = '';
+};
+
+document.getElementById('bookingModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+function resetForm() {
+  ['f_name','f_father','f_mobile','f_email','f_village','f_panchayat','f_ps','f_district','f_pin','f_advance']
+    .forEach(id => { const el = document.getElementById(id); if(el) el.value = ''; });
+  document.getElementById('f_state').value   = 'Bihar';
+  document.getElementById('ft_balance').textContent = '—';
+}
+
+function showFormState()      { document.getElementById('bookingForm').style.display='block'; document.getElementById('processingState').style.display='none'; document.getElementById('successState').style.display='none'; }
+function showProcessingState(){ document.getElementById('bookingForm').style.display='none';  document.getElementById('processingState').style.display='block'; document.getElementById('successState').style.display='none'; }
+function showSuccessState()   { document.getElementById('bookingForm').style.display='none';  document.getElementById('processingState').style.display='none'; document.getElementById('successState').style.display='block'; }
+
+// ========== BALANCE CALC ==========
+window.calcBalance = function() {
+  const adv   = parseFloat(document.getElementById('f_advance').value) || 0;
+  const total = currentBooking.totalCost;
+  const bal   = total - adv;
+  document.getElementById('ft_balance').textContent = adv > 0 ? `₹${bal.toLocaleString('en-IN')}` : '—';
+};
+
+// ========== SUBMIT BOOKING ==========
+window.submitBooking = async function() {
+  const name     = document.getElementById('f_name').value.trim();
+  const father   = document.getElementById('f_father').value.trim();
+  const mobile   = document.getElementById('f_mobile').value.trim();
+  const email    = document.getElementById('f_email').value.trim();
+  const village  = document.getElementById('f_village').value.trim();
+  const panchayat= document.getElementById('f_panchayat').value.trim();
+  const ps       = document.getElementById('f_ps').value.trim();
+  const district = document.getElementById('f_district').value.trim();
+  const state    = document.getElementById('f_state').value.trim();
+  const pin      = document.getElementById('f_pin').value.trim();
+  const advance  = parseFloat(document.getElementById('f_advance').value) || 0;
+  const minAdv   = currentBooking.type === 'shiv_vivah' ? 1000 : 500;
+
+  if (!name || !father || !mobile || !email || !village || !panchayat || !ps || !district || !pin) {
+    alert('सभी अनिवार्य फ़ील्ड भरें। Please fill all required fields.');
+    return;
+  }
+  if (mobile.length !== 10 || isNaN(mobile)) { alert('सही मोबाइल नंबर डालें (10 अंक)।'); return; }
+  if (!/\S+@\S+\.\S+/.test(email))           { alert('सही ईमेल पता डालें।'); return; }
+  if (advance < minAdv) { alert(`न्यूनतम एडवांस राशि ₹${minAdv} है।`); return; }
+
+  const balance   = currentBooking.totalCost - advance;
+  const receiptNo = 'SNDM' + Date.now().toString().slice(-8);
+  const dateTime  = new Date().toLocaleString('hi-IN', { timeZone:'Asia/Kolkata' });
+
+  const bookingData = {
+    receiptNo, dateTime, name, father, mobile, email,
+    village, panchayat, ps, district, state, pin,
+    slotLabel: currentBooking.slotLabel,
+    slotId:    currentBooking.slotId,
+    type:      currentBooking.type,
+    totalCost: currentBooking.totalCost,
+    advance, balance,
+    status: 'CONFIRMED'
+  };
+
+  showProcessingState();
+
+  try {
+    // 1. Save to Firestore
+    const collection = currentBooking.type === 'shiv_vivah' ? 'shiv_vivah_bookings' : 'shravan_bookings';
+    await setDoc(doc(db, collection, currentBooking.slotId), {
+      ...bookingData,
+      bookedAt: new Date().toISOString()
+    });
+
+    // 2. Send email via EmailJS
+    lastBookingData = bookingData;
+    if (EMAILJS_SERVICE_ID !== 'service_apuelvf') {
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        to_email: email,
+        to_name:  name,
+        receipt_no: receiptNo,
+        event_name: currentBooking.slotLabel,
+        advance_paid: `₹${advance.toLocaleString('en-IN')}`,
+        balance: `₹${balance.toLocaleString('en-IN')}`,
+        total_cost: `₹${currentBooking.totalCost.toLocaleString('en-IN')}`,
+        devotee_address: `${village}, ${panchayat}, ${ps}, ${district}, ${state} - ${pin}`,
+        booking_date: dateTime,
+        message: `आपकी बुकिंग कन्फर्म हो गई है। रसीद संख्या: ${receiptNo}`
+      }, EMAILJS_PUBLIC_KEY);
+    }
+
+    document.getElementById('successMsg').textContent =
+      `रसीद संख्या: ${receiptNo} — आपकी बुकिंग सफलतापूर्वक दर्ज हो गई है।`;
+    showSuccessState();
+
+    // Reload slots
+    loadShivVivahSlots();
+    loadShravanSlots();
+
+  } catch (err) {
+    console.error('Booking error:', err);
+    showFormState();
+    alert('बुकिंग में समस्या आई। कृपया पुनः प्रयास करें।\nError: ' + err.message);
+  }
+};
+
+// ========== PDF RECEIPT ==========
+window.downloadPDF = function() {
+  if (!lastBookingData) return;
+  const d = lastBookingData;
+  const { jsPDF } = window.jspdf;
+  const pdf = new jsPDF({ orientation:'portrait', unit:'mm', format:'a4' });
+
+  const orange = [255, 102, 0];
+  const dark   = [26, 26, 46];
+  const gray   = [100, 100, 100];
+
+  // Header background
+  pdf.setFillColor(...dark);
+  pdf.rect(0, 0, 210, 40, 'F');
+
+  // Temple name
+  pdf.setFont('helvetica','bold');
+  pdf.setFontSize(14);
+  pdf.setTextColor(255, 153, 51);
+  pdf.text('श्री सिद्धेश्वरनाथ धाम', 105, 14, {align:'center'});
+
+  pdf.setFontSize(10);
+  pdf.setTextColor(255, 255, 255);
+  pdf.text('बिशौल टटुआर, दरभंगा, बिहार-847422', 105, 20, {align:'center'});
+
+  pdf.setFontSize(11);
+  pdf.setTextColor(255, 204, 136);
+  pdf.text('SHIV VIVAH / RUDRABHISHEK ADVANCE BOOKING RECEIPT', 105, 28, {align:'center'});
+  pdf.text('shri siddheshwar nath dham bishoul tatuar - booking raseed', 105, 35, {align:'center'});
+
+  // Orange strip
+  pdf.setFillColor(...orange);
+  pdf.rect(0, 40, 210, 8, 'F');
+  pdf.setFont('helvetica','bold');
+  pdf.setFontSize(10);
+  pdf.setTextColor(255,255,255);
+  pdf.text('OFFICIAL BOOKING RECEIPT', 105, 45.5, {align:'center'});
+
+  // Receipt metadata
+  pdf.setTextColor(...dark);
+  pdf.setFontSize(10);
+  pdf.setFont('helvetica','bold');
+  pdf.text('Receipt No:', 14, 58);
+  pdf.setFont('helvetica','normal');
+  pdf.setTextColor(...orange);
+  pdf.text(d.receiptNo, 50, 58);
+
+  pdf.setTextColor(...dark);
+  pdf.setFont('helvetica','bold');
+  pdf.text('Date & Time:', 120, 58);
+  pdf.setFont('helvetica','normal');
+  pdf.setTextColor(...gray);
+  pdf.text(d.dateTime, 148, 58);
+
+  pdf.setTextColor(39, 174, 96);
+  pdf.setFont('helvetica','bold');
+  pdf.text('Status: CONFIRMED', 14, 65);
+
+  // Divider
+  pdf.setDrawColor(...orange);
+  pdf.setLineWidth(0.5);
+  pdf.line(14, 69, 196, 69);
+
+  // Devotee Info
+  pdf.setTextColor(...dark);
+  pdf.setFont('helvetica','bold');
+  pdf.setFontSize(11);
+  pdf.text('DEVOTEE INFORMATION', 14, 77);
+
+  pdf.setFillColor(255, 245, 230);
+  pdf.rect(14, 80, 182, 52, 'F');
+
+  const info = [
+    ['Full Name (पूरा नाम):', d.name],
+    ["Father's Name (पिता का नाम):", d.father],
+    ['Mobile / WhatsApp:', d.mobile],
+    ['Email:', d.email],
+    ['Village / Gram:', d.village],
+    ['Panchayat:', d.panchayat],
+    ['Police Station (PS):', d.ps],
+    ['District / Jila:', d.district],
+    ['State / Rajya:', d.state],
+    ['Pin Code:', d.pin],
+  ];
+
+  let y = 87;
+  info.forEach((row, i) => {
+    const col = i % 2 === 0 ? 14 : 110;
+    if (i % 2 === 0 && i > 0) y += 9;
+    pdf.setFont('helvetica','bold'); pdf.setFontSize(8.5); pdf.setTextColor(...gray);
+    pdf.text(row[0], col + 2, y);
+    pdf.setFont('helvetica','normal'); pdf.setFontSize(9.5); pdf.setTextColor(...dark);
+    pdf.text(String(row[1]), col + 2, y + 4.5);
+  });
+
+  y = 141;
+
+  // Financial Table
+  pdf.setFont('helvetica','bold'); pdf.setFontSize(11); pdf.setTextColor(...dark);
+  pdf.text('FINANCIAL DETAILS', 14, y);
+  y += 5;
+
+  // Table header
+  pdf.setFillColor(...orange);
+  pdf.rect(14, y, 182, 8, 'F');
+  pdf.setTextColor(255,255,255); pdf.setFontSize(9.5);
+  pdf.text('Description', 18, y+5.5);
+  pdf.text('Amount', 180, y+5.5, {align:'right'});
+  y += 10;
+
+  const finRows = [
+    [`Event: ${d.slotLabel}`, `Rs.${d.totalCost.toLocaleString('en-IN')}`],
+    ['Advance Amount Paid (Ayim Paid):', `Rs.${d.advance.toLocaleString('en-IN')}`],
+    ['Balance Remaining (Shesh Rashi):', `Rs.${d.balance.toLocaleString('en-IN')}`],
+  ];
+
+  finRows.forEach((row, i) => {
+    pdf.setFillColor(i%2===0 ? 255 : 255, i%2===0 ? 255 : 250, i%2===0 ? 255 : 240);
+    pdf.rect(14, y, 182, 9, 'F');
+    pdf.setFont('helvetica', i===2?'bold':'normal');
+    pdf.setTextColor(i===2 ? orange[0] : dark[0], i===2 ? orange[1] : dark[1], i===2 ? orange[2] : dark[2]);
+    pdf.setFontSize(9.5);
+    pdf.text(row[0], 18, y+6);
+    pdf.text(row[1], 192, y+6, {align:'right'});
+    y += 10;
+  });
+
+  y += 8;
+
+  // Footer note
+  pdf.setFillColor(...dark);
+  pdf.rect(14, y, 182, 28, 'F');
+  pdf.setTextColor(255,153,51); pdf.setFont('helvetica','bold'); pdf.setFontSize(9);
+  pdf.text('OFFICIAL CONFIRMATION', 105, y+7, {align:'center'});
+  pdf.setTextColor(200,200,200); pdf.setFont('helvetica','normal'); pdf.setFontSize(8);
+  pdf.text('This receipt is issued by Shivratri Committee, Bishoul Tatuar, confirming your', 105, y+13, {align:'center'});
+  pdf.text('advance booking. Balance amount to be paid before the event date.', 105, y+18, {align:'center'});
+  pdf.setTextColor(255,153,51);
+  pdf.text('Contact: +91 9296860221  |  shivratricomitteebishoultatuar@gmail.com', 105, y+24, {align:'center'});
+
+  // Orange footer bar
+  pdf.setFillColor(...orange);
+  pdf.rect(0, 282, 210, 15, 'F');
+  pdf.setTextColor(255,255,255); pdf.setFont('helvetica','bold'); pdf.setFontSize(9);
+  pdf.text('Shree Sidheshwar Nath Dham, Bishoul Tatuar, Manigachhi, Darbhanga, Bihar - 847422', 105, 291, {align:'center'});
+
+  pdf.save(`Booking-Receipt-${d.receiptNo}.pdf`);
+};
+
+// ========== INIT ==========
+window.scrollToTop = function() { window.scrollTo({top:0,behavior:'smooth'}); };
+const topBtn = document.getElementById('topBtn');
+window.addEventListener('scroll', () => { topBtn.style.display = window.scrollY > 250 ? 'block':'none'; });
+
+const revealEls = document.querySelectorAll('.reveal');
+const observer  = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);} });
+},{threshold:0.1});
+revealEls.forEach(el => observer.observe(el));
+
+// Initialize EmailJS
+emailjs.init(EMAILJS_PUBLIC_KEY);
+
+// Load slots
+loadShivVivahSlots();
+loadShravanSlots();
+
+</script>
+</body>
+</html>
