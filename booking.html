@@ -437,11 +437,113 @@ h1,h2,h3,h4,h5 { font-family:'Tiro Devanagari Sanskrit',serif; }
           </div>
         </div>
 
-        <button class="btn-submit-bk" id="submitBtn" onclick="submitBooking()">
-          🙏 बुकिंग कन्फर्म करें — Submit Booking
-        </button>
+        <button class="btn-submit-bk" id="submitBtn" onclick="proceedToPayment()">
+  💳 भुगतान करें — Proceed to Payment
+</button>
 
       </div>
+
+      <!-- PAYMENT SCREEN -->
+   <!-- PAYMENT SCREEN -->
+<div id="paymentScreen" style="display:none;">
+
+  <h4 style="color:#ff6600;font-family:'Tiro Devanagari Sanskrit',serif;margin-bottom:6px;">💳 भुगतान करें</h4>
+  <p style="font-size:13px;color:#888;margin-bottom:20px;">एडवांस राशि जमा करें — भुगतान के बाद Transaction ID डालें</p>
+
+  <div style="display:flex;gap:20px;flex-wrap:wrap;">
+
+    <!-- LEFT — Amount Summary -->
+    <div style="flex:1;min-width:220px;">
+      <div style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:18px;padding:24px;color:white;margin-bottom:16px;">
+        <div style="font-size:12px;color:#ffcc88;font-weight:600;letter-spacing:1px;margin-bottom:8px;">📋 BOOKING SUMMARY</div>
+        <div style="font-size:13px;color:#bbb;margin-bottom:4px;" id="payEventLabel">—</div>
+        <div style="font-size:13px;color:#bbb;margin-bottom:16px;">कुल व्यय: <span id="payTotalCost">₹51,000</span></div>
+        <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:14px;">
+          <div style="font-size:12px;color:#ffcc88;margin-bottom:4px;">अभी जमा करें (Advance)</div>
+          <div id="payAmount" style="font-size:36px;font-weight:800;color:#ff9933;">₹—</div>
+        </div>
+        <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:10px;margin-top:10px;">
+          <div style="font-size:12px;color:#aaa;margin-bottom:2px;">शेष राशि (Balance)</div>
+          <div id="payBalance" style="font-size:18px;font-weight:700;color:#e74c3c;">₹—</div>
+        </div>
+      </div>
+
+      <!-- UTR Input -->
+      <div style="background:#fff5e6;border:2px solid #ff9933;border-radius:14px;padding:16px;">
+        <div style="font-size:12px;font-weight:700;color:#cc4400;margin-bottom:8px;">✅ भुगतान के बाद यहाँ डालें</div>
+        <label class="form-label-hi">Transaction ID / UTR Number *</label>
+        <input type="text" class="form-control-bk" id="f_utr"
+          placeholder="e.g. 426789123456"
+          style="font-weight:600;letter-spacing:1px;margin-bottom:8px;">
+        <p style="font-size:11px;color:#aaa;margin:0;">
+          💡 Payment app → History → Transaction ID / UTR
+        </p>
+      </div>
+
+      <button class="btn-submit-bk" onclick="submitBooking()" style="margin-top:14px;">
+        🙏 बुकिंग कन्फर्म करें
+      </button>
+      <div style="text-align:center;margin-top:10px;">
+        <button onclick="backToForm()" style="background:none;border:none;color:#ff6600;font-size:13px;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;">← वापस जाएं</button>
+      </div>
+    </div>
+
+    <!-- RIGHT — Pay Now -->
+    <div style="flex:1;min-width:220px;">
+      <div style="font-size:13px;font-weight:700;color:#1a1a1a;margin-bottom:12px;">⚡ Pay Now — कोई भी तरीका चुनें</div>
+
+      <!-- UPI APPS -->
+      <div style="background:white;border:2px solid #f0e8dc;border-radius:14px;padding:16px;margin-bottom:12px;">
+        <div style="font-size:12px;font-weight:700;color:#888;letter-spacing:1px;margin-bottom:12px;">📱 UPI APPS</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
+          <a id="gpayLink" href="#" target="_blank"
+            style="display:flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none;background:#fff5e6;border:2px solid #f0e8dc;border-radius:12px;padding:10px 14px;transition:.2s;"
+            onmouseover="this.style.borderColor='#ff9933'" onmouseout="this.style.borderColor='#f0e8dc'">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Google_Pay_Logo.svg/120px-Google_Pay_Logo.svg.png" style="height:28px;object-fit:contain;" alt="GPay">
+            <span style="font-size:10px;font-weight:600;color:#555;">Google Pay</span>
+          </a>
+          <a id="phonepayLink" href="#" target="_blank"
+            style="display:flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none;background:#fff5e6;border:2px solid #f0e8dc;border-radius:12px;padding:10px 14px;transition:.2s;"
+            onmouseover="this.style.borderColor='#ff9933'" onmouseout="this.style.borderColor='#f0e8dc'">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/PhonePe_Logo.svg/120px-PhonePe_Logo.svg.png" style="height:28px;object-fit:contain;" alt="PhonePe">
+            <span style="font-size:10px;font-weight:600;color:#555;">PhonePe</span>
+          </a>
+          <a id="paytmLink" href="#" target="_blank"
+            style="display:flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none;background:#fff5e6;border:2px solid #f0e8dc;border-radius:12px;padding:10px 14px;transition:.2s;"
+            onmouseover="this.style.borderColor='#ff9933'" onmouseout="this.style.borderColor='#f0e8dc'">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Paytm_Logo_%28standalone%29.svg/120px-Paytm_Logo_%28standalone%29.svg.png" style="height:28px;object-fit:contain;" alt="Paytm">
+            <span style="font-size:10px;font-weight:600;color:#555;">Paytm</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- QR + UPI ID -->
+      <div style="background:white;border:2px solid #f0e8dc;border-radius:14px;padding:16px;margin-bottom:12px;text-align:center;">
+        <div style="font-size:12px;font-weight:700;color:#888;letter-spacing:1px;margin-bottom:10px;">📷 SCAN QR CODE</div>
+        <img src="images/qr.jpeg" style="width:110px;height:110px;border-radius:10px;border:2px solid #f0e8dc;margin-bottom:10px;" alt="UPI QR">
+        <div style="background:#fff5e6;border:2px dashed #ff9933;border-radius:8px;padding:8px;font-size:13px;font-weight:800;color:#ff6600;margin-bottom:8px;">
+          6202037142-2@ybl
+        </div>
+        <button onclick="copyUPI()" style="background:linear-gradient(90deg,#ff9933,#ff6600);color:white;border:none;padding:7px 18px;border-radius:20px;font-weight:700;font-size:12px;cursor:pointer;font-family:'Poppins',sans-serif;">
+          📋 Copy UPI ID
+        </button>
+      </div>
+
+      <!-- BANK DETAILS -->
+      <div style="background:white;border:2px solid #f0e8dc;border-radius:14px;padding:16px;">
+        <div style="font-size:12px;font-weight:700;color:#888;letter-spacing:1px;margin-bottom:10px;">🏦 BANK TRANSFER (NEFT/IMPS)</div>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <tr style="border-bottom:1px solid #f0e8dc;"><td style="padding:5px 4px;color:#888;">Name</td><td style="padding:5px 4px;font-weight:600;">Abhinandan Kumar</td></tr>
+          <tr style="background:#fffaf4;border-bottom:1px solid #f0e8dc;"><td style="padding:5px 4px;color:#888;">Account No.</td><td style="padding:5px 4px;font-weight:700;color:#ff6600;">44885405435</td></tr>
+          <tr style="border-bottom:1px solid #f0e8dc;"><td style="padding:5px 4px;color:#888;">Bank</td><td style="padding:5px 4px;font-weight:600;">State Bank of India</td></tr>
+          <tr style="background:#fffaf4;border-bottom:1px solid #f0e8dc;"><td style="padding:5px 4px;color:#888;">IFSC</td><td style="padding:5px 4px;font-weight:700;color:#ff6600;">SBIN0006021</td></tr>
+          <tr><td style="padding:5px 4px;color:#888;">Branch</td><td style="padding:5px 4px;font-weight:600;">Manigachhi</td></tr>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
 
       <!-- PROCESSING STATE -->
       <div id="processingState" style="display:none;text-align:center;padding:40px 20px;">
@@ -681,6 +783,64 @@ window.calcBalance = function() {
   document.getElementById('ft_balance').textContent = adv > 0 ? `₹${bal.toLocaleString('en-IN')}` : '—';
 };
 
+// ========== PROCEED TO PAYMENT ==========
+window.proceedToPayment = function() {
+  const name     = document.getElementById('f_name').value.trim();
+  const father   = document.getElementById('f_father').value.trim();
+  const mobile   = document.getElementById('f_mobile').value.trim();
+  const email    = document.getElementById('f_email').value.trim();
+  const village  = document.getElementById('f_village').value.trim();
+  const panchayat= document.getElementById('f_panchayat').value.trim();
+  const ps       = document.getElementById('f_ps').value.trim();
+  const district = document.getElementById('f_district').value.trim();
+  const pin      = document.getElementById('f_pin').value.trim();
+  const advance  = parseFloat(document.getElementById('f_advance').value) || 0;
+  const minAdv   = currentBooking.type === 'shiv_vivah' ? 1000 : 500;
+
+  if (!name||!father||!mobile||!email||!village||!panchayat||!ps||!district||!pin) {
+    alert('सभी अनिवार्य फ़ील्ड भरें।'); return;
+  }
+  if (mobile.length !== 10 || isNaN(mobile)) { alert('सही मोबाइल नंबर डालें।'); return; }
+  if (!/\S+@\S+\.\S+/.test(email))           { alert('सही ईमेल पता डालें।'); return; }
+  if (advance < minAdv) { alert(`न्यूनतम एडवांस राशि ₹${minAdv} है।`); return; }
+
+  // Show payment screen
+  document.getElementById('bookingForm').style.display    = 'none';
+  document.getElementById('paymentScreen').style.display  = 'block';
+
+  // Update payment amount
+  document.getElementById('payAmount').textContent = `₹${advance.toLocaleString('en-IN')}`;
+  document.getElementById('payEvent').textContent  = currentBooking.slotLabel;
+
+  // Generate QR
+  const upiId  = '9296860221@ybl';
+  const upiUrl = `upi://pay?pa=${upiId}&pn=Shivratri+Committee+Bishoul&am=${advance}&cu=INR&tn=Shiv+Vivah+Booking`;
+  const qrUrl  = `https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(upiUrl)}`;
+  document.getElementById('upiQR').src = qrUrl;
+
+  // UPI deep links (amount based)
+const upiString = `upi://pay?pa=6202037142-2@ybl&pn=Shivratri+Committee&am=${advance}&cu=INR&tn=ShivVivah+Booking`;
+document.getElementById('gpayLink').href      = `tez://upi/pay?pa=6202037142-2@ybl&pn=Shivratri+Committee&am=${advance}&cu=INR`;
+document.getElementById('phonepayLink').href  = `phonepe://pay?pa=6202037142-2@ybl&pn=Shivratri+Committee&am=${advance}&cu=INR`;
+document.getElementById('paytmLink').href     = `paytmmp://pay?pa=6202037142-2@ybl&pn=Shivratri+Committee&am=${advance}&cu=INR`;
+
+// Update summary
+document.getElementById('payEventLabel').textContent = currentBooking.slotLabel;
+document.getElementById('payTotalCost').textContent  = `₹${currentBooking.totalCost.toLocaleString('en-IN')}`;
+document.getElementById('payBalance').textContent    = `₹${(currentBooking.totalCost - advance).toLocaleString('en-IN')}`;
+};
+
+window.backToForm = function() {
+  document.getElementById('paymentScreen').style.display = 'none';
+  document.getElementById('bookingForm').style.display   = 'block';
+};
+
+window.copyUPI = function() {
+  navigator.clipboard.writeText('9296860221@ybl');
+  alert('UPI ID copy ho gaya! ✅');
+};
+
+
 // ========== SUBMIT BOOKING ==========
 window.submitBooking = async function() {
   const name     = document.getElementById('f_name').value.trim();
@@ -705,6 +865,12 @@ window.submitBooking = async function() {
   if (advance < minAdv) { alert(`न्यूनतम एडवांस राशि ₹${minAdv} है।`); return; }
 
   const balance   = currentBooking.totalCost - advance;
+  const utr = document.getElementById('f_utr') ? document.getElementById('f_utr').value.trim() : '';
+if (document.getElementById('paymentScreen').style.display === 'block' && !utr) {
+  alert('Transaction ID / UTR Number daalna zaroori hai।');
+  return;
+}
+bookingData.utr = utr;
   const receiptNo = 'SNDM' + Date.now().toString().slice(-8);
   const dateTime  = new Date().toLocaleString('hi-IN', { timeZone:'Asia/Kolkata' });
 
