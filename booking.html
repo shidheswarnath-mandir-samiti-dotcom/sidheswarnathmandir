@@ -468,7 +468,7 @@ h1,h2,h3,h4,h5 { font-family:'Tiro Devanagari Sanskrit',serif; }
         </div>
       </div>
 
-      <!-- UTR Input -->
+      <!-- UTR Input --
       <div style="background:#fff5e6;border:2px solid #ff9933;border-radius:14px;padding:16px;">
         <div style="font-size:12px;font-weight:700;color:#cc4400;margin-bottom:8px;">✅ भुगतान के बाद यहाँ डालें</div>
         <label class="form-label-hi">Transaction ID / UTR Number *</label>
@@ -479,6 +479,8 @@ h1,h2,h3,h4,h5 { font-family:'Tiro Devanagari Sanskrit',serif; }
           💡 Payment app → History → Transaction ID / UTR
         </p>
       </div>
+
+    -->
 
       <button class="btn-submit-bk" onclick="submitBooking()" style="margin-top:14px;">
         🙏 बुकिंग कन्फर्म करें
@@ -819,11 +821,17 @@ window.proceedToPayment = function() {
   document.getElementById('upiQR').src = qrUrl;
 
   // UPI deep links (amount based)
-const upiString = `upi://pay?pa=6202037142-2@ybl&pn=Shivratri+Committee&am=${advance}&cu=INR&tn=ShivVivah+Booking`;
-document.getElementById('gpayLink').href      = `tez://upi/pay?pa=6202037142-2@ybl&pn=Shivratri+Committee&am=${advance}&cu=INR`;
-document.getElementById('phonepayLink').href  = `phonepe://pay?pa=6202037142-2@ybl&pn=Shivratri+Committee&am=${advance}&cu=INR`;
-document.getElementById('paytmLink').href     = `paytmmp://pay?pa=6202037142-2@ybl&pn=Shivratri+Committee&am=${advance}&cu=INR`;
+const upiBase = `pa=6202037142-2@ybl&pn=Shivratri+Committee+Bishoul&am=${advance}&cu=INR&tn=ShivVivah+Booking`;
+document.getElementById('gpayLink').href     = `https://pay.google.com/gp/v/u/0/home`;
+document.getElementById('phonepayLink').href = `https://phon.pe/ru_`;
+document.getElementById('paytmLink').href    = `https://paytm.com/`;
 
+// Mobile pe direct open
+if (/Android|iPhone/i.test(navigator.userAgent)) {
+  document.getElementById('gpayLink').href     = `tez://upi/pay?${upiBase}`;
+  document.getElementById('phonepayLink').href = `phonepe://pay?${upiBase}`;
+  document.getElementById('paytmLink').href    = `paytmmp://pay?${upiBase}`;
+}
 // Update summary
 document.getElementById('payEventLabel').textContent = currentBooking.slotLabel;
 document.getElementById('payTotalCost').textContent  = `₹${currentBooking.totalCost.toLocaleString('en-IN')}`;
@@ -866,7 +874,8 @@ window.submitBooking = async function() {
 
   const balance   = currentBooking.totalCost - advance;
   const utr = document.getElementById('f_utr') ? document.getElementById('f_utr').value.trim() : '';
-if (document.getElementById('paymentScreen').style.display === 'block' && !utr) {
+
+  if (document.getElementById('paymentScreen').style.display === 'block' && !utr) {
   alert('Transaction ID / UTR Number daalna zaroori hai।');
   return;
 }
@@ -934,144 +943,198 @@ window.downloadPDF = function() {
   const { jsPDF } = window.jspdf;
   const pdf = new jsPDF({ orientation:'portrait', unit:'mm', format:'a4' });
 
+  // Colors
   const orange = [255, 102, 0];
   const dark   = [26, 26, 46];
-  const gray   = [100, 100, 100];
+  const gold   = [201, 162, 39];
+  const green  = [39, 174, 96];
+  const red    = [231, 76, 60];
 
-  // Header background
+  // ── BACKGROUND ──
+  pdf.setFillColor(252, 248, 240);
+  pdf.rect(0, 0, 210, 297, 'F');
+
+  // ── TOP GRADIENT BAND ──
   pdf.setFillColor(...dark);
-  pdf.rect(0, 0, 210, 40, 'F');
+  pdf.rect(0, 0, 210, 52, 'F');
+
+  // Orange accent line
+  pdf.setFillColor(...orange);
+  pdf.rect(0, 52, 210, 4, 'F');
 
   // Temple name
-  pdf.setFont('helvetica','bold');
-  pdf.setFontSize(14);
+  pdf.setFont('helvetica', 'bold');
+  pdf.setFontSize(18);
   pdf.setTextColor(255, 153, 51);
-  pdf.text('श्री सिद्धेश्वरनाथ धाम', 105, 14, {align:'center'});
+  pdf.text('SHREE SIDHESHWAR NATH DHAM', 105, 16, {align:'center'});
 
+  pdf.setFont('helvetica', 'normal');
   pdf.setFontSize(10);
-  pdf.setTextColor(255, 255, 255);
-  pdf.text('बिशौल टटुआर, दरभंगा, बिहार-847422', 105, 20, {align:'center'});
+  pdf.setTextColor(200, 200, 200);
+  pdf.text('Bishoul Tatuar, Manigachhi, Darbhanga, Bihar - 847422', 105, 23, {align:'center'});
 
-  pdf.setFontSize(11);
+  pdf.setDrawColor(255, 153, 51);
+  pdf.setLineWidth(0.3);
+  pdf.line(40, 26, 170, 26);
+
+  pdf.setFont('helvetica', 'bold');
+  pdf.setFontSize(13);
   pdf.setTextColor(255, 204, 136);
-  pdf.text('SHIV VIVAH / RUDRABHISHEK ADVANCE BOOKING RECEIPT', 105, 28, {align:'center'});
-  pdf.text('shri siddheshwar nath dham bishoul tatuar - booking raseed', 105, 35, {align:'center'});
+  pdf.text('ADVANCE BOOKING RECEIPT', 105, 34, {align:'center'});
 
-  // Orange strip
-  pdf.setFillColor(...orange);
-  pdf.rect(0, 40, 210, 8, 'F');
-  pdf.setFont('helvetica','bold');
-  pdf.setFontSize(10);
-  pdf.setTextColor(255,255,255);
-  pdf.text('OFFICIAL BOOKING RECEIPT', 105, 45.5, {align:'center'});
+  pdf.setFont('helvetica', 'normal');
+  pdf.setFontSize(9);
+  pdf.setTextColor(160, 160, 160);
+  pdf.text('Shiv Vivah / Rudrabhishek Sponsorship', 105, 41, {align:'center'});
 
-  // Receipt metadata
-  pdf.setTextColor(...dark);
-  pdf.setFontSize(10);
-  pdf.setFont('helvetica','bold');
-  pdf.text('Receipt No:', 14, 58);
-  pdf.setFont('helvetica','normal');
-  pdf.setTextColor(...orange);
-  pdf.text(d.receiptNo, 50, 58);
-
-  pdf.setTextColor(...dark);
-  pdf.setFont('helvetica','bold');
-  pdf.text('Date & Time:', 120, 58);
-  pdf.setFont('helvetica','normal');
-  pdf.setTextColor(...gray);
-  pdf.text(d.dateTime, 148, 58);
-
-  pdf.setTextColor(39, 174, 96);
-  pdf.setFont('helvetica','bold');
-  pdf.text('Status: CONFIRMED', 14, 65);
-
-  // Divider
-  pdf.setDrawColor(...orange);
-  pdf.setLineWidth(0.5);
-  pdf.line(14, 69, 196, 69);
-
-  // Devotee Info
-  pdf.setTextColor(...dark);
-  pdf.setFont('helvetica','bold');
-  pdf.setFontSize(11);
-  pdf.text('DEVOTEE INFORMATION', 14, 77);
-
+  // ── RECEIPT META BADGES ──
+  // Receipt No box
   pdf.setFillColor(255, 245, 230);
-  pdf.rect(14, 80, 182, 52, 'F');
+  pdf.roundedRect(14, 60, 85, 18, 3, 3, 'F');
+  pdf.setFont('helvetica','bold'); pdf.setFontSize(8); pdf.setTextColor(150,100,50);
+  pdf.text('RECEIPT NO.', 18, 66);
+  pdf.setFont('helvetica','bold'); pdf.setFontSize(11); pdf.setTextColor(...orange);
+  pdf.text(d.receiptNo, 18, 73);
 
-  const info = [
-    ['Full Name (पूरा नाम):', d.name],
-    ["Father's Name (पिता का नाम):", d.father],
-    ['Mobile / WhatsApp:', d.mobile],
-    ['Email:', d.email],
-    ['Village / Gram:', d.village],
-    ['Panchayat:', d.panchayat],
-    ['Police Station (PS):', d.ps],
-    ['District / Jila:', d.district],
-    ['State / Rajya:', d.state],
-    ['Pin Code:', d.pin],
+  // Date box
+  pdf.setFillColor(255, 245, 230);
+  pdf.roundedRect(111, 60, 85, 18, 3, 3, 'F');
+  pdf.setFont('helvetica','bold'); pdf.setFontSize(8); pdf.setTextColor(150,100,50);
+  pdf.text('DATE & TIME', 115, 66);
+  pdf.setFont('helvetica','normal'); pdf.setFontSize(9); pdf.setTextColor(...dark);
+  pdf.text(d.dateTime.substring(0,20), 115, 73);
+
+  // Status badge
+  pdf.setFillColor(...green);
+  pdf.roundedRect(75, 82, 60, 10, 5, 5, 'F');
+  pdf.setFont('helvetica','bold'); pdf.setFontSize(9); pdf.setTextColor(255,255,255);
+  pdf.text('✓  BOOKING CONFIRMED', 105, 88.5, {align:'center'});
+
+  // ── DEVOTEE INFO SECTION ──
+  let y = 100;
+  pdf.setFillColor(...dark);
+  pdf.roundedRect(14, y, 182, 8, 2, 2, 'F');
+  pdf.setFont('helvetica','bold'); pdf.setFontSize(9); pdf.setTextColor(255,153,51);
+  pdf.text('  DEVOTEE INFORMATION', 16, y+5.5);
+  y += 12;
+
+  // Info grid — 2 columns
+  const infoLeft = [
+    ['Full Name',    d.name],
+    ["Father's Name", d.father],
+    ['Mobile',       d.mobile],
+    ['Email',        d.email],
+    ['Village',      d.village],
+  ];
+  const infoRight = [
+    ['Panchayat',   d.panchayat],
+    ['Police Stn',  d.ps],
+    ['District',    d.district],
+    ['State',       d.state],
+    ['Pin Code',    d.pin],
   ];
 
-  let y = 87;
-  info.forEach((row, i) => {
-    const col = i % 2 === 0 ? 14 : 110;
-    if (i % 2 === 0 && i > 0) y += 9;
-    pdf.setFont('helvetica','bold'); pdf.setFontSize(8.5); pdf.setTextColor(...gray);
-    pdf.text(row[0], col + 2, y);
-    pdf.setFont('helvetica','normal'); pdf.setFontSize(9.5); pdf.setTextColor(...dark);
-    pdf.text(String(row[1]), col + 2, y + 4.5);
+  infoLeft.forEach((row, i) => {
+    const rowY = y + (i * 12);
+    // Left
+    pdf.setFillColor(i%2===0 ? 255:250, i%2===0 ? 255:247, i%2===0 ? 255:240);
+    pdf.rect(14, rowY-4, 92, 11, 'F');
+    pdf.setFont('helvetica','bold'); pdf.setFontSize(7.5); pdf.setTextColor(150,100,50);
+    pdf.text(row[0].toUpperCase(), 17, rowY+1);
+    pdf.setFont('helvetica','normal'); pdf.setFontSize(9); pdf.setTextColor(...dark);
+    pdf.text(String(row[1]).substring(0,28), 17, rowY+6.5);
+    // Right
+    pdf.setFillColor(i%2===0 ? 255:250, i%2===0 ? 255:247, i%2===0 ? 255:240);
+    pdf.rect(108, rowY-4, 88, 11, 'F');
+    pdf.setFont('helvetica','bold'); pdf.setFontSize(7.5); pdf.setTextColor(150,100,50);
+    pdf.text(infoRight[i][0].toUpperCase(), 111, rowY+1);
+    pdf.setFont('helvetica','normal'); pdf.setFontSize(9); pdf.setTextColor(...dark);
+    pdf.text(String(infoRight[i][1]).substring(0,28), 111, rowY+6.5);
   });
 
-  y = 141;
+  y += 65;
 
-  // Financial Table
-  pdf.setFont('helvetica','bold'); pdf.setFontSize(11); pdf.setTextColor(...dark);
-  pdf.text('FINANCIAL DETAILS', 14, y);
-  y += 5;
+  // ── FINANCIAL TABLE ──
+  pdf.setFillColor(...dark);
+  pdf.roundedRect(14, y, 182, 8, 2, 2, 'F');
+  pdf.setFont('helvetica','bold'); pdf.setFontSize(9); pdf.setTextColor(255,153,51);
+  pdf.text('  FINANCIAL DETAILS', 16, y+5.5);
+  y += 12;
 
   // Table header
   pdf.setFillColor(...orange);
-  pdf.rect(14, y, 182, 8, 'F');
-  pdf.setTextColor(255,255,255); pdf.setFontSize(9.5);
-  pdf.text('Description', 18, y+5.5);
-  pdf.text('Amount', 180, y+5.5, {align:'right'});
-  y += 10;
+  pdf.rect(14, y, 182, 9, 'F');
+  pdf.setFont('helvetica','bold'); pdf.setFontSize(9); pdf.setTextColor(255,255,255);
+  pdf.text('DESCRIPTION', 18, y+6);
+  pdf.text('AMOUNT', 192, y+6, {align:'right'});
+  y += 11;
 
   const finRows = [
-    [`Event: ${d.slotLabel}`, `Rs.${d.totalCost.toLocaleString('en-IN')}`],
-    ['Advance Amount Paid (Ayim Paid):', `Rs.${d.advance.toLocaleString('en-IN')}`],
-    ['Balance Remaining (Shesh Rashi):', `Rs.${d.balance.toLocaleString('en-IN')}`],
+    [`Booking: ${d.slotLabel}`, `Rs.${d.totalCost.toLocaleString('en-IN')}`, false],
+    ['Advance Paid (Ayim Paid)', `Rs.${d.advance.toLocaleString('en-IN')}`, false],
+    ['Balance Remaining', `Rs.${d.balance.toLocaleString('en-IN')}`, true],
   ];
-
   finRows.forEach((row, i) => {
-    pdf.setFillColor(i%2===0 ? 255 : 255, i%2===0 ? 255 : 250, i%2===0 ? 255 : 240);
-    pdf.rect(14, y, 182, 9, 'F');
-    pdf.setFont('helvetica', i===2?'bold':'normal');
-    pdf.setTextColor(i===2 ? orange[0] : dark[0], i===2 ? orange[1] : dark[1], i===2 ? orange[2] : dark[2]);
+    pdf.setFillColor(i%2===0 ? 255:250, i%2===0 ? 255:247, i%2===0 ? 255:240);
+    pdf.rect(14, y, 182, 11, 'F');
+    if (row[2]) {
+      pdf.setDrawColor(...orange);
+      pdf.setLineWidth(0.5);
+      pdf.rect(14, y, 182, 11, 'S');
+    }
+    pdf.setFont('helvetica', row[2]?'bold':'normal');
     pdf.setFontSize(9.5);
-    pdf.text(row[0], 18, y+6);
-    pdf.text(row[1], 192, y+6, {align:'right'});
-    y += 10;
+    pdf.setTextColor(row[2] ? orange[0] : dark[0], row[2] ? orange[1] : dark[1], row[2] ? orange[2] : dark[2]);
+    pdf.text(row[0], 18, y+7.5);
+    pdf.setFont('helvetica','bold');
+    pdf.text(row[1], 192, y+7.5, {align:'right'});
+    y += 12;
   });
+
+  // UTR if available
+  if (d.utr) {
+    y += 4;
+    pdf.setFillColor(240, 255, 245);
+    pdf.roundedRect(14, y, 182, 12, 3, 3, 'F');
+    pdf.setFont('helvetica','bold'); pdf.setFontSize(9); pdf.setTextColor(...green);
+    pdf.text(`Transaction ID / UTR: ${d.utr}`, 18, y+8);
+    y += 16;
+  }
 
   y += 8;
 
-  // Footer note
+  // ── FOOTER NOTE ──
   pdf.setFillColor(...dark);
-  pdf.rect(14, y, 182, 28, 'F');
-  pdf.setTextColor(255,153,51); pdf.setFont('helvetica','bold'); pdf.setFontSize(9);
-  pdf.text('OFFICIAL CONFIRMATION', 105, y+7, {align:'center'});
-  pdf.setTextColor(200,200,200); pdf.setFont('helvetica','normal'); pdf.setFontSize(8);
-  pdf.text('This receipt is issued by Shivratri Committee, Bishoul Tatuar, confirming your', 105, y+13, {align:'center'});
-  pdf.text('advance booking. Balance amount to be paid before the event date.', 105, y+18, {align:'center'});
-  pdf.setTextColor(255,153,51);
-  pdf.text('Contact: +91 9296860221  |  shivratricomitteebishoultatuar@gmail.com', 105, y+24, {align:'center'});
+  pdf.roundedRect(14, y, 182, 32, 4, 4, 'F');
 
-  // Orange footer bar
+  // Orange left bar
   pdf.setFillColor(...orange);
-  pdf.rect(0, 282, 210, 15, 'F');
-  pdf.setTextColor(255,255,255); pdf.setFont('helvetica','bold'); pdf.setFontSize(9);
-  pdf.text('Shree Sidheshwar Nath Dham, Bishoul Tatuar, Manigachhi, Darbhanga, Bihar - 847422', 105, 291, {align:'center'});
+  pdf.roundedRect(14, y, 5, 32, 2, 2, 'F');
+
+  pdf.setFont('helvetica','bold'); pdf.setFontSize(10); pdf.setTextColor(255,153,51);
+  pdf.text('OFFICIAL CONFIRMATION', 26, y+9);
+
+  pdf.setFont('helvetica','normal'); pdf.setFontSize(8.5); pdf.setTextColor(180,180,180);
+  pdf.text('This receipt confirms your advance booking with Shivratri Committee, Bishoul Tatuar.', 26, y+16);
+  pdf.text('Balance amount must be paid before the event. Keep this receipt for reference.', 26, y+22);
+
+  pdf.setTextColor(255,153,51);
+  pdf.setFont('helvetica','bold'); pdf.setFontSize(8.5);
+  pdf.text('+91 9296860221   |   shivratricomitteebishoultatuar@gmail.com', 26, y+29);
+
+  // ── BOTTOM STRIP ──
+  pdf.setFillColor(...orange);
+  pdf.rect(0, 284, 210, 13, 'F');
+  pdf.setFont('helvetica','bold'); pdf.setFontSize(8.5); pdf.setTextColor(255,255,255);
+  pdf.text('Shree Sidheshwar Nath Dham  •  Bishoul Tatuar  •  Manigachhi  •  Darbhanga  •  Bihar - 847422', 105, 292, {align:'center'});
+
+  // Watermark
+  pdf.setFont('helvetica','bold');
+  pdf.setFontSize(55);
+  pdf.setTextColor(255, 153, 51);
+  pdf.setGState(pdf.GState({opacity: 0.06}));
+  pdf.text('SNDM', 105, 180, {align:'center', angle:30});
+  pdf.setGState(pdf.GState({opacity: 1}));
 
   pdf.save(`Booking-Receipt-${d.receiptNo}.pdf`);
 };
