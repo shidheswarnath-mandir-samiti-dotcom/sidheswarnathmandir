@@ -4108,3 +4108,877 @@ textarea.form-control { resize: vertical; min-height: 120px; }
     background: rgba(255,255,255,0.15);
   }
 }
+
+/* ============================================================
+   POOJA-PATH PDF BOOKS SECTION STYLES
+   ============================================================ */
+
+/* ── SECTION WRAPPER ── */
+.pdf-books-section {
+  padding: 60px 0;
+  background: linear-gradient(160deg, #fffaf4 0%, #fff5e6 100%);
+}
+
+/* ── SEARCH & FILTER BAR ── */
+.pb-controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.pb-search-wrap {
+  flex: 1;
+  min-width: 200px;
+  position: relative;
+}
+.pb-search-wrap svg {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+}
+.pb-search {
+  width: 100%;
+  padding: 11px 14px 11px 42px;
+  border: 2px solid #f0e8dc;
+  border-radius: 30px;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+  transition: .2s;
+  background: white;
+}
+.pb-search:focus { 
+  border-color: #ff9933; 
+  box-shadow: 0 0 0 3px rgba(255,153,51,.12); 
+}
+
+.pb-filter {
+  padding: 11px 20px;
+  border: 2px solid #f0e8dc;
+  border-radius: 30px;
+  font-size: 13px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #ff6600;
+  background: white;
+  outline: none;
+  cursor: pointer;
+  transition: .2s;
+  min-width: 180px;
+}
+.pb-filter:focus { border-color: #ff9933; }
+
+.pb-count {
+  font-size: 13px;
+  color: #aaa;
+  white-space: nowrap;
+  align-self: center;
+}
+.pb-count strong { color: #ff6600; }
+
+/* ── BOOK GRID ── */
+.pb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* ── BOOK CARD ── */
+.pb-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,.07);
+  border: 1px solid rgba(255,153,51,.15);
+  display: flex;
+  flex-direction: column;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.pb-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 36px rgba(255,102,0,.14);
+}
+
+/* Card top colour band */
+.pb-card-band {
+  height: 6px;
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+}
+
+.pb-card-body { 
+  padding: 20px 18px 16px; 
+  flex: 1; 
+  display: flex; 
+  flex-direction: column; 
+}
+
+.pb-cat-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  background: rgba(255,153,51,.12);
+  color: #cc4400;
+  border: 1px solid rgba(255,153,51,.3);
+}
+
+.pb-title {
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 8px;
+  line-height: 1.4;
+}
+.pb-desc {
+  font-size: 13px;
+  color: #888;
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 16px;
+}
+
+/* ── BUTTON ROW ── */
+.pb-btn-row {
+  display: flex;
+  gap: 8px;
+}
+.pb-btn-download {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: linear-gradient(90deg, #ff9933, #ff6600);
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 12.5px;
+  padding: 10px 14px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: .25s;
+  white-space: nowrap;
+}
+.pb-btn-download:hover { 
+  transform: scale(1.04); 
+  color: white; 
+  box-shadow: 0 5px 16px rgba(255,102,0,.35); 
+}
+
+.pb-btn-share {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: white;
+  color: #ff6600;
+  border: 2px solid #ff9933;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 10px 12px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: .25s;
+  white-space: nowrap;
+}
+.pb-btn-share:hover { background: #fff5e6; }
+
+/* Copy toast */
+.pb-toast {
+  position: fixed;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #1a1a2e;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 30px;
+  opacity: 0;
+  transition: opacity .3s, transform .3s;
+  z-index: 9999;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.pb-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* No results */
+.pb-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 50px 20px;
+  color: #aaa;
+}
+.pb-empty svg { width: 48px; height: 48px; margin-bottom: 12px; opacity: .3; }
+
+@media (max-width: 576px) {
+  .pb-grid { grid-template-columns: 1fr; }
+  .pb-controls { flex-direction: column; align-items: stretch; }
+  .pb-filter { min-width: unset; }
+}
+
+/* =========================================================
+   CHAURCHAN POOJA PDF CARD
+   Digital Religious Library
+   ========================================================= */
+
+.pdf-book-card {
+    position: relative;
+    background: #fffdf8;
+    border: 1px solid rgba(255, 153, 51, 0.30);
+    border-radius: 22px;
+    padding: 28px;
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 25px rgba(120, 70, 20, 0.10);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+/* Decorative top line */
+.pdf-book-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+
+    background: linear-gradient(
+        90deg,
+        #ff9933,
+        #ff6600,
+        #ffb347
+    );
+}
+
+
+/* Hover Effect */
+.pdf-book-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 15px 35px rgba(120, 70, 20, 0.17);
+
+    border-color: rgba(255, 102, 0, 0.55);
+}
+
+
+/* PDF Icon */
+.pdf-icon {
+    width: 68px;
+    height: 68px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background: linear-gradient(
+        135deg,
+        #fff0dc,
+        #ffe0b3
+    );
+
+    font-size: 34px;
+
+    margin-bottom: 18px;
+}
+
+
+/* Category Badge */
+.pdf-category {
+    display: inline-block;
+
+    background: #fff0dc;
+    color: #d35400;
+
+    padding: 6px 12px;
+
+    border-radius: 50px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    margin-bottom: 12px;
+}
+
+
+/* Book Title */
+.pdf-book-content h3 {
+    margin-bottom: 10px;
+
+    color: #7a3200;
+
+    font-size: 24px;
+    font-weight: 700;
+}
+
+
+/* Description */
+.pdf-book-content p {
+    color: #555;
+
+    font-size: 15px;
+    line-height: 1.7;
+
+    min-height: 52px;
+
+    margin-bottom: 22px;
+}
+
+
+/* Buttons Container */
+.pdf-actions {
+    display: flex;
+    gap: 10px;
+
+    flex-wrap: wrap;
+}
+
+
+/* Common Button */
+.pdf-actions .btn {
+    border-radius: 10px;
+
+    padding: 10px 17px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: all 0.25s ease;
+}
+
+
+/* View PDF */
+.btn-view-pdf {
+    background: #ff9933;
+    color: white;
+
+    border: 1px solid #ff9933;
+}
+
+
+.btn-view-pdf:hover {
+    background: #e87500;
+    color: white;
+
+    transform: translateY(-2px);
+}
+
+
+/* Download */
+.btn-download-pdf {
+    background: transparent;
+
+    color: #d35400;
+
+    border: 1px solid #ff9933;
+}
+
+
+.btn-download-pdf:hover {
+    background: #fff0dc;
+
+    color: #b74700;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 576px) {
+
+    .pdf-book-card {
+        padding: 22px;
+        border-radius: 18px;
+    }
+
+    .pdf-book-content h3 {
+        font-size: 21px;
+    }
+
+    .pdf-actions {
+        flex-direction: column;
+    }
+
+    .pdf-actions .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+}
+
+/* =========================================================
+   DIGITAL PDF LIBRARY CARD
+   ========================================================= */
+
+.pdf-book-item {
+    width: 100%;
+}
+
+
+.pdf-library-card {
+
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+
+    padding: 25px;
+
+    background: linear-gradient(
+        145deg,
+        #ffffff,
+        #fffaf2
+    );
+
+    border: 1px solid rgba(255,153,51,.28);
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 8px 28px rgba(80,45,15,.08);
+
+    transition: .3s ease;
+}
+
+
+.pdf-library-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 5px;
+
+    background: linear-gradient(
+        90deg,
+        #ff9933,
+        #ff6600,
+        #ffb347
+    );
+}
+
+
+.pdf-library-card:hover {
+
+    transform: translateY(-7px);
+
+    border-color: #ff9933;
+
+    box-shadow:
+        0 16px 38px rgba(80,45,15,.15);
+}
+
+
+.pdf-card-top {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 18px;
+}
+
+
+.pdf-card-icon {
+
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background: #fff0dc;
+
+    font-size: 34px;
+}
+
+
+.pdf-file-badge {
+
+    background: #fff0dc;
+
+    color: #c54d00;
+
+    border: 1px solid #ffc27a;
+
+    padding: 5px 10px;
+
+    border-radius: 30px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+
+.pdf-card-category {
+
+    display: inline-block;
+
+    color: #c65300;
+
+    background: #fff3e2;
+
+    padding: 5px 11px;
+
+    border-radius: 30px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    margin-bottom: 12px;
+}
+
+
+.pdf-card-title {
+
+    color: #702d00;
+
+    font-size: 23px;
+
+    font-weight: 700;
+
+    margin: 0 0 3px;
+}
+
+
+.pdf-card-title-en {
+
+    color: #a56a3a;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    margin-bottom: 13px;
+}
+
+
+.pdf-card-description {
+
+    color: #666;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    min-height: 48px;
+
+    margin-bottom: 18px;
+}
+
+
+.pdf-card-meta {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 10px 0;
+
+    border-top: 1px solid #f1dfca;
+
+    border-bottom: 1px solid #f1dfca;
+
+    color: #8a6a50;
+
+    font-size: 12px;
+
+    margin-bottom: 16px;
+}
+
+
+.pdf-card-actions {
+
+    display: flex;
+
+    gap: 9px;
+}
+
+
+.pdf-btn {
+
+    flex: 1;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    padding: 10px 8px;
+
+    border-radius: 10px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    transition: .25s ease;
+}
+
+
+.pdf-btn-view {
+
+    background: #ff8c1a;
+
+    color: white;
+
+    border: 1px solid #ff8c1a;
+}
+
+
+.pdf-btn-view:hover {
+
+    background: #e66f00;
+
+    color: white;
+
+}
+
+
+.pdf-btn-download {
+
+    background: white;
+
+    color: #c65300;
+
+    border: 1px solid #ff9933;
+}
+
+
+.pdf-btn-download:hover {
+
+    background: #fff0dc;
+
+    color: #a94400;
+}
+
+
+.pdf-share-btn {
+
+    width: 100%;
+
+    margin-top: 10px;
+
+    padding: 9px;
+
+    border-radius: 10px;
+
+    background: transparent;
+
+    color: #7a3200;
+
+    border: 1px dashed #e5a15e;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+
+.pdf-share-btn:hover {
+
+    background: #fff3e2;
+
+    border-style: solid;
+}
+
+
+.pb-toast {
+
+    position: fixed;
+
+    bottom: 25px;
+
+    left: 50%;
+
+    transform: translateX(-50%) translateY(20px);
+
+    background: #242424;
+
+    color: white;
+
+    padding: 12px 20px;
+
+    border-radius: 50px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 9999;
+
+    transition: .3s ease;
+}
+
+
+.pb-toast.show {
+
+    opacity: 1;
+
+    transform: translateX(-50%) translateY(0);
+}
+
+
+@media (max-width: 576px) {
+
+    .pdf-library-card {
+        padding: 21px;
+    }
+
+    .pdf-card-title {
+        font-size: 21px;
+    }
+
+    .pdf-card-actions {
+        flex-direction: column;
+    }
+
+    .pdf-btn {
+        width: 100%;
+    }
+
+}
+
+/* =========================================================
+   DEITY LIBRARY — PREMIUM CONTENT CARDS
+   ========================================================= */
+
+.deity-section {
+  padding: 20px 0 70px;
+}
+
+.deity-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.deity-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 190px;
+  padding: 28px 20px;
+  text-align: center;
+  text-decoration: none;
+  color: #3b1800;
+  background: linear-gradient(145deg, #fffaf2, #fff0d2);
+  border: 1px solid rgba(255, 153, 51, 0.35);
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(120, 55, 0, 0.10);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.deity-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #ff9933, #ff6600, #ff9933);
+}
+
+.deity-card:hover {
+  transform: translateY(-7px);
+  border-color: #ff9933;
+  box-shadow: 0 14px 35px rgba(120, 55, 0, 0.18);
+  color: #7a2600;
+}
+
+.deity-emoji {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 65px;
+  margin-bottom: 15px;
+  font-size: 34px;
+  background: #fff;
+  border: 2px solid #ffcc80;
+  border-radius: 50%;
+  box-shadow: 0 5px 15px rgba(150, 70, 0, 0.10);
+}
+
+.deity-name-hi {
+  font-family: "Tiro Devanagari Sanskrit", serif;
+  font-size: 23px;
+  font-weight: 700;
+  margin-bottom: 7px;
+}
+
+.deity-name-en {
+  font-family: "Poppins", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  color: #9a5a20;
+}
+
+/* Mobile */
+@media (max-width: 991px) {
+  .deity-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 575px) {
+  .deity-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .deity-card {
+    min-height: 165px;
+  }
+
+  .deity-name-hi {
+    font-size: 21px;
+  }
+}

@@ -93,79 +93,288 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-// ===== DEITY DATA (only Shiva for now) =====
+/* =========================================================
+   DEITY LIBRARY DATA
+   ========================================================= */
+
 const deityInfo = {
+
+  /* =========================
+     LORD SHIVA
+     ========================= */
   shiva: {
     name: 'भगवान शिव',
     nameEn: 'LORD SHIVA',
     emoji: '🕉️',
     badge: '॥ हर हर महादेव ॥',
+
     contents: [
-      { id:'chalisa',          icon:'📖', title:'शिव चालीसा',         titleEn:'Shiv Chalisa' },
-      { id:'aarti',            icon:'🙏', title:'शिव आरती',           titleEn:'Shiv Aarti' },
-      { id:'mantra',           icon:'🔱', title:'शिव मंत्र',           titleEn:'Shiv Mantra' },
-      { id:'mahamrityunjaya',  icon:'🌙', title:'महामृत्युंजय मंत्र',  titleEn:'Mahamrityunjaya' },
-      { id:'panchakshari',     icon:'🕉️', title:'पंचाक्षरी मंत्र',     titleEn:'Panchakshari Mantra' },
-      { id:'stotram',          icon:'📿', title:'शिव स्तोत्रम्',       titleEn:'Shiv Stotram' },
-      { id:'rudrashtakam',     icon:'🔥', title:'रुद्राष्टकम्',        titleEn:'Rudrashtakam' },
-    
+      {
+        id: 'chalisa',
+        icon: '📖',
+        title: 'शिव चालीसा',
+        titleEn: 'Shiv Chalisa',
+        description: 'भगवान शिव की स्तुति एवं आराधना का पवित्र पाठ।'
+      },
+
+      {
+        id: 'aarti',
+        icon: '🙏',
+        title: 'शिव आरती',
+        titleEn: 'Shiv Aarti',
+        description: 'बाबा भोलेनाथ की आरती का पाठ।'
+      },
+
+      {
+        id: 'mantra',
+        icon: '🔱',
+        title: 'शिव मंत्र',
+        titleEn: 'Shiv Mantra',
+        description: 'भगवान शिव के प्रमुख मंत्र।'
+      },
+
+      {
+        id: 'mahamrityunjaya',
+        icon: '🌙',
+        title: 'महामृत्युंजय मंत्र',
+        titleEn: 'Mahamrityunjaya Mantra',
+        description: 'पवित्र महामृत्युंजय मंत्र।'
+      },
+
+      {
+        id: 'panchakshari',
+        icon: '🕉️',
+        title: 'पंचाक्षरी मंत्र',
+        titleEn: 'Panchakshari Mantra',
+        description: 'ॐ नमः शिवाय — भगवान शिव का पंचाक्षरी मंत्र।'
+      },
+
+      {
+        id: 'stotram',
+        icon: '📿',
+        title: 'शिव स्तोत्रम्',
+        titleEn: 'Shiv Stotram',
+        description: 'भगवान शिव के पवित्र स्तोत्र।'
+      },
+
+      {
+        id: 'rudrashtakam',
+        icon: '🔥',
+        title: 'रुद्राष्टकम्',
+        titleEn: 'Rudrashtakam',
+        description: 'शिव आराधना का प्रसिद्ध स्तोत्र।'
+      }
     ]
   },
+
+
+  /* =========================
+     HANUMAN JI
+     ========================= */
   hanuman: {
     name: 'हनुमान जी',
     nameEn: 'HANUMAN JI',
     emoji: '🐒',
     badge: '॥ जय बजरंगबली ॥',
+
     contents: [
-      { id:'chalisa', icon:'📖', title:'हनुमान चालीसा',   titleEn:'Hanuman Chalisa' },
-      { id:'aarti',   icon:'🙏', title:'हनुमान आरती',     titleEn:'Hanuman Aarti' },
-      { id:'mantra',  icon:'🔱', title:'हनुमान मंत्र',     titleEn:'Hanuman Mantra' },
-      { id:'bajrang-baan', icon:'⚡', title:'बजरंग बाण',  titleEn:'Bajrang Baan' },
+      {
+        id: 'chalisa',
+        icon: '📖',
+        title: 'हनुमान चालीसा',
+        titleEn: 'Hanuman Chalisa',
+        description: 'श्री हनुमान जी की प्रसिद्ध स्तुति।'
+      },
+
+      {
+        id: 'aarti',
+        icon: '🙏',
+        title: 'हनुमान आरती',
+        titleEn: 'Hanuman Aarti',
+        description: 'श्री हनुमान जी की आरती।'
+      },
+
+      {
+        id: 'mantra',
+        icon: '🔱',
+        title: 'हनुमान मंत्र',
+        titleEn: 'Hanuman Mantra',
+        description: 'श्री हनुमान जी के पवित्र मंत्र।'
+      },
+
+      {
+        id: 'bajrang-baan',
+        icon: '⚡',
+        title: 'बजरंग बाण',
+        titleEn: 'Bajrang Baan',
+        description: 'श्री हनुमान जी की पवित्र स्तुति।'
+      }
     ]
   },
+
+
+  /* =========================
+     MAA DURGA
+     ========================= */
   durga: {
     name: 'माँ दुर्गा',
     nameEn: 'MAA DURGA',
     emoji: '🌺',
     badge: '॥ जय माता दी ॥',
+
     contents: [
-      { id:'chalisa', icon:'📖', title:'दुर्गा चालीसा', titleEn:'Durga Chalisa' },
-      { id:'aarti',   icon:'🙏', title:'दुर्गा आरती',   titleEn:'Durga Aarti' },
-      { id:'mantra',  icon:'🔱', title:'दुर्गा मंत्र',   titleEn:'Durga Mantra' },
-      { id:'kavach',  icon:'🛡️', title:'दुर्गा कवच',    titleEn:'Durga Kavach' },
+      {
+        id: 'chalisa',
+        icon: '📖',
+        title: 'दुर्गा चालीसा',
+        titleEn: 'Durga Chalisa',
+        description: 'माँ दुर्गा की पवित्र स्तुति।'
+      },
+
+      {
+        id: 'aarti',
+        icon: '🙏',
+        title: 'दुर्गा आरती',
+        titleEn: 'Durga Aarti',
+        description: 'माँ दुर्गा की आरती।'
+      },
+
+      {
+        id: 'mantra',
+        icon: '🔱',
+        title: 'दुर्गा मंत्र',
+        titleEn: 'Durga Mantra',
+        description: 'माँ दुर्गा के पवित्र मंत्र।'
+      },
+
+      {
+        id: 'kavach',
+        icon: '🛡️',
+        title: 'दुर्गा कवच',
+        titleEn: 'Durga Kavach',
+        description: 'माँ दुर्गा का पवित्र कवच पाठ।'
+      }
     ]
   }
+
 };
-// ===== GET DEITY FROM URL =====
+
+
+/* =========================================================
+   GET DEITY FROM URL
+   Example:
+   library-deity.html?deity=shiva
+   ========================================================= */
+
 const params = new URLSearchParams(window.location.search);
 const deityKey = params.get('deity') || 'shiva';
 const deity = deityInfo[deityKey];
 
-// ===== RENDER PAGE =====
-if (deity) {
-  document.getElementById('heroBadge').textContent = deity.badge;
-  document.getElementById('heroTitle').textContent  = deity.emoji + ' ' + deity.name;
-  document.getElementById('bcDeity').textContent    = deity.nameEn;
-  document.title = deity.nameEn + ' — श्री सिद्धेश्वर नाथ मंदिर';
-  document.getElementById('sectionHeading').innerHTML = deity.name + ' — <span>सामग्री चुनें</span>';
 
+/* =========================================================
+   RENDER DEITY PAGE
+   ========================================================= */
+
+if (deity) {
+
+  /* Hero */
+  document.getElementById('heroBadge').textContent = deity.badge;
+
+  document.getElementById('heroTitle').textContent =
+    deity.emoji + ' ' + deity.name;
+
+  /* Breadcrumb */
+  document.getElementById('bcDeity').textContent =
+    deity.nameEn;
+
+  /* Browser title */
+  document.title =
+    deity.nameEn + ' — श्री सिद्धेश्वर नाथ मंदिर';
+
+
+  /* Section heading */
+  document.getElementById('sectionHeading').innerHTML =
+    deity.name + ' — <span>सामग्री चुनें</span>';
+
+
+  /* Content Grid */
   const grid = document.getElementById('contentGrid');
+
+  grid.innerHTML = '';
+
+
   deity.contents.forEach(item => {
+
     const link = document.createElement('a');
-    link.href = `library-text.html?deity=${deityKey}&content=${item.id}`;
+
+    link.href =
+      `library-text.html?deity=${deityKey}&content=${item.id}`;
+
     link.className = 'deity-card';
+
     link.innerHTML = `
-      <span class="deity-emoji">${item.icon}</span>
-      <div class="deity-name-hi">${item.title}</div>
-      <div class="deity-name-en">${item.titleEn.toUpperCase()}</div>
+
+      <span class="deity-emoji">
+        ${item.icon}
+      </span>
+
+      <div class="deity-name-hi">
+        ${item.title}
+      </div>
+
+      <div class="deity-name-en">
+        ${item.titleEn.toUpperCase()}
+      </div>
+
     `;
+
     grid.appendChild(link);
+
   });
-} else {
-  document.getElementById('contentGrid').innerHTML = '<p style="color:#aaa;text-align:center;">Deity data coming soon</p>';
+
+}
+
+
+/* =========================================================
+   INVALID DEITY
+   ========================================================= */
+
+else {
+
+  document.getElementById('heroBadge').textContent =
+    '॥ श्री सिद्धेश्वर नाथ मंदिर ॥';
+
+  document.getElementById('heroTitle').textContent =
+    '📚 सामग्री उपलब्ध नहीं है';
+
+  document.getElementById('contentGrid').innerHTML = `
+
+    <div style="
+      grid-column:1/-1;
+      text-align:center;
+      padding:50px 20px;
+    ">
+
+      <div style="font-size:50px;">📚</div>
+
+      <h3 style="margin-top:15px;">
+        यह सामग्री अभी उपलब्ध नहीं है
+      </h3>
+
+      <p>
+        कृपया Library से किसी अन्य देवता का चयन करें।
+      </p>
+
+      <a href="library.html" class="back-btn">
+        ‹ Back to Library
+      </a>
+
+    </div>
+
+  `;
+
 }
 </script>
-
 <script src="sheet-config.js"></script>
 <script src="sheets-integration.js"></script>
 <script src="sheet-parsers.js"></script>

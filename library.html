@@ -106,6 +106,112 @@
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════════════════════════
+     PART 2 — HTML  (library.html mein deity-section UPAR paste)
+     ═══════════════════════════════════════════════════════════
+
+ COPY-TOAST (once on page) 
+<div class="pb-toast" id="pbToast">✅ Link copied to clipboard!</div>
+
+<!-- PDF BOOKS SECTION 
+<section class="pdf-books-section">
+  <div class="container">
+
+    <!-- Section Header -
+    <div class="text-center reveal" style="margin-bottom:32px;">
+      <div class="section-eyebrow">डिजिटल पुस्तकालय</div>
+      <h2 class="section-heading">📚 पूजा-पाठ पुस्तकें <span>&amp; PDF संग्रह</span></h2>
+      <div class="orange-rule"></div>
+      <p style="font-size:14px;color:#888;max-width:540px;margin:-16px auto 0;line-height:1.7;">
+        एक क्लिक में PDF डाउनलोड करें — WhatsApp पर सीधे लिंक शेयर करें
+      </p>
+    </div>
+
+    <!-- Search & Filter --
+    <div class="pb-controls reveal">
+      <div class="pb-search-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input type="text" class="pb-search" id="pbSearch"
+          placeholder="पूजा खोजें... (e.g. Chaurchan, Shiv, Navratri)"
+          oninput="pbRender()">
+      </div>
+      <select class="pb-filter" id="pbFilter" onchange="pbRender()">
+        <option value="">📂 All Categories</option>
+        <option value="Mithila Festival">🎉 Mithila Festival</option>
+        <option value="Katha">📖 Katha</option>
+        <option value="Stotra">🕉️ Stotra</option>
+        <option value="Vidhi">🪔 Pooja Vidhi</option>
+        <option value="Vrat">🌙 Vrat</option>
+      </select>
+      <div class="pb-count">Showing <strong id="pbShowing">0</strong> books</div>
+    </div>
+
+    -- Book Grid -->
+    <!-- ==========================================
+     CHAURCHAN POOJA PDF - DEMO CARD
+     ========================================== 
+<div id="pbGrid" class="row g-4">
+
+    <!-- Chaurchan Puja PDF -->
+    <div class="col-lg-4 col-md-6">
+
+        <div class="pdf-book-card h-100">
+
+            <!-- PDF Icon -->
+            <div class="pdf-icon">
+                📜
+            </div>
+
+            <!-- Content -->
+            <div class="pdf-book-content">
+
+                <span class="pdf-category">
+                    🌙 Mithila Festival
+                </span>
+
+                <h3>
+                    चौरचन पूजा
+                </h3>
+
+                <p>
+                    Chaurchan Puja विधि, पूजा-पाठ
+                </p>
+
+                
+                <div class="pdf-actions">
+
+                    <!-- View PDF -->
+<a href="pdfs/chaurchan-pooja.pdf.pdf"
+   target="_blank"
+   rel="noopener"
+   class="pdf-btn pdf-btn-view">
+   📖 View PDF
+</a>
+
+<!-- Download PDF -->
+<a href="pdfs/chaurchan-pooja.pdf.pdf"
+   download
+   class="pdf-btn pdf-btn-download">
+   ⬇ Download
+</a>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+  </div>
+</section>
+
+
 <!-- DEITY CARDS GRID -->
 <section class="deity-section">
   <div class="container">
@@ -215,17 +321,270 @@
       </div>
 
       <!-- Quick Links -->
-      <div class="col-md-2">
-        <div class="footer-heading" data-lang="footer.links">Quick Links</div>
-        <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="donation.html">Donation</a></li>
-          <li><a href="library.html">Library</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
+     <script>
+/* =========================================================
+   DIGITAL PDF LIBRARY
+   श्री सिद्धेश्वर नाथ मंदिर
+   ========================================================= */
+
+const pbBooks = [
+
+    {
+        id: "chaurchan-pooja",
+        title: "चौरचन पूजा",
+        titleEn: "Chaurchan Puja",
+        category: "Mithila Festival",
+        icon: "🌙",
+        description: "चौरचन पूजा की विधि, पूजा-पाठ एवं आवश्यक जानकारी।",
+        pdf: "pdfs/chaurchan-pooja.pdf",
+        keywords: "chaurchan chauth chaurchan पूजा चौरचन चौठ चंद्र पूजा mithila",
+        year: "2026"
+    }
+
+];
+
+
+/* =========================================================
+   PDF RENDER
+   ========================================================= */
+
+function pbRender() {
+
+    const grid = document.getElementById("pbGrid");
+    const search = (
+        document.getElementById("pbSearch")?.value || ""
+    ).toLowerCase().trim();
+
+    const filter =
+        document.getElementById("pbFilter")?.value || "";
+
+    const showing =
+        document.getElementById("pbShowing");
+
+    if (!grid) return;
+
+
+    const books = pbBooks.filter(book => {
+
+        const text = (
+            book.title + " " +
+            book.titleEn + " " +
+            book.category + " " +
+            book.description + " " +
+            book.keywords
+        ).toLowerCase();
+
+        return (
+            (!search || text.includes(search)) &&
+            (!filter || book.category === filter)
+        );
+
+    });
+
+
+    if (showing) {
+        showing.textContent = books.length;
+    }
+
+
+    if (books.length === 0) {
+
+        grid.innerHTML = `
+            <div class="col-12 text-center py-5">
+
+                <div style="font-size:45px;">📚</div>
+
+                <h4 style="color:#7a3200;">
+                    कोई पुस्तक नहीं मिली
+                </h4>
+
+                <p style="color:#777;">
+                    Search या Category बदलकर फिर प्रयास करें।
+                </p>
+
+            </div>
+        `;
+
+        return;
+    }
+
+
+    grid.innerHTML = books.map(book => `
+
+        <div class="pdf-book-item">
+
+            <article class="pdf-library-card">
+
+                <div class="pdf-card-top">
+
+                    <div class="pdf-card-icon">
+                        ${book.icon}
+                    </div>
+
+                    <span class="pdf-file-badge">
+                        PDF
+                    </span>
+
+                </div>
+
+
+                <div class="pdf-card-category">
+                    📂 ${book.category}
+                </div>
+
+
+                <h3 class="pdf-card-title">
+                    ${book.title}
+                </h3>
+
+
+                <div class="pdf-card-title-en">
+                    ${book.titleEn}
+                </div>
+
+
+                <p class="pdf-card-description">
+                    ${book.description}
+                </p>
+
+
+                <div class="pdf-card-meta">
+
+                    <span>
+                        📅 ${book.year}
+                    </span>
+
+                    <span>
+                        📄 PDF
+                    </span>
+
+                </div>
+
+
+                <div class="pdf-card-actions">
+
+                    <a
+                        href="${book.pdf}"
+                        target="_blank"
+                        rel="noopener"
+                        class="pdf-btn pdf-btn-view"
+                    >
+                        📖 View PDF
+                    </a>
+
+
+                    <a
+                        href="${book.pdf}"
+                        download
+                        class="pdf-btn pdf-btn-download"
+                    >
+                        ⬇ Download
+                    </a>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="pdf-share-btn"
+                    onclick="pbShare('${book.title}', '${book.pdf}')"
+                >
+                    🔗 Share PDF
+                </button>
+
+            </article>
+
+        </div>
+
+    `).join("");
+
+}
+
+
+/* =========================================================
+   SHARE PDF
+   ========================================================= */
+
+async function pbShare(title, pdfPath) {
+
+    const pdfURL =
+        new URL(pdfPath, window.location.href).href;
+
+
+    if (navigator.share) {
+
+        try {
+
+            await navigator.share({
+
+                title:
+                    title +
+                    " — श्री सिद्धेश्वर नाथ मंदिर",
+
+                text:
+                    "📖 " +
+                    title +
+                    "\n\nश्री सिद्धेश्वर नाथ मंदिर",
+
+                url: pdfURL
+
+            });
+
+            return;
+
+        } catch (error) {
+
+            console.log("Share cancelled");
+
+        }
+
+    }
+
+
+    try {
+
+        await navigator.clipboard.writeText(pdfURL);
+
+        const toast =
+            document.getElementById("pbToast");
+
+        if (toast) {
+
+            toast.textContent =
+                "✅ PDF link copied!";
+
+            toast.classList.add("show");
+
+            setTimeout(() => {
+
+                toast.classList.remove("show");
+
+            }, 2500);
+
+        }
+
+    } catch (error) {
+
+        prompt(
+            "Copy this PDF link:",
+            pdfURL
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   LOAD LIBRARY
+   ========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    pbRender
+);
+
+</script>
 
       <!-- Info -->
       <div class="col-md-3">
