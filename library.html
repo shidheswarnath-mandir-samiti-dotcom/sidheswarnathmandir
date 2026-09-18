@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Library — श्री सिद्धेश्वर नाथ मंदिर, Darbhanga</title>
 
-
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -16,7 +15,6 @@
 <meta name="description" content="धार्मिक पुस्तकालय — शिव चालीसा, हनुमान चालीसा, आरती, मंत्र, स्तोत्र एवं भजन। हिंदी एवं मैथिली में उपलब्ध।">
 <meta name="keywords" content="Shiv Chalisa, Hanuman Chalisa, aarti, mantra, stotra, bhajan Hindi Maithili, धार्मिक पुस्तकालय">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#ff6600">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shidheswarnath-mandir-samiti-dotcom.github.io/sidheswarnathmandir/library.html">
@@ -36,7 +34,7 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="mahadev-ai.css">
 
-
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-YPPDE1B74S"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -48,14 +46,14 @@
 </head>
 <body>
 
-<!-- NAVBAR (same as other pages) -->
+<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg premium-navbar sticky-top">
   <div class="container">
     <a class="navbar-brand d-flex align-items-center" href="index.html">
       <img src="images/m7.jpg" class="logo-img me-2" alt="Mandir Logo">
       <span>श्री सिद्धेश्वर नाथ मंदिर</span>
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-label="Toggle">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="menu">
@@ -63,26 +61,21 @@
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
         
-<li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-    Services
-  </a>
-  <ul class="dropdown-menu donation-dropdown">
-    <li><a class="dropdown-item" href="booking.html">🪔 Pooja Booking</a></li>
-    <li><a class="dropdown-item" href="services.html#calendar">📅 Festival Calendar</a></li>
-  </ul>
-</li>
-
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Services</a>
+          <ul class="dropdown-menu donation-dropdown">
+            <li><a class="dropdown-item" href="booking.html">🪔 Pooja Booking</a></li>
+            <li><a class="dropdown-item" href="services.html#calendar">📅 Festival Calendar</a></li>
+          </ul>
+        </li>
 
         <li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Donation
-  </a>
-  <ul class="dropdown-menu donation-dropdown">
-    <li><a class="dropdown-item" href="donation.html">💰Donate Now</a></li>
-    <li><a class="dropdown-item" href="accounts-login.html">📊 Accounts Portal</a></li>
-  </ul>
-</li>
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Donation</a>
+          <ul class="dropdown-menu donation-dropdown">
+            <li><a class="dropdown-item" href="donation.html">💰 Donate Now</a></li>
+            <li><a class="dropdown-item" href="accounts-login.html">📊 Accounts Portal</a></li>
+          </ul>
+        </li>
         <li class="nav-item"><a class="nav-link active" href="library.html">Library</a></li>
         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
       </ul>
@@ -99,118 +92,21 @@
 
 <!-- HERO -->
 <section class="lib-hero">
-  <div class="container">
+  <div class="container text-center">
     <div class="hero-badge">॥ ज्ञान ही परमेश्वर है ॥</div>
     <h1>📚 धार्मिक पुस्तकालय</h1>
     <p>Aarti · Chalisa · Mantra · Stotra · Bhajan</p>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     PART 2 — HTML  (library.html mein deity-section UPAR paste)
-     ═══════════════════════════════════════════════════════════
-
- COPY-TOAST (once on page) 
-<div class="pb-toast" id="pbToast">✅ Link copied to clipboard!</div>
-
-<!-- PDF BOOKS SECTION 
-<section class="pdf-books-section">
+<!-- DIGITAL PDF LIBRARY SECTION -->
+<section class="pdf-library-section py-4">
   <div class="container">
-
-    <!-- Section Header -
-    <div class="text-center reveal" style="margin-bottom:32px;">
-      <div class="section-eyebrow">डिजिटल पुस्तकालय</div>
-      <h2 class="section-heading">📚 पूजा-पाठ पुस्तकें <span>&amp; PDF संग्रह</span></h2>
-      <div class="orange-rule"></div>
-      <p style="font-size:14px;color:#888;max-width:540px;margin:-16px auto 0;line-height:1.7;">
-        एक क्लिक में PDF डाउनलोड करें — WhatsApp पर सीधे लिंक शेयर करें
-      </p>
+    <div class="row" id="pbGrid">
+      <!-- Dynamic PDFs will render here -->
     </div>
-
-    <!-- Search & Filter --
-    <div class="pb-controls reveal">
-      <div class="pb-search-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
-          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-        </svg>
-        <input type="text" class="pb-search" id="pbSearch"
-          placeholder="पूजा खोजें... (e.g. Chaurchan, Shiv, Navratri)"
-          oninput="pbRender()">
-      </div>
-      <select class="pb-filter" id="pbFilter" onchange="pbRender()">
-        <option value="">📂 All Categories</option>
-        <option value="Mithila Festival">🎉 Mithila Festival</option>
-        <option value="Katha">📖 Katha</option>
-        <option value="Stotra">🕉️ Stotra</option>
-        <option value="Vidhi">🪔 Pooja Vidhi</option>
-        <option value="Vrat">🌙 Vrat</option>
-      </select>
-      <div class="pb-count">Showing <strong id="pbShowing">0</strong> books</div>
-    </div>
-
-    -- Book Grid -->
-    <!-- ==========================================
-     CHAURCHAN POOJA PDF - DEMO CARD
-     ========================================== 
-<div id="pbGrid" class="row g-4">
-
-    <!-- Chaurchan Puja PDF -->
-    <div class="col-lg-4 col-md-6">
-
-        <div class="pdf-book-card h-100">
-
-            <!-- PDF Icon -->
-            <div class="pdf-icon">
-                📜
-            </div>
-
-            <!-- Content -->
-            <div class="pdf-book-content">
-
-                <span class="pdf-category">
-                    🌙 Mithila Festival
-                </span>
-
-                <h3>
-                    चौरचन पूजा
-                </h3>
-
-                <p>
-                    Chaurchan Puja विधि, पूजा-पाठ
-                </p>
-
-                
-                <div class="pdf-actions">
-
-                    <!-- View PDF -->
-<a href="pdfs/chaurchan-pooja.pdf.pdf"
-   target="_blank"
-   rel="noopener"
-   class="pdf-btn pdf-btn-view">
-   📖 View PDF
-</a>
-
-<!-- Download PDF -->
-<a href="pdfs/chaurchan-pooja.pdf.pdf"
-   download
-   class="pdf-btn pdf-btn-download">
-   ⬇ Download
-</a>
-
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
   </div>
 </section>
-
 
 <!-- DEITY CARDS GRID -->
 <section class="deity-section">
@@ -221,56 +117,141 @@
       <div class="orange-rule"></div>
     </div>
 
-    <div class="deity-grid">
+    <!-- Featured Pooja Card -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="pdf-book-card h-100 p-3 border rounded shadow-sm text-center">
+          <div class="deity-image mb-2">
+            <img src="imagesdeities/rohini mata.png" alt="Bhagwan Chandradev" class="img-fluid rounded">
+            <div class="deity-name-hi font-weight-bold mt-2">चौरचन पूजा</div>
+            <div class="deity-name-en text-muted">चौरचन पूजा-विधि, पूजा-पाठ</div>
+          </div>
+          <div class="pdf-actions mt-3">
+            <a href="pdfs/chaurchan-pooja.pdf" target="_blank" rel="noopener" class="pdf-btn pdf-btn-view btn btn-sm btn-outline-primary me-2">📖 View PDF</a>
+            <a href="pdfs/chaurchan-pooja.pdf" download class="pdf-btn pdf-btn-download btn btn-sm btn-primary">⬇ Download</a>
+          </div>
+        </div>
+      </div>
 
-  <a href="library-deity.html?deity=shiva" class="deity-card">
-    <div class="deity-image">
-    <img src="imagesdeities/shiva.png" alt="Bhagwan Shiv">
-</div>
-    <div class="deity-name-hi">भगवान शिव</div>
-    <div class="deity-name-en">LORD SHIVA</div>
-  </a>
 
-  <a href="library-deity.html?deity=hanuman" class="deity-card">
-    <div class="deity-image">
-    <img src="imagesdeities/hanuman.png" alt="Bhagwan hanuman">
-</div>
-    <div class="deity-name-hi">हनुमान जी</div>
-    <div class="deity-name-en">HANUMAN JI</div>
-  </a>
+      <div class="col-lg-4 col-md-6">
+        <div class="pdf-book-card h-100 p-3 border rounded shadow-sm text-center">
+          <div class="deity-image mb-2">
+            <img src="imagesdeities/rudrabhishek.png" alt="Rudrabhishek" class="img-fluid rounded">
+            <div class="deity-name-hi font-weight-bold mt-2">🕉️ संपूर्ण रुद्राभिषेक पूजा</div>
+            <div class="deity-name-en text-muted">संपूर्ण रुद्राभिषेक पूजा-विधि, मंत्र, पूजन क्रम एवं आवश्यक जानकारी।</div>
+          </div>
+          <div class="pdf-actions mt-3">
+            <a href="pdfs/sampoorna-rudrabhishek-puja.pdf.pdf" target="_blank" rel="noopener" class="pdf-btn pdf-btn-view btn btn-sm btn-outline-primary me-2">📖 View PDF</a>
+            <a href="pdfs/sampoorna-rudrabhishek-puja.pdf.pdf" download class="pdf-btn pdf-btn-download btn btn-sm btn-primary">⬇ Download</a>
+          </div>
+        </div>
+      </div>
 
-  <a href="library-deity.html?deity=durga" class="deity-card">
-    <div class="deity-image">
-    <img src="imagesdeities/durga.png" alt="durga ji">
-</div>
-    <div class="deity-name-hi">माँ दुर्गा</div>
-    <div class="deity-name-en">MAA DURGA</div>
-  </a>
+      <div class="col-lg-4 col-md-6">
+        <div class="pdf-book-card h-100 p-3 border rounded shadow-sm text-center">
+          <div class="deity-image mb-2">
+            <img src="imagesdeities/saptshati.png" alt="Durga saptshati" class="img-fluid rounded">
+            <div class="deity-name-hi font-weight-bold mt-2">संपूर्ण दुर्गा सप्तशती पाठ</div>
+            <div class="deity-name-en text-muted">दुर्गा सप्तशती का संपूर्ण पाठ, मंत्र, पूजन विधि, कवच, कीलक एवं आवश्यक जानकारी।</div>
+          </div>
+          <div class="pdf-actions mt-3">
+            <a href="pdfs/sampoorna-durga-saptashati-path.pdf.pdf" target="_blank" rel="noopener" class="pdf-btn pdf-btn-view btn btn-sm btn-outline-primary me-2">📖 View PDF</a>
+            <a href="pdfs/sampoorna-durga-saptashati-path.pdf.pdf" download class="pdf-btn pdf-btn-download btn btn-sm btn-primary">⬇ Download</a>
+          </div>
+        </div>
+      </div>
 
-  <a href="library-deity.html?deity=ganesh" class="deity-card">
-    <div class="deity-image">
-    <img src="imagesdeities/ganesh.png" alt="ganesh">
-</div>
-    <div class="deity-name-hi">गणेश जी</div>
-    <div class="deity-name-en">GANESH JI</div>
-  </a>
+<!-----------
+      <div class="col-lg-4 col-md-6">
+        <div class="pdf-book-card h-100 p-3 border rounded shadow-sm text-center">
+          <div class="deity-image mb-2">
+            <img src="imagesdeities/rohini mata.png" alt="Bhagwan Chandradev" class="img-fluid rounded">
+            <div class="deity-name-hi font-weight-bold mt-2">चौरचन पूजा</div>
+            <div class="deity-name-en text-muted">चौरचन पूजा-विधि, पूजा-पाठ</div>
+          </div>
+          <div class="pdf-actions mt-3">
+            <a href="pdfs/chaurchan-pooja.pdf" target="_blank" rel="noopener" class="pdf-btn pdf-btn-view btn btn-sm btn-outline-primary me-2">📖 View PDF</a>
+            <a href="pdfs/chaurchan-pooja.pdf" download class="pdf-btn pdf-btn-download btn btn-sm btn-primary">⬇ Download</a>
+          </div>
+        </div>
+      </div>
 
-  <a href="library-deity.html?deity=krishna" class="deity-card">
-    <div class="deity-image">
-    <img src="imagesdeities/krishna.png" alt="krishna">
-</div>
-    <div class="deity-name-hi">श्री कृष्ण</div>
-    <div class="deity-name-en">SHRI KRISHNA</div>
-  </a>
 
-  <a href="library-deity.html?deity=other deities" class="deity-card">
-    <span class="deity-emoji">🔱</span>
-    <div class="deity-name-hi">अन्य देवता</div>
-    <div class="deity-name-en">OTHER DEITIES</div>
-  </a>
+      <div class="col-lg-4 col-md-6">
+        <div class="pdf-book-card h-100 p-3 border rounded shadow-sm text-center">
+          <div class="deity-image mb-2">
+            <img src="imagesdeities/rohini mata.png" alt="Bhagwan Chandradev" class="img-fluid rounded">
+            <div class="deity-name-hi font-weight-bold mt-2">चौरचन पूजा</div>
+            <div class="deity-name-en text-muted">चौरचन पूजा-विधि, पूजा-पाठ</div>
+          </div>
+          <div class="pdf-actions mt-3">
+            <a href="pdfs/chaurchan-pooja.pdf" target="_blank" rel="noopener" class="pdf-btn pdf-btn-view btn btn-sm btn-outline-primary me-2">📖 View PDF</a>
+            <a href="pdfs/chaurchan-pooja.pdf" download class="pdf-btn pdf-btn-download btn btn-sm btn-primary">⬇ Download</a>
+          </div>
+        </div>
+      </div>
 
-</div>
-    <!-- LANGUAGE SWITCHER (for future deity pages) -->
+
+      <div class="col-lg-4 col-md-6">
+        <div class="pdf-book-card h-100 p-3 border rounded shadow-sm text-center">
+          <div class="deity-image mb-2">
+            <img src="imagesdeities/rohini mata.png" alt="Bhagwan Chandradev" class="img-fluid rounded">
+            <div class="deity-name-hi font-weight-bold mt-2">चौरचन पूजा</div>
+            <div class="deity-name-en text-muted">चौरचन पूजा-विधि, पूजा-पाठ</div>
+          </div>
+          <div class="pdf-actions mt-3">
+            <a href="pdfs/chaurchan-pooja.pdf" target="_blank" rel="noopener" class="pdf-btn pdf-btn-view btn btn-sm btn-outline-primary me-2">📖 View PDF</a>
+            <a href="pdfs/chaurchan-pooja.pdf" download class="pdf-btn pdf-btn-download btn btn-sm btn-primary">⬇ Download</a>
+          </div>
+        </div>
+      </div>
+---->
+    </div>
+    
+
+    <!-- Deity Grid -->
+    <div class="deity-grid d-flex flex-wrap justify-content-center gap-3">
+      <a href="library-deity.html?deity=shiva" class="deity-card">
+        <div class="deity-image"><img src="imagesdeities/shiva.png" alt="Bhagwan Shiv"></div>
+        <div class="deity-name-hi">भगवान शिव</div>
+        <div class="deity-name-en">LORD SHIVA</div>
+      </a>
+
+      <a href="library-deity.html?deity=hanuman" class="deity-card">
+        <div class="deity-image"><img src="imagesdeities/hanuman.png" alt="Bhagwan hanuman"></div>
+        <div class="deity-name-hi">हनुमान जी</div>
+        <div class="deity-name-en">HANUMAN JI</div>
+      </a>
+
+      <a href="library-deity.html?deity=durga" class="deity-card">
+        <div class="deity-image"><img src="imagesdeities/durga.png" alt="durga ji"></div>
+        <div class="deity-name-hi">माँ दुर्गा</div>
+        <div class="deity-name-en">MAA DURGA</div>
+      </a>
+
+      <a href="library-deity.html?deity=ganesh" class="deity-card">
+        <div class="deity-image"><img src="imagesdeities/ganesh.png" alt="ganesh"></div>
+        <div class="deity-name-hi">गणेश जी</div>
+        <div class="deity-name-en">GANESH JI</div>
+      </a>
+
+      <a href="library-deity.html?deity=krishna" class="deity-card">
+        <div class="deity-image"><img src="imagesdeities/krishna.png" alt="krishna"></div>
+        <div class="deity-name-hi">श्री कृष्ण</div>
+        <div class="deity-name-en">SHRI KRISHNA</div>
+      </a>
+
+      <a href="library-deity.html?deity=other deities" class="deity-card">
+        <span class="deity-emoji" style="font-size: 2rem;">🔱</span>
+        <div class="deity-name-hi">अन्य देवता</div>
+        <div class="deity-name-en">OTHER DEITIES</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- LANGUAGE SWITCHER -->
 <section style="background:#fff5e6; padding:30px 0; text-align:center;">
   <div class="container">
     <div class="section-eyebrow">Choose Your Language</div>
@@ -279,8 +260,6 @@
       <button class="lang-sw-btn active" onclick="setLang('hindi', this)">हिंदी</button>
       <button class="lang-sw-btn" onclick="setLang('English', this)">English</button>
     </div>
-  </div>
-</section>
   </div>
 </section>
 
@@ -306,285 +285,30 @@
             <svg viewBox="0 0 24 24" width="22" height="22"><rect x="1" y="4" width="22" height="16" rx="5" fill="#FF0000"/><path fill="#fff" d="M10 8.5l6 3.5-6 3.5z"/></svg>
           </a>
           <a href="https://x.com/mahadevdham" target="_blank" class="footer-social-icon icon-x" title="X">
-  <svg viewBox="0 0 24 24" width="20" height="20">
-    <circle cx="12" cy="12" r="12" fill="#000000"/>
-    <path fill="#fff" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-  </svg>
-</a>
+            <svg viewBox="0 0 24 24" width="20" height="20">
+              <circle cx="12" cy="12" r="12" fill="#000000"/>
+              <path fill="#fff" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
           <a href="https://www.linkedin.com/company/sidheswar-nath-mandir-bishoul/posts/?feedView=all" target="_blank" class="footer-social-icon icon-ln" title="LinkedIn">
-  <svg viewBox="0 0 24 24" width="20" height="20">
-    <circle cx="12" cy="12" r="12" fill="#0077B5"/>
-    <path fill="#fff" d="M8.5 19H6v-8h2.5v8zM7.2 9.9c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5 1.5.7 1.5 1.5-.7 1.5-1.5 1.5zm11.8 9.1h-2.5v-3.9c0-1-.4-1.6-1.3-1.6-.7 0-1.1.5-1.3 1-.1.2-.1.5-.1.7V19h-2.5V11h2.5v1.1c.3-.6 1-1.3 2.4-1.3 1.7 0 3 1.1 3 3.6V19z"/>
-  </svg>
-</a>
+            <svg viewBox="0 0 24 24" width="20" height="20">
+              <circle cx="12" cy="12" r="12" fill="#0077B5"/>
+              <path fill="#fff" d="M8.5 19H6v-8h2.5v8zM7.2 9.9c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5 1.5.7 1.5 1.5-.7 1.5-1.5 1.5zm11.8 9.1h-2.5v-3.9c0-1-.4-1.6-1.3-1.6-.7 0-1.1.5-1.3 1-.1.2-.1.5-.1.7V19h-2.5V11h2.5v1.1c.3-.6 1-1.3 2.4-1.3 1.7 0 3 1.1 3 3.6V19z"/>
+            </svg>
+          </a>
         </div>
       </div>
 
-      <!-- Quick Links -->
-     <script>
-/* =========================================================
-   DIGITAL PDF LIBRARY
-   श्री सिद्धेश्वर नाथ मंदिर
-   ========================================================= */
-
-const pbBooks = [
-
-    {
-        id: "chaurchan-pooja",
-        title: "चौरचन पूजा",
-        titleEn: "Chaurchan Puja",
-        category: "Mithila Festival",
-        icon: "🌙",
-        description: "चौरचन पूजा की विधि, पूजा-पाठ एवं आवश्यक जानकारी।",
-        pdf: "pdfs/chaurchan-pooja.pdf",
-        keywords: "chaurchan chauth chaurchan पूजा चौरचन चौठ चंद्र पूजा mithila",
-        year: "2026"
-    }
-
-];
-
-
-/* =========================================================
-   PDF RENDER
-   ========================================================= */
-
-function pbRender() {
-
-    const grid = document.getElementById("pbGrid");
-    const search = (
-        document.getElementById("pbSearch")?.value || ""
-    ).toLowerCase().trim();
-
-    const filter =
-        document.getElementById("pbFilter")?.value || "";
-
-    const showing =
-        document.getElementById("pbShowing");
-
-    if (!grid) return;
-
-
-    const books = pbBooks.filter(book => {
-
-        const text = (
-            book.title + " " +
-            book.titleEn + " " +
-            book.category + " " +
-            book.description + " " +
-            book.keywords
-        ).toLowerCase();
-
-        return (
-            (!search || text.includes(search)) &&
-            (!filter || book.category === filter)
-        );
-
-    });
-
-
-    if (showing) {
-        showing.textContent = books.length;
-    }
-
-
-    if (books.length === 0) {
-
-        grid.innerHTML = `
-            <div class="col-12 text-center py-5">
-
-                <div style="font-size:45px;">📚</div>
-
-                <h4 style="color:#7a3200;">
-                    कोई पुस्तक नहीं मिली
-                </h4>
-
-                <p style="color:#777;">
-                    Search या Category बदलकर फिर प्रयास करें।
-                </p>
-
-            </div>
-        `;
-
-        return;
-    }
-
-
-    grid.innerHTML = books.map(book => `
-
-        <div class="pdf-book-item">
-
-            <article class="pdf-library-card">
-
-                <div class="pdf-card-top">
-
-                    <div class="pdf-card-icon">
-                        ${book.icon}
-                    </div>
-
-                    <span class="pdf-file-badge">
-                        PDF
-                    </span>
-
-                </div>
-
-
-                <div class="pdf-card-category">
-                    📂 ${book.category}
-                </div>
-
-
-                <h3 class="pdf-card-title">
-                    ${book.title}
-                </h3>
-
-
-                <div class="pdf-card-title-en">
-                    ${book.titleEn}
-                </div>
-
-
-                <p class="pdf-card-description">
-                    ${book.description}
-                </p>
-
-
-                <div class="pdf-card-meta">
-
-                    <span>
-                        📅 ${book.year}
-                    </span>
-
-                    <span>
-                        📄 PDF
-                    </span>
-
-                </div>
-
-
-                <div class="pdf-card-actions">
-
-                    <a
-                        href="${book.pdf}"
-                        target="_blank"
-                        rel="noopener"
-                        class="pdf-btn pdf-btn-view"
-                    >
-                        📖 View PDF
-                    </a>
-
-
-                    <a
-                        href="${book.pdf}"
-                        download
-                        class="pdf-btn pdf-btn-download"
-                    >
-                        ⬇ Download
-                    </a>
-
-                </div>
-
-
-                <button
-                    type="button"
-                    class="pdf-share-btn"
-                    onclick="pbShare('${book.title}', '${book.pdf}')"
-                >
-                    🔗 Share PDF
-                </button>
-
-            </article>
-
-        </div>
-
-    `).join("");
-
-}
-
-
-/* =========================================================
-   SHARE PDF
-   ========================================================= */
-
-async function pbShare(title, pdfPath) {
-
-    const pdfURL =
-        new URL(pdfPath, window.location.href).href;
-
-
-    if (navigator.share) {
-
-        try {
-
-            await navigator.share({
-
-                title:
-                    title +
-                    " — श्री सिद्धेश्वर नाथ मंदिर",
-
-                text:
-                    "📖 " +
-                    title +
-                    "\n\nश्री सिद्धेश्वर नाथ मंदिर",
-
-                url: pdfURL
-
-            });
-
-            return;
-
-        } catch (error) {
-
-            console.log("Share cancelled");
-
-        }
-
-    }
-
-
-    try {
-
-        await navigator.clipboard.writeText(pdfURL);
-
-        const toast =
-            document.getElementById("pbToast");
-
-        if (toast) {
-
-            toast.textContent =
-                "✅ PDF link copied!";
-
-            toast.classList.add("show");
-
-            setTimeout(() => {
-
-                toast.classList.remove("show");
-
-            }, 2500);
-
-        }
-
-    } catch (error) {
-
-        prompt(
-            "Copy this PDF link:",
-            pdfURL
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   LOAD LIBRARY
-   ========================================================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    pbRender
-);
-
-</script>
+      <!-- Quick Links Placeholder or Spacer -->
+      <div class="col-md-2">
+        <div class="footer-heading">Quick Links</div>
+        <ul class="list-unstyled">
+          <li><a href="index.html" class="text-decoration-none text-secondary">Home</a></li>
+          <li><a href="about.html" class="text-decoration-none text-secondary">About</a></li>
+          <li><a href="booking.html" class="text-decoration-none text-secondary">Pooja Booking</a></li>
+          <li><a href="donation.html" class="text-decoration-none text-secondary">Donation</a></li>
+        </ul>
+      </div>
 
       <!-- Info -->
       <div class="col-md-3">
@@ -602,28 +326,123 @@ document.addEventListener(
         <div class="footer-info">
           <p data-lang="footer.morning">🌅 Morning Puja — 6:00 AM</p>
           <p data-lang="footer.evening">🌇 Evening Aarti — 7:00 PM</p>
-         
         </div>
       </div>
 
     </div>
 
-    <div class="visitor-counter">
-  <span class="vc-label">👁 Total Visitors:</span>
-  <div class="visitor-digits" id="visitorDigits"></div>
-</div>
+    <div class="visitor-counter my-3 text-center">
+      <span class="vc-label">👁 Total Visitors: </span>
+      <span class="visitor-digits" id="visitorDigits"></span>
+    </div>
 
-    <div class="footer-bottom" data-lang="footer.copy">
+    <div class="footer-bottom text-center pt-3 border-top" data-lang="footer.copy">
       © 2026 श्री सिद्धेश्वर नाथ मंदिर, Bishoul Tatuar, Darbhanga, Bihar. All rights reserved.
     </div>
   </div>
 </footer>
 
+<!-- Toast notification for PDF share -->
+<div id="pbToast" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11;"></div>
 
+<!-- JS SCRIPTS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+<!-- PDF Library Script -->
 <script>
-// LANGUAGE PREFERENCE
+
+function pbRender() {
+    const grid = document.getElementById("pbGrid");
+    const search = (document.getElementById("pbSearch")?.value || "").toLowerCase().trim();
+    const filter = document.getElementById("pbFilter")?.value || "";
+    const showing = document.getElementById("pbShowing");
+
+    if (!grid) return;
+
+    const books = pbBooks.filter(book => {
+        const text = (
+            book.title + " " +
+            book.titleEn + " " +
+            book.category + " " +
+            book.description + " " +
+            book.keywords
+        ).toLowerCase();
+
+        return (
+            (!search || text.includes(search)) &&
+            (!filter || book.category === filter)
+        );
+    });
+
+    if (showing) {
+        showing.textContent = books.length;
+    }
+
+    if (books.length === 0) {
+        grid.innerHTML = `
+            <div class="col-12 text-center py-5">
+                <div style="font-size:45px;">📚</div>
+                <h4 style="color:#7a3200;">कोई पुस्तक नहीं मिली</h4>
+                <p style="color:#777;">Search या Category बदलकर फिर प्रयास करें।</p>
+            </div>
+        `;
+        return;
+    }
+
+    grid.innerHTML = books.map(book => `
+        <div class="col-md-4 mb-4">
+            <article class="pdf-library-card border p-3 rounded shadow-sm">
+                <div class="pdf-card-top d-flex justify-content-between align-items-center mb-2">
+                    <div class="pdf-card-icon fs-3">${book.icon}</div>
+                    <span class="badge bg-danger">PDF</span>
+                </div>
+                <div class="pdf-card-category text-muted small mb-1">📂 ${book.category}</div>
+                <h3 class="pdf-card-title h5 mb-1">${book.title}</h3>
+                <div class="pdf-card-title-en text-muted small mb-2">${book.titleEn}</div>
+                <p class="pdf-card-description small mb-2">${book.description}</p>
+                <div class="pdf-card-meta d-flex justify-content-between small text-muted mb-3">
+                    <span>📅 ${book.year}</span>
+                    <span>📄 PDF</span>
+                </div>
+                <div class="pdf-card-actions mb-2 d-flex gap-2">
+                    <a href="${book.pdf}" target="_blank" rel="noopener" class="pdf-btn pdf-btn-view btn btn-sm btn-outline-primary flex-fill">📖 View PDF</a>
+                    <a href="${book.pdf}" download class="pdf-btn pdf-btn-download btn btn-sm btn-primary flex-fill">⬇ Download</a>
+                </div>
+                <button type="button" class="pdf-share-btn btn btn-sm btn-light w-100 mt-1" onclick="pbShare('${book.title}', '${book.pdf}')">🔗 Share PDF</button>
+            </article>
+        </div>
+    `).join("");
+}
+
+async function pbShare(title, pdfPath) {
+    const pdfURL = new URL(pdfPath, window.location.href).href;
+
+    if (navigator.share) {
+        try {
+            await navigator.share({
+                title: title + " — श्री सिद्धेश्वर नाथ मंदिर",
+                text: "📖 " + title + "\n\nश्री सिद्धेश्वर नाथ मंदिर",
+                url: pdfURL
+            });
+            return;
+        } catch (error) {
+            console.log("Share cancelled");
+        }
+    }
+
+    try {
+        await navigator.clipboard.writeText(pdfURL);
+        alert("✅ PDF link copied to clipboard!");
+    } catch (error) {
+        prompt("Copy this PDF link:", pdfURL);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", pbRender);
+</script>
+
+<!-- Language & Visitor Counter Script -->
+<script>
 let selectedLang = 'hindi';
 
 function setLang(lang, el) {
@@ -631,10 +450,7 @@ function setLang(lang, el) {
   document.querySelectorAll('.lang-sw-btn').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
 }
-</script>
 
-<script>
-// VISITOR COUNTER
 (function() {
   const key = 'sndm_visits';
   let count = parseInt(localStorage.getItem(key) || '1000') + 1;
@@ -643,6 +459,7 @@ function setLang(lang, el) {
   if (el) {
     String(count).split('').forEach(d => {
       const s = document.createElement('span');
+      s.className = 'badge bg-secondary me-1';
       s.textContent = d;
       el.appendChild(s);
     });
@@ -650,6 +467,7 @@ function setLang(lang, el) {
 })();
 </script>
 
+<!-- Custom App Scripts -->
 <script src="sheet-config.js"></script>
 <script src="sheets-integration.js"></script>
 <script src="sheet-parsers.js"></script>
@@ -663,5 +481,6 @@ function setLang(lang, el) {
 <script src="gemini-service.js"></script>
 <script src="query-engine.js"></script>
 <script src="mahadev-ai.js"></script>
+
 </body>
 </html>

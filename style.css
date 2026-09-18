@@ -4355,18 +4355,12 @@ textarea.form-control { resize: vertical; min-height: 120px; }
 /* Decorative top line */
 .pdf-book-card::before {
     content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 5px;
-
-    background: linear-gradient(
-        90deg,
-        #ff9933,
-        #ff6600,
-        #ffb347
-    );
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #ff9933, #ff6600, #ff9933);
 }
 
 
@@ -4981,4 +4975,114 @@ textarea.form-control { resize: vertical; min-height: 120px; }
   .deity-name-hi {
     font-size: 21px;
   }
+}
+
+
+/* =========================================================
+   PDF BOOK CARD - CIRCULAR IMAGE
+   Sirf upar wale PDF cards ke images ko circle karega
+   ========================================================= */
+
+.pdf-book-card .deity-image img {
+    width: 100px;
+height: 100px;
+    object-fit: cover;
+    border-radius: 50% !important;
+    border: 4px solid #ff7a00;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.18);
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+    .pdf-book-card .deity-image img {
+        width: 140px;
+        height: 140px;
+    }
+}
+
+
+
+/* =========================================================
+   PDF BUTTONS - COMPACT PREMIUM STYLE
+   ========================================================= */
+
+.pdf-book-card .pdf-card-actions,
+.pdf-book-card .pdf-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.pdf-book-card .pdf-btn {
+    min-height: 38px;
+    border-radius: 80px !important;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 4px 6px;
+    flex: 1;
+    transition: all 0.3s ease;
+}
+
+/* View PDF */
+.pdf-book-card .pdf-btn-view {
+    background: linear-gradient(135deg, #ff8a00, #ff6600) !important;
+    color: #fff !important;
+    border: 2px solid #ff7a00 !important;
+    box-shadow: 0 4px 10px rgba(255, 102, 0, 0.22);
+}
+
+/* Download */
+.pdf-book-card .pdf-btn-download {
+    background: #fff !important;
+    color: #d85b00 !important;
+    border: 2px solid #ff7a00 !important;
+    box-shadow: 0 4px 10px rgba(255, 102, 0, 0.10);
+}
+
+/* Hover */
+.pdf-book-card .pdf-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Circular icon */
+.pdf-btn-icon {
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.pdf-btn-view .pdf-btn-icon {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.pdf-btn-download .pdf-btn-icon {
+    background: #fff0df;
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+    .pdf-book-card .pdf-btn {
+        min-height: 42px;
+        font-size: 13px;
+        padding: 6px 10px;
+    }
+
+    .pdf-btn-icon {
+        width: 25px;
+        height: 25px;
+        font-size: 13px;
+    }
 }
